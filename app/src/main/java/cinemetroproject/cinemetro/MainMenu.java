@@ -4,6 +4,7 @@ import cinemetroproject.cinemetro.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -112,7 +113,7 @@ public class MainMenu extends Activity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        //findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.fullscreen_content_controls).setOnTouchListener(ButtonTouchListener);
     }
 
     @Override
@@ -131,7 +132,7 @@ public class MainMenu extends Activity {
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+    View.OnTouchListener ButtonTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (AUTO_HIDE) {
@@ -156,5 +157,35 @@ public class MainMenu extends Activity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    //Implementation of the button functions
+
+    //Starts the map activity when the button Map is pressed
+    public void StartMapActivity(View view)
+    {
+        Intent intent = new Intent(this, MapActivity.class);
+        startActivity(intent);
+    }
+
+    //Starts the lines activity when the button Lines is pressed
+    public void StartLinesActivity(View view)
+    {
+        Intent intent = new Intent(this, LinesActivity.class);
+        startActivity(intent);
+    }
+
+    //Starts the profile activity when the button Profile is pressed
+    public void StartProfileActivity(View view)
+    {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    //Starts the about activity when the button About is pressed
+    public void StartAboutActivity(View view)
+    {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
     }
 }
