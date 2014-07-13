@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">CineMetro</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="map_button">Map</string>
+    <string name="lines_button">Lines</string>
+    <string name="profile_button">Profile</string>
+    <string name="about_button">About</string>
 
 </resources>
