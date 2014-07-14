@@ -46,8 +46,8 @@ public class SystemUiHiderBase extends SystemUiHider {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
-        mOnVisibilityChangeListener.onVisibilityChange(false);
-        mVisible = false;
+        mOnVisibilityChangeListener.onVisibilityChange(true);
+        mVisible = true;
     }
 
     @Override
