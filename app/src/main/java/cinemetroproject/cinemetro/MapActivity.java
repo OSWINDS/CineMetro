@@ -10,6 +10,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.*;
 import cinemetroproject.cinemetro.R;
+import android.support.v4.app.FragmentActivity;
 
 public class MapActivity extends ActionBarActivity {
 
@@ -18,10 +19,9 @@ public class MapActivity extends ActionBarActivity {
     private void createMapView(){
         try {
             if(null == googleMap){
-                googleMap = ((MapFragment) getFragmentManager().findFragmentById(
-                        R.id.mapView)).getMap();
-                //map=((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-                //        .getMap();
+                //googleMap = ((MapFragment) getFragmentManager().findFragmentById(
+                        //R.id.mapView)).getMap();
+                googleMap=((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapView)).getMap();
 
                 if(null == googleMap) {
                     Toast.makeText(getApplicationContext(),
