@@ -4,14 +4,40 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+import android.util.Log;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.*;
 import cinemetroproject.cinemetro.R;
 
 public class MapActivity extends ActionBarActivity {
+
+    GoogleMap googleMap;
+
+    private void createMapView(){
+        try {
+            if(null == googleMap){
+                googleMap = ((MapFragment) getFragmentManager().findFragmentById(
+                        R.id.mapView)).getMap();
+                //map=((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                //        .getMap();
+
+                if(null == googleMap) {
+                    Toast.makeText(getApplicationContext(),
+                            "Error creating map",Toast.LENGTH_SHORT).show();
+                }
+            }
+        } catch (NullPointerException exception){
+            Log.e("mapApp", exception.toString());
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        createMapView();
     }
 
 
