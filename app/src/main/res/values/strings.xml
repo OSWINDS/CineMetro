@@ -15,5 +15,7 @@
     <string name="profile_activity">Profile activity!</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="about_activity">About activity!</string>
+    <string name="title_activity_view_station">ViewStation</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

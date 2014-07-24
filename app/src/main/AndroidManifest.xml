@@ -50,6 +50,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cinemetroproject.cinemetro.MainMenu" />
         </activity>
+        <activity
+            android:name=".ViewStation"
+            android:label="ViewStation"
+            android:parentActivityName=".LinesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cinemetroproject.cinemetro.MainMenu" />
+        </activity>
     </application>
 
 </manifest>
