@@ -76,7 +76,7 @@
         android:layout_marginTop="30dp"
         android:layout_toLeftOf="@+id/logIn"
         android:layout_toStartOf="@+id/logIn"
-        android:text="this is a text a very Big Text lalala lala lala"
+        android:text="this is where any problem will be displayed, or any success"
         android:textSize="20dp" />
 
     <TextView
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/succesText"
         android:layout_marginTop="50dp"
-        android:text="this is a text a very Big Text lalala lala lala"
+        android:text="this is where the new achivments(not database udpated) will be dispayed"
         android:textSize="25dp" />
 
     <ToggleButton
