@@ -17,5 +17,6 @@
     <string name="about_activity">About activity!</string>
     <string name="title_activity_log_in">LogIn</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_test_db">TestDB</string>
 
 </resources>

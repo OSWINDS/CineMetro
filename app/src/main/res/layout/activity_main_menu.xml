@@ -69,6 +69,15 @@
                 android:text="@string/about_button"
                 android:onClick="StartAboutActivity"/>
 
+            <Button android:id="@+id/test_db_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Test DB"
+                android:onClick="StartTestDBActivity"/>
+
         </LinearLayout>
     </FrameLayout>
 

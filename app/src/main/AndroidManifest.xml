@@ -72,6 +72,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cinemetroproject.cinemetro.MainMenu" />
         </activity>
+        <activity
+            android:name=".TestDB"
+            android:label="@string/title_activity_test_db" >
+        </activity>
     </application>
 
 </manifest>
