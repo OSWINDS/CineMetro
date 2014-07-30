@@ -34,9 +34,9 @@ public class dbHelper extends SQLiteOpenHelper {
         // SQL statement to create table route
         query = "CREATE TABLE IF NOT EXISTS route ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT, " +
-                "state INTEGER," +
-                "colour TEXT )";
+                "name TEXT, "  +
+                "colour TEXT,"+
+                "state INTEGER)";
 
         // create station route
         db.execSQL(query);
@@ -85,7 +85,7 @@ public class dbHelper extends SQLiteOpenHelper {
         values.put("name", station.getName()); // get name
         values.put("description", station.getDescription()); // get description
         values.put("route_id", station.getRoute_id());
-        values.put("colour", station.getColour().toString());
+        values.put("colour", station.getColour());
 
         //insert
         db.insert("station", // table

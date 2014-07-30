@@ -5,18 +5,37 @@ import java.util.ArrayList;
 final class dbAdapter {
     private static dbAdapter ourInstance = new dbAdapter();
 
+    /**
+     *
+     * @return instance of this class
+     */
     public static dbAdapter getInstance() {
         return ourInstance;
     }
 
+    /**
+     * array of stations
+     */
     private ArrayList<Station> stations = new ArrayList<Station>();
+
+    /**
+     * array of routes
+     */
     private ArrayList<Route> routes = new ArrayList<Route>();
+
+    /**
+     * dbHelper object to interact with the db
+     */
+    private dbHelper db;
 
     private dbAdapter() {
     }
 
-    private dbHelper db;
 
+    /**
+     * fills the db if data if the tables are empty and then fill the arrays with the data from the db
+     * @param db
+     */
     public void setDB(dbHelper db)
     {
         this.db =db;
@@ -28,6 +47,9 @@ final class dbAdapter {
         }
     }
 
+    /**
+     * Inserts the data into the tables
+     */
     public void populateDB()
     {
 
@@ -144,6 +166,9 @@ final class dbAdapter {
                 "χρώμα 2"));
     }
 
+    /**
+     * Fills the arrays with data from the DB
+     */
     public void fillArrays()
 
     {
@@ -151,13 +176,26 @@ final class dbAdapter {
         this.routes = this.db.getAllRoutes();
     }
 
+    /**
+     *
+     * @return all the stations in the DB
+     */
     public ArrayList<Station> getStations()
     {
         return this.stations;
     }
 
+    /**
+     *
+     * @return all the routes in the DB
+     */
     public ArrayList<Route> getRoutes() {return this.routes; }
 
+    /**
+     *
+     * @param route_id
+     * @return the stations that belong to the route with this id
+     */
     public ArrayList<Station> getStationByRoute(int route_id)
     {
         ArrayList<Station> route_stations = new ArrayList<Station>();
