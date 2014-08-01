@@ -51,6 +51,8 @@ public class MainMenu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        this.initializeDB();
+
         setContentView(R.layout.activity_main_menu);
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
@@ -189,23 +191,18 @@ public class MainMenu extends Activity {
         startActivity(intent);
     }
 
+    //Starts the TestDB activity when the button Test DB is pressed
+    public void StartTestDBActivity(View view)
+    {
+        Intent intent = new Intent(this, TestDB.class);
+        startActivity(intent);
+    }
+
+    private dbHelper db;
     //Initialize the db and add data
     public void initializeDB()
     {
-        dbHelper db = new dbHelper(this);
-
-        //add stations
-        db.addStation(new Station("Βαρδάρη",
-                "Η 1η κινηματογραφική προβολή έγινε το 1897 στο καφέ «Η Τουρκία». Εδώ χτίστηκαν τα σινεμά Σπλέντιντ (μετέπειτα Ίλιον)," +
-                " Πάνθεον, Αττικόν και Ολύμπιον (στη σημερινή οδό Μοναστηρίου), καθώς και τα πορνό σινεμά της πλατείας.",
-                1,
-                "χρώμα 1"));
-
-        db.addStation(new Station("Παραλία 1 (Λιμάνι)",
-                "Μια από τις πιο κινηματογραφικές και κινηματογραφημένες γωνιές του κέντρου. Στο λιμάνι λειτουργεί σήμερα το " +
-                "Μουσείο Κινηματογράφου και η Ταινιοθήκη Θεσσαλονίκης, όπως και οι τέσσερις αίθουσες προβολών του φεστιβάλ.",
-                1,
-                "χρώμα 1"));
-
+        db = new dbHelper(this);
+        dbAdapter.getInstance().setDB(db);
     }
 }

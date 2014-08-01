@@ -31,13 +31,23 @@ public class dbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query;
 
+        // SQL statement to create table route
+        query = "CREATE TABLE IF NOT EXISTS route ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT, "  +
+                "colour TEXT,"+
+                "state INTEGER)";
+
+        // create station route
+        db.execSQL(query);
+
         // SQL statement to create table station
-        query = "CREATE TABLE station ( " +
+        query = "CREATE TABLE IF NOT EXISTS station ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT, " +
-                "description TEXT )" +
-                "route_id INTEGER" +
-                "colour TEXT";
+                "description TEXT, " +
+                "route_id INTEGER," +
+                "colour TEXT )";
 
         // create station table
         db.execSQL(query);
@@ -51,10 +61,13 @@ public class dbHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Drop older route table if exists
+        db.execSQL("DROP TABLE IF EXISTS route");
+
         // Drop older station table if exists
         db.execSQL("DROP TABLE IF EXISTS station");
 
-        // create fresh station table
+        // create fresh tables
         this.onCreate(db);
     }
 
@@ -72,10 +85,32 @@ public class dbHelper extends SQLiteOpenHelper {
         values.put("name", station.getName()); // get name
         values.put("description", station.getDescription()); // get description
         values.put("route_id", station.getRoute_id());
-        values.put("colour", station.getColour().toString());
+        values.put("colour", station.getColour());
 
         //insert
         db.insert("station", // table
+                null, //nullColumnHack
+                values); // key/value -> keys = column names/ values = column values
+
+        //close
+        db.close();
+    }/**
+     * adds a new entry to the table route
+     * @param route
+     */
+    public void addRoute(Route route)
+    {
+        // get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //ContentValues to add key "column"/value
+        ContentValues values = new ContentValues();
+        values.put("name", route.getName()); // get name
+        values.put("colour", route.getColour());
+        values.put("state", route.getState());
+
+        //insert
+        db.insert("route", // table
                 null, //nullColumnHack
                 values); // key/value -> keys = column names/ values = column values
 
@@ -119,6 +154,41 @@ public class dbHelper extends SQLiteOpenHelper {
 
         //return station
         return station;
+    }/**
+     * returns the route with this id
+     * @param id
+     * @return
+     */
+    public Route getRoute(int id)
+    {
+        //reference to readable DB
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {"id","name","colour","state"};
+        //build query
+        Cursor cursor =
+                db.query("route", // a. table
+                        columns, // column names
+                        " id = ?", // c. selections
+                        new String[] { String.valueOf(id) }, // d. selections args
+                        null, // e. group by
+                        null, // f. having
+                        null, // g. order by
+                        null); // h. limit
+
+        //if we got results get the first one
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        //build route object
+        Route route = new Route();
+        route.setId(Integer.parseInt(cursor.getString(0))); //id
+        route.setName(cursor.getString(1)); //name
+        route.setColour(cursor.getString(2)); //colour
+        route.setState(Integer.parseInt(cursor.getString(3))); //state
+
+        //return route
+        return route;
     }
 
     public ArrayList<Station> getAllStations()
@@ -150,6 +220,34 @@ public class dbHelper extends SQLiteOpenHelper {
 
         // return stations
         return stations;
+    }public ArrayList<Route> getAllRoutes()
+    {
+        ArrayList<Route> routes = new ArrayList<Route>();
+
+        //build the query
+        String query = "SELECT  * FROM route";
+
+        //get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        //go over each row, build station and add it to list
+        Route route = null;
+        if (cursor.moveToFirst()) {
+            do {
+                //build station object
+                route = new Route();
+                route.setId(Integer.parseInt(cursor.getString(0))); //id
+                route.setName(cursor.getString(1)); //name
+                route.setColour(cursor.getString(2)); //colour
+                route.setState(Integer.parseInt(cursor.getString(3))); //state
+
+                routes.add(route);
+            } while (cursor.moveToNext());
+        }
+
+        // return routes
+        return routes;
     }
 
     public void deleteStation(int id)
