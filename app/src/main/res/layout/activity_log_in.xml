@@ -15,10 +15,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="UserName:"
+        android:text="E-mail:"
         android:textSize="30dp"
-        android:layout_toLeftOf="@+id/logIn"
-        android:layout_toStartOf="@+id/logIn" />
+        android:layout_toStartOf="@+id/SignUp_button"
+        android:layout_toLeftOf="@+id/SignUp_button" />
 
     <EditText
         android:id="@+id/userName"
@@ -30,11 +30,10 @@
         android:layout_marginTop="10dp"
         android:inputType="text"
         android:text=""
-        android:layout_toLeftOf="@+id/textView3"
-        android:layout_toStartOf="@+id/textView3" />
+        android:layout_alignRight="@+id/textView_pass" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -50,12 +49,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/textView_pass"
         android:layout_marginTop="10dp"
         android:inputType="textPassword"
-        android:text=""
-        android:layout_toStartOf="@+id/signUp"
-        android:layout_toLeftOf="@+id/signUp" />
+        android:text="" />
 
     <Button
         android:id="@+id/logIn"
@@ -88,23 +85,15 @@
         android:text="this is where the new achivments(not database udpated) will be dispayed"
         android:textSize="25dp" />
 
-    <ToggleButton
+    <Button
+        android:id="@+id/SignUp_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/signUp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentRight="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Sing Up"
-        android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
+        android:text="Sign Up"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/userName" />
 
 
 </RelativeLayout>

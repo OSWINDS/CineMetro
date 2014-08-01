@@ -18,5 +18,8 @@
     <string name="title_activity_log_in">LogIn</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_test_db">TestDB</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="Email">E-mail:</string>
+    <string name="PasswordText">Password:</string>
 
 </resources>
