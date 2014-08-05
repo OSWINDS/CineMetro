@@ -41,6 +41,14 @@
                 android:value="cinemetroproject.cinemetro.MainMenu" />
         </activity>
         <activity
+            android:name=".ViewStation"
+            android:label="@string/app_name">
+            <intent-filter >
+                <action  android:name="in.wptrafficanalyzer.AnotherActivity"/>
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
             android:parentActivityName=".MainMenu" >
@@ -76,6 +84,16 @@
             android:name=".TestDB"
             android:label="@string/title_activity_test_db" >
         </activity>
+        <activity
+            android:name=".RateActivity"
+            android:label="@string/app_name">
+            <intent-filter >
+                <action  android:name="in.wptrafficanalyzer.AnotherActivity"/>
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+
     </application>
 
 </manifest>

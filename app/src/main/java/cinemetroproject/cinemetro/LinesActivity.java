@@ -47,7 +47,7 @@ public class LinesActivity extends ActionBarActivity {
         public void onClick(View view) {
 
             Intent intent = new Intent(LinesActivity.this, ViewStation.class);
-            startActivity(intent);
+            LinesActivity.this.startActivity(intent);
             finish();
         }};
 }
