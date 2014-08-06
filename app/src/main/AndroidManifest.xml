@@ -86,14 +86,12 @@
         </activity>
         <activity
             android:name=".RateActivity"
-            android:label="@string/app_name">
+            android:label="Rate">
             <intent-filter >
                 <action  android:name="in.wptrafficanalyzer.AnotherActivity"/>
                 <category  android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

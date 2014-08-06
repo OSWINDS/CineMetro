@@ -1,7 +1,5 @@
 package cinemetroproject.cinemetro;
 
-
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.ToggleButton;
-import android.content.Context;
+import android.widget.RatingBar;
 import android.app.AlertDialog;
 
 /**
@@ -25,13 +19,8 @@ public class RateActivity extends ActionBarActivity {
 
     private Button skipButton;
     private Button goButton;
-    private ToggleButton star1;
-    private ToggleButton star2;
-    private ToggleButton star3;
-    private ToggleButton star4;
-    private ToggleButton star5;
+    private RatingBar ratingBar;
     private AlertDialog.Builder dialog;
-    private int points=0; //oi pontoi pou dinei o xristis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,27 +28,20 @@ public class RateActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
 
+
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.layout);
+        linearLayout.setBackgroundResource(R.drawable.image_08);
         skipButton = (Button) findViewById(R.id.skipButton);
         skipButton.setOnClickListener(skipButtonOnClickListener);
+
+        ratingBar=(RatingBar)findViewById(R.id.ratingBar);
+        ratingBar.setOnRatingBarChangeListener(barRatingOnClickListener);
 
         goButton = (Button) findViewById(R.id.goButton);
         goButton.setOnClickListener(goButtonOnClickListener);
         goButton.setEnabled(false);
 
-        star1 = (ToggleButton)findViewById(R.id.star1);
-        star1.setOnClickListener(starsOnClickListener);
-        star2 = (ToggleButton)findViewById(R.id.star2);
-        star2.setOnClickListener(starsOnClickListener);
-        star3 = (ToggleButton)findViewById(R.id.star3);
-        star3.setOnClickListener(starsOnClickListener);
-        star4 = (ToggleButton)findViewById(R.id.star4);
-        star4.setOnClickListener(starsOnClickListener);
-        star5 = (ToggleButton)findViewById(R.id.star5);
-        star5.setOnClickListener(starsOnClickListener);
-
         dialog = new AlertDialog.Builder(this);
-
-
     }
 
     @Override
@@ -81,7 +63,17 @@ public class RateActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public int getPoints() {return points;}
+    RatingBar.OnRatingBarChangeListener barRatingOnClickListener = new RatingBar.OnRatingBarChangeListener(){
+
+        public void onRatingChanged(RatingBar ratingBar, float rating,boolean fromUser) {
+
+
+                goButton.setEnabled(true);
+
+
+
+        }};
+
 
     View.OnClickListener skipButtonOnClickListener = new View.OnClickListener(){
 
@@ -99,19 +91,8 @@ public class RateActivity extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            if (star1.isChecked())
-                points++;
-            if (star2.isChecked())
-                points++;
-            if (star3.isChecked())
-                points++;
-            if (star4.isChecked())
-                points++;
-            if (star5.isChecked())
-                points++;
-
             dialog.setTitle("Points");
-            dialog.setMessage("You gave" + points + " points");
+            dialog.setMessage("You gave " + ratingBar.getRating() + " points");
             dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -129,32 +110,4 @@ public class RateActivity extends ActionBarActivity {
 
 
         }};
-
-    View.OnClickListener starsOnClickListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View view) {
-
-            if (star1.isChecked() || star2.isChecked() || star3.isChecked() || star4.isChecked() || star5.isChecked()){
-                goButton.setClickable(true);
-                goButton.setEnabled(true);
-            }
-            else{
-                goButton.setEnabled(false);
-            }
-        }};
-
-    View.OnClickListener okOnClickListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View view) {
-
-             //kanonika paei sto MapActivity alla epeidi ekei skaei to evala sto LinesActivity gia na to testarw
-             Intent intent = new Intent(RateActivity.this, LinesActivity.class);
-             RateActivity.this.startActivity(intent);
-             finish();
-        }};
-
-
-
 }
