@@ -1,7 +1,9 @@
 package cinemetroproject.cinemetro;
 
+import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -22,6 +24,7 @@ public class RateActivity extends ActionBarActivity {
     private RatingBar ratingBar;
     private AlertDialog.Builder dialog;
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //setTheme(android.R.style.Theme_Light_Panel);
@@ -31,6 +34,8 @@ public class RateActivity extends ActionBarActivity {
 
         LinearLayout linearLayout = (LinearLayout)findViewById(R.id.layout);
         linearLayout.setBackgroundResource(R.drawable.image_08);
+        linearLayout.getBackground().setAlpha(128); //opacity gia to Background
+
         skipButton = (Button) findViewById(R.id.skipButton);
         skipButton.setOnClickListener(skipButtonOnClickListener);
 
@@ -104,7 +109,6 @@ public class RateActivity extends ActionBarActivity {
                 }
             });
             dialog.setIcon(R.drawable.pressed);
-            //dialog.show();
             AlertDialog alert = dialog.create();
             alert.show();
 
