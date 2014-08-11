@@ -31,7 +31,6 @@ public class RateActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
 
-
         LinearLayout linearLayout = (LinearLayout)findViewById(R.id.layout);
         linearLayout.setBackgroundResource(R.drawable.image_08);
         linearLayout.getBackground().setAlpha(128); //opacity gia to Background

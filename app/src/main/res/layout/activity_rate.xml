@@ -34,7 +34,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
         android:progressDrawable="@drawable/star"
-        android:numStars="5" />
+        android:numStars="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5" />
 
     <!-- GoButton -->
     <Button
