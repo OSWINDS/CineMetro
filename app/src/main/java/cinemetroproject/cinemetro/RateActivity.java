@@ -71,10 +71,10 @@ public class RateActivity extends ActionBarActivity {
 
         public void onRatingChanged(RatingBar ratingBar, float rating,boolean fromUser) {
 
-
-                goButton.setEnabled(true);
-
-
+                if (ratingBar.getRating() == 0)
+                    goButton.setEnabled(false);
+                else
+                    goButton.setEnabled(true);
 
         }};
 
