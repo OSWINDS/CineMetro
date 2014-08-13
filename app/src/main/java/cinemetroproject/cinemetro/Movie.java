@@ -15,6 +15,16 @@ public class Movie {
 
     public Movie(){}
 
+    public Movie(int station_id, String title, String description, String actors, String director, String year)
+    {
+        this.station_id = station_id;
+        this.title = title;
+        this.description = description;
+        this.director = director;
+        this.year = year;
+        this.setActors(actors);
+    }
+
     /***************************************************************
      * Get Functions
      ***************************************************************/
