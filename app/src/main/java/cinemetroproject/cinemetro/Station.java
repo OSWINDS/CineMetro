@@ -1,7 +1,5 @@
 package cinemetroproject.cinemetro;
 
-import cinemetroproject.cinemetro.util.Colours;
-
 public class Station {
 
     private int id;
@@ -19,7 +17,6 @@ public class Station {
      */
     public Station(String name, String des, int r_id, String colour)
     {
-        //this.id = id;
         this.name = name;
         this.description = des;
         this.route_id = r_id;

@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import java.util.ArrayList;
+import java.lang.reflect.Field;
+
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.view.*;
@@ -16,9 +19,12 @@ public class TestDB extends ActionBarActivity {
 
     private ArrayList<Route> routes;
     private ArrayList<Station> stations;
+    private ArrayList<Photo> photos;
     ArrayList<String> names;
     ArrayList<String> station_names;
+    ArrayList<String> photo_names;
     Spinner route_spinner;
+    Spinner station_spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,7 @@ public class TestDB extends ActionBarActivity {
         route_spinner.setAdapter(route_spinnerArrayAdapter);
 
         updateStations();
+        updatePhotos();
 
         route_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
@@ -88,9 +95,34 @@ public class TestDB extends ActionBarActivity {
         {
             station_names.add(s.getName());
         }
-        Spinner station_spinner = (Spinner) findViewById(R.id.spinner2);
+        station_spinner = (Spinner) findViewById(R.id.spinner2);
         ArrayAdapter<String> station_spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, station_names);
         station_spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         station_spinner.setAdapter(station_spinnerArrayAdapter);
+    }
+
+    public void updatePhotos()
+    {
+        //get the photos of the station currently displayed in the spinner
+        photos = dbAdapter.getInstance().getPhotosByStation(stations.get(station_spinner.getSelectedItemPosition()).getId());
+        //create array with the names of these photos
+        photo_names = new ArrayList<String>();
+        for(Photo p : photos)
+        {
+            photo_names.add(p.getName());
+        }
+
+        ImageView image = (ImageView) findViewById(R.id.imageView);
+        String name = photo_names.get(2);
+
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(name);
+            int drawableId = field.getInt(null);
+            image.setImageResource(drawableId);
+        }
+        catch (Exception e) {
+
+        }
     }
 }

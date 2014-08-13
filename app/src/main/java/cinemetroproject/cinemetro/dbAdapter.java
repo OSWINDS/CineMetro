@@ -5,6 +5,9 @@ import java.util.ArrayList;
 final class dbAdapter {
     private static dbAdapter ourInstance = new dbAdapter();
 
+    private dbAdapter() {
+    }
+
     /**
      *
      * @return instance of this class
@@ -24,12 +27,15 @@ final class dbAdapter {
     private ArrayList<Route> routes = new ArrayList<Route>();
 
     /**
+     * array of photos
+     */
+    private ArrayList<Photo> photos = new ArrayList<Photo>();
+
+    /**
      * dbHelper object to interact with the db
      */
     private dbHelper db;
 
-    private dbAdapter() {
-    }
 
 
     /**
@@ -48,9 +54,77 @@ final class dbAdapter {
     }
 
     /**
+     * Fills the arrays with data from the DB
+     */
+    private void fillArrays()
+
+    {
+        this.stations = this.db.getAllStations();
+        this.routes = this.db.getAllRoutes();
+        this.photos = this.db.getAllPhotos();
+    }
+
+    /**
+     *
+     * @return all the stations in the DB
+     */
+    public ArrayList<Station> getStations()
+    {
+        return this.stations;
+    }
+
+    /**
+     *
+     * @return all the routes in the DB
+     */
+    public ArrayList<Route> getRoutes() {return this.routes; }
+
+    /**
+     *
+     * @return all the photos in the DB
+     */
+    public ArrayList<Photo> getPhotos() {return this.photos; }
+
+    /**
+     *
+     * @param route_id
+     * @return the stations that belong to the route with this id
+     */
+    public ArrayList<Station> getStationByRoute(int route_id)
+    {
+        ArrayList<Station> route_stations = new ArrayList<Station>();
+        for(Station station : this.stations)
+        {
+            if (station.getRoute_id() == route_id)
+            {
+                route_stations.add(station);
+            }
+        }
+        return route_stations;
+    }
+
+    /**
+     *
+     * @param station_id
+     * @return the photos that belong to the station with this id
+     */
+    public ArrayList<Photo> getPhotosByStation(int station_id)
+    {
+        ArrayList<Photo> station_photos = new ArrayList<Photo>();
+        for(Photo photo : this.photos)
+        {
+            if (photo.getStation_id() == station_id)
+            {
+                station_photos.add(photo);
+            }
+        }
+        return station_photos;
+    }
+
+    /**
      * Inserts the data into the tables
      */
-    public void populateDB()
+    private void populateDB()
     {
 
         //add routes
@@ -164,48 +238,56 @@ final class dbAdapter {
                         "Στρατού (ΕΡΤ3), Νέα Παραλία, Αγίος Δημήτριος. ",
                 2,
                 "χρώμα 2"));
-    }
 
-    /**
-     * Fills the arrays with data from the DB
-     */
-    public void fillArrays()
+        //add photos
 
-    {
-        this.stations = this.db.getAllStations();
-        this.routes = this.db.getAllRoutes();
-    }
-
-    /**
-     *
-     * @return all the stations in the DB
-     */
-    public ArrayList<Station> getStations()
-    {
-        return this.stations;
-    }
-
-    /**
-     *
-     * @return all the routes in the DB
-     */
-    public ArrayList<Route> getRoutes() {return this.routes; }
-
-    /**
-     *
-     * @param route_id
-     * @return the stations that belong to the route with this id
-     */
-    public ArrayList<Station> getStationByRoute(int route_id)
-    {
-        ArrayList<Station> route_stations = new ArrayList<Station>();
-        for(Station station : this.stations)
-        {
-            if (station.getRoute_id() == route_id)
-            {
-                route_stations.add(station);
-            }
-        }
-        return route_stations;
+        //line 1
+        // station 1
+        this.db.addPhoto(new Photo("pantheon", 1,"Ο κινηματογράφος Πάνθεον στο Βαρδάρι, λίγο πριν την κατεδάφισή του\n" +
+                "(Αρχείο Ν. Θεοδοσίου – Σινέ Θεσσαλονίκη, σ. 33)"));
+        this.db.addPhoto(new Photo("splendid", 1,"Ο κινηματογράφος Σπλέντιτ όπως απεικονίζεται σε καρτ ποστάλ\n" +
+                "(Αρχείο Ν. Θεοδοσίου)"));
+        this.db.addPhoto(new Photo("pantheon_markiza", 1,"Ο κινηματογράφος Πάνθεον στις δόξες του\n" +
+                "Αρχείο Ν.Θεοδοσίου"));
+        //station 2
+        this.db.addPhoto(new Photo("redmoterlimani", 2,"Ο κόκκινος μοτέρ του 11ου Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης στρέφει την κάμερα στο λιμάνι της πόλης \n" +
+                "Αρχείο ΦΚΘ – Σινέ Θεσσαλονίκη, σ.158)"));
+        this.db.addPhoto(new Photo("apothikia", 2,"Η είσοδος της Αποθήκης Γ στο Λιμάνι\n" +
+                "Αρχείο ΦΚΘ)"));
+        this.db.addPhoto(new Photo("cinemuseuminside", 2,"Το εσωτερικό του Μουσείου Κινηματογράφου στο λιμάνι.\n" +
+                "Αρχείο ΦΚΘ"));
+        //station 3
+        this.db.addPhoto(new Photo("cinemaolympia", 3,"Ο κινηματογράφος Ολύμπια (1917), όπου συγκεντρώνονται μαθήτριες του γαλλικού σχολείου πριν την προβολή\n" +
+                "Αρχείο Κέντρου Ιστορίας Θεσσαλονίκης – Σινέ Θεσσαλονίκη, σ. 40)"));
+        this.db.addPhoto(new Photo("olympia", 3,"Ο κινηματογράφος Ολύμπια στην προκυμαία της Θεσσαλονίκης – Καρτ ποστάλ των αρχών του 20ού αιώνα\n" +
+                "(Αρχείο Ν. Θεοδοσίου- Σινέ Θεσσαλονίκη, σ.29)"));
+        this.db.addPhoto(new Photo("pathe", 3,"Ο κινηματογράφος Πατέ στη Λεωφόρο Νίκης, επιταγμένος από τους Γερμανούς στην Κατοχή\n" +
+                "Σινέ Θεσσαλονίκη, σ.31"));
+        this.db.addPhoto(new Photo("salonica_pathe_1918", 3,"Ο κινηματογράφος Πατέ στην παραλία σε καρτ ποστάλ των αρχών του 20ού αιώνα"));
+        this.db.addPhoto(new Photo("olympiaview", 3,"Άποψη από την είσοδο του κινηματογράφου Ολύμπια στην παραλία\n" +
+                "(Αρχείο Ν.Θεοδοσίου – Ίντερνετ)"));
+        //station 4
+        this.db.addPhoto(new Photo("hlysia", 4,"Ο παλιός κινηματογράφος Ηλύσια στην Αριστοτέλους την ημέρα της απελευθέρωσης της Θεσσαλονίκης (δεκαετία ’40) \n" +
+                "(Αναδημοσίευση από το Σινέ Θεσσαλονίκη, σ.32)"));
+        this.db.addPhoto(new Photo("festivaltree02", 4,"Κινηματογραφικά καρέ σχηματίζουν το δέντρο του σινεμά στην πλατεία Αριστοτέλους\n" +
+                "Σινέ Θεσσαλονίκη, σ.157, Αρχείο ΦΚΘ"));
+        this.db.addPhoto(new Photo("olympionnight", 4,"Νυχτερινή άποψη του κινηματογράφου Ολύμπιον, της έδρας του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
+                "Αρχείο ΦΚΘ"));
+        this.db.addPhoto(new Photo("olympioninside", 4,"Εσωτερικό του κινηματογράφου Ολύμπιον\n" +
+                "Αρχείο ΦΚΘ"));
+        //station 5
+        this.db.addPhoto(new Photo("dionysia", 5,"Το κινηματοθέατρο Διονύσια, που εγκαινιάστηκε στις 26 Νοεμβρίου 1926\n" +
+                "(Βιβλίο Κ. Τομανά –Οι κινηματογράφοι της παλιάς Θεσσαλονίκης/ Αναδημοσίευση στο Σινέ Θεσσαλονίκη σ. 41)"));
+        this.db.addPhoto(new Photo("makedonikon", 5,"Νυχτερινή άποψη του σινεμά Μακεδονικόν\n" +
+                "(Αρχείο ΚΙΘ-Σινέ Θεσσαλονίκη, σ.46)"));
+        this.db.addPhoto(new Photo("esperos", 5,"Άποψη του κινηματογράφου Έσπερος, που ταυτίστηκε συχνά με τις προβολές του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
+                "(Αρχείο ΦΚΘ – Σινέ Θεσσαλονίκη σ.47)"));
+        //station 6
+        this.db.addPhoto(new Photo("pallaswhitepower", 6,"Το παλιό κινηματοθέατρο Παλλάς κοντά στο Λευκό Πύργο, με αρχιτεκτονικό σχέδιο Ε. Μοδιάνο και 860 πολυτελείς θέσεις.\n" +
+                "Αρχείο Ν.Θεοδοσίου – Ίντερνετ."));
+        this.db.addPhoto(new Photo("ems", 6,"Κόσμος έξω από την Εταιρεία Μακεδονικών Σπουδών, που υπήρξε έδρα του Φεστιβάλ Κινηματογράφου στη δεκαετία του ’70.\n" +
+                "Αρχείο ΦΚΘ"));
+        this.db.addPhoto(new Photo("theoreiaems", 6,"Τα θεωρεία της Εταιρείας Μακεδονικών Σπουδών με τους διαγωνιζόμενους και τους καλεσμένους του φεστιβάλ (δεκαετία ’60) \n" +
+                "Αρχείο ΦΚΘ"));
     }
 }
