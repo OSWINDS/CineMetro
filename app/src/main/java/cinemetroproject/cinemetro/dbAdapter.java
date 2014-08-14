@@ -145,6 +145,7 @@ final class dbAdapter {
             if (movie.getStation_id() == station_id)
                 return movie;
         }
+        return null;
     }
 
     /**
