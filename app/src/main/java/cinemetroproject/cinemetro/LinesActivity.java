@@ -1,9 +1,13 @@
 package cinemetroproject.cinemetro;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
 import cinemetroproject.cinemetro.R;
 
 public class LinesActivity extends ActionBarActivity {
@@ -12,6 +16,9 @@ public class LinesActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines);
+
+        Button stationButton = (Button) findViewById(R.id.view_station_button);
+        stationButton.setOnClickListener(stationButtonOnClickListener);
     }
 
 
@@ -33,4 +40,14 @@ public class LinesActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    View.OnClickListener stationButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = new Intent(LinesActivity.this, ViewStation.class);
+            LinesActivity.this.startActivity(intent);
+            finish();
+        }};
 }
