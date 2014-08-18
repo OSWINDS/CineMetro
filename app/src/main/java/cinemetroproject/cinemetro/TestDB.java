@@ -99,6 +99,16 @@ public class TestDB extends ActionBarActivity {
         ArrayAdapter<String> station_spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, station_names);
         station_spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         station_spinner.setAdapter(station_spinnerArrayAdapter);
+
+        station_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                updatePhotos();
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     public void updatePhotos()
@@ -113,7 +123,33 @@ public class TestDB extends ActionBarActivity {
         }
 
         ImageView image = (ImageView) findViewById(R.id.imageView);
-        String name = photo_names.get(2);
+        String name = photo_names.get(0);
+
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(name);
+            int drawableId = field.getInt(null);
+            image.setImageResource(drawableId);
+        }
+        catch (Exception e) {
+
+        }
+
+        image = (ImageView) findViewById(R.id.imageView2);
+        name = photo_names.get(1);
+
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(name);
+            int drawableId = field.getInt(null);
+            image.setImageResource(drawableId);
+        }
+        catch (Exception e) {
+
+        }
+
+        image = (ImageView) findViewById(R.id.imageView3);
+        name = photo_names.get(2);
 
         try {
             Class res = R.drawable.class;
