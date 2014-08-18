@@ -118,6 +118,7 @@ public class Movie {
     public void setActors(String actors)
     {
         String[]  split_string = actors.split(",");
+        this.actors = new ArrayList<String>();
         for (int i=0; i<split_string.length; i++)
         {
             this.actors.add(split_string[i]);

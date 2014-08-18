@@ -67,7 +67,7 @@ final class dbAdapter {
         this.stations = this.db.getAllStations();
         this.routes = this.db.getAllRoutes();
         this.photos = this.db.getAllPhotos();
-        this.movies = this.db.getAllMovies();
+     //   this.movies = this.db.getAllMovies();
     }
 
     /**
@@ -298,6 +298,7 @@ final class dbAdapter {
                 "Τόποι γυρισμάτων: Θεολογική Σχολή ΑΠΘ, Νέο Δημαρχειακό Μέγαρο, Λευκός Πύργος, ΟΣΕ, Τούμπα ",
                 "Βαϊνας Δημήτρης,Παπαδόπουλος Πάρης,Σφέτσα Όλγα",
                 "Γιώργος Παπαιωάνου", "2011"));
+
 
         //add photos
 
