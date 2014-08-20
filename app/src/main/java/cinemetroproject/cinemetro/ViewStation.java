@@ -41,7 +41,8 @@ public class ViewStation extends ActionBarActivity {
         imageMovie.setImageResource(R.drawable.image_08);
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
-        textViewTitle.setText("Ατσίδας 1961 \n");
+        // ------------->>>>>>>>>>>>>>>>>>> edwwwwwwwwwwwwwwwwwwwwwww
+        textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(1).getTitle());
 
         textViewDirector = (TextView)findViewById(R.id.director);
         textViewDirector.setText("Σκηνοθεσία: Γιάννης Δαλιανίδης \n");

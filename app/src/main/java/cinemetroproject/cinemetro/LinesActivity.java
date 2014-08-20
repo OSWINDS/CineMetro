@@ -17,7 +17,7 @@ public class LinesActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines);
 
-        Button stationButton = (Button) findViewById(R.id.view_station_button);
+        Button stationButton = (Button) findViewById(R.id.station1);
         stationButton.setOnClickListener(stationButtonOnClickListener);
     }
 

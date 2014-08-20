@@ -31,6 +31,7 @@ public class dbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query;
 
+
         // SQL statement to create table route
         query = "CREATE TABLE IF NOT EXISTS route ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
