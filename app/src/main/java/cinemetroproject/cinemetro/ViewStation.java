@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by kiki__000 on 20-Jul-14.
  * Se ayto to activity anaparistatai to ViewStation
@@ -42,7 +44,8 @@ public class ViewStation extends ActionBarActivity {
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
         // ------------->>>>>>>>>>>>>>>>>>> edwwwwwwwwwwwwwwwwwwwwwww
-        textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(1).getTitle());
+        textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(7).getTitle());
+
 
         textViewDirector = (TextView)findViewById(R.id.director);
         textViewDirector.setText("Σκηνοθεσία: Γιάννης Δαλιανίδης \n");

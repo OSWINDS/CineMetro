@@ -115,50 +115,48 @@ public class TestDB extends ActionBarActivity {
     {
         //get the photos of the station currently displayed in the spinner
         photos = dbAdapter.getInstance().getPhotosByStation(stations.get(station_spinner.getSelectedItemPosition()).getId());
-        //create array with the names of these photos
-        photo_names = new ArrayList<String>();
-        for(Photo p : photos)
-        {
-            photo_names.add(p.getName());
-        }
+        if (!photos.isEmpty()) {
+            //create array with the names of these photos
+            photo_names = new ArrayList<String>();
+            for (Photo p : photos) {
+                photo_names.add(p.getName());
+            }
 
-        ImageView image = (ImageView) findViewById(R.id.imageView);
-        String name = photo_names.get(0);
+            ImageView image = (ImageView) findViewById(R.id.imageView);
+            String name = photo_names.get(0);
 
-        try {
-            Class res = R.drawable.class;
-            Field field = res.getField(name);
-            int drawableId = field.getInt(null);
-            image.setImageResource(drawableId);
-        }
-        catch (Exception e) {
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField(name);
+                int drawableId = field.getInt(null);
+                image.setImageResource(drawableId);
+            } catch (Exception e) {
 
-        }
+            }
 
-        image = (ImageView) findViewById(R.id.imageView2);
-        name = photo_names.get(1);
+            image = (ImageView) findViewById(R.id.imageView2);
+            name = photo_names.get(1);
 
-        try {
-            Class res = R.drawable.class;
-            Field field = res.getField(name);
-            int drawableId = field.getInt(null);
-            image.setImageResource(drawableId);
-        }
-        catch (Exception e) {
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField(name);
+                int drawableId = field.getInt(null);
+                image.setImageResource(drawableId);
+            } catch (Exception e) {
 
-        }
+            }
 
-        image = (ImageView) findViewById(R.id.imageView3);
-        name = photo_names.get(2);
+            image = (ImageView) findViewById(R.id.imageView3);
+            name = photo_names.get(2);
 
-        try {
-            Class res = R.drawable.class;
-            Field field = res.getField(name);
-            int drawableId = field.getInt(null);
-            image.setImageResource(drawableId);
-        }
-        catch (Exception e) {
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField(name);
+                int drawableId = field.getInt(null);
+                image.setImageResource(drawableId);
+            } catch (Exception e) {
 
+            }
         }
     }
 }

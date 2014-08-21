@@ -67,7 +67,8 @@ final class dbAdapter {
         this.stations = this.db.getAllStations();
         this.routes = this.db.getAllRoutes();
         this.photos = this.db.getAllPhotos();
-     //   this.movies = this.db.getAllMovies();
+        this.movies = this.db.getAllMovies();
+
     }
 
     /**
