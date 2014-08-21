@@ -99,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Here Displays if email is valid or you gave a propper password"
+        android:text="Here Displays if email is valid or if you gave a propper password"
         android:id="@+id/DisplayText"
         android:layout_toStartOf="@+id/check_button"
         android:layout_alignBottom="@+id/check_button"

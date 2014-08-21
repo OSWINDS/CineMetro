@@ -99,6 +99,7 @@ public class LogIn extends ActionBarActivity {
 
         if (ok) {
             success.setText("Success, database Updated :)");
+            information.setText("Success, database Updated :)");
             return;
         }
 
@@ -107,7 +108,7 @@ public class LogIn extends ActionBarActivity {
     public void signUpClicked() {
 
         Intent intent;
-        intent = new Intent(this, SignUp.class);
+        intent = new Intent(LogIn.this, SignUp.class);
         startActivity(intent);
     }
 
