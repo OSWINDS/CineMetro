@@ -23,6 +23,8 @@ import java.util.ArrayList;
  */
 public class ViewStation extends ActionBarActivity {
 
+    private int idStation;
+    private int actors; //count of actors
     private ImageView imageMovie;
     private TextView textViewTitle;
     private LinearLayout inHorizontalScrollView;
@@ -37,23 +39,27 @@ public class ViewStation extends ActionBarActivity {
         //setTheme(android.R.style.Theme_Light_Panel);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_station);
+
+        Intent intent = getIntent();
+        idStation = intent.getIntExtra("button_id", 0);
+
+        actors = dbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
+
         inHorizontalScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
 
         imageMovie =(ImageView)findViewById(R.id.imageMovie);
         imageMovie.setImageResource(R.drawable.image_08);
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
-        // ------------->>>>>>>>>>>>>>>>>>> edwwwwwwwwwwwwwwwwwwwwwww
-        textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(7).getTitle());
-
+        textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(idStation).getTitle() + dbAdapter.getInstance().getMovieByStation(idStation).getYear() + "\n");
 
         textViewDirector = (TextView)findViewById(R.id.director);
-        textViewDirector.setText("Σκηνοθεσία: Γιάννης Δαλιανίδης \n");
+        textViewDirector.setText("Σκηνοθεσία: " + dbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
 
-        for (int i=0; i<15; i++) {
+        for (int i=0; i<actors; i++) {
             Button imageActor = new Button(this);
             imageActor.setBackgroundResource(R.drawable.zervos);
-            imageActor.setText("Ζερβος Παντελής");
+            imageActor.setText(dbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i));
             imageActor.setGravity(Gravity.BOTTOM | Gravity.CENTER);
             imageActor.setMaxHeight(5);
             imageActor.setMaxWidth(10);
@@ -62,8 +68,7 @@ public class ViewStation extends ActionBarActivity {
         }
 
         textViewInfo = (TextView)findViewById(R.id.info);
-        textViewInfo.setText("Δύο αδέρφια προσπαθούν να ισορροπήσουν ανάμεσα στις αισθηματικές τους σχέσεις και στις συντηρητικές αρχές της πατρικής οικίας τους. \n" +
-                "Εξ ολοκλήρου γυρισμένη στην Θεσσαλονίκη: Πανόραμα, περιοχή Ανθέων, Κέντρο Θεσσαλονίκης");
+        textViewInfo.setText(dbAdapter.getInstance().getMovieByStation(idStation).getDescription());
 
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);

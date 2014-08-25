@@ -9,8 +9,22 @@
     tools:context="cinemetroproject.cinemetro.ProfileActivity">
 
     <TextView
-        android:text="@string/profile_activity"
+        android:text="Test Profile Activity"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test LogIn"
+        android:id="@+id/bt_logIn_test"
+        android:layout_marginTop="104dp"
+        android:layout_below="@+id/textView"
+        />
 
 </RelativeLayout>

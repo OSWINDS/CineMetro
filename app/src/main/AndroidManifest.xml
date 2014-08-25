@@ -81,6 +81,14 @@
                 android:value="cinemetroproject.cinemetro.MainMenu" />
         </activity>
         <activity
+            android:name=".SignUp"
+            android:label="@string/title_activity_sign_up"
+            android:parentActivityName=".MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cinemetroproject.cinemetro.MainMenu" />
+        </activity>
+        <activity
             android:name=".TestDB"
             android:label="@string/title_activity_test_db" >
         </activity>

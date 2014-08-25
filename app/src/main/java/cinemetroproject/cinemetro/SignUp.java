@@ -75,7 +75,7 @@ public class SignUp extends ActionBarActivity {
         String passw1 = pass1.getText().toString();
         String passw2 = pass2.getText().toString();
 
-
+        ok=true;
 
         //Check internet connection
         ConnectivityManager connec = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

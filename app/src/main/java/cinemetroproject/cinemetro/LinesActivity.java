@@ -3,22 +3,37 @@ package cinemetroproject.cinemetro;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import cinemetroproject.cinemetro.R;
 
 public class LinesActivity extends ActionBarActivity {
+
+
+    private LinearLayout scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines);
 
-        Button stationButton = (Button) findViewById(R.id.station1);
-        stationButton.setOnClickListener(stationButtonOnClickListener);
+        scrollView = (LinearLayout)findViewById(R.id.scrollView);
+
+        for (int i=0; i<8; i++) {
+            Button stationButton = new Button(this);
+            stationButton.setText(dbAdapter.getInstance().getMovies().get(i).getTitle());
+            stationButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            stationButton.setId(i+7);
+            stationButton.setOnClickListener(stationButtonOnClickListener);
+            scrollView.addView(stationButton);
+        }
+
     }
 
 
@@ -46,7 +61,9 @@ public class LinesActivity extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
+
             Intent intent = new Intent(LinesActivity.this, ViewStation.class);
+            intent.putExtra("button_id", view.getId());
             LinesActivity.this.startActivity(intent);
             finish();
         }};
