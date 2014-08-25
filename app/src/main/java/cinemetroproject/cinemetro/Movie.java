@@ -71,7 +71,7 @@ public class Movie {
      */
     public ArrayList<String> getActors()
     {
-        String temp = this.actors;
+        String temp = this.actors.toString();
         String[]  split_string = temp.split(",");
         ArrayList<String> all_actors = new ArrayList<String>();
         for (int i=0; i<split_string.length; i++)
