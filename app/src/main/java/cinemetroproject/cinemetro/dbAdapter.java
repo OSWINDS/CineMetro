@@ -355,7 +355,7 @@ final class dbAdapter {
         this.db.addPhoto(new Photo("ksypolitotagma10", 7, ""));
         this.db.addPhoto(new Photo("tagma", 7, ""));
         //station 8
-        this.db.addPhoto(new Photo("08", 8, ""));
+        this.db.addPhoto(new Photo("p08", 8, ""));
         this.db.addPhoto(new Photo("atsidas", 8, ""));
         this.db.addPhoto(new Photo("promoatsidas", 8, ""));
         //station 9
@@ -363,11 +363,11 @@ final class dbAdapter {
         this.db.addPhoto(new Photo("katinakaiei4", 9, ""));
         this.db.addPhoto(new Photo("katinakaieiplaz", 9, ""));
         //station 10
-        this.db.addPhoto(new Photo("388322", 10, ""));
+        this.db.addPhoto(new Photo("p388322", 10, ""));
         this.db.addPhoto(new Photo("c72", 10, ""));
         //station 11
-        this.db.addPhoto(new Photo("64411", 11, ""));
-        this.db.addPhoto(new Photo("64433", 11, ""));
+        this.db.addPhoto(new Photo("p64411", 11, ""));
+        this.db.addPhoto(new Photo("p64433", 11, ""));
         //station 12
         this.db.addPhoto(new Photo("eternityandaday", 12, ""));
         this.db.addPhoto(new Photo("miaaioniotita", 12, ""));
@@ -376,7 +376,7 @@ final class dbAdapter {
         this.db.addPhoto(new Photo("christospassalisyoulaboudalifilia", 13, ""));
         this.db.addPhoto(new Photo("homeland6", 13, ""));
         //station 14
-        this.db.addPhoto(new Photo("1334779197", 14, ""));
+        this.db.addPhoto(new Photo("p1334779197", 14, ""));
         this.db.addPhoto(new Photo("souperdimitrios", 14, ""));
         this.db.addPhoto(new Photo("superdemetriosstill", 14, ""));
     }
