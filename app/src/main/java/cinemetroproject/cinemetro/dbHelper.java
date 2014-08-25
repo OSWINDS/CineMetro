@@ -190,12 +190,7 @@ public class dbHelper extends SQLiteOpenHelper {
         values.put("station_id", movie.getStation_id());
         values.put("title", movie.getTitle()); // get name
         values.put("description", movie.getDescription());
-        String actors = "";
-        for(String actor : movie.getActors())
-        {
-            actors = actor + ",";
-        }
-        values.put("actors", actors);
+        values.put("actors", movie.getActorstoString());
         values.put("director", movie.getDirector());
         values.put("year", movie.getYear());
 

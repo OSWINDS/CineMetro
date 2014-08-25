@@ -145,17 +145,19 @@ public class TestDB extends ActionBarActivity {
             } catch (Exception e) {
 
             }
+            if(photo_names.size() > 2) {
 
-            image = (ImageView) findViewById(R.id.imageView3);
-            name = photo_names.get(2);
+                image = (ImageView) findViewById(R.id.imageView3);
+                name = photo_names.get(2);
 
-            try {
-                Class res = R.drawable.class;
-                Field field = res.getField(name);
-                int drawableId = field.getInt(null);
-                image.setImageResource(drawableId);
-            } catch (Exception e) {
+                try {
+                    Class res = R.drawable.class;
+                    Field field = res.getField(name);
+                    int drawableId = field.getInt(null);
+                    image.setImageResource(drawableId);
+                } catch (Exception e) {
 
+                }
             }
         }
     }

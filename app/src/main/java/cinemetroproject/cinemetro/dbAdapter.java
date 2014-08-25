@@ -351,6 +351,7 @@ final class dbAdapter {
                 "Αρχείο ΦΚΘ"));
         this.db.addPhoto(new Photo("theoreiaems", 6,"Τα θεωρεία της Εταιρείας Μακεδονικών Σπουδών με τους διαγωνιζόμενους και τους καλεσμένους του φεστιβάλ (δεκαετία ’60) \n" +
                 "Αρχείο ΦΚΘ"));
+        //line2
         //station 7
         this.db.addPhoto(new Photo("ksypolitotagma10", 7, ""));
         this.db.addPhoto(new Photo("tagma", 7, ""));

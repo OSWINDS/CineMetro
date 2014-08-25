@@ -9,7 +9,7 @@ public class Movie {
     private int station_id;
     private String title;
     private String description;
-    private ArrayList<String> actors;
+    private String actors;
     private String director;
     private String year;
 
@@ -22,7 +22,7 @@ public class Movie {
         this.description = description;
         this.director = director;
         this.year = year;
-        this.setActors(actors);
+        this.actors = actors;
     }
 
     /***************************************************************
@@ -69,7 +69,26 @@ public class Movie {
      *
      * @return list of actors of the movie
      */
-    public ArrayList<String> getActors(){return this.actors;}
+    public ArrayList<String> getActors()
+    {
+        String temp = this.actors;
+        String[]  split_string = temp.split(",");
+        ArrayList<String> all_actors = new ArrayList<String>();
+        for (int i=0; i<split_string.length; i++)
+        {
+            all_actors.add(split_string[i]);
+        }
+        return all_actors;
+    }
+
+    /**
+     *
+     * @return string of all actors
+     */
+    public String getActorstoString()
+    {
+        return this.actors;
+    }
 
     /***************************************************************
      * Set Functions
@@ -112,20 +131,6 @@ public class Movie {
     }
 
     /**
-     * Set list of actors
-     * @param actors
-     */
-    public void setActors(String actors)
-    {
-        String[]  split_string = actors.split(",");
-        this.actors = new ArrayList<String>();
-        for (int i=0; i<split_string.length; i++)
-        {
-            this.actors.add(split_string[i]);
-        }
-    }
-
-    /**
      * Set director of the movie
      * @param director
      */
@@ -141,5 +146,14 @@ public class Movie {
     public void setYear(String year)
     {
         this.year = year;
+    }
+
+    /**
+     * Set actors of the movie
+     * @param actors
+     */
+    public void setActors(String actors)
+    {
+        this.actors = actors;
     }
 }
