@@ -28,7 +28,6 @@ public class ViewStation extends ActionBarActivity {
     private ImageView imageMovie;
     private TextView textViewTitle;
     private LinearLayout inHorizontalScrollView;
-    private Button imageActor;
     private TextView textViewDirector;
     private TextView textViewInfo;
     private Button goAheadButton;
@@ -51,7 +50,7 @@ public class ViewStation extends ActionBarActivity {
         imageMovie.setImageResource(R.drawable.image_08);
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
-        textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(idStation).getTitle() + dbAdapter.getInstance().getMovieByStation(idStation).getYear() + "\n");
+        textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + dbAdapter.getInstance().getMovieByStation(idStation).getYear() + "\n");
 
         textViewDirector = (TextView)findViewById(R.id.director);
         textViewDirector.setText("Σκηνοθεσία: " + dbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
@@ -59,7 +58,10 @@ public class ViewStation extends ActionBarActivity {
         for (int i=0; i<actors; i++) {
             Button imageActor = new Button(this);
             imageActor.setBackgroundResource(R.drawable.zervos);
-            imageActor.setText(dbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i));
+            String string = dbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i);
+            String[] parts = string.split(" ");
+            imageActor.setText(parts[0] + "\n" + parts[1]);
+            imageActor.setTextSize(16);
             imageActor.setGravity(Gravity.BOTTOM | Gravity.CENTER);
             imageActor.setMaxHeight(5);
             imageActor.setMaxWidth(10);
