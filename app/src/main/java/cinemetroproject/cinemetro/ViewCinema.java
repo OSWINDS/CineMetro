@@ -16,7 +16,7 @@ import android.widget.TextView;
  * Created by kiki__000 on 28-Aug-14.
  *
  *
- * ViewCinema shows the features of a cinema
+ * ViewCinema shows the features (photo and text) of a cinema
  */
 public class ViewCinema extends ActionBarActivity {
 
