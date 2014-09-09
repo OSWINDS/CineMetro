@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class dbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
@@ -58,6 +58,7 @@ public class dbHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT, " +
                 "station_id INTEGER," +
+                "movie_id INTEGER," +
                 "description TEXT)";
 
         // create photo table
@@ -165,6 +166,7 @@ public class dbHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("name", photo.getName()); // get name
         values.put("station_id", photo.getStation_id());
+        values.put("movie_id", photo.getMovie_id());
         values.put("description", photo.getDescription());
 
         //insert
@@ -289,7 +291,7 @@ public class dbHelper extends SQLiteOpenHelper {
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String[] columns = {"id","name","station_id","description"};
+        String[] columns = {"id","name","station_id", "movie_id","description"};
         //build query
         Cursor cursor =
                 db.query("photo", // a. table
@@ -310,7 +312,8 @@ public class dbHelper extends SQLiteOpenHelper {
         photo.setId(Integer.parseInt(cursor.getString(0))); //id
         photo.setName(cursor.getString(1)); //name
         photo.setStation_id(Integer.parseInt(cursor.getString(2))); //station id
-        photo.setDescription(cursor.getString(3)); //description
+        photo.setMovie_id(Integer.parseInt(cursor.getString(3)));
+        photo.setDescription(cursor.getString(4)); //description
 
         //return photo
         return photo;
@@ -447,8 +450,8 @@ public class dbHelper extends SQLiteOpenHelper {
                 photo.setId(Integer.parseInt(cursor.getString(0))); //id
                 photo.setName(cursor.getString(1)); //name
                 photo.setStation_id(Integer.parseInt(cursor.getString(2))); //station id
-                photo.setDescription(cursor.getString(3)); //description
-
+                photo.setMovie_id(Integer.parseInt(cursor.getString(3)));
+                photo.setDescription(cursor.getString(4)); //description
                 photos.add(photo);
             } while (cursor.moveToNext());
         }
