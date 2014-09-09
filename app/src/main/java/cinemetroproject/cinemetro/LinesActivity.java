@@ -24,12 +24,16 @@ public class LinesActivity extends ActionBarActivity {
         setContentView(R.layout.activity_lines);
 
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
+
         //cinema
-        Button cinemaButton = new Button(this);
-        cinemaButton.setText("cinema");
-        cinemaButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        cinemaButton.setOnClickListener(cinemaButtonOnClickListener);
-        scrollView.addView(cinemaButton);
+        for (int i=0; i<6; i++) {
+            Button cinemaButton = new Button(this);
+            cinemaButton.setText(dbAdapter.getInstance().getStations().get(i).getName());
+            cinemaButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            cinemaButton.setId(i);
+            cinemaButton.setOnClickListener(cinemaButtonOnClickListener);
+            scrollView.addView(cinemaButton);
+        }
 
         //movies
         for (int i=0; i<8; i++) {
@@ -84,6 +88,7 @@ public class LinesActivity extends ActionBarActivity {
 
 
             Intent intent = new Intent(LinesActivity.this, ViewCinema.class);
+            intent.putExtra("button_id", view.getId());
             LinesActivity.this.startActivity(intent);
             finish();
         }};

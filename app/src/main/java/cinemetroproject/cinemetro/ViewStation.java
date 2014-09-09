@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**
@@ -31,6 +32,8 @@ public class ViewStation extends ActionBarActivity {
     private TextView textViewDirector;
     private TextView textViewInfo;
     private Button goAheadButton;
+    private ArrayList<Photo> photos;
+    private ArrayList<String> photo_names;
 
 
     @Override
@@ -47,7 +50,19 @@ public class ViewStation extends ActionBarActivity {
         inHorizontalScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
 
         imageMovie =(ImageView)findViewById(R.id.imageMovie);
-        imageMovie.setImageResource(R.drawable.image_08);
+        photos = dbAdapter.getInstance().getPhotosByStation(idStation);
+        if (!photos.isEmpty()) {
+            photo_names = new ArrayList<String>();
+            for (Photo p : photos) {
+                photo_names.add(p.getName());
+            }
+        }
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(photo_names.get(0));
+            int drawableId = field.getInt(null);
+            imageMovie.setImageResource(drawableId);
+        } catch (Exception e) {}
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
         textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + dbAdapter.getInstance().getMovieByStation(idStation).getYear() + "\n");
@@ -103,6 +118,7 @@ public class ViewStation extends ActionBarActivity {
         public void onClick(View view) {
 
             Intent intent = new Intent(ViewStation.this, RateActivity.class);
+            intent.putExtra("button_id", idStation);
             ViewStation.this.startActivity(intent);
             finish();
         }};
