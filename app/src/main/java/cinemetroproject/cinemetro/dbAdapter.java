@@ -53,6 +53,10 @@ final class dbAdapter {
         this.routes = this.db.getAllRoutes();
         this.photos = this.db.getAllPhotos();
         this.movies = this.db.getAllMovies();
+        System.out.println(this.stations.size());
+        System.out.println(this.routes.size());
+        System.out.println(this.movies.size());
+        System.out.println(this.photos.size());
 
     }
 
@@ -89,8 +93,9 @@ final class dbAdapter {
      */
     public void setDB(dbHelper db)
     {
-        this.db =db;
-        if (this.db.isUpdated())
+        this.db = db;
+        this.fillArrays();
+        if (this.db.isUpdated() || this.stations.isEmpty())
         {
             this.populateDB();
             this.db.setUpdated(false);
