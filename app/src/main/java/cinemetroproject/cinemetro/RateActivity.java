@@ -106,8 +106,7 @@ public class RateActivity extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            //kanonika paei sto MapActivity alla epeidi ekei skaei to evala sto LinesActivity gia na to testarw
-            Intent intent = new Intent(RateActivity.this, LinesActivity.class);
+            Intent intent = new Intent(RateActivity.this, MapActivity.class);
             RateActivity.this.startActivity(intent);
             finish();
         }};
@@ -122,8 +121,7 @@ public class RateActivity extends ActionBarActivity {
             dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    //kanonika paei sto MapActivity alla epeidi ekei skaei to evala sto LinesActivity gia na to testarw
-                    Intent intent = new Intent(RateActivity.this, LinesActivity.class);
+                    Intent intent = new Intent(RateActivity.this, MapActivity.class);
                     RateActivity.this.startActivity(intent);
                     finish();
 

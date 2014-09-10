@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -18,7 +22,7 @@ import android.view.View;
  *
  * @see SystemUiHider
  */
-public class MainMenu extends Activity {
+public class MainMenu extends ActionBarActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -51,9 +55,11 @@ public class MainMenu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.initializeDB();
 
+        this.initializeDB();
         setContentView(R.layout.activity_main_menu);
+
+
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
@@ -119,6 +125,27 @@ public class MainMenu extends Activity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.profile:
+                Intent intent = new Intent(this, ProfileActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
@@ -181,6 +208,13 @@ public class MainMenu extends Activity {
     public void StartProfileActivity(View view)
     {
         Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    //Starts the footprint activity when the button Profile is pressed
+    public void StartFootPrintActivity(View view)
+    {
+        Intent intent = new Intent(this, FootPrint.class);
         startActivity(intent);
     }
 

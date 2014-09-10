@@ -33,13 +33,13 @@
             android:orientation="vertical"
             tools:ignore="UselessParent">
 
-            <Button android:id="@+id/map_button"
+            <Button android:id="@+id/navigation_button"
                 style="?metaButtonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
-                android:text="@string/map_button"
+                android:text="Navigation"
                 android:onClick="StartMapActivity"/>
 
             <Button android:id="@+id/lines_button"
@@ -57,8 +57,8 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
-                android:text="@string/profile_button"
-                android:onClick="StartProfileActivity"/>
+                android:text="Footprint"
+                android:onClick="StartFootPrintActivity"/>
 
             <Button android:id="@+id/about_button"
                 style="?metaButtonBarButtonStyle"
