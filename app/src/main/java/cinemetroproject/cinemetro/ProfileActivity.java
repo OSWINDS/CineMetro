@@ -7,6 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+
 
 public class ProfileActivity extends ActionBarActivity {
 
@@ -14,6 +19,21 @@ public class ProfileActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+
+        String str="";
+        ArrayList<Route> routes= dbAdapter.getInstance().getRoutes();
+        for(int i=0;i<routes.size();i++){
+           str+=routes.get(i).getName()+"\n";
+            ArrayList<Station> stations=dbAdapter.getInstance().getStationByRoute(routes.get(i).getId());
+            for(int j=0;j<stations.size();j++){
+                str+="  # "+stations.get(j).getName()+ "  LOCKED\n";
+            }
+        }
+
+        TextView tv=(TextView)this.findViewById(R.id.textViewProfile);
+        tv.setText(str);
+
 
         Button bt = (Button) findViewById(R.id.bt_logIn_test);
         bt.setOnClickListener(
