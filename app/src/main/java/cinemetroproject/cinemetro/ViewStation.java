@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -72,14 +73,19 @@ public class ViewStation extends ActionBarActivity {
 
         for (int i=0; i<actors; i++) {
             Button imageActor = new Button(this);
-            imageActor.setBackgroundResource(R.drawable.zervos);
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField(dbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(i).getName());
+                int drawableId = field.getInt(null);
+                imageActor.setBackgroundResource(drawableId);
+                imageActor.setLayoutParams(new ViewGroup.LayoutParams(160,150));
+
+            } catch (Exception e) {}
             String string = dbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i);
             String[] parts = string.split(" ");
             imageActor.setText(parts[0] + "\n" + parts[1]);
             imageActor.setTextSize(16);
             imageActor.setGravity(Gravity.BOTTOM | Gravity.CENTER);
-            imageActor.setMaxHeight(5);
-            imageActor.setMaxWidth(10);
 
             inHorizontalScrollView.addView(imageActor);
         }
