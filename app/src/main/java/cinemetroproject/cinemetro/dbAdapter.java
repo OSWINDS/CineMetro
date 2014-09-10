@@ -396,42 +396,42 @@ final class dbAdapter {
         //station 7
         this.db.addPhoto(new Photo("ksypolitotagma10", 7, 1, ""));      //main
         this.db.addPhoto(new Photo("tagma", 7, 1, ""));                 //main
+        this.db.addPhoto(new Photo("kwsti_maria", -1, 1, ""));          //actor
         this.db.addPhoto(new Photo("fermas_nikos", -1, 1, ""));         //actor
         this.db.addPhoto(new Photo("fragkedakhs_vasilis", -1, 1, ""));  //actor
-        this.db.addPhoto(new Photo("kwsti_maria", -1, 1, ""));          //actor
         //station 8
         this.db.addPhoto(new Photo("p08", 8, 2, ""));
         this.db.addPhoto(new Photo("atsidas", 8, 2, ""));
         this.db.addPhoto(new Photo("promoatsidas", 8, 2, ""));
         this.db.addPhoto(new Photo("eliopoulos", -1, 2, ""));
         this.db.addPhoto(new Photo("laskari", -1, 2, ""));
-        this.db.addPhoto(new Photo("stratigos", -1, 2, ""));
         this.db.addPhoto(new Photo("zervos", -1, 2, ""));
+        this.db.addPhoto(new Photo("stratigos", -1, 2, ""));
         //station 9
         this.db.addPhoto(new Photo("katinakaiei0", 9, 3, ""));
         this.db.addPhoto(new Photo("katinakaiei4", 9, 3, ""));
         this.db.addPhoto(new Photo("katinakaieiplaz", 9, 3, ""));
+        this.db.addPhoto(new Photo("vlaxopoulou", -1, 3, ""));
         this.db.addPhoto(new Photo("eliopoulos", -1, 3, ""));
         this.db.addPhoto(new Photo("karagiannh", -1, 3, ""));
         this.db.addPhoto(new Photo("nathanahl", -1, 3, ""));
-        this.db.addPhoto(new Photo("vlaxopoulou", -1, 3, ""));
         this.db.addPhoto(new Photo("voutsas", -1, 3, ""));
         //station 10
         this.db.addPhoto(new Photo("p388322", 10, 4, ""));
         this.db.addPhoto(new Photo("c72", 10, 4, ""));
-        this.db.addPhoto(new Photo("antwnopoulos", -1, 4, ""));
-        this.db.addPhoto(new Photo("bazaka", -1, 4, ""));
         this.db.addPhoto(new Photo("ladikou", -1, 4, ""));
-        this.db.addPhoto(new Photo("tzortzoglou", -1, 4, ""));
+        this.db.addPhoto(new Photo("antwnopoulos", -1, 4, ""));
         //station 11
         this.db.addPhoto(new Photo("p64411", 11, 5, ""));
         this.db.addPhoto(new Photo("p64433", 11, 5, ""));
+        this.db.addPhoto(new Photo("tzortzoglou", -1, 5, ""));
+        this.db.addPhoto(new Photo("bazaka", -1, 5, ""));
         //station 12
         this.db.addPhoto(new Photo("eternityandaday", 12, 6, ""));
         this.db.addPhoto(new Photo("miaaioniotita", 12, 6, ""));
-        this.db.addPhoto(new Photo("bentivolio", -1, 6, ""));
         this.db.addPhoto(new Photo("bruno", -1, 6, ""));
         this.db.addPhoto(new Photo("izampel", -1, 6, ""));
+        this.db.addPhoto(new Photo("bentivolio", -1, 6, ""));
         //station 13
         this.db.addPhoto(new Photo("amaliamoutoussihoraproelefsis", 13, 7, ""));
         this.db.addPhoto(new Photo("christospassalisyoulaboudalifilia", 13, 7, ""));
@@ -444,11 +444,8 @@ final class dbAdapter {
         this.db.addPhoto(new Photo("p1334779197", 14, 8, ""));
         this.db.addPhoto(new Photo("souperdimitrios", 14, 8, ""));
         this.db.addPhoto(new Photo("superdemetriosstill", 14, 8, ""));
+        this.db.addPhoto(new Photo("vainas", -1, 8, ""));
         this.db.addPhoto(new Photo("papadopoulos", -1, 8, ""));
         this.db.addPhoto(new Photo("sfetsa", -1, 8, ""));
-        this.db.addPhoto(new Photo("vainas", -1, 8, ""));
-
-
-
     }
 }
