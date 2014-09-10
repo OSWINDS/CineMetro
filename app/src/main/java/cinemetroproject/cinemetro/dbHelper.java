@@ -19,6 +19,22 @@ public class dbHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
+    private boolean updated = false;
+
+    /**
+     *
+     * @return true if the db is updated
+     */
+    public boolean isUpdated()
+    {
+        return updated;
+    }
+
+    public void setUpdated(boolean u)
+    {
+        this.updated = u;
+    }
+
     public dbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -76,7 +92,7 @@ public class dbHelper extends SQLiteOpenHelper {
 
         // create movie table
         db.execSQL(query);
-
+        this.updated = true;
     }
 
     /**

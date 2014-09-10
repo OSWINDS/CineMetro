@@ -44,21 +44,6 @@ final class dbAdapter {
 
 
     /**
-     * fills the db if data if the tables are empty and then fill the arrays with the data from the db
-     * @param db
-     */
-    public void setDB(dbHelper db)
-    {
-        this.db =db;
-        this.fillArrays();
-        if(this.stations.isEmpty())
-        {
-            this.populateDB();
-            this.fillArrays();
-        }
-    }
-
-    /**
      * Fills the arrays with data from the DB
      */
     private void fillArrays()
@@ -97,6 +82,21 @@ final class dbAdapter {
      * @return all the movies in the DB
      */
     public ArrayList<Movie> getMovies() {return this.movies;}
+
+    /**
+     * fills the db if data if the tables are empty and then fill the arrays with the data from the db
+     * @param db
+     */
+    public void setDB(dbHelper db)
+    {
+        this.db =db;
+        if (this.db.isUpdated())
+        {
+            this.populateDB();
+            this.db.setUpdated(false);
+        }
+        this.fillArrays();
+    }
 
     /**
      *
