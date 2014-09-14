@@ -1,84 +1,70 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/bw_background"
     tools:context=".MainMenu">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:keepScreenOn="true"
-        android:textColor="#33b5e5"
-        android:textStyle="bold"
-        android:textSize="50sp"
-        android:gravity="center" />
-
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:layout_gravity="left|top">
-
         <LinearLayout android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal"
-            android:background="@color/black_overlay"
+            android:layout_height="400dp"
             android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             tools:ignore="UselessParent">
 
-            <Button android:id="@+id/navigation_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
+            <!-- Navigation Button -->
+            <Button
                 android:text="Navigation"
-                android:onClick="StartMapActivity"/>
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginTop="70dp"
+                android:background="@color/black_overlay"
+                android:textSize="10pt"
+                android:id="@+id/navigation_button"
+                />
 
-            <Button android:id="@+id/lines_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:text="@string/lines_button"
-                android:onClick="StartLinesActivity"/>
+            <!-- Lines Button -->
+            <Button
+                android:text="Lines"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@color/black_overlay"
+                android:textSize="10pt"
+                android:id="@+id/lines_button"
+                />
 
-            <Button android:id="@+id/profile_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:text="Footprint"
-                android:onClick="StartFootPrintActivity"/>
+            <!-- About Button -->
+            <Button
+                android:text="About"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@color/black_overlay"
+                android:textSize="10pt"
+                android:id="@+id/about_button"
+                />
 
-            <Button android:id="@+id/about_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:text="@string/about_button"
-                android:onClick="StartAboutActivity"/>
-
-            <Button android:id="@+id/test_db_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:text="Test DB"
-                android:onClick="StartTestDBActivity"/>
+            <!-- Test db Button -->
+            <Button
+                android:text="Test Db"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@color/black_overlay"
+                android:textSize="10pt"
+                android:id="@+id/test_db_button"
+                />
 
         </LinearLayout>
-    </FrameLayout>
 
-</FrameLayout>
+</RelativeLayout>

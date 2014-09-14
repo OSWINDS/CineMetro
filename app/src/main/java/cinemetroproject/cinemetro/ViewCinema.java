@@ -7,6 +7,8 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -25,8 +27,7 @@ import java.util.ArrayList;
 public class ViewCinema extends ActionBarActivity {
 
     private LinearLayout scrollView;
-    private TextView textViewInfo;
-    private ListView listView ;
+    private TextView description;
     private int idCinema;
     private int countP;
     private ArrayList<Photo> photos;
@@ -35,12 +36,14 @@ public class ViewCinema extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //setTheme(android.R.style.Theme_Light_Panel);
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_view_cinema);
 
         Intent intent = getIntent();
         idCinema = intent.getIntExtra("button_id", 0);
 
-        scrollView = (LinearLayout)findViewById(R.id.cinemaSV);
+        scrollView = (LinearLayout)findViewById(R.id.cinemaHsV);
 
         photos = dbAdapter.getInstance().getPhotosByStation(idCinema+1);
         if (!photos.isEmpty()) {
@@ -51,30 +54,23 @@ public class ViewCinema extends ActionBarActivity {
         }
         countP = photo_names.size();
         for (int i=0; i<photo_names.size(); i++) {
-            Button imageActor = new Button(this);
+            Button imageCinema = new Button(this);
             try {
                 Class res = R.drawable.class;
                 Field field = res.getField(photo_names.get(i));
                 int drawableId = field.getInt(null);
-                imageActor.setBackgroundResource(drawableId);
+                imageCinema.setBackgroundResource(drawableId);
             } catch (Exception e) {
 
             }
-            imageActor.setGravity(Gravity.BOTTOM | Gravity.CENTER);
-            imageActor.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            imageCinema.setGravity(Gravity.BOTTOM | Gravity.CENTER);
+            imageCinema.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            scrollView.addView(imageActor);
+            scrollView.addView(imageCinema);
         }
 
-        listView = (ListView) findViewById(R.id.list);
-
-        String[] temp = new String[1];
-        temp[0] = dbAdapter.getInstance().getStations().get(idCinema).getDescription();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, temp);
-
-        listView.setAdapter(adapter);
-
+        description = (TextView)findViewById(R.id.description);
+        description.setText(dbAdapter.getInstance().getStations().get(idCinema).getDescription());
     }
 
     @Override
