@@ -6,13 +6,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
 
 
 public class ProfileActivity extends ActionBarActivity {
@@ -21,23 +23,37 @@ public class ProfileActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_profile);
 
+        ScrollView sv = (ScrollView) this.findViewById(R.id.scrollView);
+        LinearLayout ll=new LinearLayout(this);
+        ll.setOrientation(LinearLayout.VERTICAL);
+        ll.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
 
-        String str="";
-        ArrayList<Route> routes= dbAdapter.getInstance().getRoutes();
-        for(int i=0;i<routes.size();i++){
-           str+=routes.get(i).getName()+"\n";
-            ArrayList<Station> stations=dbAdapter.getInstance().getStationByRoute(routes.get(i).getId());
-            for(int j=0;j<stations.size();j++){
-                str+="  # "+stations.get(j).getName()+ "  LOCKED\n";
+        String str;
+        ArrayList<Route> routes = dbAdapter.getInstance().getRoutes();
+
+        for (int i = 0; i < routes.size(); i++) {
+
+            str = routes.get(i).getName() + "\n";
+            TextView tv = new TextView(this);
+            tv.setText(str);
+            ll.addView(tv);
+
+            ArrayList<Station> stations = dbAdapter.getInstance().getStationByRoute(routes.get(i).getId());
+
+            for (int j = 0; j < stations.size(); j++) {
+                str = stations.get(j).getName();
+                CheckBox cb = new CheckBox(this);
+                cb.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+                cb.setClickable(false);
+                cb.setText(str);
+                cb.setSelected(true);
+               ll.addView(cb);
             }
         }
-
-        TextView tv=(TextView)this.findViewById(R.id.textViewProfile);
-        tv.setText(str);
-
+        sv.addView(ll);
 
         Button bt = (Button) findViewById(R.id.bt_logIn_test);
         bt.setOnClickListener(
