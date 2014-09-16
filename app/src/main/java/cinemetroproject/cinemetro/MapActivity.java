@@ -6,21 +6,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 
 
-public class MapActivity extends ActionBarActivity {
+ public class MapActivity extends ActionBarActivity {
 
 
-    private GoogleMap mΜap;
+    /**private GoogleMap mΜap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
-                .getMap();
+        mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 
 
     }
@@ -44,5 +41,5 @@ public class MapActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }
