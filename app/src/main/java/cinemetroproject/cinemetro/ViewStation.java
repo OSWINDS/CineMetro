@@ -45,6 +45,7 @@ public class ViewStation extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_view_station);
 
         Intent intent = getIntent();
@@ -130,7 +131,6 @@ public class ViewStation extends ActionBarActivity {
             Intent intent = new Intent(ViewStation.this, RateActivity.class);
             intent.putExtra("button_id", idStation);
             ViewStation.this.startActivity(intent);
-            finish();
         }};
 
 }

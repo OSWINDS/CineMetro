@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class dbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
@@ -55,7 +55,7 @@ public class dbHelper extends SQLiteOpenHelper {
                 "colour TEXT,"+
                 "state INTEGER)";
 
-        // create station route
+        // create route table
         db.execSQL(query);
 
         // SQL statement to create table station
@@ -92,6 +92,16 @@ public class dbHelper extends SQLiteOpenHelper {
 
         // create movie table
         db.execSQL(query);
+
+        // SQL statement to create table user
+        query = "CREATE TABLE IF NOT EXISTS user ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "username TEXT, "  +
+                "password TEXT)";
+
+        // create user table
+        db.execSQL(query);
+
         this.updated = true;
     }
 
@@ -114,7 +124,6 @@ public class dbHelper extends SQLiteOpenHelper {
 
         // Drop older movie table if exists
         db.execSQL("DROP TABLE IF EXISTS movie");
-
 
         // create fresh tables
         this.onCreate(db);
@@ -214,6 +223,29 @@ public class dbHelper extends SQLiteOpenHelper {
 
         //insert
         db.insert("movie", // table
+                null, //nullColumnHack
+                values); // key/value -> keys = column names/ values = column values
+
+        //close
+        db.close();
+    }
+
+    /**
+     * adds a new entry to the table user
+     * @param user
+     */
+    public void addUser(User user, String password)
+    {
+        // get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //ContentValues to add key "column"/value
+        ContentValues values = new ContentValues();
+        values.put("username", user.getUsername()); // get name
+        values.put("password", password);
+
+        //insert
+        db.insert("user", // table
                 null, //nullColumnHack
                 values); // key/value -> keys = column names/ values = column values
 
@@ -375,8 +407,49 @@ public class dbHelper extends SQLiteOpenHelper {
         return movie;
     }
 
+    /**
+     * returns the user with this id
+     * @param id
+     * @return
+     */
+    public User getUser(int id)
+    {
+        //reference to readable DB
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {"id","username","password"};
+        //build query
+        Cursor cursor =
+                db.query("user", // a. table
+                        columns, // column names
+                        " id = ?", // c. selections
+                        new String[] { String.valueOf(id) }, // d. selections args
+                        null, // e. group by
+                        null, // f. having
+                        null, // g. order by
+                        null); // h. limit
+
+        //if we got results get the first one
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        //build user object
+        String name;
+        String pass;
+        id   = Integer.parseInt(cursor.getString(0)); //id
+        name = cursor.getString(1); //name
+        pass = cursor.getString(2); //password
+        User user = new User(id, name, pass);
+
+        //return user
+        return user;
+    }
 
 
+    /**
+     *
+     * @return all stations in db
+     */
     public ArrayList<Station> getAllStations()
     {
         ArrayList<Station> stations = new ArrayList<Station>();
@@ -511,6 +584,42 @@ public class dbHelper extends SQLiteOpenHelper {
 
         // return movies
         return movies;
+    }
+
+    /**
+     *
+     * @return all users in db
+     */
+    public ArrayList<User> getAllUsers()
+    {
+        ArrayList<User> users = new ArrayList<User>();
+
+        //build the query
+        String query = "SELECT  * FROM user";
+
+        //get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        //go over each row, build station and add it to list
+        Station station = null;
+        if (cursor.moveToFirst()) {
+            String name,pass;
+            int id;
+            do {
+                //build user object
+                id = Integer.parseInt(cursor.getString(0)); //id
+                name = cursor.getString(1); //name
+                pass = cursor.getString(2); //password
+                User user = new User(id, name, pass);
+
+                //add user
+                users.add(user);
+            } while (cursor.moveToNext());
+        }
+
+        // return stations
+        return users;
     }
 
 

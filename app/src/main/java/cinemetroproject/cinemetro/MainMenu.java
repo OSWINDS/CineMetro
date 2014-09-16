@@ -86,7 +86,6 @@ public class MainMenu extends ActionBarActivity {
 
             Intent intent = new Intent(MainMenu.this, MapActivity.class);
             MainMenu.this.startActivity(intent);
-            finish();
         }};
 
     //Starts the lines activity when the button Lines is pressed
@@ -97,7 +96,6 @@ public class MainMenu extends ActionBarActivity {
 
             Intent intent = new Intent(MainMenu.this, LinesActivity.class);
             MainMenu.this.startActivity(intent);
-            finish();
         }};
 
     //Starts the about activity when the button About is pressed
@@ -108,7 +106,6 @@ public class MainMenu extends ActionBarActivity {
 
             Intent intent = new Intent(MainMenu.this, AboutActivity.class);
             MainMenu.this.startActivity(intent);
-            finish();
         }};
 
     //Starts the TestDB activity when the button Test DB is pressed
@@ -119,7 +116,6 @@ public class MainMenu extends ActionBarActivity {
 
             Intent intent = new Intent(MainMenu.this, TestDB.class);
             MainMenu.this.startActivity(intent);
-            finish();
         }};
 
     private dbHelper db;
