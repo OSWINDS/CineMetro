@@ -37,6 +37,11 @@ final class dbAdapter {
     private ArrayList<Movie> movies = new ArrayList<Movie>();
 
     /**
+     * array of users
+     */
+    private ArrayList<User> users = new ArrayList<User>();
+
+    /**
      * dbHelper object to interact with the db
      */
     private dbHelper db;
@@ -53,11 +58,7 @@ final class dbAdapter {
         this.routes = this.db.getAllRoutes();
         this.photos = this.db.getAllPhotos();
         this.movies = this.db.getAllMovies();
-        System.out.println(this.stations.size());
-        System.out.println(this.routes.size());
-        System.out.println(this.movies.size());
-        System.out.println(this.photos.size());
-
+        this.users = this.db.getAllUsers();
     }
 
     /**
@@ -80,6 +81,12 @@ final class dbAdapter {
      * @return all the photos in the DB
      */
     public ArrayList<Photo> getPhotos() {return this.photos; }
+
+    /**
+     *
+     * @return all the users in the DB
+     */
+    public ArrayList<User> getUsers() {return this.users; }
 
     /**
      *
@@ -188,6 +195,22 @@ final class dbAdapter {
             }
         }
         return photos;
+    }
+
+    /**
+     *
+     * @param username
+     * @return the user with that username, null if username does not exists
+     */
+    public User getUserByUsername(String username)
+    {
+        for (User u : this.users)
+        {
+            if (u.getUsername().equals((username))) {
+                return u;
+            }
+        }
+        return null;
     }
 
     /**
