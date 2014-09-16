@@ -15,29 +15,22 @@ public class Line2 extends ActionBarActivity {
 
 
     private LinearLayout scrollView;
-    private ImageView image;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.line2);
-
-
-
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
 
         for (int i=0; i<8; i++) {
             Button stationButton = new Button(this);
-
-            stationButton.setText("Στάση"+(i+1)+"\n"+dbAdapter.getInstance().getMovies().get(i).getTitle());
+            stationButton.setText("Στάση "+(i+1)+"\n"+dbAdapter.getInstance().getMovies().get(i).getTitle());
             stationButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             stationButton.setId(i + 7);
             stationButton.setWidth(100);
             stationButton.setHeight(150);
             //stationButton.setBackgroundColor(Color.parseColor("#dee6ef"));
             if(i==0){
-
                 stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green1, 0, 0, 0);}
             if(i==1){
                 stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green2 , 0, 0, 0);}
@@ -53,15 +46,6 @@ public class Line2 extends ActionBarActivity {
                 stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green7, 0, 0, 0);}
             if(i==7){
                 stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green8 , 0, 0, 0);}
-
-
-
-
-
-
-
-
-
             stationButton.setOnClickListener(stationButtonOnClickListener);
             scrollView.addView(stationButton);
         }
