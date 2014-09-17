@@ -100,11 +100,16 @@
         </activity>
         <activity
             android:name=".Line1"
-            android:label="line1"></activity>
+            android:label="line1">
+            </activity>
         <activity
-            android:name=".Line2"></activity>
+            android:name=".Line2">
+
+            </activity>
         <activity
-            android:name=".Line3"></activity>
+            android:name=".Line3">
+
+            </activity>
         <activity
             android:name=".ViewStation"
             android:label="ViewStation"

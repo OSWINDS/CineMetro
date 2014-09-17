@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 
 
- public class MapActivity extends ActionBarActivity {
+public class MapActivity extends ActionBarActivity {
 
 
-    /**private GoogleMap mΜap;
+    private GoogleMap mΜap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +43,5 @@ import android.view.MenuItem;
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 }
