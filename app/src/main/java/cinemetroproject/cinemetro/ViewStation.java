@@ -1,8 +1,6 @@
 package cinemetroproject.cinemetro;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
@@ -10,13 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
@@ -25,7 +21,7 @@ import java.util.ArrayList;
  * Se ayto to activity anaparistatai to ViewStation
  * Dimiourgeitai otan epilegetai mia stasi apo LinesActivity
  */
-public class ViewStation extends ActionBarActivity {
+public class ViewStation extends ActionBarActivity  {
 
     private int idStation;
     private int actors; //count of actors
@@ -103,7 +99,6 @@ public class ViewStation extends ActionBarActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -116,10 +111,14 @@ public class ViewStation extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                onBackPressed();
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -132,5 +131,6 @@ public class ViewStation extends ActionBarActivity {
             intent.putExtra("button_id", idStation);
             ViewStation.this.startActivity(intent);
         }};
+
 
 }

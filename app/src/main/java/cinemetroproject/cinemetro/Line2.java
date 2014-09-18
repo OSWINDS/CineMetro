@@ -81,6 +81,5 @@ public class Line2 extends ActionBarActivity {
             Intent intent = new Intent(Line2.this, ViewStation.class);
             intent.putExtra("button_id", view.getId());
             Line2.this.startActivity(intent);
-            finish();
         }};
 }

@@ -9,10 +9,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.app.AlertDialog;
@@ -86,10 +84,14 @@ public class RateActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                onBackPressed();
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -112,7 +114,7 @@ public class RateActivity extends ActionBarActivity {
 
             Intent intent = new Intent(RateActivity.this, MapActivity.class);
             RateActivity.this.startActivity(intent);
-            finish();
+            //finish();
         }};
 
     View.OnClickListener goButtonOnClickListener = new View.OnClickListener() {
@@ -135,6 +137,6 @@ public class RateActivity extends ActionBarActivity {
             AlertDialog alert = dialog.create();
             alert.show();
 
-
         }};
+
 }

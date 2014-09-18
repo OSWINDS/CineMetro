@@ -83,12 +83,20 @@
                 android:value="cinemetroproject.cinemetro.MainMenu" />
         </activity>
         <activity
-            android:name=".RateActivity"
-            android:label="Rate"
-            android:parentActivityName=".MainMenu" >
+            android:name=".ViewStation"
+            android:label="ViewStation"
+            android:parentActivityName=".LinesActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cinemetroproject.cinemetro.MainMenu" />
+                android:value="cinemetroproject.cinemetro.LinesActivity" />
+        </activity>
+        <activity
+            android:name=".RateActivity"
+            android:label="Rate"
+            android:parentActivityName=".ViewStation" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cinemetroproject.cinemetro.ViewStation" />
         </activity>
         <activity
             android:name=".ViewCinema"
@@ -110,15 +118,6 @@
             android:name=".Line3">
 
             </activity>
-        <activity
-            android:name=".ViewStation"
-            android:label="ViewStation"
-            android:parentActivityName=".LinesActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cinemetroproject.cinemetro.LinesActivity" />
-        </activity>
-
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map"
