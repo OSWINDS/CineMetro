@@ -1,3 +1,4 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +10,7 @@
     tools:context="cinemetroproject.cinemetro.LogIn">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/textViewProfile"
         android:layout_marginTop="10dp"
         android:inputType="text"
         android:text=""/>
@@ -64,38 +65,39 @@
 
     <TextView
         android:id="@+id/succesText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="this is where any problem will be displayed, or any success"
-        android:textSize="20dp"
-        android:layout_centerVertical="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="25dp"
+        android:layout_toStartOf="@+id/SignUp_button"
+        android:layout_below="@+id/passWord"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/SignUp_button"
-        android:layout_toStartOf="@+id/SignUp_button" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/logIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log In"
-        android:layout_toEndOf="@+id/succesText"
-        android:layout_above="@+id/information"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/passWord"
+        android:layout_alignRight="@+id/passWord"
+        android:layout_alignEnd="@+id/passWord" />
 
 
 
     <TextView
         android:id="@+id/information"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        android:text="this is where the new achivments(not database udpated) will be dispayed"
-        android:textSize="25dp"
+        android:layout_marginTop="15dp"
+        android:text="this is where the new achivments (not database updated) will be dispayed"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/succesText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true" />
 
 
 

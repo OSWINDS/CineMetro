@@ -37,26 +37,16 @@ final class dbAdapter {
     private ArrayList<Movie> movies = new ArrayList<Movie>();
 
     /**
+     * array of users
+     */
+    private ArrayList<User> users = new ArrayList<User>();
+
+    /**
      * dbHelper object to interact with the db
      */
     private dbHelper db;
 
 
-
-    /**
-     * fills the db if data if the tables are empty and then fill the arrays with the data from the db
-     * @param db
-     */
-    public void setDB(dbHelper db)
-    {
-        this.db =db;
-        this.fillArrays();
-        if(this.stations.isEmpty())
-        {
-            this.populateDB();
-            this.fillArrays();
-        }
-    }
 
     /**
      * Fills the arrays with data from the DB
@@ -68,7 +58,7 @@ final class dbAdapter {
         this.routes = this.db.getAllRoutes();
         this.photos = this.db.getAllPhotos();
         this.movies = this.db.getAllMovies();
-
+        this.users = this.db.getAllUsers();
     }
 
     /**
@@ -94,9 +84,31 @@ final class dbAdapter {
 
     /**
      *
+     * @return all the users in the DB
+     */
+    public ArrayList<User> getUsers() {return this.users; }
+
+    /**
+     *
      * @return all the movies in the DB
      */
     public ArrayList<Movie> getMovies() {return this.movies;}
+
+    /**
+     * fills the db if data if the tables are empty and then fill the arrays with the data from the db
+     * @param db
+     */
+    public void setDB(dbHelper db)
+    {
+        this.db = db;
+        this.fillArrays();
+        if (this.db.isUpdated() || this.stations.isEmpty())
+        {
+            this.populateDB();
+            this.db.setUpdated(false);
+        }
+        this.fillArrays();
+    }
 
     /**
      *
@@ -145,6 +157,58 @@ final class dbAdapter {
         {
             if (movie.getStation_id() == station_id)
                 return movie;
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @param movie_id
+     * @return the main photos of the movie with this id
+     */
+    public ArrayList<Photo> getMainPhotosOfMovie(int movie_id)
+    {
+        ArrayList<Photo> photos = new ArrayList<Photo>();
+        for (Photo p : this.photos)
+        {
+            if (p.getMovie_id() == movie_id && p.getStation_id() != -1 )
+            {
+                photos.add(p);
+            }
+        }
+        return photos;
+    }
+
+    /**
+     *
+     * @param movie_id
+     * @return the photos of actors of the movie with this id
+     */
+    public ArrayList<Photo> getActorPhotosOfMovie(int movie_id)
+    {
+        ArrayList<Photo> photos = new ArrayList<Photo>();
+        for (Photo p : this.photos)
+        {
+            if (p.getMovie_id() == movie_id && p.getStation_id() == -1 )
+            {
+                photos.add(p);
+            }
+        }
+        return photos;
+    }
+
+    /**
+     *
+     * @param username
+     * @return the user with that username, null if username does not exists
+     */
+    public User getUserByUsername(String username)
+    {
+        for (User u : this.users)
+        {
+            if (u.getUsername().equals((username))) {
+                return u;
+            }
         }
         return null;
     }
@@ -305,80 +369,106 @@ final class dbAdapter {
 
         //line 1
         // station 1
-        this.db.addPhoto(new Photo("pantheon", 1,"Ο κινηματογράφος Πάνθεον στο Βαρδάρι, λίγο πριν την κατεδάφισή του\n" +
+        this.db.addPhoto(new Photo("pantheon", 1, -1,"Ο κινηματογράφος Πάνθεον στο Βαρδάρι, λίγο πριν την κατεδάφισή του\n" +
                 "(Αρχείο Ν. Θεοδοσίου – Σινέ Θεσσαλονίκη, σ. 33)"));
-        this.db.addPhoto(new Photo("splendid", 1,"Ο κινηματογράφος Σπλέντιτ όπως απεικονίζεται σε καρτ ποστάλ\n" +
+        this.db.addPhoto(new Photo("splendid", 1, -1,"Ο κινηματογράφος Σπλέντιτ όπως απεικονίζεται σε καρτ ποστάλ\n" +
                 "(Αρχείο Ν. Θεοδοσίου)"));
-        this.db.addPhoto(new Photo("pantheon_markiza", 1,"Ο κινηματογράφος Πάνθεον στις δόξες του\n" +
+        this.db.addPhoto(new Photo("pantheon_markiza", 1, -1,"Ο κινηματογράφος Πάνθεον στις δόξες του\n" +
                 "Αρχείο Ν.Θεοδοσίου"));
         //station 2
-        this.db.addPhoto(new Photo("redmoterlimani", 2,"Ο κόκκινος μοτέρ του 11ου Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης στρέφει την κάμερα στο λιμάνι της πόλης \n" +
+        this.db.addPhoto(new Photo("redmoterlimani", 2, -1,"Ο κόκκινος μοτέρ του 11ου Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης στρέφει την κάμερα στο λιμάνι της πόλης \n" +
                 "Αρχείο ΦΚΘ – Σινέ Θεσσαλονίκη, σ.158)"));
-        this.db.addPhoto(new Photo("apothikia", 2,"Η είσοδος της Αποθήκης Γ στο Λιμάνι\n" +
+        this.db.addPhoto(new Photo("apothikia", 2, -1,"Η είσοδος της Αποθήκης Γ στο Λιμάνι\n" +
                 "Αρχείο ΦΚΘ)"));
-        this.db.addPhoto(new Photo("cinemuseuminside", 2,"Το εσωτερικό του Μουσείου Κινηματογράφου στο λιμάνι.\n" +
+        this.db.addPhoto(new Photo("cinemuseuminside", 2, -1,"Το εσωτερικό του Μουσείου Κινηματογράφου στο λιμάνι.\n" +
                 "Αρχείο ΦΚΘ"));
         //station 3
-        this.db.addPhoto(new Photo("cinemaolympia", 3,"Ο κινηματογράφος Ολύμπια (1917), όπου συγκεντρώνονται μαθήτριες του γαλλικού σχολείου πριν την προβολή\n" +
+        this.db.addPhoto(new Photo("cinemaolympia", 3, -1,"Ο κινηματογράφος Ολύμπια (1917), όπου συγκεντρώνονται μαθήτριες του γαλλικού σχολείου πριν την προβολή\n" +
                 "Αρχείο Κέντρου Ιστορίας Θεσσαλονίκης – Σινέ Θεσσαλονίκη, σ. 40)"));
-        this.db.addPhoto(new Photo("olympia", 3,"Ο κινηματογράφος Ολύμπια στην προκυμαία της Θεσσαλονίκης – Καρτ ποστάλ των αρχών του 20ού αιώνα\n" +
+        this.db.addPhoto(new Photo("olympia", 3, -1,"Ο κινηματογράφος Ολύμπια στην προκυμαία της Θεσσαλονίκης – Καρτ ποστάλ των αρχών του 20ού αιώνα\n" +
                 "(Αρχείο Ν. Θεοδοσίου- Σινέ Θεσσαλονίκη, σ.29)"));
-        this.db.addPhoto(new Photo("pathe", 3,"Ο κινηματογράφος Πατέ στη Λεωφόρο Νίκης, επιταγμένος από τους Γερμανούς στην Κατοχή\n" +
+        this.db.addPhoto(new Photo("pathe", 3, -1,"Ο κινηματογράφος Πατέ στη Λεωφόρο Νίκης, επιταγμένος από τους Γερμανούς στην Κατοχή\n" +
                 "Σινέ Θεσσαλονίκη, σ.31"));
-        this.db.addPhoto(new Photo("salonica_pathe_1918", 3,"Ο κινηματογράφος Πατέ στην παραλία σε καρτ ποστάλ των αρχών του 20ού αιώνα"));
-        this.db.addPhoto(new Photo("olympiaview", 3,"Άποψη από την είσοδο του κινηματογράφου Ολύμπια στην παραλία\n" +
+        this.db.addPhoto(new Photo("salonica_pathe_1918", 3, -1,"Ο κινηματογράφος Πατέ στην παραλία σε καρτ ποστάλ των αρχών του 20ού αιώνα"));
+        this.db.addPhoto(new Photo("olympiaview", 3, -1,"Άποψη από την είσοδο του κινηματογράφου Ολύμπια στην παραλία\n" +
                 "(Αρχείο Ν.Θεοδοσίου – Ίντερνετ)"));
         //station 4
-        this.db.addPhoto(new Photo("hlysia", 4,"Ο παλιός κινηματογράφος Ηλύσια στην Αριστοτέλους την ημέρα της απελευθέρωσης της Θεσσαλονίκης (δεκαετία ’40) \n" +
+        this.db.addPhoto(new Photo("hlysia", 4, -1,"Ο παλιός κινηματογράφος Ηλύσια στην Αριστοτέλους την ημέρα της απελευθέρωσης της Θεσσαλονίκης (δεκαετία ’40) \n" +
                 "(Αναδημοσίευση από το Σινέ Θεσσαλονίκη, σ.32)"));
-        this.db.addPhoto(new Photo("festivaltree02", 4,"Κινηματογραφικά καρέ σχηματίζουν το δέντρο του σινεμά στην πλατεία Αριστοτέλους\n" +
+        this.db.addPhoto(new Photo("festivaltree02", 4, -1,"Κινηματογραφικά καρέ σχηματίζουν το δέντρο του σινεμά στην πλατεία Αριστοτέλους\n" +
                 "Σινέ Θεσσαλονίκη, σ.157, Αρχείο ΦΚΘ"));
-        this.db.addPhoto(new Photo("olympionnight", 4,"Νυχτερινή άποψη του κινηματογράφου Ολύμπιον, της έδρας του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
+        this.db.addPhoto(new Photo("olympionnight", 4, -1,"Νυχτερινή άποψη του κινηματογράφου Ολύμπιον, της έδρας του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
                 "Αρχείο ΦΚΘ"));
-        this.db.addPhoto(new Photo("olympioninside", 4,"Εσωτερικό του κινηματογράφου Ολύμπιον\n" +
+        this.db.addPhoto(new Photo("olympioninside", 4, -1,"Εσωτερικό του κινηματογράφου Ολύμπιον\n" +
                 "Αρχείο ΦΚΘ"));
         //station 5
-        this.db.addPhoto(new Photo("dionysia", 5,"Το κινηματοθέατρο Διονύσια, που εγκαινιάστηκε στις 26 Νοεμβρίου 1926\n" +
+        this.db.addPhoto(new Photo("dionyssia", 5, -1,"Το κινηματοθέατρο Διονύσια, που εγκαινιάστηκε στις 26 Νοεμβρίου 1926\n" +
                 "(Βιβλίο Κ. Τομανά –Οι κινηματογράφοι της παλιάς Θεσσαλονίκης/ Αναδημοσίευση στο Σινέ Θεσσαλονίκη σ. 41)"));
-        this.db.addPhoto(new Photo("makedonikon", 5,"Νυχτερινή άποψη του σινεμά Μακεδονικόν\n" +
+        this.db.addPhoto(new Photo("makedonikon", 5, -1,"Νυχτερινή άποψη του σινεμά Μακεδονικόν\n" +
                 "(Αρχείο ΚΙΘ-Σινέ Θεσσαλονίκη, σ.46)"));
-        this.db.addPhoto(new Photo("esperos", 5,"Άποψη του κινηματογράφου Έσπερος, που ταυτίστηκε συχνά με τις προβολές του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
+        this.db.addPhoto(new Photo("esperos", 5, -1,"Άποψη του κινηματογράφου Έσπερος, που ταυτίστηκε συχνά με τις προβολές του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
                 "(Αρχείο ΦΚΘ – Σινέ Θεσσαλονίκη σ.47)"));
         //station 6
-        this.db.addPhoto(new Photo("pallaswhitepower", 6,"Το παλιό κινηματοθέατρο Παλλάς κοντά στο Λευκό Πύργο, με αρχιτεκτονικό σχέδιο Ε. Μοδιάνο και 860 πολυτελείς θέσεις.\n" +
+        this.db.addPhoto(new Photo("pallaswhitetower", 6, -1,"Το παλιό κινηματοθέατρο Παλλάς κοντά στο Λευκό Πύργο, με αρχιτεκτονικό σχέδιο Ε. Μοδιάνο και 860 πολυτελείς θέσεις.\n" +
                 "Αρχείο Ν.Θεοδοσίου – Ίντερνετ."));
-        this.db.addPhoto(new Photo("ems", 6,"Κόσμος έξω από την Εταιρεία Μακεδονικών Σπουδών, που υπήρξε έδρα του Φεστιβάλ Κινηματογράφου στη δεκαετία του ’70.\n" +
+        this.db.addPhoto(new Photo("ems", 6, -1,"Κόσμος έξω από την Εταιρεία Μακεδονικών Σπουδών, που υπήρξε έδρα του Φεστιβάλ Κινηματογράφου στη δεκαετία του ’70.\n" +
                 "Αρχείο ΦΚΘ"));
-        this.db.addPhoto(new Photo("theoreiaems", 6,"Τα θεωρεία της Εταιρείας Μακεδονικών Σπουδών με τους διαγωνιζόμενους και τους καλεσμένους του φεστιβάλ (δεκαετία ’60) \n" +
+        this.db.addPhoto(new Photo("theoreiaems", 6, -1,"Τα θεωρεία της Εταιρείας Μακεδονικών Σπουδών με τους διαγωνιζόμενους και τους καλεσμένους του φεστιβάλ (δεκαετία ’60) \n" +
                 "Αρχείο ΦΚΘ"));
         //line2
         //station 7
-        this.db.addPhoto(new Photo("ksypolitotagma10", 7, ""));
-        this.db.addPhoto(new Photo("tagma", 7, ""));
+        this.db.addPhoto(new Photo("ksypolitotagma10", 7, 1, ""));      //main
+        this.db.addPhoto(new Photo("tagma", 7, 1, ""));                 //main
+        this.db.addPhoto(new Photo("kwsti_maria", -1, 1, ""));          //actor
+        this.db.addPhoto(new Photo("fermas_nikos", -1, 1, ""));         //actor
+        this.db.addPhoto(new Photo("fragkedakhs_vasilis", -1, 1, ""));  //actor
         //station 8
-        this.db.addPhoto(new Photo("p08", 8, ""));
-        this.db.addPhoto(new Photo("atsidas", 8, ""));
-        this.db.addPhoto(new Photo("promoatsidas", 8, ""));
+        this.db.addPhoto(new Photo("p08", 8, 2, ""));
+        this.db.addPhoto(new Photo("atsidas", 8, 2, ""));
+        this.db.addPhoto(new Photo("promoatsidas", 8, 2, ""));
+        this.db.addPhoto(new Photo("eliopoulos", -1, 2, ""));
+        this.db.addPhoto(new Photo("laskari", -1, 2, ""));
+        this.db.addPhoto(new Photo("zervos", -1, 2, ""));
+        this.db.addPhoto(new Photo("stratigos", -1, 2, ""));
         //station 9
-        this.db.addPhoto(new Photo("katinakaiei0", 9, ""));
-        this.db.addPhoto(new Photo("katinakaiei4", 9, ""));
-        this.db.addPhoto(new Photo("katinakaieiplaz", 9, ""));
+        this.db.addPhoto(new Photo("katinakaiei0", 9, 3, ""));
+        this.db.addPhoto(new Photo("katinakaiei4", 9, 3, ""));
+        this.db.addPhoto(new Photo("katinakaieiplaz", 9, 3, ""));
+        this.db.addPhoto(new Photo("vlaxopoulou", -1, 3, ""));
+        this.db.addPhoto(new Photo("eliopoulos", -1, 3, ""));
+        this.db.addPhoto(new Photo("karagiannh", -1, 3, ""));
+        this.db.addPhoto(new Photo("nathanahl", -1, 3, ""));
+        this.db.addPhoto(new Photo("voutsas", -1, 3, ""));
         //station 10
-        this.db.addPhoto(new Photo("p388322", 10, ""));
-        this.db.addPhoto(new Photo("c72", 10, ""));
+        this.db.addPhoto(new Photo("p388322", 10, 4, ""));
+        this.db.addPhoto(new Photo("c72", 10, 4, ""));
+        this.db.addPhoto(new Photo("ladikou", -1, 4, ""));
+        this.db.addPhoto(new Photo("antwnopoulos", -1, 4, ""));
         //station 11
-        this.db.addPhoto(new Photo("p64411", 11, ""));
-        this.db.addPhoto(new Photo("p64433", 11, ""));
+        this.db.addPhoto(new Photo("p64411", 11, 5, ""));
+        this.db.addPhoto(new Photo("p64433", 11, 5, ""));
+        this.db.addPhoto(new Photo("tzortzoglou", -1, 5, ""));
+        this.db.addPhoto(new Photo("bazaka", -1, 5, ""));
         //station 12
-        this.db.addPhoto(new Photo("eternityandaday", 12, ""));
-        this.db.addPhoto(new Photo("miaaioniotita", 12, ""));
+        this.db.addPhoto(new Photo("eternityandaday", 12, 6, ""));
+        this.db.addPhoto(new Photo("miaaioniotita", 12, 6, ""));
+        this.db.addPhoto(new Photo("bruno", -1, 6, ""));
+        this.db.addPhoto(new Photo("izampel", -1, 6, ""));
+        this.db.addPhoto(new Photo("bentivolio", -1, 6, ""));
         //station 13
-        this.db.addPhoto(new Photo("amaliamoutoussihoraproelefsis", 13, ""));
-        this.db.addPhoto(new Photo("christospassalisyoulaboudalifilia", 13, ""));
-        this.db.addPhoto(new Photo("homeland6", 13, ""));
+        this.db.addPhoto(new Photo("amaliamoutoussihoraproelefsis", 13, 7, ""));
+        this.db.addPhoto(new Photo("christospassalisyoulaboudalifilia", 13, 7, ""));
+        this.db.addPhoto(new Photo("homeland6", 13, 7, ""));
+        this.db.addPhoto(new Photo("moutousi", -1, 7, ""));
+        this.db.addPhoto(new Photo("samaras", -1, 7, ""));
+        this.db.addPhoto(new Photo("tsirigkouli", -1, 7, ""));
+
         //station 14
-        this.db.addPhoto(new Photo("p1334779197", 14, ""));
-        this.db.addPhoto(new Photo("souperdimitrios", 14, ""));
-        this.db.addPhoto(new Photo("superdemetriosstill", 14, ""));
+        this.db.addPhoto(new Photo("p1334779197", 14, 8, ""));
+        this.db.addPhoto(new Photo("souperdimitrios", 14, 8, ""));
+        this.db.addPhoto(new Photo("superdemetriosstill", 14, 8, ""));
+        this.db.addPhoto(new Photo("vainas", -1, 8, ""));
+        this.db.addPhoto(new Photo("papadopoulos", -1, 8, ""));
+        this.db.addPhoto(new Photo("sfetsa", -1, 8, ""));
     }
 }

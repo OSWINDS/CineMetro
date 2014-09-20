@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CineMetro.iml" filepath="$PROJECT_DIR$/CineMetro.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CineMetroWithGit.iml" filepath="$PROJECT_DIR$/CineMetroWithGit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CineMetroApplication.iml" filepath="$PROJECT_DIR$/CineMetroApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

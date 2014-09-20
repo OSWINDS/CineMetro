@@ -6,6 +6,7 @@
         <!-- Customize your theme here. -->
     </style>
 
+
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@null</item>
