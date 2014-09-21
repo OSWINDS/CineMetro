@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 /**
  * Created by kiki__000 on 28-Aug-14.
@@ -26,8 +25,6 @@ public class ViewCinema extends ActionBarActivity {
     private TextView description;
     private int idCinema;
     private int countP;
-    private ArrayList<Photo> photos;
-    private ArrayList<String> photo_names;
 
     protected void onCreate(Bundle savedInstanceState) {
         //setTheme(android.R.style.Theme_Light_Panel);
@@ -42,26 +39,17 @@ public class ViewCinema extends ActionBarActivity {
 
         scrollView = (LinearLayout)findViewById(R.id.cinemaHsV);
 
-        photos = dbAdapter.getInstance().getPhotosByStation(idCinema+1);
-        if (!photos.isEmpty()) {
-            photo_names = new ArrayList<String>();
-            for (Photo p : photos) {
-                photo_names.add(p.getName());
-            }
-        }
-        countP = photo_names.size();
-        for (int i=0; i<photo_names.size(); i++) {
+        countP = dbAdapter.getInstance().getPhotosByStation(idCinema+1).size();
+        for (int i=0; i<countP; i++) {
             Button imageCinema = new Button(this);
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(photo_names.get(i));
+                Field field = res.getField(dbAdapter.getInstance().getPhotosByStation(idCinema+1).get(i).getName());
                 int drawableId = field.getInt(null);
                 imageCinema.setBackgroundResource(drawableId);
-            } catch (Exception e) {
-
-            }
-            imageCinema.setGravity(Gravity.BOTTOM | Gravity.CENTER);
-            imageCinema.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                imageCinema.setGravity(Gravity.BOTTOM | Gravity.CENTER);
+                imageCinema.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,300));
+            } catch (Exception e) {}
 
             scrollView.addView(imageCinema);
         }

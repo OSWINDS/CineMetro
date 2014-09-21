@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
@@ -14,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 /**
  * Created by kiki__000 on 20-Jul-14.
@@ -31,9 +31,6 @@ public class ViewStation extends ActionBarActivity  {
     private TextView textViewDirector;
     private TextView textViewInfo;
     private Button goAheadButton;
-    private ArrayList<Photo> photos;
-    private ArrayList<String> photo_names;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +49,12 @@ public class ViewStation extends ActionBarActivity  {
         inHorizontalScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
 
         imageMovie =(ImageView)findViewById(R.id.imageMovie);
-        photos = dbAdapter.getInstance().getPhotosByStation(idStation);
-        if (!photos.isEmpty()) {
-            photo_names = new ArrayList<String>();
-            for (Photo p : photos) {
-                photo_names.add(p.getName());
-            }
-        }
         try {
             Class res = R.drawable.class;
-            Field field = res.getField(photo_names.get(0));
+            Field field = res.getField((dbAdapter.getInstance().getPhotosByStation(idStation).get(0).getName()));
             int drawableId = field.getInt(null);
             imageMovie.setImageResource(drawableId);
+            imageMovie.getLayoutParams().height = 250;
         } catch (Exception e) {}
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
@@ -80,15 +71,16 @@ public class ViewStation extends ActionBarActivity  {
                 int drawableId = field.getInt(null);
                 imageActor.setBackgroundResource(drawableId);
                 imageActor.setLayoutParams(new ViewGroup.LayoutParams(160,150));
-
             } catch (Exception e) {}
             String string = dbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i);
             String[] parts = string.split(" ");
             imageActor.setText(parts[0] + "\n" + parts[1]);
             imageActor.setTextSize(16);
+            imageActor.setTextColor(Color.BLACK);
             imageActor.setGravity(Gravity.BOTTOM | Gravity.CENTER);
 
             inHorizontalScrollView.addView(imageActor);
+
         }
 
         textViewInfo = (TextView)findViewById(R.id.info);
