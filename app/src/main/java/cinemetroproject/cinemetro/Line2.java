@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class Line2 extends ActionBarActivity {
@@ -31,7 +30,7 @@ public class Line2 extends ActionBarActivity {
             stationButton.setHeight(150);
             //stationButton.setBackgroundColor(Color.parseColor("#dee6ef"));
             if(i==0){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green1, 0, 0, 0);}
+                stationButton.setCompoundDrawablesWithIntrinsicBounds( +dbAdapter.getInstance().getPhotoDrawableID("green1"), 0, 0, 0);}
             if(i==1){
                 stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green2 , 0, 0, 0);}
             if(i==2){

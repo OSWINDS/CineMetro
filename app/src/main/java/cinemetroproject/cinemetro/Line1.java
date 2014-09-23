@@ -8,13 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
-
 /**
- * Created by vivi dimitris on 10/9/2014.
+ * Created by vivi  on 10/9/2014.
  */
 public class Line1 extends ActionBarActivity {
 
@@ -35,6 +32,8 @@ public class Line1 extends ActionBarActivity {
             cinemaButton.setId(i);
             cinemaButton.setWidth(100);
             cinemaButton.setHeight(150);
+
+
             //cinemaButton.setBackgroundColor(Color.parseColor("#dee6ef"));
             if(i==0){
                 cinemaButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green1, 0, 0, 0);}

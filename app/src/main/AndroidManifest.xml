@@ -118,6 +118,15 @@
             android:name=".Line3">
 
             </activity>
+
+        <activity
+            android:name=".Timeline"
+            android:label="Timeline"
+            android:parentActivityName=".LinesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cinemetroproject.cinemetro.LinesActivity" />
+        </activity>
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map"
