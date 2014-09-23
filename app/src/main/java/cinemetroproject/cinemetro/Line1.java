@@ -20,6 +20,7 @@ public class Line1 extends ActionBarActivity {
 
     private LinearLayout scrollView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +86,6 @@ public class Line1 extends ActionBarActivity {
             Intent intent = new Intent(Line1.this, ViewCinema.class);
             intent.putExtra("button_id", view.getId());
             Line1.this.startActivity(intent);
-            finish();
         }};
 }
 

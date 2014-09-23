@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cinemetroproject.cinemetro" >
 
+    <permission android:name="cinemetroproject.cinemetro.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+    <uses-permission android:name="cinemetroproject.cinemetro.permission.MAPS_RECEIVE"/>
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -79,12 +83,20 @@
                 android:value="cinemetroproject.cinemetro.MainMenu" />
         </activity>
         <activity
-            android:name=".RateActivity"
-            android:label="Rate"
-            android:parentActivityName=".MainMenu" >
+            android:name=".ViewStation"
+            android:label="ViewStation"
+            android:parentActivityName=".LinesActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cinemetroproject.cinemetro.MainMenu" />
+                android:value="cinemetroproject.cinemetro.LinesActivity" />
+        </activity>
+        <activity
+            android:name=".RateActivity"
+            android:label="Rate"
+            android:parentActivityName=".ViewStation" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cinemetroproject.cinemetro.ViewStation" />
         </activity>
         <activity
             android:name=".ViewCinema"
@@ -96,20 +108,16 @@
         </activity>
         <activity
             android:name=".Line1"
-            android:label="line1"></activity>
+            android:label="line1">
+            </activity>
         <activity
-            android:name=".Line2"></activity>
-        <activity
-            android:name=".Line3"></activity>
-        <activity
-            android:name=".ViewStation"
-            android:label="ViewStation"
-            android:parentActivityName=".LinesActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cinemetroproject.cinemetro.LinesActivity" />
-        </activity>
+            android:name=".Line2">
 
+            </activity>
+        <activity
+            android:name=".Line3">
+
+            </activity>
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map"
@@ -118,6 +126,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cinemetroproject.cinemetro.MainMenu" />
         </activity>
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAI-hr5NpFX-qr_JE_TmKZHiKrKpHwtAhs" />
     </application>
 
 </manifest>

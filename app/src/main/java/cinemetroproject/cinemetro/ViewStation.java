@@ -1,6 +1,5 @@
 package cinemetroproject.cinemetro;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,22 +9,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 /**
  * Created by kiki__000 on 20-Jul-14.
  * Se ayto to activity anaparistatai to ViewStation
  * Dimiourgeitai otan epilegetai mia stasi apo LinesActivity
  */
-public class ViewStation extends ActionBarActivity {
+public class ViewStation extends ActionBarActivity  {
 
     private int idStation;
     private int actors; //count of actors
@@ -35,9 +31,6 @@ public class ViewStation extends ActionBarActivity {
     private TextView textViewDirector;
     private TextView textViewInfo;
     private Button goAheadButton;
-    private ArrayList<Photo> photos;
-    private ArrayList<String> photo_names;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,18 +49,12 @@ public class ViewStation extends ActionBarActivity {
         inHorizontalScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
 
         imageMovie =(ImageView)findViewById(R.id.imageMovie);
-        photos = dbAdapter.getInstance().getPhotosByStation(idStation);
-        if (!photos.isEmpty()) {
-            photo_names = new ArrayList<String>();
-            for (Photo p : photos) {
-                photo_names.add(p.getName());
-            }
-        }
         try {
             Class res = R.drawable.class;
-            Field field = res.getField(photo_names.get(0));
+            Field field = res.getField((dbAdapter.getInstance().getPhotosByStation(idStation).get(0).getName()));
             int drawableId = field.getInt(null);
             imageMovie.setImageResource(drawableId);
+            imageMovie.getLayoutParams().height = 250;
         } catch (Exception e) {}
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
@@ -84,15 +71,16 @@ public class ViewStation extends ActionBarActivity {
                 int drawableId = field.getInt(null);
                 imageActor.setBackgroundResource(drawableId);
                 imageActor.setLayoutParams(new ViewGroup.LayoutParams(160,150));
-
             } catch (Exception e) {}
             String string = dbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i);
             String[] parts = string.split(" ");
             imageActor.setText(parts[0] + "\n" + parts[1]);
             imageActor.setTextSize(16);
+            imageActor.setTextColor(Color.BLACK);
             imageActor.setGravity(Gravity.BOTTOM | Gravity.CENTER);
 
             inHorizontalScrollView.addView(imageActor);
+
         }
 
         textViewInfo = (TextView)findViewById(R.id.info);
@@ -101,7 +89,6 @@ public class ViewStation extends ActionBarActivity {
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
     }
-
 
 
     @Override
@@ -116,10 +103,14 @@ public class ViewStation extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                onBackPressed();
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -132,5 +123,6 @@ public class ViewStation extends ActionBarActivity {
             intent.putExtra("button_id", idStation);
             ViewStation.this.startActivity(intent);
         }};
+
 
 }
