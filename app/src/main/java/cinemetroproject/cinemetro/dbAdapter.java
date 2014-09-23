@@ -2,6 +2,7 @@ package cinemetroproject.cinemetro;
 
 import android.widget.ImageView;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
@@ -230,6 +231,19 @@ final class dbAdapter {
         } catch (Exception e) {
             return Integer.parseInt(null);
         }
+    }
+
+    public ArrayList<String> getGreenLinePhotos()
+    {
+        ArrayList<String> p = new ArrayList<String>();
+        for(Photo photo : this.photos)
+        {
+            if (photo.getMovie_id() == 0 && photo.getStation_id() == 0)
+            {
+                p.add(photo.getName());
+            }
+        }
+        return p;
     }
 
     /**
@@ -489,5 +503,16 @@ final class dbAdapter {
         this.db.addPhoto(new Photo("vainas", -1, 8, ""));
         this.db.addPhoto(new Photo("papadopoulos", -1, 8, ""));
         this.db.addPhoto(new Photo("sfetsa", -1, 8, ""));
+
+        //green line
+        this.db.addPhoto(new Photo("green1", 0, 0, ""));
+        this.db.addPhoto(new Photo("green2", 0, 0, ""));
+        this.db.addPhoto(new Photo("green3", 0, 0, ""));
+        this.db.addPhoto(new Photo("green4", 0, 0, ""));
+        this.db.addPhoto(new Photo("green5", 0, 0, ""));
+        this.db.addPhoto(new Photo("green6", 0, 0, ""));
+        this.db.addPhoto(new Photo("green7", 0, 0, ""));
+        this.db.addPhoto(new Photo("green8", 0, 0, ""));
+        //red line
     }
 }
