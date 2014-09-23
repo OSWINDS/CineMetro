@@ -1,20 +1,29 @@
 package cinemetroproject.cinemetro;
 
+
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.os.Parcelable;
+import android.text.Html;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * Created by kiki__000 on 20-Jul-14.
@@ -25,12 +34,15 @@ public class ViewStation extends ActionBarActivity  {
 
     private int idStation;
     private int actors; //count of actors
-    private ImageView imageMovie;
+    private int movieImages;
     private TextView textViewTitle;
-    private LinearLayout inHorizontalScrollView;
+    private LinearLayout actorsScrollView;
+    private LinearLayout movieImagesScrollView;
     private TextView textViewDirector;
     private TextView textViewInfo;
     private Button goAheadButton;
+    private Button facebookButton;
+    private Button twitterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,18 +56,22 @@ public class ViewStation extends ActionBarActivity  {
         Intent intent = getIntent();
         idStation = intent.getIntExtra("button_id", 0);
 
-        actors = dbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
+        movieImages = dbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size();
+        movieImagesScrollView = (LinearLayout)findViewById(R.id.movieImagesHsw);
+        for (int i=0; i<=(movieImages-1); i++) {
+            Button movieImage = new Button(this);
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField((dbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).get(i).getName()));
+                int drawableId = field.getInt(null);
+                movieImage.setBackgroundResource(drawableId);
+                movieImage.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 300));
+            } catch (Exception e) {}
+            movieImage.setGravity(Gravity.BOTTOM | Gravity.CENTER);
 
-        inHorizontalScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
+            movieImagesScrollView.addView(movieImage);
 
-        imageMovie =(ImageView)findViewById(R.id.imageMovie);
-        try {
-            Class res = R.drawable.class;
-            Field field = res.getField((dbAdapter.getInstance().getPhotosByStation(idStation).get(0).getName()));
-            int drawableId = field.getInt(null);
-            imageMovie.setImageResource(drawableId);
-            imageMovie.getLayoutParams().height = 250;
-        } catch (Exception e) {}
+        }
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
         textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + dbAdapter.getInstance().getMovieByStation(idStation).getYear() + "\n");
@@ -63,6 +79,8 @@ public class ViewStation extends ActionBarActivity  {
         textViewDirector = (TextView)findViewById(R.id.director);
         textViewDirector.setText("Σκηνοθεσία: " + dbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
 
+        actors = dbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
+        actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
         for (int i=0; i<actors; i++) {
             Button imageActor = new Button(this);
             try {
@@ -79,7 +97,7 @@ public class ViewStation extends ActionBarActivity  {
             imageActor.setTextColor(Color.BLACK);
             imageActor.setGravity(Gravity.BOTTOM | Gravity.CENTER);
 
-            inHorizontalScrollView.addView(imageActor);
+            actorsScrollView.addView(imageActor);
 
         }
 
@@ -88,8 +106,18 @@ public class ViewStation extends ActionBarActivity  {
 
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
-    }
 
+        facebookButton = (Button) findViewById(R.id.facebook_button);
+        facebookButton.setBackgroundResource(R.drawable.facebook_share);
+        facebookButton.setLayoutParams (new LinearLayout.LayoutParams(60, 60));
+        facebookButton.setOnClickListener(facebookButtonOnClickListener);
+
+        twitterButton = (Button) findViewById(R.id.twitter_button);
+        twitterButton.setBackgroundResource(R.drawable.twitter_share);
+        twitterButton.setLayoutParams (new LinearLayout.LayoutParams(50, 50));
+        twitterButton.setOnClickListener(twitterButtonOnClickListener);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,14 +132,37 @@ public class ViewStation extends ActionBarActivity  {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        switch (item.getItemId()) {
+        /**switch (item.getItemId()) {
 
             case android.R.id.home:
                 onBackPressed();
                 return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);*/
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            onBackPressed();
+            return true;
+        }
+        switch (item.getItemId()) {
+            case R.id.menu_item_share:
+                shareIt();
+                return true;
+            default:
+                onBackPressed();
+                return true;
+        }
+    }
+
+    private void shareIt() {
+
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "#CineMetro#" + dbAdapter.getInstance().getMovieByStation(idStation).getTitle();
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "CineMetro");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
     View.OnClickListener goAheadButtonOnClickListener = new View.OnClickListener(){
@@ -124,5 +175,56 @@ public class ViewStation extends ActionBarActivity  {
             ViewStation.this.startActivity(intent);
         }};
 
+    View.OnClickListener facebookButtonOnClickListener = new View.OnClickListener(){
 
+        @Override
+        public void onClick(View view) {
+
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Content to share");
+            PackageManager pm = view.getContext().getPackageManager();
+            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+            for (final ResolveInfo app : activityList) {
+                if ((app.activityInfo.name).contains("facebook")) {
+                    final ActivityInfo activity = app.activityInfo;
+                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    shareIntent.setComponent(name);
+                    view.getContext().startActivity(shareIntent);
+                    break;
+                }
+            }
+
+
+
+
+
+        }};
+
+    View.OnClickListener twitterButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            String shareBody = "#CineMetro#" + dbAdapter.getInstance().getMovieByStation(idStation).getTitle();
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            PackageManager pm = view.getContext().getPackageManager();
+            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+            for (final ResolveInfo app : activityList) {
+                if ((app.activityInfo.name).contains("twitter")) {
+                    final ActivityInfo activity = app.activityInfo;
+                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    shareIntent.setComponent(name);
+                    view.getContext().startActivity(shareIntent);
+                    break;
+                }
+            }
+
+        }};
 }
