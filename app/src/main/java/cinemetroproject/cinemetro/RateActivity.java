@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -27,9 +28,7 @@ public class RateActivity extends ActionBarActivity {
     private Button goButton;
     private RatingBar ratingBar;
     private AlertDialog.Builder dialog;
-    private int idStation;
-    private ArrayList<Photo> photos;
-    private ArrayList<String> photo_names;
+    private int id;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -41,18 +40,11 @@ public class RateActivity extends ActionBarActivity {
         setContentView(R.layout.activity_rate);
 
         Intent intent = getIntent();
-        idStation = intent.getIntExtra("button_id", 0);
+        id = intent.getIntExtra("button_id", 0);
 
-        photos = dbAdapter.getInstance().getPhotosByStation(idStation);
-        if (!photos.isEmpty()) {
-            photo_names = new ArrayList<String>();
-            for (Photo p : photos) {
-                photo_names.add(p.getName());
-            }
-        }
         try {
             Class res = R.drawable.class;
-            Field field = res.getField(photo_names.get(0));
+            Field field = res.getField(dbAdapter.getInstance().getPhotosByStation(id).get(0).getName());
             int drawableId = field.getInt(null);
             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.layout);
             linearLayout.setBackgroundResource(drawableId);

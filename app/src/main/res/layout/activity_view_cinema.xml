@@ -32,6 +32,38 @@
                 android:gravity="center_horizontal"
                 android:id="@+id/description" />
 
+            <!-- Go button -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Go ahead!!!"
+                android:layout_gravity="right"
+                android:orientation="horizontal"
+                android:layout_marginTop="35dp"
+                android:id="@+id/go_ahead_button"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <!-- Facebook button -->
+                <Button
+                    android:id="@+id/facebook_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <!-- Twitter button -->
+                <Button
+                    android:id="@+id/twitter_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
         </LinearLayout>
+
     </ScrollView>
 </RelativeLayout>
