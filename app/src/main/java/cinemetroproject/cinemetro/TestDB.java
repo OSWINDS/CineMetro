@@ -127,14 +127,7 @@ public class TestDB extends ActionBarActivity {
             ImageView image = (ImageView) findViewById(R.id.imageView);
             String name = photo_names.get(0);
 
-            try {
-                Class res = R.drawable.class;
-                Field field = res.getField(name);
-                int drawableId = field.getInt(null);
-                image.setImageResource(drawableId);
-            } catch (Exception e) {
-
-            }
+            image.setImageResource(dbAdapter.getInstance().getPhotoDrawableID(name));
 
             image = (ImageView) findViewById(R.id.imageView2);
             name = photo_names.get(1);

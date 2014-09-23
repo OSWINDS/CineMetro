@@ -1,5 +1,8 @@
 package cinemetroproject.cinemetro;
 
+import android.widget.ImageView;
+
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 final class dbAdapter {
@@ -211,6 +214,22 @@ final class dbAdapter {
             }
         }
         return null;
+    }
+
+    /**
+     *
+     * @param name
+     * @returns the id required to display the photo with that name
+     */
+    public int getPhotoDrawableID(String name)
+    {
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(name);
+            return field.getInt(null);
+        } catch (Exception e) {
+            return Integer.parseInt(null);
+        }
     }
 
     /**
