@@ -80,8 +80,8 @@ public class Line3 extends ActionBarActivity {
         public void onClick(View view) {
 
 
-            Intent intent = new Intent(Line3.this, Timeline.class);
+           // Intent intent = new Intent(Line3.this, Timeline.class);
             //intent.putExtra("button_id", view.getId());
-            Line3.this.startActivity(intent);
+          //  Line3.this.startActivity(intent);
         }};
 }
