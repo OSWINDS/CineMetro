@@ -2,8 +2,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="cinemetroproject.cinemetro.MapActivity" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    <item
+        android:id="@+id/Options"
+        android:showAsAction="always"
+        android:title="options">
+
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/line1"
+                    android:title="Line 1" />
+                <item android:id="@+id/line2"
+                    android:title="Line 2" />
+                <item android:id="@+id/line3"
+                    android:title="Line 3" />
+                <item android:id="@+id/noLine"
+                    android:title="No Line" />
+            </group>
+        </menu>
+    </item>
+
 </menu>
