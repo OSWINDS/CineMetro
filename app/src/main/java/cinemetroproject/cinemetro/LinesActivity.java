@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TabHost;
 
-import cinemetroproject.cinemetro.R;
-
 public class LinesActivity  extends TabActivity {
 
     private TabHost mTabHost;
@@ -47,8 +45,8 @@ public class LinesActivity  extends TabActivity {
         mTabHost.setCurrentTab(2);
         for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
         {
-            mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#d86753"));
-            mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#7392B5"));
+            mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#E41C26"));
+            mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#2389BE"));
             mTabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#71B278"));
         }
     }

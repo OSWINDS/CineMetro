@@ -29,22 +29,7 @@ public class Line2 extends ActionBarActivity {
             stationButton.setWidth(100);
             stationButton.setHeight(150);
             //stationButton.setBackgroundColor(Color.parseColor("#dee6ef"));
-            if(i==0){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( +dbAdapter.getInstance().getPhotoDrawableID("green1"), 0, 0, 0);}
-            if(i==1){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green2 , 0, 0, 0);}
-            if(i==2){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green3 , 0, 0, 0);}
-            if(i==3){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green4 , 0, 0, 0);}
-            if(i==4){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green5 , 0, 0, 0);}
-            if(i==5){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green6, 0, 0, 0);}
-            if(i==6){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green7, 0, 0, 0);}
-            if(i==7){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green8 , 0, 0, 0);}
+            stationButton.setCompoundDrawablesWithIntrinsicBounds( +dbAdapter.getInstance().getPhotoDrawableID("green"+Integer.toString(i+1)), 0, 0, 0);
             stationButton.setOnClickListener(stationButtonOnClickListener);
             scrollView.addView(stationButton);
         }

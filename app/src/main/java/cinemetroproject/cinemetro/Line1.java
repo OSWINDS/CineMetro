@@ -23,6 +23,7 @@ public class Line1 extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.line1);
 
+
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
 
         for (int i=0; i<6; i++) {
@@ -32,27 +33,16 @@ public class Line1 extends ActionBarActivity {
             cinemaButton.setId(i);
             cinemaButton.setWidth(100);
             cinemaButton.setHeight(150);
+            cinemaButton.setCompoundDrawablesWithIntrinsicBounds( +dbAdapter.getInstance().getPhotoDrawableID("red"+Integer.toString(i+1)), 0, 0, 0);
+
+          //  cinemaButton.setBackgroundColor(Color.parseColor("#debebb"));
 
 
-            //cinemaButton.setBackgroundColor(Color.parseColor("#dee6ef"));
-            if(i==0){
-                cinemaButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green1, 0, 0, 0);}
-            if(i==1){
-                cinemaButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green2 , 0, 0, 0);}
-            if(i==2){
-                cinemaButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green3 , 0, 0, 0);}
-            if(i==3){
-                cinemaButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green4 , 0, 0, 0);}
-            if(i==4){
-                cinemaButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green5 , 0, 0, 0);}
-            if(i==5){
-                cinemaButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green6, 0, 0, 0);}
-            if(i==6){
-                cinemaButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green7, 0, 0, 0);}
-            if(i==7){
-                cinemaButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green8 , 0, 0, 0);}
+
             cinemaButton.setOnClickListener(cinemaButtonOnClickListener);
+
             scrollView.addView(cinemaButton);
+           // scrollView.setBackgroundColor(Color.parseColor("060606"));
         }
 
     }
