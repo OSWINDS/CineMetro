@@ -9,95 +9,107 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cinemetroproject.cinemetro.LogIn">
 
-    <TextView
-        android:id="@+id/textViewProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="E-mail:"
-        android:textSize="30sp"
-        android:layout_toStartOf="@+id/SignUp_button"
-        android:layout_toLeftOf="@+id/SignUp_button" />
-    <Button
-        android:id="@+id/SignUp_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/userName" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/userName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textViewProfile"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        android:text=""/>
+            <Button
+                android:id="@+id/SignUp_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_above="@+id/userName"
+                android:layout_gravity="right" />
 
-    <TextView
-        android:id="@+id/textView_pass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/userName"
-        android:layout_marginTop="20dp"
-        android:text="Password:"
-        android:textSize="30sp" />
+            <TextView
+                android:id="@+id/textViewProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="E-mail:"
+                android:textSize="30sp"
+                android:layout_toStartOf="@+id/SignUp_button"
+                android:layout_toLeftOf="@+id/SignUp_button" />
 
-    <EditText
-        android:id="@+id/passWord"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView_pass"
-        android:layout_marginTop="10dp"
-        android:inputType="textPassword"
-        android:text="" />
+            <EditText
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textViewProfile"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                android:text=""/>
 
-    <TextView
-        android:id="@+id/succesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="this is where any problem will be displayed, or any success"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginTop="25dp"
-        android:layout_toStartOf="@+id/SignUp_button"
-        android:layout_below="@+id/passWord"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/textView_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/userName"
+                android:layout_marginTop="20dp"
+                android:text="Password:"
+                android:textSize="30sp" />
 
-    <Button
-        android:id="@+id/logIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log In"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/passWord"
-        android:layout_alignRight="@+id/passWord"
-        android:layout_alignEnd="@+id/passWord" />
+            <EditText
+                android:id="@+id/passWord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView_pass"
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"
+                android:text="" />
+
+            <Button
+                android:id="@+id/logIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log In"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/passWord"
+                android:layout_alignRight="@+id/passWord"
+                android:layout_alignEnd="@+id/passWord"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/succesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="this is where any problem will be displayed, or any success"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="25dp"
+                android:layout_toStartOf="@+id/SignUp_button"
+                android:layout_below="@+id/passWord"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
 
-
-    <TextView
-        android:id="@+id/information"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="this is where the new achivments (not database updated) will be dispayed"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@+id/succesText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true" />
+            <TextView
+                android:id="@+id/information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="this is where the new achivments (not database updated) will be dispayed"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/succesText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true" />
+        </LinearLayout>
+    </ScrollView>
 
 
 

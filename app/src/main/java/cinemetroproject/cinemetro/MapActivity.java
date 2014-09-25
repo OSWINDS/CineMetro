@@ -23,9 +23,13 @@ public class MapActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_map);
+        //mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        setUpMap();
+
+    }
+
+    public void setUpMap(){
         mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-
-
     }
 
 
@@ -59,7 +63,7 @@ public class MapActivity extends Activity {
                     // add line3
                     return true;
                 case R.id.noLine:
-                    // only map
+                    setUpMap();
                     return true;
                 default:
                     return super.onOptionsItemSelected(item);

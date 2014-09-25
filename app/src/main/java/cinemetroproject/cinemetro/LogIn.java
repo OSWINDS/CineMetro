@@ -46,7 +46,7 @@ public class LogIn extends ActionBarActivity {
             }
         });
 
-        information.setText("Dispalay the new Achivments here!");
+        information.setText("Display the new Achievments here!");
 
 
     }
