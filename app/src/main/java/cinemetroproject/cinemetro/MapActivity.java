@@ -1,26 +1,26 @@
 package cinemetroproject.cinemetro;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
-import android.content.Context;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.ArrayList;
 
 
 public class MapActivity extends Activity {
@@ -37,17 +37,18 @@ public class MapActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_map);
-
-        LocationManager lm=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        LocationListener ll=new myLocationListener();
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
-
-        //mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         setUpMap();
+        AddMarkers(0);
+        // LocationManager lm=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        // LocationListener ll=new myLocationListener();
+        // lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
+
+
     }
 
-    public void setUpMap(){
+    public void setUpMap() {
         mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        mΜap.clear();
     }
 
 
@@ -69,44 +70,89 @@ public class MapActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.Options) {
+       // if (id == R.id.Options) {
             switch (item.getItemId()) {
                 case R.id.line1:
-                    // add line 1
+                    Draw_Line(1);
                     return true;
                 case R.id.line2:
-                    // add line 2
+                    Draw_Line(2);
                     return true;
                 case R.id.line3:
-                    // add line3
+                    Draw_Line(3);
                     return true;
                 case R.id.noLine:
                     setUpMap();
+                    AddMarkers(0);
                     break;
                 default:
                     return super.onOptionsItemSelected(item);
             }
             return true;
-        }
-        return true;
+        //}
+      //  return true;
     }
 
-    class myLocationListener implements LocationListener{
+
+    private void Draw_Line(int nLine) {
+
+     mΜap.clear();
+     AddMarkers(nLine);
+
+        PolylineOptions options = new PolylineOptions().width(5).color(Color.BLUE);
+        ArrayList<Route> rt = dbAdapter.getInstance().getRoutes();
+        for (int i = 0; i < rt.size(); i++) {
+            if (rt.get(i).getId() == nLine||nLine==0) {
+                ArrayList<Station> st = dbAdapter.getInstance().getStationByRoute(rt.get(i).getId());
+                for (int j = 0; j < st.size(); j++) {
+
+                    LatLng point = st.get(j).getLatpoint();
+                    options.add(point);
+                }
+            }
+        }
+       mΜap.addPolyline(options);
+
+
+    }
+
+
+    private void AddMarkers(int nLine) {
+
+        ArrayList<Route> rt = dbAdapter.getInstance().getRoutes();
+        for (int i = 0; i < rt.size(); i++){
+            if(rt.get(i).getId()==nLine||nLine==0) {
+                ArrayList<Station> st = dbAdapter.getInstance().getStationByRoute(rt.get(i).getId());
+                for (int j = 0; j < st.size(); j++) {
+                    Station point = st.get(j);
+                    mΜap.addMarker(new MarkerOptions()
+                            .position(point.getLatpoint())
+                            .title(point.getName())
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+
+                }
+            }
+        }
+    }
+
+
+    class myLocationListener implements LocationListener {
 
         @Override
         public void onLocationChanged(Location location) {
 
-            if(location!=null){
+            if (location != null) {
                 //double pLong=location.getLongitude();
                 //double pLat=location.getLatitude();
                 //Longitude.setText(Double.toString(pLong));
                 //Latitude.setText(Double.toString(pLat));
 
-                current= new LatLng(location.getLatitude(),location.getLongitude());
+                current = new LatLng(location.getLatitude(), location.getLongitude());
                 //setUpMap();
-                if(mΜap!=null){
+                if (mΜap != null) {
                     mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(current, 10));
-                    mCurrent = mΜap.addMarker(new MarkerOptions().position(current).title("You are here!"));
+
+                    // mCurrent = mΜap.addMarker(new MarkerOptions().position(current).title("You are here!"));
                 }
             }
         }
@@ -126,4 +172,6 @@ public class MapActivity extends Activity {
 
         }
     }
+
+
 }
