@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
@@ -41,9 +40,6 @@ public class MainMenu extends ActionBarActivity {
 
         aboutButton = (Button) findViewById(R.id.about_button);
         aboutButton.setOnClickListener(aboutButtonOnClickListener);
-
-        testdbButton = (Button) findViewById(R.id.test_db_button);
-        testdbButton.setOnClickListener(testdbButtonOnClickListener);
     }
 
     @Override
@@ -108,21 +104,11 @@ public class MainMenu extends ActionBarActivity {
             MainMenu.this.startActivity(intent);
         }};
 
-    //Starts the TestDB activity when the button Test DB is pressed
-    View.OnClickListener testdbButtonOnClickListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View view) {
-
-            Intent intent = new Intent(MainMenu.this, TestDB.class);
-            MainMenu.this.startActivity(intent);
-        }};
-
-    private dbHelper db;
+    private DbHelper db;
     //Initialize the db and add data
     public void initializeDB()
     {
-        db = new dbHelper(this);
-        dbAdapter.getInstance().setDB(db);
+        db = new DbHelper(this);
+        DbAdapter.getInstance().setDB(db);
     }
 }

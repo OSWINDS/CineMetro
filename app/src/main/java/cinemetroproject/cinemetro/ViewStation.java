@@ -8,10 +8,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.Html;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.support.v7.app.ActionBarActivity;
@@ -56,13 +52,13 @@ public class ViewStation extends ActionBarActivity  {
         Intent intent = getIntent();
         idStation = intent.getIntExtra("button_id", 0);
 
-        movieImages = dbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size();
+        movieImages = DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size();
         movieImagesScrollView = (LinearLayout)findViewById(R.id.movieImagesHsw);
         for (int i=0; i<=(movieImages-1); i++) {
             Button movieImage = new Button(this);
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField((dbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).get(i).getName()));
+                Field field = res.getField((DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).get(i).getName()));
                 int drawableId = field.getInt(null);
                 movieImage.setBackgroundResource(drawableId);
                 movieImage.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 300));
@@ -74,23 +70,23 @@ public class ViewStation extends ActionBarActivity  {
         }
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
-        textViewTitle.setText(dbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + dbAdapter.getInstance().getMovieByStation(idStation).getYear() + "\n");
+        textViewTitle.setText(DbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + DbAdapter.getInstance().getMovieByStation(idStation).getYear() + "\n");
 
         textViewDirector = (TextView)findViewById(R.id.director);
-        textViewDirector.setText("Σκηνοθεσία: " + dbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
+        textViewDirector.setText("Σκηνοθεσία: " + DbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
 
-        actors = dbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
+        actors = DbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
         actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
         for (int i=0; i<actors; i++) {
             Button imageActor = new Button(this);
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(dbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(i).getName());
+                Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(i).getName());
                 int drawableId = field.getInt(null);
                 imageActor.setBackgroundResource(drawableId);
                 imageActor.setLayoutParams(new ViewGroup.LayoutParams(160,150));
             } catch (Exception e) {}
-            String string = dbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i);
+            String string = DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i);
             String[] parts = string.split(" ");
             imageActor.setText(parts[0] + "\n" + parts[1]);
             imageActor.setTextSize(16);
@@ -102,7 +98,7 @@ public class ViewStation extends ActionBarActivity  {
         }
 
         textViewInfo = (TextView)findViewById(R.id.info);
-        textViewInfo.setText(dbAdapter.getInstance().getMovieByStation(idStation).getDescription());
+        textViewInfo.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDescription());
 
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
@@ -159,7 +155,7 @@ public class ViewStation extends ActionBarActivity  {
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "#CineMetro#" + dbAdapter.getInstance().getMovieByStation(idStation).getTitle();
+        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle();
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "CineMetro");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
@@ -209,7 +205,7 @@ public class ViewStation extends ActionBarActivity  {
         public void onClick(View view) {
 
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-            String shareBody = "#CineMetro#" + dbAdapter.getInstance().getMovieByStation(idStation).getTitle();
+            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle();
             shareIntent.setType("text/plain");
             shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
             PackageManager pm = view.getContext().getPackageManager();

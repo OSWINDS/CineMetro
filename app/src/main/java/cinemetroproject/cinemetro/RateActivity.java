@@ -9,7 +9,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,7 +16,6 @@ import android.widget.RatingBar;
 import android.app.AlertDialog;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 /**
  * Created by kiki__000 on 03-Aug-14.
@@ -44,7 +42,7 @@ public class RateActivity extends ActionBarActivity {
 
         try {
             Class res = R.drawable.class;
-            Field field = res.getField(dbAdapter.getInstance().getPhotosByStation(id).get(0).getName());
+            Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(id).get(0).getName());
             int drawableId = field.getInt(null);
             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.layout);
             linearLayout.setBackgroundResource(drawableId);

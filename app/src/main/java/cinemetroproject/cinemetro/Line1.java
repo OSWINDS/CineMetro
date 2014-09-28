@@ -28,12 +28,12 @@ public class Line1 extends ActionBarActivity {
 
         for (int i=0; i<6; i++) {
             Button cinemaButton = new Button(this);
-            cinemaButton.setText("Στάση "+(i+1)+"\n"+dbAdapter.getInstance().getStations().get(i).getName());
+            cinemaButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getStations().get(i).getName());
             cinemaButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             cinemaButton.setId(i);
             cinemaButton.setWidth(100);
             cinemaButton.setHeight(150);
-            cinemaButton.setCompoundDrawablesWithIntrinsicBounds( +dbAdapter.getInstance().getPhotoDrawableID("red"+Integer.toString(i+1)), 0, 0, 0);
+            cinemaButton.setCompoundDrawablesWithIntrinsicBounds( +DbAdapter.getInstance().getPhotoDrawableID("red"+Integer.toString(i+1)), 0, 0, 0);
 
           //  cinemaButton.setBackgroundColor(Color.parseColor("#debebb"));
 

@@ -9,10 +9,13 @@ import android.database.Cursor;
 import java.util.ArrayList;
 
 /**
+ * 
  * Extends SQLiteOpenHelper and is responsible for creating the tables of the db,
  * updating the db and deleting the db.
+ * @author efi
+ *
  */
-public class dbHelper extends SQLiteOpenHelper {
+public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
     private static final int DATABASE_VERSION = 4;
@@ -27,7 +30,7 @@ public class dbHelper extends SQLiteOpenHelper {
      */
     public boolean isUpdated()
     {
-        return updated;
+        return this.updated;
     }
 
     public void setUpdated(boolean u)
@@ -35,7 +38,7 @@ public class dbHelper extends SQLiteOpenHelper {
         this.updated = u;
     }
 
-    public dbHelper(Context context) {
+    public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -135,23 +138,31 @@ public class dbHelper extends SQLiteOpenHelper {
      */
     public void addStation(Station station)
     {
+        SQLiteDatabase db = null;
         // get reference to writable DB
-        SQLiteDatabase db = this.getWritableDatabase();
+    	try{
 
-        //ContentValues to add key "column"/value
-        ContentValues values = new ContentValues();
-        values.put("name", station.getName()); // get name
-        values.put("description", station.getDescription()); // get description
-        values.put("route_id", station.getRoute_id());
-        values.put("colour", station.getColour());
+            db = this.getWritableDatabase();
 
-        //insert
-        db.insert("station", // table
-                null, //nullColumnHack
-                values); // key/value -> keys = column names/ values = column values
+            //ContentValues to add key "column"/value
+            ContentValues values = new ContentValues();
+            values.put("name", station.getName()); // get name
+            values.put("description", station.getDescription()); // get description
+            values.put("route_id", station.getRoute_id());
+            values.put("colour", station.getColour());
 
-        //close
-        db.close();
+            //insert
+            db.insert("station", // table
+                    null, //nullColumnHack
+                    values); // key/value -> keys = column names/ values = column values
+
+    	}
+        finally
+        {
+            //close
+            if (null != db)
+            db.close();
+        }
     }
 
     /**
@@ -160,22 +171,32 @@ public class dbHelper extends SQLiteOpenHelper {
      */
     public void addRoute(Route route)
     {
+        SQLiteDatabase db = null;
         // get reference to writable DB
-        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            db = this.getWritableDatabase();
+            // get reference to writable DB
+            db = this.getWritableDatabase();
 
-        //ContentValues to add key "column"/value
-        ContentValues values = new ContentValues();
-        values.put("name", route.getName()); // get name
-        values.put("colour", route.getColour());
-        values.put("state", route.getState());
+            //ContentValues to add key "column"/value
+            ContentValues values = new ContentValues();
+            values.put("name", route.getName()); // get name
+            values.put("colour", route.getColour());
+            values.put("state", route.getState());
 
-        //insert
-        db.insert("route", // table
-                null, //nullColumnHack
-                values); // key/value -> keys = column names/ values = column values
+            //insert
+            db.insert("route", // table
+                    null, //nullColumnHack
+                    values); // key/value -> keys = column names/ values = column values
 
-        //close
-        db.close();
+    	}
+        finally
+        {
+            //close
+            if (null != db)
+                db.close();
+        }
+    	
     }
 
     /**
@@ -184,23 +205,28 @@ public class dbHelper extends SQLiteOpenHelper {
      */
     public void addPhoto(Photo photo)
     {
+        SQLiteDatabase db = null;
         // get reference to writable DB
-        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            db = this.getWritableDatabase();
+            //ContentValues to add key "column"/value
+            ContentValues values = new ContentValues();
+            values.put("name", photo.getName()); // get name
+            values.put("station_id", photo.getStation_id());
+            values.put("movie_id", photo.getMovie_id());
+            values.put("description", photo.getDescription());
 
-        //ContentValues to add key "column"/value
-        ContentValues values = new ContentValues();
-        values.put("name", photo.getName()); // get name
-        values.put("station_id", photo.getStation_id());
-        values.put("movie_id", photo.getMovie_id());
-        values.put("description", photo.getDescription());
-
-        //insert
-        db.insert("photo", // table
-                null, //nullColumnHack
-                values); // key/value -> keys = column names/ values = column values
-
-        //close
-        db.close();
+            //insert
+            db.insert("photo", // table
+                    null, //nullColumnHack
+                    values); // key/value -> keys = column names/ values = column values
+    	}
+        finally
+        {
+            //close
+            if (null != db)
+                db.close();
+        }
     }
 
     /**
@@ -209,25 +235,30 @@ public class dbHelper extends SQLiteOpenHelper {
      */
     public void addMovie(Movie movie)
     {
+        SQLiteDatabase db = null;
         // get reference to writable DB
-        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            db = this.getWritableDatabase();
+            //ContentValues to add key "column"/value
+            ContentValues values = new ContentValues();
+            values.put("station_id", movie.getStation_id());
+            values.put("title", movie.getTitle()); // get name
+            values.put("description", movie.getDescription());
+            values.put("actors", movie.getActorstoString());
+            values.put("director", movie.getDirector());
+            values.put("year", movie.getYear());
 
-        //ContentValues to add key "column"/value
-        ContentValues values = new ContentValues();
-        values.put("station_id", movie.getStation_id());
-        values.put("title", movie.getTitle()); // get name
-        values.put("description", movie.getDescription());
-        values.put("actors", movie.getActorstoString());
-        values.put("director", movie.getDirector());
-        values.put("year", movie.getYear());
-
-        //insert
-        db.insert("movie", // table
-                null, //nullColumnHack
-                values); // key/value -> keys = column names/ values = column values
-
-        //close
-        db.close();
+            //insert
+            db.insert("movie", // table
+                    null, //nullColumnHack
+                    values); // key/value -> keys = column names/ values = column values
+    	}
+        finally
+        {
+            //close
+            if (null != db)
+                db.close();
+        }
     }
 
     /**
@@ -236,21 +267,28 @@ public class dbHelper extends SQLiteOpenHelper {
      */
     public void addUser(User user, String password)
     {
+        SQLiteDatabase db = null;
         // get reference to writable DB
-        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            // get reference to writable DB
+            db = this.getWritableDatabase();
 
-        //ContentValues to add key "column"/value
-        ContentValues values = new ContentValues();
-        values.put("username", user.getUsername()); // get name
-        values.put("password", password);
+            //ContentValues to add key "column"/value
+            ContentValues values = new ContentValues();
+            values.put("username", user.getUsername()); // get name
+            values.put("password", password);
 
-        //insert
-        db.insert("user", // table
-                null, //nullColumnHack
-                values); // key/value -> keys = column names/ values = column values
-
-        //close
-        db.close();
+            //insert
+            db.insert("user", // table
+                    null, //nullColumnHack
+                    values); // key/value -> keys = column names/ values = column values
+    	}
+        finally
+        {
+            //close
+            if (null != db)
+                db.close();
+        }
     }
 
 
@@ -277,7 +315,7 @@ public class dbHelper extends SQLiteOpenHelper {
                         null); // h. limit
 
         //if we got results get the first one
-        if (cursor != null)
+        if (null != cursor)
             cursor.moveToFirst();
 
         //build station object
@@ -315,7 +353,7 @@ public class dbHelper extends SQLiteOpenHelper {
                         null); // h. limit
 
         //if we got results get the first one
-        if (cursor != null)
+        if (null != cursor)
             cursor.moveToFirst();
 
         //build route object
@@ -352,7 +390,7 @@ public class dbHelper extends SQLiteOpenHelper {
                         null); // h. limit
 
         //if we got results get the first one
-        if (cursor != null)
+        if (null != cursor)
             cursor.moveToFirst();
 
         //build route object
@@ -390,7 +428,7 @@ public class dbHelper extends SQLiteOpenHelper {
                         null); // h. limit
 
         //if we got results get the first one
-        if (cursor != null)
+        if (null != cursor)
             cursor.moveToFirst();
 
         //build movie object
@@ -430,7 +468,7 @@ public class dbHelper extends SQLiteOpenHelper {
                         null); // h. limit
 
         //if we got results get the first one
-        if (cursor != null)
+        if (null != cursor)
             cursor.moveToFirst();
 
         //build user object
@@ -602,7 +640,7 @@ public class dbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
 
         //go over each row, build station and add it to list
-        Station station = null;
+        Station station;
         if (cursor.moveToFirst()) {
             String name,pass;
             int id;
@@ -626,15 +664,22 @@ public class dbHelper extends SQLiteOpenHelper {
 
     public void deleteStation(int id)
     {
-        //get reference to writable DB
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = null;
+    	try{
+            //get reference to writable DB
+            db = this.getWritableDatabase();
 
-        //delete
-        db.delete("station", //table name
-                "id = ?",  // selections
-                new String[] { String.valueOf(id) }); //selections args
+            //delete
+            db.delete("station", //table name
+                    "id = ?",  // selections
+                    new String[] { String.valueOf(id) }); //selections args
 
-        //close
-        db.close();
+    	}
+        finally
+        {
+            //close
+            if (null != db)
+            db.close();
+        }
     }
 }

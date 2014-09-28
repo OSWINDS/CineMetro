@@ -1,23 +1,26 @@
 package cinemetroproject.cinemetro;
 
-import android.widget.ImageView;
-
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
-final class dbAdapter {
-    private static dbAdapter ourInstance = new dbAdapter();
+/**
+ * Handles the communication of other classes with the database
+ * @author efi
+ *
+ */
+final class DbAdapter {
+    private static DbAdapter Instance = new DbAdapter();
 
-    private dbAdapter() {
+    private DbAdapter() {
     }
 
     /**
      *
      * @return instance of this class
      */
-    public static dbAdapter getInstance() {
-        return ourInstance;
+    public static DbAdapter getInstance() {
+        return Instance;
     }
 
     /**
@@ -48,7 +51,7 @@ final class dbAdapter {
     /**
      * dbHelper object to interact with the db
      */
-    private dbHelper db;
+    private DbHelper db;
 
 
 
@@ -56,13 +59,12 @@ final class dbAdapter {
      * Fills the arrays with data from the DB
      */
     private void fillArrays()
-
     {
-        this.stations = this.db.getAllStations();
-        this.routes = this.db.getAllRoutes();
-        this.photos = this.db.getAllPhotos();
-        this.movies = this.db.getAllMovies();
-        this.users = this.db.getAllUsers();
+        stations = db.getAllStations();
+        routes = db.getAllRoutes();
+        photos = db.getAllPhotos();
+        movies = db.getAllMovies();
+        users = db.getAllUsers();
     }
 
     /**
@@ -78,35 +80,35 @@ final class dbAdapter {
      *
      * @return all the routes in the DB
      */
-    public ArrayList<Route> getRoutes() {return this.routes; }
+    public ArrayList<Route> getRoutes() {return routes; }
 
     /**
      *
      * @return all the photos in the DB
      */
-    public ArrayList<Photo> getPhotos() {return this.photos; }
+    public ArrayList<Photo> getPhotos() {return photos; }
 
     /**
      *
      * @return all the users in the DB
      */
-    public ArrayList<User> getUsers() {return this.users; }
+    public ArrayList<User> getUsers() {return users; }
 
     /**
      *
      * @return all the movies in the DB
      */
-    public ArrayList<Movie> getMovies() {return this.movies;}
+    public ArrayList<Movie> getMovies() {return movies;}
 
     /**
      * fills the db if data if the tables are empty and then fill the arrays with the data from the db
      * @param db
      */
-    public void setDB(dbHelper db)
+    public void setDB(DbHelper db)
     {
         this.db = db;
         this.fillArrays();
-        if (this.db.isUpdated() || this.stations.isEmpty())
+        if (this.db.isUpdated() || stations.isEmpty())
         {
             this.populateDB();
             this.db.setUpdated(false);
@@ -122,7 +124,7 @@ final class dbAdapter {
     public ArrayList<Station> getStationByRoute(int route_id)
     {
         ArrayList<Station> route_stations = new ArrayList<Station>();
-        for(Station station : this.stations)
+        for(Station station : stations)
         {
             if (station.getRoute_id() == route_id)
             {
@@ -140,7 +142,7 @@ final class dbAdapter {
     public ArrayList<Photo> getPhotosByStation(int station_id)
     {
         ArrayList<Photo> station_photos = new ArrayList<Photo>();
-        for(Photo photo : this.photos)
+        for(Photo photo : photos)
         {
             if (photo.getStation_id() == station_id)
             {
@@ -157,10 +159,12 @@ final class dbAdapter {
      */
     public Movie getMovieByStation(int station_id)
     {
-        for(Movie movie : this.movies)
+        for(Movie movie : movies)
         {
             if (movie.getStation_id() == station_id)
+            {
                 return movie;
+            }
         }
         return null;
     }
@@ -208,7 +212,7 @@ final class dbAdapter {
      */
     public User getUserByUsername(String username)
     {
-        for (User u : this.users)
+        for (User u : users)
         {
             if (u.getUsername().equals((username))) {
                 return u;
@@ -220,7 +224,7 @@ final class dbAdapter {
     /**
      *
      * @param name
-     * @returns the id required to display the photo with that name
+     * @return the id required to display the photo with that name
      */
     public int getPhotoDrawableID(String name)
     {
@@ -233,17 +237,17 @@ final class dbAdapter {
         }
     }
 
-    public ArrayList<String> getGreenLinePhotos()
+    public List<String> getGreenLinePhotos()
     {
-        ArrayList<String> p = new ArrayList<String>();
+        ArrayList<String> green_photos = new ArrayList<String>();
         for(Photo photo : this.photos)
         {
-            if (photo.getMovie_id() == 0 && photo.getStation_id() == 0)
+            if ( 0 == photo.getMovie_id() && 0 == photo.getStation_id())
             {
-                p.add(photo.getName());
+            	green_photos.add(photo.getName());
             }
         }
-        return p;
+        return green_photos;
     }
 
     /**
@@ -253,9 +257,8 @@ final class dbAdapter {
     {
 
         //add routes
-        this.db.addRoute(new Route("Τα σινεμά της πόλης","χρώμα 1",1));
-        this.db.addRoute(new Route("Θεσσαλονίκη μέσα απο τον ελληνικό κινηματογράφο","χρώμα 2",1));
-
+        this.db.addRoute(new Route("Τα σινεμά της πόλης","red",1));
+        this.db.addRoute(new Route("Θεσσαλονίκη μέσα απο τον ελληνικό κινηματογράφο","blue",1));
 
         //add stations
         //Line 1

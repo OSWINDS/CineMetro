@@ -23,13 +23,13 @@ public class Line2 extends ActionBarActivity {
 
         for (int i=0; i<8; i++) {
             Button stationButton = new Button(this);
-            stationButton.setText("Στάση "+(i+1)+"\n"+dbAdapter.getInstance().getMovies().get(i).getTitle());
+            stationButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getMovies().get(i).getTitle());
             stationButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             stationButton.setId(i + 7);
             stationButton.setWidth(100);
             stationButton.setHeight(150);
             //stationButton.setBackgroundColor(Color.parseColor("#dee6ef"));
-            stationButton.setCompoundDrawablesWithIntrinsicBounds( +dbAdapter.getInstance().getPhotoDrawableID("green"+Integer.toString(i+1)), 0, 0, 0);
+            stationButton.setCompoundDrawablesWithIntrinsicBounds( +DbAdapter.getInstance().getPhotoDrawableID("green"+Integer.toString(i+1)), 0, 0, 0);
             stationButton.setOnClickListener(stationButtonOnClickListener);
             scrollView.addView(stationButton);
         }
