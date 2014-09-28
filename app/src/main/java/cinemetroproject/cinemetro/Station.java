@@ -1,5 +1,9 @@
 package cinemetroproject.cinemetro;
 
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.ArrayList;
+
 public class Station {
 
     private int id;
@@ -7,6 +11,9 @@ public class Station {
     private String description;
     private int route_id;
     private String colour;
+   ArrayList<LatLng> points;
+
+    static int pos;
     //There is one more attribute,the coordinates of the station on the map - to be implemented
 
     /**
@@ -21,10 +28,26 @@ public class Station {
         this.description = des;
         this.route_id = r_id;
         this.colour = colour;
+        pos=0;
+        points=new ArrayList<LatLng>();
+        points.add(new LatLng(40.640799, 22.934955));
+        points.add( new LatLng(40.633951, 22.936940));
+        points.add( new LatLng(40.633087, 22.938378));
+        points.add( new LatLng(40.631995, 22.940567));
+        points.add(new LatLng(40.633533, 22.946178));
+        points.add(new LatLng(40.626547, 22.948591));
+
     }
 
     public Station()
     {
+        points=new ArrayList<LatLng>();
+        points.add(new LatLng(40.640799, 22.934955));
+        points.add( new LatLng(40.633951, 22.936940));
+        points.add( new LatLng(40.633087, 22.938378));
+        points.add( new LatLng(40.631995, 22.940567));
+        points.add(new LatLng(40.633533, 22.946178));
+        points.add(new LatLng(40.626547, 22.948591));
     }
 
     /***************************************************************
@@ -103,5 +126,10 @@ public class Station {
     public void setRoute_id(int route_id)
     {
         this.route_id = route_id;
+    }
+
+    public LatLng getLatpoint() {
+        if(pos>= points.size())pos=0;
+        return points.get(pos++);
     }
 }
