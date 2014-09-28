@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,7 +40,8 @@ public class MapActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_map);
         setUpMap();
-        AddMarkers(0);
+        showList();
+        //AddMarkers(0);
         // LocationManager lm=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
         // LocationListener ll=new myLocationListener();
         // lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
@@ -48,7 +51,8 @@ public class MapActivity extends Activity {
 
     public void setUpMap() {
         mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-        mΜap.clear();
+        //mΜap.clear();
+        //mΜap.setMyLocationEnabled(true);
     }
 
 
@@ -135,6 +139,25 @@ public class MapActivity extends Activity {
         }
     }
 
+    private void showList(/*int nLine*/){
+        String[] line1={"1η Στάση", "2η Στάση", "3η Στάση", "4η Στάση", "5η Στάση", "6η Στάση"};
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, R.layout.item, line1);
+
+        ListView list=(ListView)findViewById(R.id.lv);
+        list.setAdapter(adapter);
+
+        /*switch(nLine){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }*/
+    }
 
     class myLocationListener implements LocationListener {
 
