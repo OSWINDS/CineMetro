@@ -48,12 +48,12 @@ public class ViewCinema extends ActionBarActivity {
 
         scrollView = (LinearLayout)findViewById(R.id.cinemaHsV);
 
-        countP = dbAdapter.getInstance().getPhotosByStation(idCinema+1).size();
+        countP = DbAdapter.getInstance().getPhotosByStation(idCinema+1).size();
         for (int i=0; i<countP; i++) {
             Button imageCinema = new Button(this);
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(dbAdapter.getInstance().getPhotosByStation(idCinema+1).get(i).getName());
+                Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(idCinema+1).get(i).getName());
                 int drawableId = field.getInt(null);
                 imageCinema.setBackgroundResource(drawableId);
                 imageCinema.setGravity(Gravity.BOTTOM | Gravity.CENTER);
@@ -64,7 +64,7 @@ public class ViewCinema extends ActionBarActivity {
         }
 
         description = (TextView)findViewById(R.id.description);
-        description.setText(dbAdapter.getInstance().getStations().get(idCinema).getDescription());
+        description.setText(DbAdapter.getInstance().getStations().get(idCinema).getDescription());
 
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
@@ -141,7 +141,7 @@ public class ViewCinema extends ActionBarActivity {
         public void onClick(View view) {
 
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-            String shareBody = "#CineMetro#" + dbAdapter.getInstance().getStations().get(idCinema).getName();
+            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idCinema).getName();
             shareIntent.setType("text/plain");
             shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
             PackageManager pm = view.getContext().getPackageManager();

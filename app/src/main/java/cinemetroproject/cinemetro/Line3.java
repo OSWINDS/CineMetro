@@ -26,7 +26,7 @@ public class Line3 extends ActionBarActivity {
 
         for (int i=0; i<8; i++) {
             Button stationButton = new Button(this);
-            stationButton.setText("Στάση "+(i+1)+"\n"+dbAdapter.getInstance().getMovies().get(i).getTitle());
+            stationButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getMovies().get(i).getTitle());
             stationButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             stationButton.setId(i + 14);
             stationButton.setWidth(100);

@@ -32,7 +32,7 @@ public class ProfileActivity extends ActionBarActivity {
         ll.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
 
         String str;
-        ArrayList<Route> routes = dbAdapter.getInstance().getRoutes();
+        ArrayList<Route> routes = DbAdapter.getInstance().getRoutes();
 
         for (int i = 0; i < routes.size(); i++) {
 
@@ -41,7 +41,7 @@ public class ProfileActivity extends ActionBarActivity {
             tv.setText(str);
             ll.addView(tv);
 
-            ArrayList<Station> stations = dbAdapter.getInstance().getStationByRoute(routes.get(i).getId());
+            ArrayList<Station> stations = DbAdapter.getInstance().getStationByRoute(routes.get(i).getId());
 
             for (int j = 0; j < stations.size(); j++) {
                 str = stations.get(j).getName();
