@@ -2,13 +2,14 @@ package cinemetroproject.cinemetro;
 
 
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
@@ -32,8 +33,8 @@ public class ViewStation extends ActionBarActivity  {
     private int actors; //count of actors
     private int movieImages;
     private TextView textViewTitle;
-    private LinearLayout actorsScrollView;
     private LinearLayout movieImagesScrollView;
+    private LinearLayout actorsScrollView;
     private TextView textViewDirector;
     private TextView textViewInfo;
     private Button goAheadButton;
@@ -77,24 +78,22 @@ public class ViewStation extends ActionBarActivity  {
 
         actors = DbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
         actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
+
         for (int i=0; i<actors; i++) {
-            Button imageActor = new Button(this);
+            View actor = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.actor, null);
+            Button imageActor = (Button) actor.findViewById(R.id.actorImage);
+            Button nameActor = (Button) actor.findViewById(R.id.actorName);
             try {
                 Class res = R.drawable.class;
                 Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(i).getName());
                 int drawableId = field.getInt(null);
                 imageActor.setBackgroundResource(drawableId);
-                imageActor.setLayoutParams(new ViewGroup.LayoutParams(160,150));
             } catch (Exception e) {}
             String string = DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i);
             String[] parts = string.split(" ");
-            imageActor.setText(parts[0] + "\n" + parts[1]);
-            imageActor.setTextSize(16);
-            imageActor.setTextColor(Color.BLACK);
-            imageActor.setGravity(Gravity.BOTTOM | Gravity.CENTER);
+            nameActor.setText(parts[0] + "\n" + parts[1]);
 
-            actorsScrollView.addView(imageActor);
-
+            actorsScrollView.addView(actor);
         }
 
         textViewInfo = (TextView)findViewById(R.id.info);
@@ -128,14 +127,6 @@ public class ViewStation extends ActionBarActivity  {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        /**switch (item.getItemId()) {
-
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);*/
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             onBackPressed();

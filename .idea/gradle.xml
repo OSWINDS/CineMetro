@@ -8,7 +8,14 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/FriendPickerSample" />
+            <option value="$PROJECT_DIR$/HelloFacebookSample" />
+            <option value="$PROJECT_DIR$/PlacePickerSample" />
+            <option value="$PROJECT_DIR$/RPSSample" />
+            <option value="$PROJECT_DIR$/Scrumptious" />
+            <option value="$PROJECT_DIR$/SwitchUserSample" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/facebook" />
           </set>
         </option>
       </GradleProjectSettings>

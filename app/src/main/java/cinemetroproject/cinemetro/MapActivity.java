@@ -104,10 +104,10 @@ public class MapActivity extends Activity {
      AddMarkers(nLine);
 
         PolylineOptions options = new PolylineOptions().width(5).color(Color.BLUE);
-        ArrayList<Route> rt = dbAdapter.getInstance().getRoutes();
+        ArrayList<Route> rt = DbAdapter.getInstance().getRoutes();
         for (int i = 0; i < rt.size(); i++) {
             if (rt.get(i).getId() == nLine||nLine==0) {
-                ArrayList<Station> st = dbAdapter.getInstance().getStationByRoute(rt.get(i).getId());
+                ArrayList<Station> st = DbAdapter.getInstance().getStationByRoute(rt.get(i).getId());
                 for (int j = 0; j < st.size(); j++) {
 
                     LatLng point = st.get(j).getLatpoint();
@@ -123,10 +123,10 @@ public class MapActivity extends Activity {
 
     private void AddMarkers(int nLine) {
 
-        ArrayList<Route> rt = dbAdapter.getInstance().getRoutes();
+        ArrayList<Route> rt = DbAdapter.getInstance().getRoutes();
         for (int i = 0; i < rt.size(); i++){
             if(rt.get(i).getId()==nLine||nLine==0) {
-                ArrayList<Station> st = dbAdapter.getInstance().getStationByRoute(rt.get(i).getId());
+                ArrayList<Station> st = DbAdapter.getInstance().getStationByRoute(rt.get(i).getId());
                 for (int j = 0; j < st.size(); j++) {
                     Station point = st.get(j);
                     mΜap.addMarker(new MarkerOptions()
