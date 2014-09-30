@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,6 +26,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MapActivity extends Activity {
@@ -33,6 +37,7 @@ public class MapActivity extends Activity {
     private Marker mCurrent;
     //TextView Longitude;
     //TextView Latitude;
+    private List<String> line=new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,7 @@ public class MapActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_map);
         setUpMap();
+        createList(0);
         showList();
         //AddMarkers(0);
         // LocationManager lm=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -51,7 +57,9 @@ public class MapActivity extends Activity {
 
     public void setUpMap() {
         mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-        //mΜap.clear();
+        if(mΜap!=null){
+            mΜap.clear();
+        }
         //mΜap.setMyLocationEnabled(true);
     }
 
@@ -77,22 +85,38 @@ public class MapActivity extends Activity {
        // if (id == R.id.Options) {
             switch (item.getItemId()) {
                 case R.id.line1:
-                    Draw_Line(1);
+                    if(mΜap!=null){
+                        Draw_Line(1);
+                    }
+                    createList(1);
+                    showList();
                     return true;
                 case R.id.line2:
-                    Draw_Line(2);
+                    if(mΜap!=null) {
+                        Draw_Line(2);
+                    }
+                    createList(2);
+                    showList();
                     return true;
                 case R.id.line3:
-                    Draw_Line(3);
+                    if(mΜap!=null) {
+                        Draw_Line(3);
+                    }
+                    createList(3);
+                    showList();
                     return true;
                 case R.id.noLine:
-                    setUpMap();
+                    /*if(mΜap!=null){
+                    //setUpMap();
                     AddMarkers(0);
-                    break;
+                    }*/
+                    createList(0);
+                    showList();
+                    return true;
                 default:
                     return super.onOptionsItemSelected(item);
             }
-            return true;
+            //return true;
         //}
       //  return true;
     }
@@ -123,6 +147,7 @@ public class MapActivity extends Activity {
 
     private void AddMarkers(int nLine) {
 
+        mΜap.clear();
         ArrayList<Route> rt = DbAdapter.getInstance().getRoutes();
         for (int i = 0; i < rt.size(); i++){
             if(rt.get(i).getId()==nLine||nLine==0) {
@@ -139,24 +164,32 @@ public class MapActivity extends Activity {
         }
     }
 
-    private void showList(/*int nLine*/){
-        String[] line1={"1η Στάση", "2η Στάση", "3η Στάση", "4η Στάση", "5η Στάση", "6η Στάση"};
+    private void createList(int nLine){
+        if(!line.isEmpty()){
+            line.clear();
+        }
 
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, R.layout.item, line1);
-
-        ListView list=(ListView)findViewById(R.id.lv);
-        list.setAdapter(adapter);
-
-        /*switch(nLine){
+        switch(nLine){
             case 0:
+                line.add("No line was selected.");
                 break;
             case 1:
+                line.add("1η Στάση");
+                line.add("2η Στάση");
+                line.add("3η Στάση");
+                line.add("4η Στάση");
+                line.add("5η Στάση");
+                line.add("6η Στάση");
                 break;
-            case 2:
-                break;
-            case 3:
-                break;
-        }*/
+            default:
+                line.add("Under construction");
+        }
+    }
+
+    private void showList(){
+        ArrayAdapter<String> adapter=new myArrayAdapter();
+        ListView list=(ListView)findViewById(R.id.lv);
+        list.setAdapter(adapter);
     }
 
     class myLocationListener implements LocationListener {
@@ -193,6 +226,28 @@ public class MapActivity extends Activity {
         @Override
         public void onProviderDisabled(String s) {
 
+        }
+    }
+
+    private class myArrayAdapter extends ArrayAdapter<String>{
+
+        public myArrayAdapter(){
+            super(MapActivity.this, R.layout.maplistitem, line);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View itemView=convertView;
+            if(itemView==null){
+                itemView=getLayoutInflater().inflate(R.layout.maplistitem, parent, false);
+            }
+
+            String s1=line.get(position);
+
+            TextView text1=(TextView)itemView.findViewById(R.id.station);
+            text1.setText(s1);
+
+            return itemView;
         }
     }
 
