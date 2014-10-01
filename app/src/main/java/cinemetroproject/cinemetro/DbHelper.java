@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
@@ -67,7 +67,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "name TEXT, " +
                 "description TEXT, " +
                 "route_id INTEGER," +
-                "colour TEXT )";
+                "lat REAL," +
+                "lng REAL)";
 
         // create station table
         db.execSQL(query);
@@ -105,6 +106,16 @@ public class DbHelper extends SQLiteOpenHelper {
         // create user table
         db.execSQL(query);
 
+        // SQL statement to create table Milestone
+        query = "CREATE TABLE IF NOT EXISTS milestone ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "station_id INTEGER, " +
+                "photo_name TEXT, "  +
+                "photo_des TEXT)";
+
+        // create user table
+        db.execSQL(query);
+
         this.updated = true;
     }
 
@@ -128,6 +139,9 @@ public class DbHelper extends SQLiteOpenHelper {
         // Drop older movie table if exists
         db.execSQL("DROP TABLE IF EXISTS movie");
 
+        // Drop older movie milestone if exists
+        db.execSQL("DROP TABLE IF EXISTS milestone");
+
         // create fresh tables
         this.onCreate(db);
     }
@@ -149,7 +163,8 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put("name", station.getName()); // get name
             values.put("description", station.getDescription()); // get description
             values.put("route_id", station.getRoute_id());
-            values.put("colour", station.getColour());
+            values.put("lat", station.getLat());
+            values.put("lng", station.getLng());
 
             //insert
             db.insert("station", // table
@@ -291,6 +306,38 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * adds a new entry to the table milestone
+     * @param milestone
+     */
+    public void addMilestone(Milestone milestone)
+    {
+        SQLiteDatabase db = null;
+        // get reference to writable DB
+        try{
+            // get reference to writable DB
+            db = this.getWritableDatabase();
+
+            //ContentValues to add key "column"/value
+            ContentValues values = new ContentValues();
+            values.put("station_id", milestone.getStation_id());
+            values.put("des", milestone.getDescription());
+            values.put("photo_name", milestone.getPhotoName());
+            values.put("photo_des", milestone.getPhotoDescription());
+
+            //insert
+            db.insert("milestone", // table
+                    null, //nullColumnHack
+                    values); // key/value -> keys = column names/ values = column values
+    	}
+        finally
+        {
+            //close
+            if (null != db)
+                db.close();
+        }
+    }
+
 
     /**
      * returns the station with this id
@@ -302,7 +349,7 @@ public class DbHelper extends SQLiteOpenHelper {
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String[] columns = {"id","name","description","route_id","colour"};
+        String[] columns = {"id","name","description","route_id"};
         //build query
         Cursor cursor =
                 db.query("station", // a. table
@@ -324,7 +371,7 @@ public class DbHelper extends SQLiteOpenHelper {
         station.setName(cursor.getString(1)); //name
         station.setDescription(cursor.getString(2)); //description
         station.setRoute_id(Integer.parseInt(cursor.getString(3))); //route_id
-        station.setColour(cursor.getString(4)); //colour
+        station.setPoint(Double.parseDouble(cursor.getString(4)), Double.parseDouble(cursor.getString(5))); //point
 
         //return station
         return station;
@@ -483,6 +530,44 @@ public class DbHelper extends SQLiteOpenHelper {
         return user;
     }
 
+    /**
+     * Returns the milestone with this id
+     * @param id
+     * @return
+     */
+    public Milestone getMilestone(int id)
+    {
+        //reference to readable DB
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {"id", "des", "station_id", "photo_name", "photo_des"};
+        //build query
+        Cursor cursor =
+                db.query("milestone", // a. table
+                        columns, // column names
+                        " id = ?", // c. selections
+                        new String[] { String.valueOf(id) }, // d. selections args
+                        null, // e. group by
+                        null, // f. having
+                        null, // g. order by
+                        null); // h. limit
+
+        //if we got results get the first one
+        if (null != cursor)
+            cursor.moveToFirst();
+
+        //build route object
+        Milestone milestone = new Milestone();
+        milestone.setId(Integer.parseInt(cursor.getString(0))); //id
+        milestone.setStation_id(Integer.parseInt(cursor.getString(1))); //station id
+        milestone.setDes(cursor.getString(2)); //des
+        milestone.setPhotoName(cursor.getString(3)); //photo name
+        milestone.setPhotoDescription(cursor.getString(4)); //photo description
+
+        //return milestone
+        return milestone;
+    }
+
 
     /**
      *
@@ -509,8 +594,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 station.setName(cursor.getString(1)); //name
                 station.setDescription(cursor.getString(2)); //description
                 station.setRoute_id(Integer.parseInt(cursor.getString(3))); //route_id
-                station.setColour(cursor.getString(4)); //colour
-
+                station.setPoint(Double.parseDouble(cursor.getString(4)), Double.parseDouble(cursor.getString(5))); //point
                 stations.add(station);
             } while (cursor.moveToNext());
         }
@@ -660,6 +744,40 @@ public class DbHelper extends SQLiteOpenHelper {
         return users;
     }
 
+
+    /**
+     *
+     * @return all the movies in the db
+     */
+    public ArrayList<Milestone> getAllMilestones()
+    {
+        ArrayList<Milestone> milestones = new ArrayList<Milestone>();
+
+        //build the query
+        String query = "SELECT  * FROM milestone";
+
+        //get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        //go over each row, build station and add it to list
+        Milestone milestone = null;
+        if (cursor.moveToFirst()) {
+            do {
+                //build movie object
+                milestone = new Milestone();
+                milestone.setId(Integer.parseInt(cursor.getString(0))); //id
+                milestone.setStation_id(Integer.parseInt(cursor.getString(1))); //station id
+                milestone.setDes(cursor.getString(2));
+                milestone.setPhotoName(cursor.getString(3)); //photo name
+                milestone.setPhotoDescription(cursor.getString(4));
+                milestones.add(milestone);
+            } while (cursor.moveToNext());
+        }
+
+        // return milestones
+        return milestones;
+    }
 
 
     public void deleteStation(int id)
