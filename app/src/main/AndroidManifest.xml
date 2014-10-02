@@ -65,14 +65,6 @@
                 android:value="cinemetroproject.cinemetro.MainMenu" />
         </activity>
         <activity
-            android:name=".TestDB"
-            android:label="TestDb"
-            android:parentActivityName=".MainMenu">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cinemetroproject.cinemetro.MainMenu" />
-        </activity>
-        <activity
             android:name=".LogIn"
             android:label="@string/title_activity_log_in"
             android:parentActivityName=".MainMenu">

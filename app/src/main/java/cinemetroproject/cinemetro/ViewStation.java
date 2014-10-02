@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 
+import android.app.DownloadManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.service.textservice.SpellCheckerService;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,6 +21,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.facebook.FacebookException;
+import com.facebook.FacebookOperationCanceledException;
+import com.facebook.HttpMethod;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.widget.WebDialog;
+
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -142,6 +153,7 @@ public class ViewStation extends ActionBarActivity  {
         }
     }
 
+    //from actionbar
     private void shareIt() {
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -162,12 +174,12 @@ public class ViewStation extends ActionBarActivity  {
             ViewStation.this.startActivity(intent);
         }};
 
-    View.OnClickListener facebookButtonOnClickListener = new View.OnClickListener(){
+    public View.OnClickListener facebookButtonOnClickListener = new View.OnClickListener(){
 
         @Override
         public void onClick(View view) {
 
-            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+           /** Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Content to share");
             PackageManager pm = view.getContext().getPackageManager();
@@ -182,8 +194,7 @@ public class ViewStation extends ActionBarActivity  {
                     view.getContext().startActivity(shareIntent);
                     break;
                 }
-            }
-
+            }*/
 
 
 
