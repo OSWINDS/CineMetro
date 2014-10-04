@@ -5,12 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/CineMetro.iml" filepath="$PROJECT_DIR$/CineMetro.iml" />
       <module fileurl="file://$PROJECT_DIR$/CineMetroApplication.iml" filepath="$PROJECT_DIR$/CineMetroApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/CineMetroWithGit.iml" filepath="$PROJECT_DIR$/CineMetroWithGit.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FriendPickerSample/FriendPickerSample.iml" filepath="$PROJECT_DIR$/FriendPickerSample/FriendPickerSample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HelloFacebookSample/HelloFacebookSample.iml" filepath="$PROJECT_DIR$/HelloFacebookSample/HelloFacebookSample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PlacePickerSample/PlacePickerSample.iml" filepath="$PROJECT_DIR$/PlacePickerSample/PlacePickerSample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RPSSample/RPSSample.iml" filepath="$PROJECT_DIR$/RPSSample/RPSSample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Scrumptious/Scrumptious.iml" filepath="$PROJECT_DIR$/Scrumptious/Scrumptious.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SwitchUserSample/SwitchUserSample.iml" filepath="$PROJECT_DIR$/SwitchUserSample/SwitchUserSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
     </modules>
