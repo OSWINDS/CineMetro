@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 import java.lang.reflect.Field;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,11 @@ final class DbAdapter {
     private ArrayList<User> users = new ArrayList<User>();
 
     /**
+     * array of timeline stations
+     */
+    private ArrayList<TimelineStation> timelineStations = new ArrayList<TimelineStation>();
+
+    /**
      * array of milestones
      */
     private ArrayList<Milestone> milestones = new ArrayList<Milestone>();
@@ -70,7 +76,9 @@ final class DbAdapter {
         photos = db.getAllPhotos();
         movies = db.getAllMovies();
         users = db.getAllUsers();
+        timelineStations = db.getAllTimelineStations();
         milestones = db.getAllMilestones();
+        this.setMilestonesToStations();
     }
 
     /**
@@ -106,7 +114,11 @@ final class DbAdapter {
      */
     public ArrayList<Movie> getMovies() {return movies;}
 
-    public ArrayList<Milestone> getMilestones() {return milestones;}
+    /**
+     *
+     * @return all the timeline stations
+     */
+    public ArrayList<TimelineStation> getTimelineStations() {return this.timelineStations;}
 
     /**
      * fills the db if data if the tables are empty and then fill the arrays with the data from the db
@@ -260,6 +272,23 @@ final class DbAdapter {
 
     /**
      *
+     * @param id
+     * @return TimelineStation with this id,returns null id no station with such id is found
+     */
+    public TimelineStation getTimelineStationByID(int id)
+    {
+        for (TimelineStation station : this.timelineStations)
+        {
+            if (id == station.getId())
+            {
+                return station;
+            }
+        }
+        return null;
+    }
+
+    /**
+     *
      * @param timeline_station_id
      * @return arraylist with all the milestones that belong to the TimelineStation with this id
      */
@@ -274,6 +303,14 @@ final class DbAdapter {
             }
         }
         return mls;
+    }
+
+    private void setMilestonesToStations()
+    {
+        for(int i =0; i<this.timelineStations.size(); i++)
+        {
+            this.timelineStations.get(i).setMilestones( getTimelineStationMilestones(this.timelineStations.get(i).getId()));
+        }
     }
 
     /**
@@ -700,6 +737,7 @@ final class DbAdapter {
 
 
         //TimelineStation 1
+        this.db.addTimelineStation(new TimelineStation("ΛΕΥΚΟΣ ΠΥΡΓΟΣ-ΕΤΑΙΡΕΙΑ ΜΑΚΕΔΟΝΙΚΩΝ ΣΠΟΥΔΩΝ (ΕΜΣ)"));
         //Milestones
         this.db.addMilestone(new Milestone(1, "Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
                 "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά για περίπου 3,5 δεκαετίες (5η Εβδομάς " +
