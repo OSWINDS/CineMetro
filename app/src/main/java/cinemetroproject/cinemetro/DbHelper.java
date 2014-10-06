@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
@@ -106,14 +106,23 @@ public class DbHelper extends SQLiteOpenHelper {
         // create user table
         db.execSQL(query);
 
-        // SQL statement to create table Milestone
+        // SQL statement to create table timelinestation
+        query = "CREATE TABLE IF NOT EXISTS timelinestation ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT)";
+
+        // create timelinestation table
+        db.execSQL(query);
+
+        // SQL statement to create table milestone
         query = "CREATE TABLE IF NOT EXISTS milestone ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "station_id INTEGER, " +
+                "des, TEXT" +
                 "photo_name TEXT, "  +
                 "photo_des TEXT)";
 
-        // create user table
+        // create milestone table
         db.execSQL(query);
 
         this.updated = true;
@@ -138,6 +147,9 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // Drop older movie table if exists
         db.execSQL("DROP TABLE IF EXISTS movie");
+
+        // Drop older timelinestation table if exists
+        db.execSQL("DROP TABLE IF EXISTS timelinestation");
 
         // Drop older movie milestone if exists
         db.execSQL("DROP TABLE IF EXISTS milestone");
@@ -298,6 +310,35 @@ public class DbHelper extends SQLiteOpenHelper {
                     null, //nullColumnHack
                     values); // key/value -> keys = column names/ values = column values
     	}
+        finally
+        {
+            //close
+            if (null != db)
+                db.close();
+        }
+    }
+
+    /**
+     * adds a new entry to the table timelinestation
+     * @param station
+     */
+    public void addTimelineStation(TimelineStation station)
+    {
+        SQLiteDatabase db = null;
+        // get reference to writable DB
+        try{
+            // get reference to writable DB
+            db = this.getWritableDatabase();
+
+            //ContentValues to add key "column"/value
+            ContentValues values = new ContentValues();
+            values.put("name", station.getName());
+
+            //insert
+            db.insert("timelinestation", // table
+                    null, //nullColumnHack
+                    values); // key/value -> keys = column names/ values = column values
+        }
         finally
         {
             //close
@@ -531,6 +572,41 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * Returns the milestone with this id,without the milestones arraylist
+     * @param id
+     * @return
+     */
+    public TimelineStation getTimelineStation(int id)
+    {
+        //reference to readable DB
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {"id", "name"};
+        //build query
+        Cursor cursor =
+                db.query("timelinestation", // a. table
+                        columns, // column names
+                        " id = ?", // c. selections
+                        new String[] { String.valueOf(id) }, // d. selections args
+                        null, // e. group by
+                        null, // f. having
+                        null, // g. order by
+                        null); // h. limit
+
+        //if we got results get the first one
+        if (null != cursor)
+            cursor.moveToFirst();
+
+        //build route object
+        TimelineStation station = new TimelineStation();
+        station.setId(Integer.parseInt(cursor.getString(0))); //id
+        station.setName(cursor.getString(1)); //name
+
+        //return TimelineStation
+        return station;
+    }
+
+    /**
      * Returns the milestone with this id
      * @param id
      * @return
@@ -723,8 +799,6 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
-        //go over each row, build station and add it to list
-        Station station;
         if (cursor.moveToFirst()) {
             String name,pass;
             int id;
@@ -740,8 +814,39 @@ public class DbHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // return stations
+        // return users
         return users;
+    }
+
+    /**
+     *
+     * @return all the movies in the db
+     */
+    public ArrayList<TimelineStation> getAllTimelineStations()
+    {
+        ArrayList<TimelineStation> stations = new ArrayList<TimelineStation>();
+
+        //build the query
+        String query = "SELECT  * FROM timelinestation";
+
+        //get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        //go over each row, build station and add it to list
+        TimelineStation station = null;
+        if (cursor.moveToFirst()) {
+            do {
+                //build station object
+                station = new TimelineStation();
+                station.setId(Integer.parseInt(cursor.getString(0))); //id
+                station.setName(cursor.getString(1)); //name
+                stations.add(station);
+            } while (cursor.moveToNext());
+        }
+
+        // return stations
+        return stations;
     }
 
 
@@ -764,7 +869,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Milestone milestone = null;
         if (cursor.moveToFirst()) {
             do {
-                //build movie object
+                //build milestone object
                 milestone = new Milestone();
                 milestone.setId(Integer.parseInt(cursor.getString(0))); //id
                 milestone.setStation_id(Integer.parseInt(cursor.getString(1))); //station id

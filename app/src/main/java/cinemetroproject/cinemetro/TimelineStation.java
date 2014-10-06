@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class TimelineStation {
@@ -11,6 +12,13 @@ public class TimelineStation {
      * Milestones on that Timeline Station
      */
     private ArrayList<Milestone> milestones;
+
+    public TimelineStation(String name)
+    {
+        this.name = name;
+    }
+
+    public TimelineStation() {}
 
     /***************************************************************
      * Get Functions

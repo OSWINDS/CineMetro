@@ -5,7 +5,7 @@
     <item
         android:id="@+id/Options"
         android:showAsAction="always"
-        android:title="options">
+        android:title="settings">
 
         <menu>
             <group android:checkableBehavior="single">
