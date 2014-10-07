@@ -77,6 +77,11 @@ final class DbAdapter {
         timelineStations = db.getAllTimelineStations();
         milestones = db.getAllMilestones();
         this.setMilestonesToStations();
+
+        for(TimelineStation s : this.timelineStations)
+        {
+            System.out.println(s.getName());
+        }
     }
 
     /**

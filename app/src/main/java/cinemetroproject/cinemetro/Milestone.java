@@ -15,8 +15,8 @@ public class Milestone {
     {
         this.station_id = station_id;
         this.des = des;
-        this.photo_des = p_d;
         this.photo_name = p_n;
+        this.photo_des = p_d;
     }
 
     /***************************************************************
