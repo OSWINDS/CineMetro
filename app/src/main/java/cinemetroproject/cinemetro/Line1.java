@@ -26,7 +26,7 @@ public class Line1 extends ActionBarActivity {
 
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
 
-        for (int i=0; i<6; i++) {
+        for (int i=0; i<7; i++) {
             Button cinemaButton = new Button(this);
             cinemaButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getStations().get(i).getName());
             cinemaButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));

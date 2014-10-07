@@ -24,30 +24,16 @@ public class Line3 extends ActionBarActivity {
         setContentView(R.layout.line3);
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
 
-        for (int i=0; i<8; i++) {
+        for (int i=0; i<5; i++) {
             Button stationButton = new Button(this);
-            stationButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getMovies().get(i).getTitle());
+            stationButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getTimelineStations().get(i).getName().toLowerCase());
             stationButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            stationButton.setId(i + 14);
+            stationButton.setId(i + 15);
             stationButton.setWidth(100);
             stationButton.setHeight(150);
             //stationButton.setBackgroundColor(Color.parseColor("#dee6ef"));
-            if(i==0){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green1, 0, 0, 0);}
-            if(i==1){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green2 , 0, 0, 0);}
-            if(i==2){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green3 , 0, 0, 0);}
-            if(i==3){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green4 , 0, 0, 0);}
-            if(i==4){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green5 , 0, 0, 0);}
-            if(i==5){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green6, 0, 0, 0);}
-            if(i==6){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green7, 0, 0, 0);}
-            if(i==7){
-                stationButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.green8 , 0, 0, 0);}
+            stationButton.setCompoundDrawablesWithIntrinsicBounds( +DbAdapter.getInstance().getPhotoDrawableID("prasino"+Integer.toString(i+1)), 0, 0, 0);
+
             stationButton.setOnClickListener(stationButtonOnClickListener);
             scrollView.addView(stationButton);
         }
