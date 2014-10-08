@@ -740,7 +740,7 @@ final class DbAdapter {
 
 
         //TimelineStation 1
-        this.db.addTimelineStation(new TimelineStation("ΛΕΥΚΟΣ ΠΥΡΓΟΣ-ΕΤΑΙΡΕΙΑ ΜΑΚΕΔΟΝΙΚΩΝ ΣΠΟΥΔΩΝ (ΕΜΣ)"));
+        this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)"));
         //Milestones
         this.db.addMilestone(new Milestone(1, "Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
                 "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά για περίπου 3,5 δεκαετίες (5η Εβδομάς " +
@@ -767,7 +767,7 @@ final class DbAdapter {
 
 
         //TimelineStation 2
-        this.db.addTimelineStation(new TimelineStation("ΝΤΟΡΕ – ΑΛΕΞΑΝΔΡΟΣ"));
+        this.db.addTimelineStation(new TimelineStation("Ντορέ – Αλέξανδρος"));
         //Milestones
         this.db.addMilestone(new Milestone(2, "Το καφενείο «Ντορέ» απέναντι από το Λευκό Πύργο αποτέλεσε ιστορικό στέκι, όπου " +
                 "συγκεντρώνονται καλλιτέχνες και κοινό απο την δεκαετία του '60 εως και την διεθνοποίηση του Φεστιβάλ (δεκαετία '90)" +
@@ -781,7 +781,7 @@ final class DbAdapter {
 
 
         //TimelineStation 3
-        this.db.addTimelineStation(new TimelineStation("ΣΒΩΛΟΥ – ΠΛ. ΝΑΥΑΡΙΝΟ (ΕΣΠΕΡΟΣ-ΑΝΑΤΟΛΙΑ-ΜΑΚΕΔΟΝΙΚΟΝ – ΝΑΥΑΡΙΝΟ – ΒΑΚΟΥΡΑ)"));
+        this.db.addTimelineStation(new TimelineStation("Σβώλου – Πλ. Ναυαρίνο (Έσπερος-Ανατόλια-Μακεδονικών – Ναυαρίνο – Βακούρα)"));
         //Milestones
         this.db.addMilestone(new Milestone(3, "Ο κινηματογράφος Έσπερος φιλοξενεί τις παράλληλες εκδηλώσεις του φεστιβάλ. \n" +
                 "(more)….Ο Έσπερος θα λειτουργήσει ως αίθουσα προβολών για το φεστιβάλ ως το 1996. Στις ξεχωριστές προβολές " +
@@ -804,7 +804,7 @@ final class DbAdapter {
 
 
         //TimelineStation 4
-        this.db.addTimelineStation(new TimelineStation("ΟΛΥΜΠΙΟΝ-ΠΛΑΤΕΙΑ ΑΡΙΣΤΟΤΕΛΟΥΣ"));
+        this.db.addTimelineStation(new TimelineStation("Ολύμπιον-Πλατεία Αριστοτέλους"));
         //Milestones
         this.db.addMilestone(new Milestone(4, "H Διεθνής Έκθεση Θεσσαλονίκης διοργανώνει σειρά πολιτιστικών εκδηλώσεων για το σινεμά" +
                 " στη Θεσσαλονίκη με αφορμή τα 25 χρόνια λειτουργίας της (1η Εβδομάς Ελληνικού Κινηματογράφου, 1960) \n" +
@@ -837,7 +837,7 @@ final class DbAdapter {
                         "(Αρχείο ΦΚΘ)"));
 
         //TimelineStation 5
-        this.db.addTimelineStation(new TimelineStation("ΛΙΜΑΝΙ"));
+        this.db.addTimelineStation(new TimelineStation("Λιμάνι"));
         //Milestones
         this.db.addMilestone(new Milestone(5, "Oliver Stone και Emir Kusturica ενώνουν τις δυνάμεις τους στη συναυλία των " +
                 "No Smoking Band στην Αποθήκη Γ΄ στο Λιμάνι (49ο ΦΚΘ, 2008)", "stonekusturica",
