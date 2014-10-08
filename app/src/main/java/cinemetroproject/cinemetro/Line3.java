@@ -67,7 +67,7 @@ public class Line3 extends ActionBarActivity {
 
 
            Intent intent = new Intent(Line3.this, Timeline.class);
-            //intent.putExtra("button_id", view.getId());
+           intent.putExtra("button_id", view.getId());
            Line3.this.startActivity(intent);
         }};
 }

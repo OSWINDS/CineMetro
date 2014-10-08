@@ -1,9 +1,11 @@
 package cinemetroproject.cinemetro;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MapActivity extends Activity {
+public class MapActivity extends Activity implements LocationListener{
 
 
     private GoogleMap mΜap;
@@ -40,6 +42,9 @@ public class MapActivity extends Activity {
     private float colour;
     private int nLine;
     private List<Station> line=new ArrayList<Station>();
+    private float distances[];
+    private LocationManager lm;
+    private Location currentLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +57,9 @@ public class MapActivity extends Activity {
         nLine=0;
         setLine();
 
-        //AddMarkers(0);
-        // LocationManager lm=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        // LocationListener ll=new myLocationListener();
-        // lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
-
-
+        currentLocation=new Location("");
+        lm=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000,10,this);
     }
 
     public void setUpMap() {
@@ -137,6 +139,10 @@ public class MapActivity extends Activity {
                 //mΜap.clear();
             //}
         }
+        distances=new float[line.size()];
+        /*for(int i=0;i<line.size();i++){
+            distances[i]=0;
+        }*/
         showList();
         stationClk();
     }
@@ -160,7 +166,7 @@ public class MapActivity extends Activity {
         double lat=line.get(pos).getLat();
         double lon=line.get(pos).getLng();
 
-        Toast.makeText(MapActivity.this, "("+lat+","+lon+")", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MapActivity.this, "("+lat+","+lon+")", Toast.LENGTH_LONG).show();
         /*mΜap.addMarker(new MarkerOptions()
                 .position(line.get(pos).getLatpoint())
                 .title(line.get(pos).getName())
@@ -232,6 +238,49 @@ public class MapActivity extends Activity {
         });
     }
 
+    @Override
+    public void onLocationChanged(Location location) {
+        //currentLocation.setLatitude(location.getLatitude());
+        //currentLocation.setLongitude(location.getLongitude());
+        //current=new LatLng(location.getLatitude(),location.getLongitude());
+
+        double lat=location.getLatitude();
+        double lon=location.getLongitude();
+
+        Toast.makeText(MapActivity.this,lat+","+lon, Toast.LENGTH_SHORT).show();
+
+        /*if(mΜap!=null){
+            mCurrent.remove();
+            mCurrent=mΜap.addMarker(new MarkerOptions()
+                                    .position(current)
+                                    .title("You are here!")
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+        }
+
+        for(int i=0;i<line.size();i++){
+            Location loc=new Location("");
+            loc.setLatitude(line.get(i).getLat());
+            loc.setLongitude(line.get(i).getLng());
+
+            distances[i]=currentLocation.distanceTo(loc);
+        }*/
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+        Toast.makeText(MapActivity.this,"GPS is not enabled.", Toast.LENGTH_SHORT).show();
+    }
+
     private class myArrayAdapter extends ArrayAdapter<Station>{
 
         public myArrayAdapter(){
@@ -247,7 +296,11 @@ public class MapActivity extends Activity {
 
             String s1,s2;
             if(nLine!=0){
-                s1=(pos+1)+"η Στάση";
+                if(distances[pos]!=0.0){
+                    s1=(pos+1)+"η Στάση"+"\t\t\t"+distances[pos]+"m";
+                }else{
+                    s1=(pos+1)+"η Στάση";
+                }
                 s2=line.get(pos).getName();
             }else{
                 s1="No line was selected.";
@@ -260,42 +313,6 @@ public class MapActivity extends Activity {
             text2.setText(s2);
 
             return itemView;
-        }
-    }
-
-    class myLocationListener implements LocationListener {
-
-        @Override
-        public void onLocationChanged(Location location) {
-
-            if (location != null) {
-                //double pLong=location.getLongitude();
-                //double pLat=location.getLatitude();
-
-                current = new LatLng(location.getLatitude(), location.getLongitude());
-                //setUpMap();
-                if (mΜap != null) {
-                    mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(current, 10));
-
-                    // mCurrent = mΜap.addMarker(new MarkerOptions().position(current).title("You are here!"));
-                    //icon
-                }
-            }
-        }
-
-        @Override
-        public void onStatusChanged(String s, int i, Bundle bundle) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String s) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String s) {
-
         }
     }
 }
