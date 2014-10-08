@@ -37,10 +37,25 @@
 
             <!-- director -->
             <TextView
+                android:text="Σκηνοθεσία: \n"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:id="@+id/director" />
+
+            <!-- director Image -->
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/directorImage" />
+
+            <!-- director Name-->
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:id="@+id/directorName" />
 
             <!-- cast -->
             <TextView

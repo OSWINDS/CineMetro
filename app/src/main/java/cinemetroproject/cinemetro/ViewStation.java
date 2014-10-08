@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,6 +39,7 @@ public class ViewStation extends ActionBarActivity  {
     private LinearLayout movieImagesScrollView;
     private LinearLayout actorsScrollView;
     private TextView textViewDirector;
+    private ImageButton directorImage;
     private TextView textViewInfo;
     private Button goAheadButton;
     private Button facebookButton;
@@ -63,7 +66,7 @@ public class ViewStation extends ActionBarActivity  {
                 Field field = res.getField((DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).get(i).getName()));
                 int drawableId = field.getInt(null);
                 movieImage.setBackgroundResource(drawableId);
-                movieImage.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 300));
+                movieImage.setLayoutParams(new ViewGroup.LayoutParams(320, 300));
             } catch (Exception e) {}
             movieImage.setGravity(Gravity.BOTTOM | Gravity.CENTER);
 
@@ -74,8 +77,16 @@ public class ViewStation extends ActionBarActivity  {
         textViewTitle =(TextView)findViewById(R.id.titleYear);
         textViewTitle.setText(DbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + DbAdapter.getInstance().getMovieByStation(idStation).getYear() + "\n");
 
-        textViewDirector = (TextView)findViewById(R.id.director);
-        textViewDirector.setText("Σκηνοθεσία: " + DbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
+        directorImage = (ImageButton)findViewById(R.id.directorImage);
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(0).getName());
+            int drawableId = field.getInt(null);
+            directorImage.setBackgroundResource(drawableId);
+        } catch (Exception e) {}
+
+        textViewDirector = (TextView)findViewById(R.id.directorName);
+        textViewDirector.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
 
         actors = DbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
         actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
@@ -86,7 +97,7 @@ public class ViewStation extends ActionBarActivity  {
             Button nameActor = (Button) actor.findViewById(R.id.actorName);
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(i).getName());
+                Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(i+1).getName());
                 int drawableId = field.getInt(null);
                 imageActor.setBackgroundResource(drawableId);
             } catch (Exception e) {}
