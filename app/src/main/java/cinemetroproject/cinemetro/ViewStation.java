@@ -57,6 +57,9 @@ public class ViewStation extends ActionBarActivity  {
         Intent intent = getIntent();
         idStation = intent.getIntExtra("button_id", 0);
 
+        textViewTitle =(TextView)findViewById(R.id.titleYear);
+        textViewTitle.setText(DbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + DbAdapter.getInstance().getMovieByStation(idStation).getYear());
+
         movieImages = DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size();
         movieImagesScrollView = (LinearLayout)findViewById(R.id.movieImagesHsw);
         for (int i=0; i<=(movieImages-1); i++) {
@@ -73,9 +76,6 @@ public class ViewStation extends ActionBarActivity  {
             movieImagesScrollView.addView(movieImage);
 
         }
-
-        textViewTitle =(TextView)findViewById(R.id.titleYear);
-        textViewTitle.setText(DbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + DbAdapter.getInstance().getMovieByStation(idStation).getYear() + "\n");
 
         directorImage = (ImageButton)findViewById(R.id.directorImage);
         try {
@@ -171,7 +171,7 @@ public class ViewStation extends ActionBarActivity  {
         public void onClick(View view) {
 
             Intent intent = new Intent(ViewStation.this, RateActivity.class);
-            intent.putExtra("button_id", idStation);
+            intent.putExtra("button_id", ++idStation);
             ViewStation.this.startActivity(intent);
         }};
 

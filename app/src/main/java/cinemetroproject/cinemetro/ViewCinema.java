@@ -28,6 +28,7 @@ import java.util.List;
 public class ViewCinema extends ActionBarActivity {
 
     private LinearLayout scrollView;
+    private TextView textViewTitle;
     private TextView description;
     private Button goAheadButton;
     private Button facebookButton;
@@ -45,6 +46,9 @@ public class ViewCinema extends ActionBarActivity {
 
         Intent intent = getIntent();
         idCinema = intent.getIntExtra("button_id", 0);
+
+        textViewTitle =(TextView)findViewById(R.id.name);
+        textViewTitle.setText(DbAdapter.getInstance().getStations().get(idCinema).getName());
 
         scrollView = (LinearLayout)findViewById(R.id.cinemaHsV);
 
