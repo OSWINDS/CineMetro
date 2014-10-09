@@ -57,8 +57,8 @@ public class ViewCinema extends ActionBarActivity {
                 int drawableId = field.getInt(null);
                 imageCinema.setBackgroundResource(drawableId);
                 imageCinema.setGravity(Gravity.BOTTOM | Gravity.CENTER);
-                imageCinema.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,300));
-            } catch (Exception e) {}
+                imageCinema.setLayoutParams(new ViewGroup.LayoutParams(320,300));
+        } catch (Exception e) {}
 
             scrollView.addView(imageCinema);
         }

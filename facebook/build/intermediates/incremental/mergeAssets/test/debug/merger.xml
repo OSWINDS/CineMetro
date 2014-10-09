@@ -2,13 +2,13 @@
 <merger version="2" >
 
     <dataSet config="20.0.0" >
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/assets" />
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/assets" />
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\assets" />
     </dataSet>
     <dataSet config="main" >
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/src/androidTest/assets" />
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\src\androidTest\assets" />
     </dataSet>
 
 </merger>

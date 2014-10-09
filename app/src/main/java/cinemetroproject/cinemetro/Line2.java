@@ -21,7 +21,7 @@ public class Line2 extends ActionBarActivity {
         setContentView(R.layout.line2);
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
 
-        for (int i=0; i<8; i++) {
+        for (int i=0; i<=7; i++) {
             Button stationButton = new Button(this);
             stationButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getMovies().get(i).getTitle());
             stationButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -29,7 +29,7 @@ public class Line2 extends ActionBarActivity {
             stationButton.setWidth(100);
             stationButton.setHeight(150);
             //stationButton.setBackgroundColor(Color.parseColor("#dee6ef"));
-            stationButton.setCompoundDrawablesWithIntrinsicBounds( +DbAdapter.getInstance().getPhotoDrawableID("green"+Integer.toString(i+1)), 0, 0, 0);
+           stationButton.setCompoundDrawablesWithIntrinsicBounds( +DbAdapter.getInstance().getPhotoDrawableID("green"+Integer.toString(i+1)), 0, 0, 0);
             stationButton.setOnClickListener(stationButtonOnClickListener);
             scrollView.addView(stationButton);
         }

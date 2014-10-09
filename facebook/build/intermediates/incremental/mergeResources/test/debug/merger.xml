@@ -2,422 +2,492 @@
 <merger version="2" >
 
     <dataSet config="20.0.0" >
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/res" />
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\res" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res" >
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res" >
             <file
-                name="com_facebook_inverse_icon"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_inverse_icon.png"
-                qualifiers="mdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_picker_magnifier"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_picker_magnifier.png"
-                qualifiers="mdpi-v4"
+                name="com_facebook_button_blue"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_blue.xml"
+                qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_focused"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_button_blue_focused.9.png"
-                qualifiers="mdpi-v4"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_blue_focused.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_button_blue_normal"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_blue_normal.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_button_blue_pressed"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_blue_pressed.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_button_check"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_check.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_button_check_off"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_check_off.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_button_check_on"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_check_on.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_button_grey_focused"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_grey_focused.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_button_grey_normal"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_grey_normal.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_button_grey_pressed"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_button_grey_pressed.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_close"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_close.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_inverse_icon"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_inverse_icon.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_list_divider"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_list_divider.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_list_section_header_background"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_list_section_header_background.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_loginbutton_silver"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_loginbutton_silver.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_logo"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_logo.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_picker_item_background"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_picker_item_background.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_picker_list_focused"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_picker_list_focused.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_picker_list_longpressed"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_picker_list_longpressed.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_picker_list_pressed"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_picker_list_pressed.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_picker_list_selector"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_picker_list_selector.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_picker_list_selector_background_transition"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_picker_list_selector_background_transition.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_picker_list_selector_disabled"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_picker_list_selector_disabled.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_picker_top_button"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_picker_top_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_place_default_icon"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_place_default_icon.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_profile_default_icon"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_profile_default_icon.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_profile_picture_blank_portrait"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_profile_picture_blank_portrait.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_profile_picture_blank_square"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_profile_picture_blank_square.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_top_background"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_top_background.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_top_button"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_top_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_usersettingsfragment_background_gradient"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable\com_facebook_usersettingsfragment_background_gradient.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="com_facebook_button_blue_focused"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_button_blue_focused.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_button_blue_normal"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_button_blue_normal.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_button_blue_pressed"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_button_blue_pressed.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_button_grey_focused"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_button_grey_focused.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_button_grey_normal"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_button_grey_normal.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_button_grey_pressed"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_button_grey_pressed.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_close"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_close.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_inverse_icon"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_inverse_icon.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_logo"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_logo.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_picker_magnifier"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_picker_magnifier.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_black_background"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_tooltip_black_background.9.png"
+                qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_bottomnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_tooltip_black_bottomnub.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_tooltip_black_bottomnub.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_black_topnub"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_tooltip_black_topnub.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_black_xout"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_tooltip_black_xout.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_blue_background"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_tooltip_blue_background.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_blue_bottomnub"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_tooltip_blue_bottomnub.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_blue_topnub"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_tooltip_blue_topnub.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_blue_xout"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-hdpi-v4\com_facebook_tooltip_blue_xout.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_close"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-ldpi-v4\com_facebook_close.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_button_blue_focused"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_button_blue_focused.9.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_normal"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_button_blue_normal.9.png"
-                qualifiers="mdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_blue_xout"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_tooltip_blue_xout.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_button_blue_normal.9.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_pressed"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_button_blue_pressed.9.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_button_blue_pressed.9.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
-                name="com_facebook_tooltip_blue_background"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_tooltip_blue_background.9.png"
+                name="com_facebook_inverse_icon"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_inverse_icon.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_picker_magnifier"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_picker_magnifier.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_background"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_tooltip_black_background.9.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_tooltip_black_background.9.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_black_bottomnub"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_tooltip_black_bottomnub.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_topnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_tooltip_black_topnub.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_tooltip_black_topnub.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_xout"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_tooltip_black_xout.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_tooltip_black_xout.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_blue_background"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_tooltip_blue_background.9.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_bottomnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_tooltip_blue_bottomnub.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_tooltip_blue_bottomnub.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_topnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-mdpi-v4/com_facebook_tooltip_blue_topnub.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_tooltip_blue_topnub.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
-                name="com_facebook_placepickerfragment_list_row"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_placepickerfragment_list_row.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_login_activity_layout"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_login_activity_layout.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_picker_list_row"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_picker_list_row.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_picker_list_section_header"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_picker_list_section_header.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_picker_title_bar"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_picker_title_bar.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_picker_image"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_picker_image.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_picker_activity_circle_row"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_picker_activity_circle_row.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_picker_search_box"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_picker_search_box.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_placepickerfragment"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_placepickerfragment.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_tooltip_bubble"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_tooltip_bubble.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_picker_checkbox"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_picker_checkbox.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_picker_title_bar_stub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_picker_title_bar_stub.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_friendpickerfragment"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_friendpickerfragment.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_usersettingsfragment"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_usersettingsfragment.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="com_facebook_search_bar_layout"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/layout/com_facebook_search_bar_layout.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/values-ldpi-v4/values.xml"
-                qualifiers="ldpi-v4" >
-                <dimen name="com_facebook_picker_divider_width" >1px
-                </dimen>
-            </file>
-            <file
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/values-iw/values.xml"
-                qualifiers="iw" >
-                <string name="com_facebook_usersettingsfragment_log_in_button" >התחבר…
-                </string>
-                <string name="com_facebook_requesterror_password_changed" >.הסיסמה שלך בפייסבוק השתנתה, אנא חבר מחדש את האפליקציה עם פייסבוק
-                </string>
-                <string name="com_facebook_picker_done_button_text" >בצע
-                </string>
-                <string name="com_facebook_internet_permission_error_title" >AndroidManifest שגיאת
-                </string>
-                <string name="com_facebook_loginview_log_out_button" >התנתק
-                </string>
-                <string name="com_facebook_loginview_logged_in_as" >מחובר בשם: %1$s
-                </string>
-                <string name="com_facebook_internet_permission_error_message" >ההתחברות לתצוגת אתר דורשת אישור אינטרנט
-                </string>
-                <string name="com_facebook_loginview_logged_in_using_facebook" >מחובר באמצעות פייסבוק
-                </string>
-                <string name="com_facebook_requesterror_reconnect" >.ארעה שגיאה בעת החיבור עם פייסבוק, חבר בבקשה מחדש את האפליקציה עם פייסבוק
-                </string>
-                <string name="com_facebook_loginview_log_out_action" >התנתק
-                </string>
-                <string name="com_facebook_placepicker_subtitle_catetory_only_format" >%1$s
-                </string>
-                <string name="com_facebook_usersettingsfragment_logged_in" >מחובר
-                </string>
-                <string name="com_facebook_logo_content_description" >פייסבוק לוגו
-                </string>
-                <string name="com_facebook_choose_friends" >בחר חברים
-                </string>
-                <string name="com_facebook_dialogloginactivity_ok_button" >אישור
-                </string>
-                <string name="com_facebook_loading" >..מעלה
-                </string>
-                <string name="com_facebook_nearby" >קרוב אליי
-                </string>
-                <string name="com_facebook_loginview_log_in_button" >התחבר לפייסבוק
-                </string>
-                <string name="com_facebook_placepicker_subtitle_were_here_only_format" >%1$,d היו פה
-                </string>
-                <string name="com_facebook_usersettingsfragment_not_logged_in" >לא מחובר
-                </string>
-                <string name="com_facebook_placepicker_subtitle_format" >%1$s • %2$,d היו פה
-                </string>
-                <string name="com_facebook_requesterror_permissions" >.חיבור האפליקציה עם פייסבוק נכשל בשל הרשאות לא מספקות, אנא הענק הרשאות לאפליקציה בכדי שהפעולה תוכל להתבצע
-                </string>
-                <string name="com_facebook_loginview_cancel_action" >בטל
-                </string>
-                <string name="com_facebook_requesterror_web_login" >.כדי לאפשר מחדש לאפליקציה להתחבר עם פייסבוק https://www.facebook.com או https://m.facebook.com אנא היכנס דרך
-                </string>
-                <string name="com_facebook_requesterror_relogin" >.האפליקציה אינה מחוברת לפייסבוק, אנא היכנס וחבר מחדש את האפליקציה
-                </string>
-            </file>
-            <file
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/values-xhdpi-v4/values.xml"
-                qualifiers="xhdpi-v4" >
-                <dimen name="com_facebook_picker_divider_width" >2px
-                </dimen>
-            </file>
-            <file
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/values-he/values.xml"
-                qualifiers="he" >
-                <string name="com_facebook_requesterror_password_changed" >.הסיסמה שלך בפייסבוק השתנתה, אנא חבר מחדש את האפליקציה עם פייסבוק
-                </string>
-                <string name="com_facebook_requesterror_web_login" >.כדי לאפשר מחדש לאפליקציה להתחבר עם פייסבוק https://www.facebook.com או https://m.facebook.com אנא היכנס דרך
-                </string>
-                <string name="com_facebook_usersettingsfragment_logged_in" >מחובר
-                </string>
-                <string name="com_facebook_requesterror_reconnect" >.ארעה שגיאה בעת החיבור עם פייסבוק, חבר בבקשה מחדש את האפליקציה עם פייסבוק
-                </string>
-                <string name="com_facebook_logo_content_description" >פייסבוק לוגו
-                </string>
-                <string name="com_facebook_picker_done_button_text" >בצע
-                </string>
-                <string name="com_facebook_loginview_log_in_button" >התחבר לפייסבוק
-                </string>
-                <string name="com_facebook_loginview_logged_in_as" >מחובר בשם: %1$s
-                </string>
-                <string name="com_facebook_placepicker_subtitle_were_here_only_format" >%1$,d היו פה
-                </string>
-                <string name="com_facebook_requesterror_relogin" >.האפליקציה אינה מחוברת לפייסבוק, אנא היכנס וחבר מחדש את האפליקציה
-                </string>
-                <string name="com_facebook_internet_permission_error_title" >AndroidManifest שגיאת
-                </string>
-                <string name="com_facebook_internet_permission_error_message" >ההתחברות לתצוגת אתר דורשת אישור אינטרנט
-                </string>
-                <string name="com_facebook_usersettingsfragment_log_in_button" >התחבר…
-                </string>
-                <string name="com_facebook_loginview_cancel_action" >בטל
-                </string>
-                <string name="com_facebook_choose_friends" >בחר חברים
-                </string>
-                <string name="com_facebook_loginview_log_out_button" >התנתק
-                </string>
-                <string name="com_facebook_placepicker_subtitle_catetory_only_format" >%1$s
-                </string>
-                <string name="com_facebook_placepicker_subtitle_format" >%1$s • %2$,d היו פה
-                </string>
-                <string name="com_facebook_usersettingsfragment_not_logged_in" >לא מחובר
-                </string>
-                <string name="com_facebook_loading" >..מעלה
-                </string>
-                <string name="com_facebook_nearby" >קרוב אליי
-                </string>
-                <string name="com_facebook_loginview_logged_in_using_facebook" >מחובר באמצעות פייסבוק
-                </string>
-                <string name="com_facebook_dialogloginactivity_ok_button" >אישור
-                </string>
-                <string name="com_facebook_requesterror_permissions" >.חיבור האפליקציה עם פייסבוק נכשל בשל הרשאות לא מספקות, אנא הענק הרשאות לאפליקציה בכדי שהפעולה תוכל להתבצע
-                </string>
-                <string name="com_facebook_loginview_log_out_action" >התנתק
-                </string>
-            </file>
-            <file
-                name="com_facebook_button_grey_pressed"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_button_grey_pressed.9.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_button_grey_normal"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_button_grey_normal.9.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_inverse_icon"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_inverse_icon.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_picker_magnifier"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_picker_magnifier.png"
-                qualifiers="xhdpi-v4"
+                name="com_facebook_tooltip_blue_xout"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-mdpi-v4\com_facebook_tooltip_blue_xout.png"
+                qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_focused"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_button_blue_focused.9.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_black_bottomnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_black_bottomnub.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_button_blue_focused.9.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_normal"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_button_blue_normal.9.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_blue_xout"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_xout.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_button_blue_normal.9.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_pressed"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_button_blue_pressed.9.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_blue_background"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_background.9.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_close"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_close.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_black_background"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_black_background.9.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_black_topnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_black_topnub.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_black_xout"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_black_xout.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_logo"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_logo.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_blue_bottomnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_bottomnub.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_button_blue_pressed.9.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_focused"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_button_grey_focused.9.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_button_grey_focused.9.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_button_grey_normal"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_button_grey_normal.9.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_button_grey_pressed"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_button_grey_pressed.9.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_close"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_close.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_inverse_icon"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_inverse_icon.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_logo"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_logo.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_picker_magnifier"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_picker_magnifier.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_black_background"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_tooltip_black_background.9.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_black_bottomnub"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_tooltip_black_bottomnub.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_black_topnub"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_tooltip_black_topnub.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_black_xout"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_tooltip_black_xout.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_blue_background"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_tooltip_blue_background.9.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="com_facebook_tooltip_blue_bottomnub"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_tooltip_blue_bottomnub.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_topnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/com_facebook_tooltip_blue_topnub.png"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_tooltip_blue_topnub.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/values-es/values.xml"
-                qualifiers="es" >
-                <string name="com_facebook_nearby" >Cercano
-                </string>
-                <string name="com_facebook_requesterror_password_changed" >Su contraseña de Facebook ha cambiado, por favor vuelva a conectar la aplicación con Facebook.
-                </string>
-                <string name="com_facebook_loginview_log_out_action" >Cerrar sesión
-                </string>
-                <string name="com_facebook_requesterror_reconnect" >Se produjo un error al conectar con Facebook, por favor vuelva a conectar la aplicación con Facebook.
-                </string>
-                <string name="com_facebook_requesterror_permissions" >Una conexión de aplicación con Facebook falló debido a permisos insuficientes, por favor, conceda los permisos de aplicaciones para realizar la operación.
-                </string>
-                <string name="com_facebook_usersettingsfragment_logged_in" >Sesión iniciada
-                </string>
-                <string name="com_facebook_internet_permission_error_title" >Error de AndroidManifest
-                </string>
-                <string name="com_facebook_usersettingsfragment_not_logged_in" >No has iniciado sesión
-                </string>
-                <string name="com_facebook_loginview_logged_in_using_facebook" >Sesión iniciada con Facebook
-                </string>
-                <string name="com_facebook_placepicker_subtitle_format" >%1$s • %2$,d estuvieron aquí
-                </string>
-                <string name="com_facebook_requesterror_web_login" >Por favor, iniciar sesión a través https://www.facebook.com o https://m.facebook.com para volver a activar la aplicación para conectar con Facebook.
-                </string>
-                <string name="com_facebook_loading" >Cargando
-                </string>
-                <string name="com_facebook_picker_done_button_text" >Aceptar
-                </string>
-                <string name="com_facebook_placepicker_subtitle_catetory_only_format" >%1$s
-                </string>
-                <string name="com_facebook_loginview_cancel_action" >Cancelar
-                </string>
-                <string name="com_facebook_choose_friends" >Elige Amigos
-                </string>
-                <string name="com_facebook_internet_permission_error_message" >WebView inicio de sesión requiere permiso INTERNET
-                </string>
-                <string name="com_facebook_placepicker_subtitle_were_here_only_format" >es:%1$,d estuvieron aquí
-                </string>
-                <string name="com_facebook_requesterror_relogin" >La aplicación no se conecta con Facebook, inicie sesión y volver a conectar esta aplicación.
-                </string>
-                <string name="com_facebook_dialogloginactivity_ok_button" >Aceptar
-                </string>
-                <string name="com_facebook_usersettingsfragment_log_in_button" >Iniciar sesión…
-                </string>
-                <string name="com_facebook_logo_content_description" >Logo de Facebook
-                </string>
-                <string name="com_facebook_loginview_log_in_button" >Iniciar sesión con Facebook
-                </string>
-                <string name="com_facebook_loginview_log_out_button" >Cerrar sesión
-                </string>
-                <string name="com_facebook_loginview_logged_in_as" >Sesión iniciada como: %1$s
-                </string>
-            </file>
+                name="com_facebook_tooltip_blue_xout"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\drawable-xhdpi-v4\com_facebook_tooltip_blue_xout.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
             <file
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/values-mdpi-v4/values.xml"
-                qualifiers="mdpi-v4" >
-                <dimen name="com_facebook_picker_divider_width" >1px
-                </dimen>
-            </file>
+                name="com_facebook_friendpickerfragment"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_friendpickerfragment.xml"
+                qualifiers=""
+                type="layout" />
             <file
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/values/values.xml"
+                name="com_facebook_login_activity_layout"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_login_activity_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_picker_activity_circle_row"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_picker_activity_circle_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_picker_checkbox"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_picker_checkbox.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_picker_image"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_picker_image.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_picker_list_row"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_picker_list_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_picker_list_section_header"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_picker_list_section_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_picker_search_box"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_picker_search_box.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_picker_title_bar"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_picker_title_bar.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_picker_title_bar_stub"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_picker_title_bar_stub.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_placepickerfragment"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_placepickerfragment.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_placepickerfragment_list_row"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_placepickerfragment_list_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_search_bar_layout"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_search_bar_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_tooltip_bubble"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_tooltip_bubble.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="com_facebook_usersettingsfragment"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\layout\com_facebook_usersettingsfragment.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\values\values.xml"
                 qualifiers="" >
                 <string name="com_facebook_internet_permission_error_message" >WebView login requires INTERNET permission
                 </string>
@@ -708,267 +778,197 @@ center
                 </string>
             </file>
             <file
-                name="com_facebook_button_grey_pressed"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_button_grey_pressed.9.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\values-es\values.xml"
+                qualifiers="es" >
+                <string name="com_facebook_nearby" >Cercano
+                </string>
+                <string name="com_facebook_requesterror_password_changed" >Su contraseña de Facebook ha cambiado, por favor vuelva a conectar la aplicación con Facebook.
+                </string>
+                <string name="com_facebook_loginview_log_out_action" >Cerrar sesión
+                </string>
+                <string name="com_facebook_requesterror_reconnect" >Se produjo un error al conectar con Facebook, por favor vuelva a conectar la aplicación con Facebook.
+                </string>
+                <string name="com_facebook_requesterror_permissions" >Una conexión de aplicación con Facebook falló debido a permisos insuficientes, por favor, conceda los permisos de aplicaciones para realizar la operación.
+                </string>
+                <string name="com_facebook_usersettingsfragment_logged_in" >Sesión iniciada
+                </string>
+                <string name="com_facebook_internet_permission_error_title" >Error de AndroidManifest
+                </string>
+                <string name="com_facebook_usersettingsfragment_not_logged_in" >No has iniciado sesión
+                </string>
+                <string name="com_facebook_loginview_logged_in_using_facebook" >Sesión iniciada con Facebook
+                </string>
+                <string name="com_facebook_placepicker_subtitle_format" >%1$s • %2$,d estuvieron aquí
+                </string>
+                <string name="com_facebook_requesterror_web_login" >Por favor, iniciar sesión a través https://www.facebook.com o https://m.facebook.com para volver a activar la aplicación para conectar con Facebook.
+                </string>
+                <string name="com_facebook_loading" >Cargando
+                </string>
+                <string name="com_facebook_picker_done_button_text" >Aceptar
+                </string>
+                <string name="com_facebook_placepicker_subtitle_catetory_only_format" >%1$s
+                </string>
+                <string name="com_facebook_loginview_cancel_action" >Cancelar
+                </string>
+                <string name="com_facebook_choose_friends" >Elige Amigos
+                </string>
+                <string name="com_facebook_internet_permission_error_message" >WebView inicio de sesión requiere permiso INTERNET
+                </string>
+                <string name="com_facebook_placepicker_subtitle_were_here_only_format" >es:%1$,d estuvieron aquí
+                </string>
+                <string name="com_facebook_requesterror_relogin" >La aplicación no se conecta con Facebook, inicie sesión y volver a conectar esta aplicación.
+                </string>
+                <string name="com_facebook_dialogloginactivity_ok_button" >Aceptar
+                </string>
+                <string name="com_facebook_usersettingsfragment_log_in_button" >Iniciar sesión…
+                </string>
+                <string name="com_facebook_logo_content_description" >Logo de Facebook
+                </string>
+                <string name="com_facebook_loginview_log_in_button" >Iniciar sesión con Facebook
+                </string>
+                <string name="com_facebook_loginview_log_out_button" >Cerrar sesión
+                </string>
+                <string name="com_facebook_loginview_logged_in_as" >Sesión iniciada como: %1$s
+                </string>
+            </file>
             <file
-                name="com_facebook_button_grey_normal"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_button_grey_normal.9.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_inverse_icon"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_inverse_icon.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_picker_magnifier"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_picker_magnifier.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_button_blue_focused"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_button_blue_focused.9.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_black_bottomnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_tooltip_black_bottomnub.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_button_blue_normal"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_button_blue_normal.9.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_blue_xout"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_tooltip_blue_xout.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_button_blue_pressed"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_button_blue_pressed.9.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_blue_background"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_tooltip_blue_background.9.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_close"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_close.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_black_background"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_tooltip_black_background.9.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_black_topnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_tooltip_black_topnub.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_black_xout"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_tooltip_black_xout.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_logo"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_logo.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_blue_bottomnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_tooltip_blue_bottomnub.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_button_grey_focused"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_button_grey_focused.9.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_tooltip_blue_topnub"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-hdpi-v4/com_facebook_tooltip_blue_topnub.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="com_facebook_close"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable-ldpi-v4/com_facebook_close.png"
-                qualifiers="ldpi-v4"
-                type="drawable" />
-            <file
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/values-hdpi-v4/values.xml"
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\values-hdpi-v4\values.xml"
                 qualifiers="hdpi-v4" >
                 <dimen name="com_facebook_picker_divider_width" >1px
                 </dimen>
             </file>
             <file
-                name="com_facebook_button_blue"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_blue.xml"
-                qualifiers=""
-                type="drawable" />
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\values-he\values.xml"
+                qualifiers="he" >
+                <string name="com_facebook_requesterror_password_changed" >.הסיסמה שלך בפייסבוק השתנתה, אנא חבר מחדש את האפליקציה עם פייסבוק
+                </string>
+                <string name="com_facebook_requesterror_web_login" >.כדי לאפשר מחדש לאפליקציה להתחבר עם פייסבוק https://www.facebook.com או https://m.facebook.com אנא היכנס דרך
+                </string>
+                <string name="com_facebook_usersettingsfragment_logged_in" >מחובר
+                </string>
+                <string name="com_facebook_requesterror_reconnect" >.ארעה שגיאה בעת החיבור עם פייסבוק, חבר בבקשה מחדש את האפליקציה עם פייסבוק
+                </string>
+                <string name="com_facebook_logo_content_description" >פייסבוק לוגו
+                </string>
+                <string name="com_facebook_picker_done_button_text" >בצע
+                </string>
+                <string name="com_facebook_loginview_log_in_button" >התחבר לפייסבוק
+                </string>
+                <string name="com_facebook_loginview_logged_in_as" >מחובר בשם: %1$s
+                </string>
+                <string name="com_facebook_placepicker_subtitle_were_here_only_format" >%1$,d היו פה
+                </string>
+                <string name="com_facebook_requesterror_relogin" >.האפליקציה אינה מחוברת לפייסבוק, אנא היכנס וחבר מחדש את האפליקציה
+                </string>
+                <string name="com_facebook_internet_permission_error_title" >AndroidManifest שגיאת
+                </string>
+                <string name="com_facebook_internet_permission_error_message" >ההתחברות לתצוגת אתר דורשת אישור אינטרנט
+                </string>
+                <string name="com_facebook_usersettingsfragment_log_in_button" >התחבר…
+                </string>
+                <string name="com_facebook_loginview_cancel_action" >בטל
+                </string>
+                <string name="com_facebook_choose_friends" >בחר חברים
+                </string>
+                <string name="com_facebook_loginview_log_out_button" >התנתק
+                </string>
+                <string name="com_facebook_placepicker_subtitle_catetory_only_format" >%1$s
+                </string>
+                <string name="com_facebook_placepicker_subtitle_format" >%1$s • %2$,d היו פה
+                </string>
+                <string name="com_facebook_usersettingsfragment_not_logged_in" >לא מחובר
+                </string>
+                <string name="com_facebook_loading" >..מעלה
+                </string>
+                <string name="com_facebook_nearby" >קרוב אליי
+                </string>
+                <string name="com_facebook_loginview_logged_in_using_facebook" >מחובר באמצעות פייסבוק
+                </string>
+                <string name="com_facebook_dialogloginactivity_ok_button" >אישור
+                </string>
+                <string name="com_facebook_requesterror_permissions" >.חיבור האפליקציה עם פייסבוק נכשל בשל הרשאות לא מספקות, אנא הענק הרשאות לאפליקציה בכדי שהפעולה תוכל להתבצע
+                </string>
+                <string name="com_facebook_loginview_log_out_action" >התנתק
+                </string>
+            </file>
             <file
-                name="com_facebook_profile_picture_blank_portrait"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_profile_picture_blank_portrait.png"
-                qualifiers=""
-                type="drawable" />
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\values-iw\values.xml"
+                qualifiers="iw" >
+                <string name="com_facebook_usersettingsfragment_log_in_button" >התחבר…
+                </string>
+                <string name="com_facebook_requesterror_password_changed" >.הסיסמה שלך בפייסבוק השתנתה, אנא חבר מחדש את האפליקציה עם פייסבוק
+                </string>
+                <string name="com_facebook_picker_done_button_text" >בצע
+                </string>
+                <string name="com_facebook_internet_permission_error_title" >AndroidManifest שגיאת
+                </string>
+                <string name="com_facebook_loginview_log_out_button" >התנתק
+                </string>
+                <string name="com_facebook_loginview_logged_in_as" >מחובר בשם: %1$s
+                </string>
+                <string name="com_facebook_internet_permission_error_message" >ההתחברות לתצוגת אתר דורשת אישור אינטרנט
+                </string>
+                <string name="com_facebook_loginview_logged_in_using_facebook" >מחובר באמצעות פייסבוק
+                </string>
+                <string name="com_facebook_requesterror_reconnect" >.ארעה שגיאה בעת החיבור עם פייסבוק, חבר בבקשה מחדש את האפליקציה עם פייסבוק
+                </string>
+                <string name="com_facebook_loginview_log_out_action" >התנתק
+                </string>
+                <string name="com_facebook_placepicker_subtitle_catetory_only_format" >%1$s
+                </string>
+                <string name="com_facebook_usersettingsfragment_logged_in" >מחובר
+                </string>
+                <string name="com_facebook_logo_content_description" >פייסבוק לוגו
+                </string>
+                <string name="com_facebook_choose_friends" >בחר חברים
+                </string>
+                <string name="com_facebook_dialogloginactivity_ok_button" >אישור
+                </string>
+                <string name="com_facebook_loading" >..מעלה
+                </string>
+                <string name="com_facebook_nearby" >קרוב אליי
+                </string>
+                <string name="com_facebook_loginview_log_in_button" >התחבר לפייסבוק
+                </string>
+                <string name="com_facebook_placepicker_subtitle_were_here_only_format" >%1$,d היו פה
+                </string>
+                <string name="com_facebook_usersettingsfragment_not_logged_in" >לא מחובר
+                </string>
+                <string name="com_facebook_placepicker_subtitle_format" >%1$s • %2$,d היו פה
+                </string>
+                <string name="com_facebook_requesterror_permissions" >.חיבור האפליקציה עם פייסבוק נכשל בשל הרשאות לא מספקות, אנא הענק הרשאות לאפליקציה בכדי שהפעולה תוכל להתבצע
+                </string>
+                <string name="com_facebook_loginview_cancel_action" >בטל
+                </string>
+                <string name="com_facebook_requesterror_web_login" >.כדי לאפשר מחדש לאפליקציה להתחבר עם פייסבוק https://www.facebook.com או https://m.facebook.com אנא היכנס דרך
+                </string>
+                <string name="com_facebook_requesterror_relogin" >.האפליקציה אינה מחוברת לפייסבוק, אנא היכנס וחבר מחדש את האפליקציה
+                </string>
+            </file>
             <file
-                name="com_facebook_button_grey_pressed"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_grey_pressed.9.png"
-                qualifiers=""
-                type="drawable" />
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\values-ldpi-v4\values.xml"
+                qualifiers="ldpi-v4" >
+                <dimen name="com_facebook_picker_divider_width" >1px
+                </dimen>
+            </file>
             <file
-                name="com_facebook_button_grey_normal"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_grey_normal.9.png"
-                qualifiers=""
-                type="drawable" />
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\values-mdpi-v4\values.xml"
+                qualifiers="mdpi-v4" >
+                <dimen name="com_facebook_picker_divider_width" >1px
+                </dimen>
+            </file>
             <file
-                name="com_facebook_list_divider"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_list_divider.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_inverse_icon"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_inverse_icon.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_picker_list_longpressed"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_list_longpressed.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_button_blue_focused"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_blue_focused.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_picker_list_pressed"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_list_pressed.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_picker_top_button"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_top_button.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_top_background"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_top_background.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_picker_list_selector_disabled"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_list_selector_disabled.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_profile_picture_blank_square"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_profile_picture_blank_square.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_button_blue_normal"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_blue_normal.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_picker_list_focused"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_list_focused.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_picker_list_selector"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_list_selector.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_place_default_icon"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_place_default_icon.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_usersettingsfragment_background_gradient"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_usersettingsfragment_background_gradient.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_button_blue_pressed"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_blue_pressed.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_button_check_off"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_check_off.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_profile_default_icon"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_profile_default_icon.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_top_button"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_top_button.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_close"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_close.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_loginbutton_silver"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_loginbutton_silver.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_picker_list_selector_background_transition"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_list_selector_background_transition.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_logo"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_logo.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_button_check"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_check.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_button_grey_focused"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_grey_focused.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_list_section_header_background"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_list_section_header_background.9.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_button_check_on"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_button_check_on.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="com_facebook_picker_item_background"
-                path="/home/efi/Projects/CineMetroApplication/facebook/build/intermediates/bundles/debug/res/drawable/com_facebook_picker_item_background.xml"
-                qualifiers=""
-                type="drawable" />
+                path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\intermediates\bundles\debug\res\values-xhdpi-v4\values.xml"
+                qualifiers="xhdpi-v4" >
+                <dimen name="com_facebook_picker_divider_width" >2px
+                </dimen>
+            </file>
         </source>
     </dataSet>
     <dataSet config="main" >
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/src/androidTest/res" />
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/build/generated/res/rs/test/debug" />
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/build/generated/res/generated/test/debug" />
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\src\androidTest\res" />
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\generated\res\rs\test\debug" />
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\build\generated\res\generated\test\debug" />
     </dataSet>
 
 </merger>

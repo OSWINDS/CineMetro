@@ -2,11 +2,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="cinemetroproject.cinemetro.MapActivity" >
+
+    <item
+        android:id="@+id/profile"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_menu_myplaces"
+        android:title="Settings" />
+
+
+
     <item
         android:id="@+id/Options"
         android:showAsAction="always"
-        android:title="settings">
-
+        android:title="settings2">
         <menu>
             <group android:checkableBehavior="single">
                 <item android:id="@+id/line1"
@@ -20,5 +28,8 @@
             </group>
         </menu>
     </item>
+
+
+
 
 </menu>

@@ -125,6 +125,7 @@
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MainMenu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

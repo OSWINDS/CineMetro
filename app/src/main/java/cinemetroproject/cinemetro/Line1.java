@@ -17,12 +17,10 @@ public class Line1 extends ActionBarActivity {
 
     private LinearLayout scrollView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.line1);
-
 
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
 
