@@ -638,7 +638,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Milestone milestone = new Milestone();
         milestone.setId(Integer.parseInt(cursor.getString(0))); //id
         milestone.setStation_id(Integer.parseInt(cursor.getString(1))); //station id
-	milestone.setYear(Integer.parseInt(cursor.getString(2)))
+	milestone.setYear(Integer.parseInt(cursor.getString(2)));
         milestone.setDes(cursor.getString(3)); //des
         milestone.setPhotoName(cursor.getString(4)); //photo name
         milestone.setPhotoDescription(cursor.getString(5)); //photo description
@@ -876,7 +876,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 milestone = new Milestone();
                 milestone.setId(Integer.parseInt(cursor.getString(0))); //id
                 milestone.setStation_id(Integer.parseInt(cursor.getString(1))); //station id
-		milestone.setYear(Integer.parseInt(cursor.getString(2)))
+		        milestone.setYear(Integer.parseInt(cursor.getString(2)));
                 milestone.setDes(cursor.getString(3));
                 milestone.setPhotoName(cursor.getString(4)); //photo name
                 milestone.setPhotoDescription(cursor.getString(5));
