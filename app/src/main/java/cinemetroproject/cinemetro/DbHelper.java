@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 11;
+    private static final int DATABASE_VERSION = 13;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
@@ -118,8 +118,8 @@ public class DbHelper extends SQLiteOpenHelper {
         query = "CREATE TABLE IF NOT EXISTS milestone ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "station_id INTEGER, " +
-                "des, TEXT, " +
-		"year, TEXT, " +
+                "year INTEGER, " +
+                "des TEXT, " +
                 "photo_name TEXT, "  +
                 "photo_des TEXT)";
 
@@ -363,7 +363,7 @@ public class DbHelper extends SQLiteOpenHelper {
             //ContentValues to add key "column"/value
             ContentValues values = new ContentValues();
             values.put("station_id", milestone.getStation_id());
-	    values.put("year", milestone.getYear());
+	        values.put("year", milestone.getYear());
             values.put("des", milestone.getDescription());
             values.put("photo_name", milestone.getPhotoName());
             values.put("photo_des", milestone.getPhotoDescription());
