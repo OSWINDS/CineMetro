@@ -77,11 +77,6 @@ final class DbAdapter {
         timelineStations = db.getAllTimelineStations();
         milestones = db.getAllMilestones();
         this.setMilestonesToStations();
-
-        for(TimelineStation s : this.timelineStations)
-        {
-            System.out.println(s.getName());
-        }
     }
 
     /**
@@ -613,7 +608,7 @@ final class DbAdapter {
 
         //line 1
         // station 1
-        this.db.addPhoto(new Photo("pantheon", 1, -1,"Ο κινηματογράφος Πάνθεον στο Βαρδάρι, λίγο πριν την κατεδάφισή του\n" +
+        this.db.addPhoto(new Photo("pantheon", 1, -1,"Ο κινηματογράφος Πάνθεον στο Βαρδάρη, λίγο πριν την κατεδάφισή του\n" +
                 "(Αρχείο Ν. Θεοδοσίου – Σινέ Θεσσαλονίκη, σ. 33)"));
         this.db.addPhoto(new Photo("splendid", 1, -1,"Ο κινηματογράφος Σπλέντιτ όπως απεικονίζεται σε καρτ ποστάλ\n" +
                 "(Αρχείο Ν. Θεοδοσίου)"));
@@ -666,70 +661,70 @@ final class DbAdapter {
         this.db.addPhoto(new Photo("theoreiaems", 7, -1,"Τα θεωρεία της Εταιρείας Μακεδονικών Σπουδών με τους διαγωνιζόμενους και τους καλεσμένους του φεστιβάλ (δεκαετία ’60) \n" +
                 "Αρχείο ΦΚΘ"));
         //line2
-        //station 7
-        this.db.addPhoto(new Photo("ksypolitotagma10", 7, 1, ""));      //main
-        this.db.addPhoto(new Photo("tagma", 7, 1, ""));                 //main
-        this.db.addPhoto(new Photo("barefootbattalionmovieposter", 7, 1, ""));
-        this.db.addPhoto(new Photo("xipolitotagma4", 7, 1, ""));
-        this.db.addPhoto(new Photo("xipolitotagma8", 7, 1, ""));
+        //station 8
+        this.db.addPhoto(new Photo("ksypolitotagma10", 8, 1, ""));      //main
+        this.db.addPhoto(new Photo("tagma", 8, 1, ""));                 //main
+        this.db.addPhoto(new Photo("barefootbattalionmovieposter", 8, 1, ""));
+        this.db.addPhoto(new Photo("xipolitotagma4", 8, 1, ""));
+        this.db.addPhoto(new Photo("xipolitotagma8", 8, 1, ""));
         this.db.addPhoto(new Photo("greggntallas", -1, 1, ""));
         this.db.addPhoto(new Photo("kwsti_maria", -1, 1, ""));          //actor
         this.db.addPhoto(new Photo("fermas_nikos", -1, 1, ""));         //actor
         this.db.addPhoto(new Photo("fragkedakhs_vasilis", -1, 1, ""));  //actor
-        //station 8
-        this.db.addPhoto(new Photo("p08", 8, 2, ""));
-        this.db.addPhoto(new Photo("atsidas", 8, 2, ""));
-        this.db.addPhoto(new Photo("promoatsidas", 8, 2, ""));
+        //station 9
+        this.db.addPhoto(new Photo("p08", 9, 2, ""));
+        this.db.addPhoto(new Photo("atsidas", 9, 2, ""));
+        this.db.addPhoto(new Photo("promoatsidas", 9, 2, ""));
         this.db.addPhoto(new Photo("dalianidis", -1, 2, ""));
         this.db.addPhoto(new Photo("eliopoulos", -1, 2, ""));
         this.db.addPhoto(new Photo("laskari", -1, 2, ""));
         this.db.addPhoto(new Photo("zervos", -1, 2, ""));
         this.db.addPhoto(new Photo("stratigos", -1, 2, ""));
-        //station 9
-        this.db.addPhoto(new Photo("katinakaiei0", 9, 3, ""));
-        this.db.addPhoto(new Photo("katinakaiei4", 9, 3, ""));
-        this.db.addPhoto(new Photo("katinakaieiplaz", 9, 3, ""));
+        //station 10
+        this.db.addPhoto(new Photo("katinakaiei0", 10, 3, ""));
+        this.db.addPhoto(new Photo("katinakaiei4", 10, 3, ""));
+        this.db.addPhoto(new Photo("katinakaieiplaz", 10, 3, ""));
         this.db.addPhoto(new Photo("dalianidis", -1, 3, ""));
         this.db.addPhoto(new Photo("vlaxopoulou", -1, 3, ""));
         this.db.addPhoto(new Photo("eliopoulos", -1, 3, ""));
         this.db.addPhoto(new Photo("karagiannh", -1, 3, ""));
         this.db.addPhoto(new Photo("nathanahl", -1, 3, ""));
         this.db.addPhoto(new Photo("voutsas", -1, 3, ""));
-        //station 10
-        this.db.addPhoto(new Photo("p388322", 10, 4, ""));
-        this.db.addPhoto(new Photo("c72", 10, 4, ""));
+        //station 11
+        this.db.addPhoto(new Photo("p388322", 11, 4, ""));
+        this.db.addPhoto(new Photo("c72", 11, 4, ""));
         this.db.addPhoto(new Photo("kanelopoulos", -1, 4, ""));
         this.db.addPhoto(new Photo("ladikou", -1, 4, ""));
         this.db.addPhoto(new Photo("antwnopoulos", -1, 4, ""));
-        //station 11
-        this.db.addPhoto(new Photo("p64411", 11, 5, ""));
-        this.db.addPhoto(new Photo("p64433", 11, 5, ""));
+        //station 12
+        this.db.addPhoto(new Photo("p64411", 12, 5, ""));
+        this.db.addPhoto(new Photo("p64433", 12, 5, ""));
         this.db.addPhoto(new Photo("voulgaris", -1, 5, ""));
         this.db.addPhoto(new Photo("tzortzoglou", -1, 5, ""));
         this.db.addPhoto(new Photo("bazaka", -1, 5, ""));
-        //station 12
-        this.db.addPhoto(new Photo("eternityandaday", 12, 6, ""));
-        this.db.addPhoto(new Photo("miaaioniotita", 12, 6, ""));
+        //station 13
+        this.db.addPhoto(new Photo("eternityandaday", 13, 6, ""));
+        this.db.addPhoto(new Photo("miaaioniotita", 13, 6, ""));
         this.db.addPhoto(new Photo("aggelopoulos", -1, 6, ""));
         this.db.addPhoto(new Photo("bruno", -1, 6, ""));
         this.db.addPhoto(new Photo("izampel", -1, 6, ""));
         this.db.addPhoto(new Photo("bentivolio", -1, 6, ""));
-        //station 13
-        this.db.addPhoto(new Photo("amaliamoutoussihoraproelefsis", 13, 7, ""));
-        this.db.addPhoto(new Photo("christospassalisyoulaboudalifilia", 13, 7, ""));
-        this.db.addPhoto(new Photo("homeland6", 13, 7, ""));
+        //station 14
+        this.db.addPhoto(new Photo("amaliamoutoussihoraproelefsis", 14, 7, ""));
+        this.db.addPhoto(new Photo("christospassalisyoulaboudalifilia", 14, 7, ""));
+        this.db.addPhoto(new Photo("homeland6", 14, 7, ""));
         this.db.addPhoto(new Photo("syllastzoumerkas", -1, 7, ""));
         this.db.addPhoto(new Photo("moutousi", -1, 7, ""));
         this.db.addPhoto(new Photo("samaras", -1, 7, ""));
         this.db.addPhoto(new Photo("tsirigkouli", -1, 7, ""));
 
-        //station 14
-        this.db.addPhoto(new Photo("p1334779197", 14, 8, ""));
-        this.db.addPhoto(new Photo("souperdimitrios", 14, 8, ""));
-        this.db.addPhoto(new Photo("superdemetriosstill", 14, 8, ""));
-        this.db.addPhoto(new Photo("ktiriedron", 14, 8, ""));
-        this.db.addPhoto(new Photo("lefkospyrgosI", 14, 8, ""));
-        this.db.addPhoto(new Photo("pyrgosote", 14, 8, ""));
+        //station 15
+        this.db.addPhoto(new Photo("p1334779197", 15, 8, ""));
+        this.db.addPhoto(new Photo("souperdimitrios", 15, 8, ""));
+        this.db.addPhoto(new Photo("superdemetriosstill", 15, 8, ""));
+        this.db.addPhoto(new Photo("ktiriedron", 15, 8, ""));
+        this.db.addPhoto(new Photo("lefkospyrgos", 15, 8, ""));
+        this.db.addPhoto(new Photo("pyrgosote", 15, 8, ""));
         this.db.addPhoto(new Photo("papaiwannou", -1, 8, ""));
         this.db.addPhoto(new Photo("vainas", -1, 8, ""));
         this.db.addPhoto(new Photo("papadopoulos", -1, 8, ""));
@@ -750,22 +745,22 @@ final class DbAdapter {
         //TimelineStation 1
         this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)"));
         //Milestones
-        this.db.addMilestone(new Milestone(1, "Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
+        this.db.addMilestone(new Milestone(1, 1964, "Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
                 "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά για περίπου 3,5 δεκαετίες (5η Εβδομάς " +
                 "Ελληνικού Κινηματογράφου, 1964)", "theatesems", "Θεατές στην Εταιρεία Μακεδονικών Σπουδών"));
-        this.db.addMilestone(new Milestone(1, "Ο παραγωγός Τζεϊμς Παρις, εμβληματική μορφή του Φεστιβάλ κατά την περίοδο 1966-1972," +
+        this.db.addMilestone(new Milestone(1, 1966, "Ο παραγωγός Τζεϊμς Παρις, εμβληματική μορφή του Φεστιβάλ κατά την περίοδο 1966-1972," +
                 " «κατεβαζει» ενα τανκ στην πλατεια του Λευκου Πυργου για διαφημιστικους σκοπους της ταινίας «Ξεχασμενοι ηρωες», σε δική" +
                 " του παραγωγή (7η Φεστιβάλ Ελληνικού Κινηματογράφου, 1966). \n" +
                 "(more)…Οι εκπληξεις συνεχιζονται και μεσα στην αιθουσα, οπου οι 1.500 θεατες βρισκουν στη θεση τους απο ενα πακετο " +
                 "τσιγαρα, δωρο του παραγωγου στο κοινο.", "jamesparis", "Ο Ελληνοαμερικανός παραγωγός Τζέιμς Πάρις σε πηγαδάκι του " +
                 "Φεστιβάλ Κινηματογράφου Θεσσαλονίκης"));
-        this.db.addMilestone(new Milestone(1, "Ο Β Εξώστης, το δυναμικό νεανικό κοινό του φεστιβάλ κάνει δυναμικά την εμφάνιση του " +
+        this.db.addMilestone(new Milestone(1, 1970, "Ο Β Εξώστης, το δυναμικό νεανικό κοινό του φεστιβάλ κάνει δυναμικά την εμφάνιση του " +
                 "για να διαδραματίσει σημαντικό ρόλο τα επόμενα χρόνια (11ο ΦΚΘ, 1970): \n" +
                 "\n" +
                 "(more)… Ο «Β΄εξώστης» παίρνει το όνομά του από την ομώνυμη κατηγορία θέσεων στην αίθουσα της Εταιρείας Μακεδονικών " +
                 "σπουδών, όπου συνήθως συγκεντρώνονται οι φοιτητές και η νεολαία λόγω του φθηνού εισιτηρίου.", "exostes",
                 "Άποψη της Εταιρείας Μακεδονικών Σπουδών, όπου διακρίνεται ο Β΄εξώστης."));
-        this.db.addMilestone(new Milestone(1, "Πραγματοποιείται για πρώτη φορά το 1ο Διεθνές Φεστιβάλ Κινηματογράφου Θεσσαλονίκης " +
+        this.db.addMilestone(new Milestone(1, 1972, "Πραγματοποιείται για πρώτη φορά το 1ο Διεθνές Φεστιβάλ Κινηματογράφου Θεσσαλονίκης " +
                 "στην Εταιρεία Μακεδονικών Σπουδών (13ο ΦΚΘ, 1972)\n" +
                 "\n" +
                 "(more)… Το διεθνές φεστιβάλ διεξάγεται μία βδομάδα μετά το επίσημο διαγωνιστικό του ελληνικού προγράμματος, αφορά σε " +
@@ -777,13 +772,13 @@ final class DbAdapter {
         //TimelineStation 2
         this.db.addTimelineStation(new TimelineStation("Ντορέ – Αλέξανδρος"));
         //Milestones
-        this.db.addMilestone(new Milestone(2, "Το καφενείο «Ντορέ» απέναντι από το Λευκό Πύργο αποτέλεσε ιστορικό στέκι, όπου " +
+        this.db.addMilestone(new Milestone(2, 0, "Το καφενείο «Ντορέ» απέναντι από το Λευκό Πύργο αποτέλεσε ιστορικό στέκι, όπου " +
                 "συγκεντρώνονται καλλιτέχνες και κοινό απο την δεκαετία του '60 εως και την διεθνοποίηση του Φεστιβάλ (δεκαετία '90)" +
                 "\n" +
                 "(more)… Οι συζητήσεις μεταξύ σκηνοθετών και θεατών στο «Ντορέ» ξεκινούν συνήθως μετά το τέλος των προβολών και " +
                 "κρατούν μέχρι τα ξημερώματα, διαμορφώνοντας φεστιβαλική ατμόσφαιρα.", "",
                 ""));
-        this.db.addMilestone(new Milestone(2, "Εδώ βρίσκεται και ένα γλυπτό μνημείο του σκηνοθέτη Τάκη Κανελλόπουλου, ο οποίος " +
+        this.db.addMilestone(new Milestone(2, 0, "Εδώ βρίσκεται και ένα γλυπτό μνημείο του σκηνοθέτη Τάκη Κανελλόπουλου, ο οποίος " +
                 "συνέδεσε το όνομα του με το Φεστιβάλ Θεσσαλονίκης και το τότε στέκι των φεστιβαλιστών, το Ντορέ.", "",
                 ""));
 
@@ -791,19 +786,19 @@ final class DbAdapter {
         //TimelineStation 3
         this.db.addTimelineStation(new TimelineStation("Σβώλου – Πλ. Ναυαρίνο (Έσπερος-Ανατόλια-Μακεδονικών – Ναυαρίνο – Βακούρα)"));
         //Milestones
-        this.db.addMilestone(new Milestone(3, "Ο κινηματογράφος Έσπερος φιλοξενεί τις παράλληλες εκδηλώσεις του φεστιβάλ. \n" +
+        this.db.addMilestone(new Milestone(3, 1987, "Ο κινηματογράφος Έσπερος φιλοξενεί τις παράλληλες εκδηλώσεις του φεστιβάλ. \n" +
                 "(more)….Ο Έσπερος θα λειτουργήσει ως αίθουσα προβολών για το φεστιβάλ ως το 1996. Στις ξεχωριστές προβολές " +
                 "συγκαταλέγεται αυτή των ταινιών της Germaine Dulac με ζωντανή μουσική, με τον Σάκη Παπαδημητρίου στο πιάνο και " +
                 "τη Γεωργία Συλλαίου στο τραγούδι (28ο ΦΚΘ, 1987)", "esperos28filmfestival",
                 "Ο κινηματογράφος Έσπερος στην οδό Αλεξάνδρου Σβώλου.(Αρχείο ΦΚΘ)"));
-        this.db.addMilestone(new Milestone(3, "Κυρίαρχη μορφή του 35ου Φεστιβάλ Κινηματογράφου Θεσσαλονίκης αναδεικνύεται ο Ιάπωνας " +
+        this.db.addMilestone(new Milestone(3, 1994, "Κυρίαρχη μορφή του 35ου Φεστιβάλ Κινηματογράφου Θεσσαλονίκης αναδεικνύεται ο Ιάπωνας " +
                 "δημιουργός Ναγκίσα Όσιμα, το συνολικό έργο του οποίου προβάλλεται σε αναδρομικό αφιέρωμα στον κινηματογράφο «Έσπερος» " +
                 "(35ο ΦΚΘ, 1994): \n" +
                 "(more)… \n" +
                 "Ο ίδιος ο Όσιμα έρχεται για λίγες μέρες στη Θεσσαλονίκη, προλογίζει ταινίες του σε κατάμεστες αίθουσες, συναντιέται" +
                 " με το φίλο του Θόδωρο Αγγελόπουλο και διασκεδάζει στο κέντρο που τραγουδά η Δήμητρα Γαλάνη. ", "",
                 ""));
-        this.db.addMilestone(new Milestone(3, "Το 1996 για πρώτη –και μοναδική – χρονιά η έδρα των εκδηλώσεων του Φεστιβάλ " +
+        this.db.addMilestone(new Milestone(3, 1996, "Το 1996 για πρώτη –και μοναδική – χρονιά η έδρα των εκδηλώσεων του Φεστιβάλ " +
                 "Κινηματογράφου Θεσσαλονίκης μεταφέρεται στο «Ανατόλια».\n" +
                 "(more)… Μπροστά στον κινηματογράφο στήνεται μια ειδική κατασκευή, ένα μεγάλου γυάλινου κουτιού, που σηματοδοτεί " +
                 "την εκεί παρουσία του φεστιβάλ.", "anatolia",
@@ -814,31 +809,31 @@ final class DbAdapter {
         //TimelineStation 4
         this.db.addTimelineStation(new TimelineStation("Ολύμπιον-Πλατεία Αριστοτέλους"));
         //Milestones
-        this.db.addMilestone(new Milestone(4, "H Διεθνής Έκθεση Θεσσαλονίκης διοργανώνει σειρά πολιτιστικών εκδηλώσεων για το σινεμά" +
+        this.db.addMilestone(new Milestone(4, 0, "H Διεθνής Έκθεση Θεσσαλονίκης διοργανώνει σειρά πολιτιστικών εκδηλώσεων για το σινεμά" +
                 " στη Θεσσαλονίκη με αφορμή τα 25 χρόνια λειτουργίας της (1η Εβδομάς Ελληνικού Κινηματογράφου, 1960) \n" +
                 "(more)…σε συνεργασία με την κινηματογραφική λέσχη της Μακεδονικής Καλλιτεχνικής Εταιρείας «Τέχνη».\n" +
                 "Η 1η Εβδομάς Ελληνικού Κινηματογράφου εγκαινιάζεται επίσημα στις 20 Σεπτεμβρίου 1960, στο κινηματοθέατρο Ολύμπιον, από " +
                 "τον υπουργό Βιομηχανίας Νικόλαο Μάρτη, που έχει την εποπτεία του θεσμού.", "protievdomas1960",
                 "Στιγμιότυπο από την τελετή λήξης της 1ης Εβδομάδας Ελληνικού Κινηματογράφου, με τον Πρόεδρο της ΔΕΘ Γιώργο " +
                         "Γεωργιάδη, που ανάβει το τσιγάρο της ηθοποιού Μάρως Κοντού. "));
-        this.db.addMilestone(new Milestone(4, "", "olympion01",
+        this.db.addMilestone(new Milestone(4, 0, "", "olympion01",
                 "Άποψη από το Ολύμπιον, μόνιμη έδρα σήμερα του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
                         "(ΦΩΤΟ MOTIONTEAM, 46ο ΦΚΘ, Κωδ. 01.022317)"));
-        this.db.addMilestone(new Milestone(4, "H ιστορική κινηματογραφική αίθουσα θα ταυτιστεί με την ιστορία του Φεστιβάλ, " +
+        this.db.addMilestone(new Milestone(4, 1997, "H ιστορική κινηματογραφική αίθουσα θα ταυτιστεί με την ιστορία του Φεστιβάλ, " +
                 "το οποίο θα αλλάξει αρκετές έδρες για να επιστρέψει στο ανακαινισμένο Ολύμπιον το 1997.", "olympion02",
                 "Το κτιριακό συγκρότημα του Ολύμπιον στην πλατεία Αριστοτέλους."));
-        this.db.addMilestone(new Milestone(4, "Η πλήρης ανακαίνιση του Ολύμπιον έγινε στο πλαίσιο της Πολιτιστικής Πρωτεύουσας " +
+        this.db.addMilestone(new Milestone(4, 1997, "Η πλήρης ανακαίνιση του Ολύμπιον έγινε στο πλαίσιο της Πολιτιστικής Πρωτεύουσας " +
                 "της Ευρώπη «Θεσσαλονίκη ΄97».", "olympion38filmfestival",
                 "Άποψη από το εσωτερικό του ανακαινισμένου κινηματογράφου Ολύμπιον.\n" +
                         "(Αρχείο ΦΚΘ)"));
-        this.db.addMilestone(new Milestone(4, "Απο το 1997 μέχρι και σήμερα το Ολύμπιον έχει φιλοξενήσει όλες τις διοργανώσεις του " +
+        this.db.addMilestone(new Milestone(4, 1997, "Απο το 1997 μέχρι και σήμερα το Ολύμπιον έχει φιλοξενήσει όλες τις διοργανώσεις του " +
                 "Φεστιβάλ αλλά και πλήθος εμβληματικών προσωπικοτήτων του παγκόσμιου κινηματογράφου (Κόπολα, Στοούν, Ντεσπλά, " +
                 "Βερασετάκουν, Κουστουρίτσα, Κιτάνο, Χέρτζογκ, κλπ)", "olympion39filmfestival",
                 "Εξωτερική άποψη του κινηματοθεάτρου Ολύμπιον στην πλατεία Αριστοτέλους."));
-        this.db.addMilestone(new Milestone(4, "", "olympion46filmfestival",
+        this.db.addMilestone(new Milestone(4, 0, "", "olympion46filmfestival",
                 "Ο κινηματογράφος Ολύμπιον, μόνιμη έδρα του\n" +
                         "φεστιβάλ."));
-        this.db.addMilestone(new Milestone(4, "Την άνοιξη του 2000 ο Δημήτρης Εϊπίδης καθιερώνει ένα νέο πρωτότυπο Φεστιβάλ, που " +
+        this.db.addMilestone(new Milestone(4, 2000, "Την άνοιξη του 2000 ο Δημήτρης Εϊπίδης καθιερώνει ένα νέο πρωτότυπο Φεστιβάλ, που " +
                 "έμελλε να αγαπηθεί εξίσου απο το κοινό της πόλης, το “Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης– Εικόνες του 21ου αιώνα”. " +
                 "Κάθε διοργάνωση συγκεντρώνει κατά μ.ο. 30 χιλ. θεατές στις προβολές της. ", "peopleolympion38filmfestival",
                 "Πλήθος κόσμου έξω από το Ολύμπιον κατά τη διάρκεια του 38ου Φεστιβάλ Κινηματογράφου Θεσσαλονίκης.\n" +
@@ -847,18 +842,18 @@ final class DbAdapter {
         //TimelineStation 5
         this.db.addTimelineStation(new TimelineStation("Λιμάνι"));
         //Milestones
-        this.db.addMilestone(new Milestone(5, "Oliver Stone και Emir Kusturica ενώνουν τις δυνάμεις τους στη συναυλία των " +
+        this.db.addMilestone(new Milestone(5, 2008, "Oliver Stone και Emir Kusturica ενώνουν τις δυνάμεις τους στη συναυλία των " +
                 "No Smoking Band στην Αποθήκη Γ΄ στο Λιμάνι (49ο ΦΚΘ, 2008)", "stonekusturica",
                 "O Oliver Stone και ο Emir Kusturica μαζί στη σκηνή.\n" +
                         "(Motionteam, κωδικός: 445484)"));
-        this.db.addMilestone(new Milestone(5, "Δημοσιογράφοι επισκέπτονται τα σκηνικά της ταινίας «Μια αιωνιότητα και μια μέρα» του " +
+        this.db.addMilestone(new Milestone(5, 1996, "Δημοσιογράφοι επισκέπτονται τα σκηνικά της ταινίας «Μια αιωνιότητα και μια μέρα» του " +
                 "Θόδωρου Αγγελόπουλου, η οποία γυρίστηκε στη Θεσσαλονίκη (37ο ΦΚΘ, 1996): \n" +
                 "(more)….. Λίγους μήνες αργότερα η ταινία θα κερδίσει το «Χρυσό Φοίνικα» στο Φεστιβάλ Κινηματογράφου των Καννών και έτσι" +
                 " θα γίνει η πρώτη –και η μοναδική μέχρι σήμερα- ελληνική ταινία που έχει κατακτήσει τη συγκεκριμένη διάκριση.",
                 "eternityandaday1",
                 "Σκηνή από την πολυβραβευμένη ταινία «Μια αιωνιότητα και μια μέρα» του Θ. Αγγελόπουλου\n" +
                         "(Αρχείο ΦΚΘ, Κωδικός 01.001704)"));
-        this.db.addMilestone(new Milestone(5, "Οι Αποθήκες στο Λιμάνι φιλοξενούν ενδιαφέρουσες εκθέσεις όπως \n" +
+        this.db.addMilestone(new Milestone(5, 1994, "Οι Αποθήκες στο Λιμάνι φιλοξενούν ενδιαφέρουσες εκθέσεις όπως \n" +
                 "η «Ζωγραφική στον κινηματογράφο: Γιγαντοαφίσες στην 7η Τέχνη», έκθεση κινηματογραφικής αφίσας της συλλογής Hellafi." +
                 " (35ο ΦΚΘ, 1994) αλλά και η έκθεση σκηνικών και κοστουμιών των Μικέ Καραπιπέρη – Γιώργου Ζιάκα – Γιώργου Πατσά από τα " +
                 "γυρίσματα των ταινιών του Θόδωρου Αγγελόπουλου. Η Αποθήκη Δ΄ φιλοξενεί έκθεση κινηματογραφικής αφίσας από ταινίες του " +
@@ -866,7 +861,7 @@ final class DbAdapter {
                 "apothikesinside",
                 "Άποψη του εσωτερικού της Αποθήκης Γ' κατά την διάρκεια μιας Συνέντευξης Τύπου\n" +
                         "(41o ΦΚΘ, Κωδ. Φωτο 01.017108)"));
-        this.db.addMilestone(new Milestone(5, "Οι τέσσερις αίθουσες προβολών στο λιμάνι αποκτούν κινηματογραφικά ονόματα και " +
+        this.db.addMilestone(new Milestone(5, 2001, "Οι τέσσερις αίθουσες προβολών στο λιμάνι αποκτούν κινηματογραφικά ονόματα και " +
                 "γίνονται τμήμα του Φεστιβάλ Κινηματογράφου. (42ο ΦΚΘ, 2001)\n" +
                 "(more…) Βαφτίζονται «Τώνια Μαρκετάκη» και «Τζον Κασσαβέτης» (Αποθήκη Α΄) και «Φρίντα Λιάππα» και «Τάκης " +
                 "Κανέλλοπουλος» (Αποθήκη Δ’). Η τελευταία μετονομάζεται την επόμενη χρονιά σε αίθουσα «Σταύρος Τορνές», προκειμένου" +
@@ -874,10 +869,10 @@ final class DbAdapter {
                 "cineprovlita01",
                 "Εξωτερική άποψη της Αποθήκης A, οι αίθουσες της οποίας μετονομάστηκε σε «Τώνια Μαρκετάκη» και «Τζον Κασσαβέτης».\n" +
                         "(40ο ΦΚΘ, Αρ. Καταγραφής 01.002826)"));
-        this.db.addMilestone(new Milestone(5, "",
+        this.db.addMilestone(new Milestone(5, 0, "",
                 "apothikesangelopoulos",
                 "Φτάνοντας στην Αποθήκη Γ, με τον Θόδωρο και τη Φοίβη Αγγελοπούλου, για τη συνέντευξη τύπου."));
-        this.db.addMilestone(new Milestone(5, "",
+        this.db.addMilestone(new Milestone(5, 0, "",
                 "ioselianilimani",
                 "Ο Πρόεδρος της Κριτικής Επιτροπής του 44ου Φεστιβάλ Κινηματογράφου Θεσσαλονίκης Otar Iosseliani πηγαίνοντας προς " +
                         "την Αποθήκη Γ. "));

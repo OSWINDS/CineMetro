@@ -14,6 +14,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <!-- title, year -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="25dp"
+                android:textStyle="italic"
+                android:id="@+id/titleYear" />
+
             <!-- images of Movie -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -26,21 +35,13 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- title, year -->
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:textSize="25dp"
-                android:textStyle="italic"
-                android:id="@+id/titleYear" />
-
             <!-- director -->
             <TextView
-                android:text="Σκηνοθεσία: \n"
-                android:layout_width="fill_parent"
+                android:text="\n\n Σκηνοθεσία \n"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:textSize="15dp"
                 android:id="@+id/director" />
 
             <!-- director Image -->
@@ -48,21 +49,24 @@
                 android:layout_width="150dp"
                 android:layout_height="160dp"
                 android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/directorImage" />
 
             <!-- director Name-->
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/directorName" />
 
             <!-- cast -->
             <TextView
-                android:text="Cast: \n"
-                android:layout_width="fill_parent"
+                android:text="\n\n Πρωταγωνιστούν \n"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:textSize="15dp"
                 android:id="@+id/cast" />
 
             <!-- images of cast -->
@@ -79,10 +83,11 @@
 
             <!-- info -->
             <TextView
-                android:text="\n Πληροφορίες: \n"
-                android:layout_width="fill_parent"
+                android:text="\n\n Πληροφορίες \n"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:textSize="15dp"
                 android:id="@+id/inf" />
             <TextView
                 android:layout_width="wrap_content"

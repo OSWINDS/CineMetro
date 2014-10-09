@@ -13,6 +13,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <!-- name of station-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="25dp"
+                android:textStyle="italic"
+                android:id="@+id/name" />
+
             <!-- images of cinema -->
             <HorizontalScrollView
                 android:layout_width="match_parent"

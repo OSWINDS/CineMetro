@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION = 13;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
@@ -118,7 +118,8 @@ public class DbHelper extends SQLiteOpenHelper {
         query = "CREATE TABLE IF NOT EXISTS milestone ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "station_id INTEGER, " +
-                "des, TEXT, " +
+                "year INTEGER, " +
+                "des TEXT, " +
                 "photo_name TEXT, "  +
                 "photo_des TEXT)";
 
@@ -362,6 +363,7 @@ public class DbHelper extends SQLiteOpenHelper {
             //ContentValues to add key "column"/value
             ContentValues values = new ContentValues();
             values.put("station_id", milestone.getStation_id());
+	        values.put("year", milestone.getYear());
             values.put("des", milestone.getDescription());
             values.put("photo_name", milestone.getPhotoName());
             values.put("photo_des", milestone.getPhotoDescription());
@@ -616,7 +618,7 @@ public class DbHelper extends SQLiteOpenHelper {
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String[] columns = {"id", "des", "station_id", "photo_name", "photo_des"};
+        String[] columns = {"id", "des", "year", "station_id", "photo_name", "photo_des"};
         //build query
         Cursor cursor =
                 db.query("milestone", // a. table
@@ -636,9 +638,10 @@ public class DbHelper extends SQLiteOpenHelper {
         Milestone milestone = new Milestone();
         milestone.setId(Integer.parseInt(cursor.getString(0))); //id
         milestone.setStation_id(Integer.parseInt(cursor.getString(1))); //station id
-        milestone.setDes(cursor.getString(2)); //des
-        milestone.setPhotoName(cursor.getString(3)); //photo name
-        milestone.setPhotoDescription(cursor.getString(4)); //photo description
+	milestone.setYear(Integer.parseInt(cursor.getString(2)));
+        milestone.setDes(cursor.getString(3)); //des
+        milestone.setPhotoName(cursor.getString(4)); //photo name
+        milestone.setPhotoDescription(cursor.getString(5)); //photo description
 
         //return milestone
         return milestone;
@@ -873,9 +876,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 milestone = new Milestone();
                 milestone.setId(Integer.parseInt(cursor.getString(0))); //id
                 milestone.setStation_id(Integer.parseInt(cursor.getString(1))); //station id
-                milestone.setDes(cursor.getString(2));
-                milestone.setPhotoName(cursor.getString(3)); //photo name
-                milestone.setPhotoDescription(cursor.getString(4));
+		        milestone.setYear(Integer.parseInt(cursor.getString(2)));
+                milestone.setDes(cursor.getString(3));
+                milestone.setPhotoName(cursor.getString(4)); //photo name
+                milestone.setPhotoDescription(cursor.getString(5));
                 milestones.add(milestone);
             } while (cursor.moveToNext());
         }
