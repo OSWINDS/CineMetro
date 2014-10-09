@@ -52,6 +52,8 @@ private View view;
         idCinema = intent.getIntExtra("button_id", 0);
         description = (TextView) findViewById(R.id.description);
         description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(1).getDescription());
+        image=(ImageView)findViewById(R.id.image);
+        image.setBackgroundResource(R.drawable.red1);
         for (int i=0; i<3; i++) {
             rb[i]  = new RadioButton(this);
             //rb[i].setText("1964");
@@ -64,8 +66,7 @@ private View view;
 
 
 
-            image=(ImageView)findViewById(R.id.image);
-            image.setBackgroundResource(R.drawable.red1);
+
             rb[i].setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -78,7 +79,7 @@ private View view;
                     // find the radiobutton by returned id
                     radioButton = (RadioButton) findViewById(selectedId);
                     description = (TextView) findViewById(R.id.description);
-                    description.setText(DbAdapter.getInstance().getTimelineStationMilestones(1).get(selectedId).getDescription());
+                    description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId).getDescription());
                     image=(ImageView)findViewById(R.id.image);
                     image.setBackgroundResource(R.drawable.red1);
 
