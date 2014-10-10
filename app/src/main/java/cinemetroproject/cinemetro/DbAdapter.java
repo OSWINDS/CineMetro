@@ -722,7 +722,7 @@ final class DbAdapter {
         this.db.addPhoto(new Photo("p1334779197", 15, 8, ""));
         this.db.addPhoto(new Photo("souperdimitrios", 15, 8, ""));
         this.db.addPhoto(new Photo("superdemetriosstill", 15, 8, ""));
-        this.db.addPhoto(new Photo("ktiriedron", 15, 8, ""));
+        //this.db.addPhoto(new Photo("ktiriedron", 15, 8, ""));
         this.db.addPhoto(new Photo("lefkospyrgos", 15, 8, ""));
         this.db.addPhoto(new Photo("pyrgosote", 15, 8, ""));
         this.db.addPhoto(new Photo("papaiwannou", -1, 8, ""));
