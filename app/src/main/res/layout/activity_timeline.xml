@@ -15,7 +15,7 @@
         android:id="@+id/view2" />
 
     <TextView
-        android:text="Ταινίες 60-70"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
@@ -42,7 +42,7 @@
         <RadioGroup
             android:id="@+id/radiogroup"
             android:layout_width="90dp"
-            android:layout_height="200dp"
+            android:layout_height="228dp"
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="horizontal"
             >
@@ -65,7 +65,8 @@
         android:layout_height="200dp"
         android:layout_marginTop="250dp"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_alignParentBottom="true">
 
         <Button
             android:id="@+id/prevstation"
