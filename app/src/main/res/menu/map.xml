@@ -4,29 +4,18 @@
     tools:context="cinemetroproject.cinemetro.MapActivity" >
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/CheckIn"
         android:showAsAction="always"
-        android:icon="@drawable/ic_menu_myplaces"
-        android:title="Settings" />
+        android:icon="@drawable/gps"
+        android:title="CheckIn" />
 
 
 
     <item
-        android:id="@+id/Options"
+        android:id="@+id/Lines"
         android:showAsAction="always"
-        android:title="settings2">
-        <menu>
-            <group android:checkableBehavior="single">
-                <item android:id="@+id/line1"
-                    android:title="Line 1" />
-                <item android:id="@+id/line2"
-                    android:title="Line 2" />
-                <item android:id="@+id/line3"
-                    android:title="Line 3" />
-                <item android:id="@+id/noLine"
-                    android:title="No Line" />
-            </group>
-        </menu>
+        android:title="Lines">
+
     </item>
 
 

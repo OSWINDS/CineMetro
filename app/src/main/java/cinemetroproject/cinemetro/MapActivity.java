@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,13 +36,14 @@ import java.util.List;
 public class MapActivity extends Activity implements LocationListener {
 
 
-    ListView lv;
+    private ListView lv;
+    private LinearLayout Ll1;
     private GoogleMap mΜap;
     private LatLng current;
     private Marker mCurrent;
     private float colour;
     private int nLine;
-    private List<Station> line = new ArrayList<Station>();
+    private List<MyPoint> line = new ArrayList<MyPoint>();
     private float distances[];
     private LocationManager lm;
     private Location currentLocation;
@@ -52,16 +56,92 @@ public class MapActivity extends Activity implements LocationListener {
 
         setUpMap();
 
+
+
+        Ll1 = (LinearLayout) this.findViewById(R.id.Ll1);
+        Ll1.setBackgroundColor(Color.WHITE);
+        Ll1.setAlpha((float) 0.5);
+
+        LinearLayout Ll2 = (LinearLayout) findViewById(R.id.Ll2);
+
+        ArrayList<Route> rt = DbAdapter.getInstance().getRoutes();
+        for (int i = 0; i < rt.size(); i++) {
+            Button bt = new Button(this);
+            bt.setText("Route " + rt.get(i).getId());
+            bt.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+            bt.setTextSize(12);
+            bt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    RouteButtonClicked(v);
+                }
+
+
+            });
+            Ll2.addView(bt);
+        }
+
+        Button bt = new Button(this);
+        bt.setText("Timeline Route");
+        bt.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+        bt.setTextSize(12);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RouteButtonClicked(v);
+            }
+
+
+        });
+        Ll2.addView(bt);
+
+
+        Button bt2 = new Button(this);
+        bt2.setText("NO Route");
+        bt2.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+        bt2.setTextSize(12);
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RouteButtonClicked(v);
+            }
+
+
+        });
+        Ll2.addView(bt2);
+
+
+        lv = (ListView) this.findViewById(R.id.lv);
+
         nLine = 0;
         setLine();
 
-        lv = (ListView) this.findViewById(R.id.lv);
-        lv.setBackgroundColor(Color.WHITE);
-        lv.setAlpha((float)0.5);
 
         currentLocation = new Location("");
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 10, this);
+    }
+
+    private void RouteButtonClicked(View v) {
+        Button bt = (Button) v;
+        String str = bt.getText().toString();
+        if (str.contains("NO")) {
+            nLine = 0;
+            setLine();
+            return;
+        }
+
+        if (str.contains("Timeline")) {
+            nLine = -1;
+            setLine();
+            return;
+        }
+
+        String[] strs = str.split(" ");
+
+        nLine = Integer.getInteger(strs[1]);
+        setLine();
+
     }
 
     public void setUpMap() {
@@ -93,27 +173,12 @@ public class MapActivity extends Activity implements LocationListener {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.line1:
-                nLine = 1;
-                setLine();
-                return true;
-            case R.id.line2:
-                nLine = 2;
-                setLine();
-                return true;
-            case R.id.line3:
-                nLine = 3;
-                setLine();
-                return true;
-            case R.id.noLine:
-                nLine = 0;
-                setLine();
-                return true;
-            case R.id.profile:
-                if (lv.getVisibility() == View.VISIBLE)
-                    lv.setVisibility(View.INVISIBLE);
+
+            case R.id.Lines:
+                if (Ll1.getVisibility() == View.VISIBLE)
+                    Ll1.setVisibility(View.INVISIBLE);
                 else
-                    lv.setVisibility(View.VISIBLE);
+                    Ll1.setVisibility(View.VISIBLE);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -129,7 +194,6 @@ public class MapActivity extends Activity implements LocationListener {
         distances = new float[line.size()];
 
         showList();
-        stationClk();
     }
 
     private void setColour(int k) {
@@ -146,18 +210,6 @@ public class MapActivity extends Activity implements LocationListener {
         }
     }
 
-    private void addMarkers2(int pos) {
-
-        double lat = line.get(pos).getLat();
-        double lon = line.get(pos).getLng();
-
-        Toast.makeText(MapActivity.this, "(" + lat + "," + lon + ")", Toast.LENGTH_LONG).show();
-        /*mΜap.addMarker(new MarkerOptions()
-                .position(line.get(pos).getLatpoint())
-                .title(line.get(pos).getName())
-                .icon(BitmapDescriptorFactory.defaultMarker(colour)));*/
-    }
-
 
     private void AddMarkers() {
 
@@ -168,41 +220,36 @@ public class MapActivity extends Activity implements LocationListener {
             if (rt.get(i).getId() == nLine || nLine == 0) {
                 ArrayList<Station> st = DbAdapter.getInstance().getStationByRoute(rt.get(i).getId());
                 for (int j = 0; j < st.size(); j++) {
-                    Station point = st.get(j);
+                    MyPoint point = st.get(j).getMyPoint();
                     line.add(point);
                     mΜap.addMarker(new MarkerOptions()
-                            .position(point.getLatpoint())
+                            .position(point.getLng())
                             .title(point.getName())
                             .icon(BitmapDescriptorFactory.defaultMarker(colour)));
 
                 }
             }
         }
+        if (nLine == -1 || nLine == 0) {
+            ArrayList<TimelineStation> ts = DbAdapter.getInstance().getTimelineStations();
+            for (int i = 0; i < ts.size(); i++) {
+                MyPoint point = ts.get(i).getMyPoint();
+                line.add(point);
+                mΜap.addMarker(new MarkerOptions()
+                        .position(point.getLng())
+                        .title(point.getName())
+                        .icon(BitmapDescriptorFactory.defaultMarker(colour)));
+            }
+        }
     }
 
     private void showList() {
-        ArrayAdapter<Station> adapter = new myArrayAdapter();
-        ListView list = (ListView) findViewById(R.id.lv);
-        list.setAdapter(adapter);
+        ArrayAdapter<MyPoint> adapter = new myArrayAdapter();
+
+        lv.setAdapter(adapter);
     }
 
-    private void stationClk() {
-        ListView list = (ListView) findViewById(R.id.lv);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
-                //TextView text=(TextView)view;
-                if (nLine != 0) {
-                    // addMarkers2(pos);
-                    //map.clear();
-                    //if(mMap!=null){addMarkers2}
-                } else {
-                    Toast.makeText(MapActivity.this, "Nothing to show.", Toast.LENGTH_SHORT).show();
-                    //map.clear
-                }
-            }
-        });
-    }
+
 
     @Override
     public void onLocationChanged(Location location) {
@@ -247,7 +294,7 @@ public class MapActivity extends Activity implements LocationListener {
         Toast.makeText(MapActivity.this, "GPS is not enabled.", Toast.LENGTH_SHORT).show();
     }
 
-    private class myArrayAdapter extends ArrayAdapter<Station> {
+    private class myArrayAdapter extends ArrayAdapter<MyPoint> {
 
         public myArrayAdapter() {
             super(MapActivity.this, R.layout.maplistitem, line);
