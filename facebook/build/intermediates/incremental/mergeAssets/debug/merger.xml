@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/src/main/assets" />
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\src\main\assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/home/efi/Projects/CineMetroApplication/facebook/src/debug/assets" />
+        <source path="C:\Users\Chris\Documents\GitHub\CineMetro\facebook\src\debug\assets" />
     </dataSet>
 
 </merger>
