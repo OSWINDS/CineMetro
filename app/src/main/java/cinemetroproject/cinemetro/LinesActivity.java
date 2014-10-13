@@ -49,7 +49,7 @@ public class LinesActivity  extends TabActivity {
         {
             mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#E41C26"));
             mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#2389BE"));
-            mTabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#71B278"));
+            mTabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#1B9344"));
         }
     }
 
