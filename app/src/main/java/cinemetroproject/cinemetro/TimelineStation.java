@@ -1,6 +1,9 @@
 package cinemetroproject.cinemetro;
 
 
+import com.facebook.Session;
+import com.google.android.gms.maps.model.LatLng;
+
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -81,5 +84,14 @@ public class TimelineStation {
     public void setMilestones(ArrayList<Milestone> milestones)
     {
         this.milestones = milestones;
+    }
+
+    public MyPoint getMyPoint() {
+
+        return new MyPoint(this.getName(),this.getLng());
+    }
+
+    public LatLng getLng() {
+        return new LatLng(0,0);
     }
 }
