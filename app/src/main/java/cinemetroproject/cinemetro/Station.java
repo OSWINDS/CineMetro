@@ -132,7 +132,7 @@ public class Station {
     }
 
     public MyPoint getMyPoint(){
-        return new MyPoint(this.getName(),this.getLatpoint());
+        return new MyPoint(this.getName(),this.getLatpoint(),this.getId());
     }
 
 }

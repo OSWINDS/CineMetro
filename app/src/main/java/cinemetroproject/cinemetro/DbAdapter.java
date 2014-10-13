@@ -871,4 +871,10 @@ final class DbAdapter {
 
 
     }
+
+    public void Unlock(int Line_id, int Station_id) {
+        // if Line_id==-1 then it's a Timeline;
+        //if Line_id>0 then it's a Line
+        //the id represents the id of the station/TimelineStation
+    }
 }
