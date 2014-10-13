@@ -88,7 +88,7 @@ public class TimelineStation {
 
     public MyPoint getMyPoint() {
 
-        return new MyPoint(this.getName(),this.getLng());
+        return new MyPoint(this.getName(),this.getLng(),this.getId());
     }
 
     public LatLng getLng() {
