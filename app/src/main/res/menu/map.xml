@@ -3,11 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="cinemetroproject.cinemetro.MapActivity" >
 
-    <item
-        android:id="@+id/CheckIn"
-        android:showAsAction="always"
-        android:icon="@drawable/gps"
-        android:title="CheckIn" />
 
 
 
