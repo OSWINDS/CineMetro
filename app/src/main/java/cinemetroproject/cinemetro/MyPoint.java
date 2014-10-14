@@ -22,10 +22,6 @@ public class MyPoint {
         return lng;
     }
 
-    public double getLat(){ return lng.latitude; }
-
-    public double getLon(){ return lng.longitude; }
-
     public void setLng(LatLng lng) {
         this.lng = lng;
     }

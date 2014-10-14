@@ -55,8 +55,6 @@ public class MapActivity extends Activity implements LocationListener {
 
         setUpMap();
 
-
-
         Ll1 = (LinearLayout) this.findViewById(R.id.Ll1);
         Ll1.setBackgroundColor(Color.WHITE);
         Ll1.setAlpha((float) 0.5);
@@ -120,7 +118,7 @@ public class MapActivity extends Activity implements LocationListener {
         currentLocation = new Location("");
         mΜap.setMyLocationEnabled(true);
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 10, this);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 600000, 3, this);
     }
 
     private void RouteButtonClicked(View v) {
@@ -134,8 +132,8 @@ public class MapActivity extends Activity implements LocationListener {
         mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         if (mΜap != null) {
             mΜap.clear();
+            //mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257,22.944343),8));
         }
-        //mΜap.setMyLocationEnabled(true);
     }
 
 
@@ -240,12 +238,6 @@ public class MapActivity extends Activity implements LocationListener {
         currentLocation= location;
 
         mΜap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 11.0f));
-       // double lat = location.getLatitude();
-        //double lon = location.getLongitude();
-
-     //   Toast.makeText(MapActivity.this, lat + "," + lon, Toast.LENGTH_SHORT).show();
-
-
 
         for(int i=0;i<line.size();i++){
             Location loc=new Location("");
@@ -257,6 +249,7 @@ public class MapActivity extends Activity implements LocationListener {
                 Unlock(line.get(i));
             }
         }
+        //showList();
     }
 
     private void Unlock(MyPoint myPoint) {
@@ -277,7 +270,7 @@ public class MapActivity extends Activity implements LocationListener {
 
     @Override
     public void onProviderEnabled(String s) {
-
+        Toast.makeText(MapActivity.this, "GPS is enabled.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -298,17 +291,20 @@ public class MapActivity extends Activity implements LocationListener {
                 itemView = getLayoutInflater().inflate(R.layout.maplistitem, parent, false);
             }
 
-            String s1, s2;
+            String s1, s2, s3;
 
-                s1 = (pos + 1) + "η Στάση" + "\t" + line.get(pos).getDistance() + "m";
+            s1 = (pos + 1) + "η Στάση" + "\t" + line.get(pos).getDistance() + "m";
+            s2 = line.get(pos).getName();
+            s3 = "Distance: " + line.get(pos).getDistance() + " m";
 
-                s2 = line.get(pos).getName();
 
 
             TextView text1 = (TextView) itemView.findViewById(R.id.station);
             text1.setText(s1);
             TextView text2 = (TextView) itemView.findViewById(R.id.stationInfo);
             text2.setText(s2);
+            TextView text3 = (TextView) itemView.findViewById(R.id.distance);
+            text3.setText(s3);
 
             return itemView;
         }
