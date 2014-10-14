@@ -11,7 +11,7 @@
         android:id="@+id/view" />
 
     <TextView
-        android:text="Ταινίες 60-70"
+        android:text="Χρονολόγιο"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"

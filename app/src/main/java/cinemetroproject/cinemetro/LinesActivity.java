@@ -4,6 +4,8 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TabHost;
 
@@ -47,7 +49,30 @@ public class LinesActivity  extends TabActivity {
         {
             mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#E41C26"));
             mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#2389BE"));
-            mTabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#71B278"));
+            mTabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#1B9344"));
         }
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.lines, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.home) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 }

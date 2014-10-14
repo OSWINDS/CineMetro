@@ -6,13 +6,13 @@ package cinemetroproject.cinemetro;
 public class Milestone {
     private int id;
     private int station_id;
-    private int year;
+    private String year;
     private String des;
     private String photo_name;
     private String photo_des;
 
     public Milestone(){}
-    public Milestone(int station_id, int year, String des, String p_n, String p_d)
+    public Milestone(int station_id, String year, String des, String p_n, String p_d)
     {
         this.station_id = station_id;
         this.year = year;
@@ -46,7 +46,7 @@ public class Milestone {
     *
     *@return year of the milestone
     */
-    public int getYear()
+    public String getYear()
     {
        return this.year;
     }
@@ -104,7 +104,7 @@ public class Milestone {
      * Set year of the milestone
      * @param year
      */
-    public void setYear(int year)
+    public void setYear(String year)
     {
         this.year = year;
     }

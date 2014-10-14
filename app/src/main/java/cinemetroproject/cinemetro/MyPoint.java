@@ -8,11 +8,14 @@ import com.google.android.gms.maps.model.LatLng;
 public class MyPoint {
     private String Name;
     private LatLng lng;
+    private int id;
+    private float distance;
 
-   public MyPoint(){};
-    public MyPoint(String Name,LatLng lng){
+    public MyPoint(){};
+    public MyPoint(String Name,LatLng lng,int id){
         this.setLng(lng);
         this.setName(Name);
+        this.setId(id);
     }
 
     public LatLng getLng() {
@@ -33,5 +36,21 @@ public class MyPoint {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
     }
 }

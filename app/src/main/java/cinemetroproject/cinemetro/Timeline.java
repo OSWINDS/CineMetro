@@ -14,25 +14,28 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by vivi dimitris on 22/9/2014.
  */
 public class Timeline extends ActionBarActivity {
 
-    final RadioButton[] rb = new RadioButton[3];
+    private RadioButton[] rb = new RadioButton[10];//for now
 
 
     private LinearLayout scrollView;
     private LinearLayout mylayout;
     private TextView description;
-    private TextView description2;
     private RadioGroup rg;
     private RadioButton radioButton;
-    private int j=0;
     private ImageView image;
-private View view;
+    private View view;
     private Button nextstasion;
+    private Button prevstation;
     private int idCinema;
+    private int selectedId;
+
 
 
     @Override
@@ -53,20 +56,21 @@ private View view;
         description = (TextView) findViewById(R.id.description);
         description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(1).getDescription());
         image=(ImageView)findViewById(R.id.image);
-        image.setBackgroundResource(R.drawable.red1);
-        for (int i=0; i<3; i++) {
+       /* try {
+            Class res = R.drawable.class;
+            Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(1).getPhotoName());
+            int drawableId = field.getInt(null);
+            image.setBackgroundResource(drawableId);
+            //  imageCinema.setGravity(Gravity.BOTTOM | Gravity.CENTER);
+            //  imageCinema.setLayoutParams(new ViewGroup.LayoutParams(320,300));
+        } catch (Exception e) {}*/
+        int millestones= DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).size();
+
+        for (int i=0; i<millestones; i++) {
             rb[i]  = new RadioButton(this);
-            //rb[i].setText("1964");
-          //  rb[i].setTextGravity(Gravity.BOTTOM);
-
-
+            rb[i].setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(i).getYear());
             rb[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            rb[i].setText("1964");
             rb[i].setId(i);
-
-
-
-
             rb[i].setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -74,18 +78,44 @@ private View view;
 
 
                     // get selected radio button from radioGroup
-                    int selectedId = rg.getCheckedRadioButtonId();
+                     selectedId = rg.getCheckedRadioButtonId();
 
                     // find the radiobutton by returned id
                     radioButton = (RadioButton) findViewById(selectedId);
                     description = (TextView) findViewById(R.id.description);
                     description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId).getDescription());
                     image=(ImageView)findViewById(R.id.image);
-                    image.setBackgroundResource(R.drawable.red1);
+
+                    try {
+                        Class res = R.drawable.class;
+                        Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId).getPhotoName());
+                        int drawableId = field.getInt(null);
+                        image.setBackgroundResource(drawableId);
+
+                    } catch (Exception e) {}
+                    nextstasion.setOnClickListener(new View.OnClickListener() {
+
+                        public void onClick(View v) {
+                            description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId+1).getDescription());
+                            image=(ImageView)findViewById(R.id.image);
+
+                            try {
+                                Class res = R.drawable.class;
+                                Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId+1).getPhotoName());
+                                int drawableId = field.getInt(null);
+                                image.setBackgroundResource(drawableId);
+
+                            } catch (Exception e) {}
+
+
+                        }
+                    });
 
 
 
                 }
+
+
             });;
             rg.addView(rb[i]);
         }

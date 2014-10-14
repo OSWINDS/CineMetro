@@ -26,9 +26,9 @@ public class Line3 extends ActionBarActivity {
 
         for (int i=0; i<5; i++) {
             Button stationButton = new Button(this);
-            stationButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getTimelineStations().get(i).getName().toLowerCase());
+            stationButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getTimelineStations().get(i).getName());
             stationButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            stationButton.setId(i + 15);
+            stationButton.setId(i+15);
             stationButton.setWidth(100);
             stationButton.setHeight(150);
             //stationButton.setBackgroundColor(Color.parseColor("#dee6ef"));
