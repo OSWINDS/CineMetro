@@ -28,9 +28,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class MapActivity extends Activity implements LocationListener {
@@ -55,7 +59,7 @@ public class MapActivity extends Activity implements LocationListener {
 
         setUpMap();
 
-
+        lv = (ListView) this.findViewById(R.id.lv);
 
         Ll1 = (LinearLayout) this.findViewById(R.id.Ll1);
         Ll1.setBackgroundColor(Color.WHITE);
@@ -81,7 +85,7 @@ public class MapActivity extends Activity implements LocationListener {
             Ll2.addView(bt);
         }
 
-        MyButton bt = new MyButton(this,-1);
+        MyButton bt = new MyButton(this, -1);
         bt.setText("Timeline Route");
         bt.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
         bt.setTextSize(12);
@@ -96,7 +100,7 @@ public class MapActivity extends Activity implements LocationListener {
         Ll2.addView(bt);
 
 
-        MyButton bt2 = new MyButton(this,0);
+        MyButton bt2 = new MyButton(this, 0);
         bt2.setText("NO Route");
         bt2.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
         bt2.setTextSize(12);
@@ -111,21 +115,22 @@ public class MapActivity extends Activity implements LocationListener {
         Ll2.addView(bt2);
 
 
-        lv = (ListView) this.findViewById(R.id.lv);
-
         nLine = 0;
         setLine();
 
 
         currentLocation = new Location("");
-        mΜap.setMyLocationEnabled(true);
+        if (this.mΜap != null) {
+            mΜap.setMyLocationEnabled(true);
+        }
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 10, this);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 600000, 3, this);
+
     }
 
     private void RouteButtonClicked(View v) {
         MyButton bt = (MyButton) v;
-        nLine=bt.getLine();
+        nLine = bt.getLine();
         setLine();
 
     }
@@ -134,8 +139,8 @@ public class MapActivity extends Activity implements LocationListener {
         mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         if (mΜap != null) {
             mΜap.clear();
+            //mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257,22.944343),8));
         }
-        //mΜap.setMyLocationEnabled(true);
     }
 
 
@@ -177,6 +182,7 @@ public class MapActivity extends Activity implements LocationListener {
             line.clear();
         }
         AddMarkers();
+        if(nLine!=0)this.drawLines();
         showList();
     }
 
@@ -191,6 +197,9 @@ public class MapActivity extends Activity implements LocationListener {
             case 3:
                 colour = (float) 120.0;
                 break;
+            case -1:
+                colour = (float) 120.0;
+                break;
         }
     }
 
@@ -198,6 +207,7 @@ public class MapActivity extends Activity implements LocationListener {
     private void AddMarkers() {
 
         setUpMap();
+        if (this.mΜap == null) return;
         ArrayList<Route> rt = DbAdapter.getInstance().getRoutes();
         for (int i = 0; i < rt.size(); i++) {
             setColour(i + 1);
@@ -215,6 +225,7 @@ public class MapActivity extends Activity implements LocationListener {
             }
         }
         if (nLine == -1 || nLine == 0) {
+            setColour(-1);
             ArrayList<TimelineStation> ts = DbAdapter.getInstance().getTimelineStations();
             for (int i = 0; i < ts.size(); i++) {
                 MyPoint point = ts.get(i).getMyPoint();
@@ -227,47 +238,50 @@ public class MapActivity extends Activity implements LocationListener {
         }
     }
 
+    private void drawLines() {
+
+        for (int i = 0; i < line.size() - 1; i++) {
+            findDirections(line.get(i).getLng().latitude, line.get(i).getLng().longitude,
+                    line.get(i + 1).getLng().latitude, line.get(i + 1).getLng().longitude,
+                    GMapV2Direction.MODE_WALKING);
+
+        }
+
+    }
+
     private void showList() {
         ArrayAdapter<MyPoint> adapter = new myArrayAdapter();
-
         lv.setAdapter(adapter);
     }
 
 
-
     @Override
     public void onLocationChanged(Location location) {
-        currentLocation= location;
+        currentLocation = location;
+
+        if (this.mΜap == null) return;
 
         mΜap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 11.0f));
-       // double lat = location.getLatitude();
-        //double lon = location.getLongitude();
 
-     //   Toast.makeText(MapActivity.this, lat + "," + lon, Toast.LENGTH_SHORT).show();
-
-
-
-        for(int i=0;i<line.size();i++){
-            Location loc=new Location("");
+        for (int i = 0; i < line.size(); i++) {
+            Location loc = new Location("");
             loc.setLatitude(line.get(i).getLng().latitude);
             loc.setLongitude(line.get(i).getLng().longitude);
 
-           line.get(i).setDistance(loc.distanceTo(currentLocation));
-            if(line.get(i).getDistance()<100){
+            line.get(i).setDistance(loc.distanceTo(currentLocation));
+            if (line.get(i).getDistance() < 100) {
                 Unlock(line.get(i));
             }
         }
+        //showList();
     }
 
     private void Unlock(MyPoint myPoint) {
-        if(nLine==0) return;
-        if(nLine>0){
-            ArrayList<Station> st=DbAdapter.getInstance().getStationByRoute(nLine);
-            for(int i=0;i<st.size();i++){
-                if(st.get(i).getId()==myPoint.getId());
-                DbAdapter.getInstance().Unlock(nLine,myPoint.getId());
-            }
-        }
+        if (nLine == 0) return;
+
+            DbAdapter.getInstance().Unlock(nLine, myPoint.getId());
+
+
     }
 
     @Override
@@ -277,13 +291,36 @@ public class MapActivity extends Activity implements LocationListener {
 
     @Override
     public void onProviderEnabled(String s) {
-
+        Toast.makeText(MapActivity.this, "GPS is enabled.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onProviderDisabled(String s) {
         Toast.makeText(MapActivity.this, "GPS is not enabled.", Toast.LENGTH_SHORT).show();
     }
+
+    public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
+        Polyline newPolyline;
+        PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.BLUE);
+        for (int i = 0; i < directionPoints.size(); i++) {
+            rectLine.add(directionPoints.get(i));
+        }
+        newPolyline = this.mΜap.addPolyline(rectLine);
+
+    }
+
+    public void findDirections(double fromPositionDoubleLat, double fromPositionDoubleLong, double toPositionDoubleLat, double toPositionDoubleLong, String mode) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(GetDirectionsAsyncTask.USER_CURRENT_LAT, String.valueOf(fromPositionDoubleLat));
+        map.put(GetDirectionsAsyncTask.USER_CURRENT_LONG, String.valueOf(fromPositionDoubleLong));
+        map.put(GetDirectionsAsyncTask.DESTINATION_LAT, String.valueOf(toPositionDoubleLat));
+        map.put(GetDirectionsAsyncTask.DESTINATION_LONG, String.valueOf(toPositionDoubleLong));
+        map.put(GetDirectionsAsyncTask.DIRECTIONS_MODE, mode);
+
+        GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
+        asyncTask.execute(map);
+    }
+
 
     private class myArrayAdapter extends ArrayAdapter<MyPoint> {
 
@@ -298,17 +335,19 @@ public class MapActivity extends Activity implements LocationListener {
                 itemView = getLayoutInflater().inflate(R.layout.maplistitem, parent, false);
             }
 
-            String s1, s2;
+            String s1, s2, s3;
 
-                s1 = (pos + 1) + "η Στάση" + "\t" + line.get(pos).getDistance() + "m";
-
-                s2 = line.get(pos).getName();
+            s1 = (pos + 1) + "η Στάση";
+            s2 = line.get(pos).getName();
+            s3 = "Distance: " + line.get(pos).getDistance() + " m";
 
 
             TextView text1 = (TextView) itemView.findViewById(R.id.station);
             text1.setText(s1);
             TextView text2 = (TextView) itemView.findViewById(R.id.stationInfo);
             text2.setText(s2);
+            TextView text3 = (TextView) itemView.findViewById(R.id.distance);
+            text3.setText(s3);
 
             return itemView;
         }
@@ -317,7 +356,7 @@ public class MapActivity extends Activity implements LocationListener {
     private class MyButton extends Button {
         private int line;
 
-        public MyButton(Context context,int line) {
+        public MyButton(Context context, int line) {
             super(context);
             this.setLine(line);
         }
