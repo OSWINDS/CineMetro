@@ -31,10 +31,11 @@ public class Timeline extends ActionBarActivity {
     private RadioButton radioButton;
     private ImageView image;
     private View view;
-    private Button nextstasion;
+  //  private Button nextstasion;
     private Button prevstation;
     private int idCinema;
     private int selectedId;
+    private TextView title;
 
 
 
@@ -47,23 +48,25 @@ public class Timeline extends ActionBarActivity {
         rg.setOrientation(RadioGroup.VERTICAL);
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
         mylayout = (LinearLayout)findViewById(R.id.mylayout);
-        nextstasion=(Button)findViewById(R.id.nextstation);
+        //nextstasion=(Button)findViewById(R.id.nextstation);
 
 
 
         Intent intent = getIntent();
         idCinema = intent.getIntExtra("button_id", 0);
+        title=(TextView)findViewById(R.id.title);
+        title.setText(DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName());
         description = (TextView) findViewById(R.id.description);
         description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(1).getDescription());
         image=(ImageView)findViewById(R.id.image);
-       /* try {
+       try {
             Class res = R.drawable.class;
-            Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(1).getPhotoName());
+            Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(0).getPhotoName());
             int drawableId = field.getInt(null);
             image.setBackgroundResource(drawableId);
             //  imageCinema.setGravity(Gravity.BOTTOM | Gravity.CENTER);
             //  imageCinema.setLayoutParams(new ViewGroup.LayoutParams(320,300));
-        } catch (Exception e) {}*/
+        } catch (Exception e) {}
         int millestones= DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).size();
 
         for (int i=0; i<millestones; i++) {
@@ -93,7 +96,7 @@ public class Timeline extends ActionBarActivity {
                         image.setBackgroundResource(drawableId);
 
                     } catch (Exception e) {}
-                    nextstasion.setOnClickListener(new View.OnClickListener() {
+                   /* nextstasion.setOnClickListener(new View.OnClickListener() {
 
                         public void onClick(View v) {
                             description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId+1).getDescription());
@@ -109,7 +112,7 @@ public class Timeline extends ActionBarActivity {
 
 
                         }
-                    });
+                    }*/
 
 
 

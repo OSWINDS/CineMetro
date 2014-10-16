@@ -18,12 +18,12 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="12dp"
         android:layout_centerHorizontal="true"
         android:textStyle="italic"
         android:textColor="#fbf7f7"
         android:layout_marginTop="10dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/title" />
 
 
     <LinearLayout
@@ -52,8 +52,7 @@
             android:id="@+id/image"
             android:layout_width="fill_parent"
             android:layout_height="200dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
+
 
             />
     </LinearLayout>
@@ -67,37 +66,24 @@
         android:weightSum="1"
         android:layout_alignParentBottom="true">
 
-        <Button
-            android:id="@+id/prevstation"
-            android:background="@drawable/prasinovelos"
-            android:layout_width="40dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="80dp"/>
 
         <ScrollView
-            android:layout_width="260dp"
-            android:layout_height="250dp"
-            android:layout_weight="0.70"
-            android:layout_marginBottom="20dp">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/description"
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:textSize="20dp"
+                android:layout_height="fill_parent"
+                android:textSize="15dp"
                 android:textColor="#FFFFFF"
+                android:background="#1B9344"
                 />
 
         </ScrollView>
 
-        <Button
-            android:id="@+id/nextstation"
-            android:background="@drawable/rightvelos"
-            android:layout_width="35dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="80dp"
-            android:layout_gravity="bottom"/>
-        />
 
 
     </LinearLayout>
