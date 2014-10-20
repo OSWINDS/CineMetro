@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 import java.lang.reflect.Field;
+import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 /**
@@ -283,6 +284,34 @@ final class DbAdapter {
             }
         }
         return null;
+    }
+
+    /**
+     *
+     * @param station_id
+     * @return the rating of the station with this id
+     */
+    public float getStationRating(int station_id)
+    {
+        float rating = db.getRating(station_id);
+        if (rating < 0)
+        {
+            this.initializeRatings();
+            return 0;
+        }
+        else
+        {
+            return rating;
+        }
+    }
+
+    /**
+     * Adds the param rating to the ratings of the station with this id
+     * @param station_id
+     */
+    public void addRating(int station_id, float rating)
+    {
+        db.updateRatings(station_id, db.getSum(station_id) + rating, db.getCounter(station_id)+1);
     }
 
     /**
@@ -876,5 +905,16 @@ final class DbAdapter {
         // if Line_id==-1 then it's a Timeline;
         //if Line_id>0 then it's a Line
         //the id represents the id of the station/TimelineStation
+    }
+
+    /**
+     * Initialize the ratings of every station to 0
+     */
+    private void initializeRatings()
+    {
+        for(Station station : this.stations)
+        {
+            db.addRating(station.getId());
+        }
     }
 }

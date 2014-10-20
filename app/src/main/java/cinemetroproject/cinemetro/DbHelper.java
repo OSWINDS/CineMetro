@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import java.sql.SQLDataException;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 15;
+    private static final int DATABASE_VERSION = 16;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
@@ -125,6 +126,16 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // create milestone table
         db.execSQL(query);
+
+        // SQL statement to create table milestone
+        query = "CREATE TABLE IF NOT EXISTS rating ( " +
+                "station_id INTEGER, " +
+                "sum REAL, " +
+                "counter INTEGER)";
+
+        // create milestone table
+        db.execSQL(query);
+
 
         this.updated = true;
     }
@@ -380,6 +391,37 @@ public class DbHelper extends SQLiteOpenHelper {
                 db.close();
         }
     }
+
+    /**
+     * adds a new entry to the table rating
+     */
+    public void addRating(int station_id)
+    {
+        SQLiteDatabase db = null;
+        // get reference to writable DB
+        try{
+            // get reference to writable DB
+            db = this.getWritableDatabase();
+
+            //ContentValues to add key "column"/value
+            ContentValues values = new ContentValues();
+            values.put("station_id", station_id);
+	        values.put("sum", 0);
+            values.put("counter", 0);
+
+            //insert
+            db.insert("rating", // table
+                    null, //nullColumnHack
+                    values); // key/value -> keys = column names/ values = column values
+    	}
+        finally
+        {
+            //close
+            if (null != db)
+                db.close();
+        }
+    }
+
 
 
     /**
@@ -647,6 +689,109 @@ public class DbHelper extends SQLiteOpenHelper {
         return milestone;
     }
 
+    /**
+     * returns the rating for the station with this id
+     * @param station_id
+     * @return
+     */
+    public float getRating(int station_id)
+    {
+        //reference to readable DB
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {"station_id","sum","counter"};
+        //build query
+        Cursor cursor =
+                db.query("rating", // a. table
+                        columns, // column names
+                        " station_id = ?", // c. selections
+                        new String[] { String.valueOf(station_id) }, // d. selections args
+                        null, // e. group by
+                        null, // f. having
+                        null, // g. order by
+                        null); // h. limit
+
+        //if we got results get the first one
+        if (null != cursor && cursor.moveToFirst()) {
+
+            float rating = cursor.getFloat(1);
+            int counter = cursor.getInt(2);
+            if (counter > 0) {
+                rating = rating / counter;
+            }
+
+            //return rating
+            return rating;
+        }
+        else {
+            return -1;
+        }
+    }
+
+    /**
+     * returns the sum for the station with this id
+     * @param station_id
+     * @return
+     */
+    public float getSum(int station_id)
+    {
+        //reference to readable DB
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {"station_id","sum","counter"};
+        //build query
+        Cursor cursor =
+                db.query("rating", // a. table
+                        columns, // column names
+                        " station_id = ?", // c. selections
+                        new String[] { String.valueOf(station_id) }, // d. selections args
+                        null, // e. group by
+                        null, // f. having
+                        null, // g. order by
+                        null); // h. limit
+
+        //if we got results get the first one
+        if (null != cursor && cursor.moveToFirst()) {
+
+            return cursor.getFloat(1);
+        }
+        else {
+            return -1;
+        }
+    }
+
+    /**
+     * returns the counter for the station with this id
+     * @param station_id
+     * @return
+     */
+    public int getCounter(int station_id)
+    {
+        //reference to readable DB
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {"station_id","sum","counter"};
+        //build query
+        Cursor cursor =
+                db.query("rating", // a. table
+                        columns, // column names
+                        " station_id = ?", // c. selections
+                        new String[] { String.valueOf(station_id) }, // d. selections args
+                        null, // e. group by
+                        null, // f. having
+                        null, // g. order by
+                        null); // h. limit
+
+        //if we got results get the first one
+        if (null != cursor && cursor.moveToFirst()) {
+
+            return cursor.getInt(2);
+        }
+        else {
+            return -1;
+        }
+    }
+
 
     /**
      *
@@ -698,7 +843,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
 
         //go over each row, build route and add it to list
-        Route route = null;
+        Route route;
         if (cursor.moveToFirst()) {
             do {
                 //build route object
@@ -823,7 +968,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     /**
      *
-     * @return all the movies in the db
+     * @return all the timelineStations in the db
      */
     public ArrayList<TimelineStation> getAllTimelineStations()
     {
@@ -836,8 +981,8 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
-        //go over each row, build station and add it to list
-        TimelineStation station = null;
+        //go over each row, build timelinestation and add it to list
+        TimelineStation station;
         if (cursor.moveToFirst()) {
             do {
                 //build station object
@@ -855,7 +1000,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     /**
      *
-     * @return all the movies in the db
+     * @return all the milestones in the db
      */
     public ArrayList<Milestone> getAllMilestones()
     {
@@ -868,8 +1013,8 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
-        //go over each row, build station and add it to list
-        Milestone milestone = null;
+        //go over each row, build milestone and add it to list
+        Milestone milestone;
         if (cursor.moveToFirst()) {
             do {
                 //build milestone object
@@ -908,5 +1053,22 @@ public class DbHelper extends SQLiteOpenHelper {
             if (null != db)
             db.close();
         }
+    }
+
+    /**
+     * Update the rating of the station with this id
+     * @param station_id
+     * @param sum
+     * @param counter
+     */
+    public void updateRatings(int station_id, float sum, int counter)
+    {
+        //get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("station_id",station_id);
+        cv.put("sum",sum);
+        cv.put("counter",counter);
+        db.update("rating", cv, "station_id "+"="+station_id, null);
     }
 }
