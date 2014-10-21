@@ -35,6 +35,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:5.0.89'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile files('./libs/bolts.jar')
-
-   // compile 'com.google.android.gms:play-services:5.0.77'
+    // compile 'com.google.android.gms:play-services:5.0.77'
 }
