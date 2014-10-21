@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/CineMetroApplication.iml" filepath="$PROJECT_DIR$/CineMetroApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/CineMetroWithGit.iml" filepath="$PROJECT_DIR$/CineMetroWithGit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
     </modules>
   </component>
 </project>

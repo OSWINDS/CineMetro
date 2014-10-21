@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -43,7 +44,11 @@ public class Timeline extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
        // this.num = num;
         super.onCreate(savedInstanceState);
+
+        //full screen to timeline
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_timeline);
+
         rg = (RadioGroup) findViewById(R.id.radiogroup);
         rg.setOrientation(RadioGroup.VERTICAL);
         scrollView = (LinearLayout)findViewById(R.id.scrollView);

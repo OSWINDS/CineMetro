@@ -30,6 +30,7 @@ public class ViewCinema extends ActionBarActivity {
     private LinearLayout scrollView;
     private TextView textViewTitle;
     private TextView description;
+    private TextView points;
     private Button goAheadButton;
     private Button facebookButton;
     private Button twitterButton;
@@ -70,17 +71,16 @@ public class ViewCinema extends ActionBarActivity {
         description = (TextView)findViewById(R.id.description);
         description.setText(DbAdapter.getInstance().getStations().get(idCinema).getDescription());
 
+        points = (TextView) findViewById(R.id.points);
+        points.setText(String.valueOf(DbAdapter.getInstance().getStationRating(idCinema)) + "  ");
+
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
 
         facebookButton = (Button) findViewById(R.id.facebook_button);
-        facebookButton.setBackgroundResource(R.drawable.facebook_share);
-        facebookButton.setLayoutParams (new LinearLayout.LayoutParams(60, 60));
         facebookButton.setOnClickListener(facebookButtonOnClickListener);
 
         twitterButton = (Button) findViewById(R.id.twitter_button);
-        twitterButton.setBackgroundResource(R.drawable.twitter_share);
-        twitterButton.setLayoutParams (new LinearLayout.LayoutParams(50, 50));
         twitterButton.setOnClickListener(twitterButtonOnClickListener);
     }
 
@@ -123,7 +123,7 @@ public class ViewCinema extends ActionBarActivity {
 
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Content to share");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "CineMetro");
             PackageManager pm = view.getContext().getPackageManager();
             List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
             for (final ResolveInfo app : activityList) {

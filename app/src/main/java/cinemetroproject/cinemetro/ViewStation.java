@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -41,6 +42,7 @@ public class ViewStation extends ActionBarActivity  {
     private TextView textViewDirector;
     private ImageButton directorImage;
     private TextView textViewInfo;
+    private TextView points;
     private Button goAheadButton;
     private Button facebookButton;
     private Button twitterButton;
@@ -111,17 +113,16 @@ public class ViewStation extends ActionBarActivity  {
         textViewInfo = (TextView)findViewById(R.id.info);
         textViewInfo.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDescription());
 
+        points = (TextView) findViewById(R.id.points);
+        points.setText(String.valueOf(DbAdapter.getInstance().getStationRating(idStation)) + "  ");
+
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
 
         facebookButton = (Button) findViewById(R.id.facebook_button);
-        facebookButton.setBackgroundResource(R.drawable.facebook_share);
-        facebookButton.setLayoutParams (new LinearLayout.LayoutParams(60, 60));
         facebookButton.setOnClickListener(facebookButtonOnClickListener);
 
         twitterButton = (Button) findViewById(R.id.twitter_button);
-        twitterButton.setBackgroundResource(R.drawable.twitter_share);
-        twitterButton.setLayoutParams (new LinearLayout.LayoutParams(50, 50));
         twitterButton.setOnClickListener(twitterButtonOnClickListener);
 
     }
@@ -180,9 +181,9 @@ public class ViewStation extends ActionBarActivity  {
         @Override
         public void onClick(View view) {
 
-           /** Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Content to share");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle());
             PackageManager pm = view.getContext().getPackageManager();
             List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
             for (final ResolveInfo app : activityList) {
@@ -195,11 +196,7 @@ public class ViewStation extends ActionBarActivity  {
                     view.getContext().startActivity(shareIntent);
                     break;
                 }
-            }*/
-
-
-
-
+            }
         }};
 
     View.OnClickListener twitterButtonOnClickListener = new View.OnClickListener(){
