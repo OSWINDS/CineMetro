@@ -86,7 +86,7 @@ public class MapActivity extends Activity implements LocationListener {
         }
 
         MyButton bt = new MyButton(this, -1);
-        bt.setText("Timeline Route");
+        bt.setText("Route 3");
         bt.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
         bt.setTextSize(12);
         bt.setOnClickListener(new View.OnClickListener() {
@@ -264,7 +264,7 @@ public class MapActivity extends Activity implements LocationListener {
         mΜap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 11.0f));
 
         for (int i = 0; i < line.size(); i++) {
-            Location loc = new Location("");
+            Location loc = new Location(line.get(i).getName());
             loc.setLatitude(line.get(i).getLng().latitude);
             loc.setLongitude(line.get(i).getLng().longitude);
 
