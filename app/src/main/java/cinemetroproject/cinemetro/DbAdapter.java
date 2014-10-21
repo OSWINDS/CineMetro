@@ -306,12 +306,33 @@ final class DbAdapter {
     }
 
     /**
+     *
+     * @param station_id
+     * @param user_id
+     * @return the rating of the station with this id from this user
+     * returns -1 if the user has not voted for this station
+     */
+    public float getUserRatingForStation(int station_id, int user_id)
+    {
+        return db.getUserRating(station_id, user_id);
+    }
+
+    /**
      * Adds the param rating to the ratings of the station with this id
      * @param station_id
      */
     public void addRating(int station_id, float rating)
     {
         db.updateRatings(station_id, db.getSum(station_id) + rating, db.getCounter(station_id)+1);
+    }
+
+    /**
+     * Adds the param rating to the ratings of the station with this id from this user
+     * @param station_id
+     */
+    public void addUserRating(int station_id, int user_id, float rating)
+    {
+        db.addUserRating(station_id, user_id, rating);
     }
 
     /**

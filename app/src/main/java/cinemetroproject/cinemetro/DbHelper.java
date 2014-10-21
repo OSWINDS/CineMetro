@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 16;
+    private static final int DATABASE_VERSION = 17;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
@@ -127,7 +127,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // create milestone table
         db.execSQL(query);
 
-        // SQL statement to create table milestone
+        // SQL statement to create table rating
         query = "CREATE TABLE IF NOT EXISTS rating ( " +
                 "station_id INTEGER, " +
                 "sum REAL, " +
@@ -135,6 +135,17 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // create milestone table
         db.execSQL(query);
+
+        // SQL statement to create table user_rating
+        query = "CREATE TABLE IF NOT EXISTS user_rating ( " +
+                "station_id INTEGER, " +
+                "user_id INTEGER, " +
+                "rating REAL)";
+
+        // create milestone table
+        db.execSQL(query);
+
+
 
 
         this.updated = true;
@@ -421,6 +432,38 @@ public class DbHelper extends SQLiteOpenHelper {
                 db.close();
         }
     }
+
+    /**
+     * adds a new entry to the table user_rating
+     */
+    public void addUserRating(int station_id, int user_id,float rating)
+    {
+        SQLiteDatabase db = null;
+        // get reference to writable DB
+        try{
+            // get reference to writable DB
+            db = this.getWritableDatabase();
+
+            //ContentValues to add key "column"/value
+            ContentValues values = new ContentValues();
+            values.put("station_id", station_id);
+	        values.put("user_id", user_id);
+            values.put("rating", rating);
+
+            //insert
+            db.insert("user_rating", // table
+                    null, //nullColumnHack
+                    values); // key/value -> keys = column names/ values = column values
+    	}
+        finally
+        {
+            //close
+            if (null != db)
+                db.close();
+        }
+    }
+
+
 
 
 
@@ -727,6 +770,42 @@ public class DbHelper extends SQLiteOpenHelper {
             return -1;
         }
     }
+
+    /**
+     * returns the rating from this user for the station with this id
+     * @param station_id
+     * @return
+     */
+    public float getUserRating(int station_id, int user_id)
+    {
+        //reference to readable DB
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {"station_id","user_id","rating"};
+        //build query
+        Cursor cursor =
+                db.query("user_rating", // a. table
+                        columns, // column names
+                        " station_id = ? and user_id = ?", // c. selections
+                        new String[] { String.valueOf(station_id), String.valueOf(user_id) }, // d. selections args
+                        null, // e. group by
+                        null, // f. having
+                        null, // g. order by
+                        null); // h. limit
+
+
+        //if we got results get the first one
+        if (null != cursor && cursor.moveToFirst()) {
+
+            float rating = cursor.getFloat(2);
+            return rating;
+        }
+        else {
+            return -1;
+        }
+    }
+
+
 
     /**
      * returns the sum for the station with this id
