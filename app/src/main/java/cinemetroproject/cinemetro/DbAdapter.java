@@ -370,6 +370,8 @@ final class DbAdapter {
         //add routes
         this.db.addRoute(new Route("Τα σινεμά της πόλης","red",1));
         this.db.addRoute(new Route("Θεσσαλονίκη μέσα απο τον ελληνικό κινηματογράφο","blue",1));
+        this.db.addRoute(new Route("Timeline","green",1));
+
 
         //add stations
         //Line 1
