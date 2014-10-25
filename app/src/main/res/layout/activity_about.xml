@@ -9,7 +9,7 @@
     tools:context="cinemetroproject.cinemetro.AboutActivity">
 
     <TextView
-        android:text="@string/about_activity"
+        android:text="@string/about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
