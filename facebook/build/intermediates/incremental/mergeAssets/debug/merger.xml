@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="C:\Users\vivi dimitris\Desktop\CineMetroWithGit\facebook\src\main\assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\vivi dimitris\Desktop\CineMetroWithGit\facebook\src\debug\assets" />
+    </dataSet>
+
+</merger>

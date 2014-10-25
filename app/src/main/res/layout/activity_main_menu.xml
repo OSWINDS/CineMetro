@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bw_background"
+    android:background="@drawable/nm"
     tools:context=".MainMenu">
 
         <LinearLayout android:id="@+id/fullscreen_content_controls"
@@ -14,6 +14,7 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+
             tools:ignore="UselessParent">
 
             <!-- Navigation Button -->
@@ -24,8 +25,9 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_marginTop="70dp"
-                android:background="@color/black_overlay"
+                android:background="@color/background_tab_pressed"
                 android:textSize="10pt"
+                android:textStyle="bold"
                 android:id="@+id/navigation_button"
                 />
 
@@ -37,8 +39,9 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_marginTop="1dp"
-                android:background="@color/black_overlay"
+                android:background="@color/background_tab_pressed"
                 android:textSize="10pt"
+                android:textStyle="bold"
                 android:id="@+id/lines_button"
                 />
 
@@ -50,8 +53,9 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_marginTop="1dp"
-                android:background="@color/black_overlay"
+                android:background="@color/background_tab_pressed"
                 android:textSize="10pt"
+                android:textStyle="bold"
                 android:id="@+id/about_button"
                 />
 

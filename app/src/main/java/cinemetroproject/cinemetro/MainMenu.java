@@ -32,6 +32,7 @@ public class MainMenu extends ActionBarActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_menu);
 
+
         navigationButton = (Button) findViewById(R.id.navigation_button);
         navigationButton.setOnClickListener(navigationButtonOnClickListener);
 
