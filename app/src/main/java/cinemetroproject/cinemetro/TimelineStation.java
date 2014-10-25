@@ -11,14 +11,17 @@ public class TimelineStation {
 
     private int id;
     private String name;
+    private LatLng point;
     /**
      * Milestones on that Timeline Station
      */
     private ArrayList<Milestone> milestones;
 
-    public TimelineStation(String name)
+    public TimelineStation(String name, double lat, double lng)
     {
+
         this.name = name;
+        this.point = new LatLng(lat, lng);
     }
 
     public TimelineStation() {}
@@ -43,6 +46,33 @@ public class TimelineStation {
     public String getName()
     {
         return this.name;
+    }
+
+    /**
+     *
+     * @return latitude of station
+     */
+    public double getLat()
+    {
+        return this.point.latitude;
+    }
+
+    /**
+     *
+     * @return longitude of station
+     */
+    public double getLng()
+    {
+        return this.point.longitude;
+    }
+
+    public LatLng getLatpoint() {
+        return this.point;
+    }
+
+    public MyPoint getMyPoint() {
+
+        return new MyPoint(this.getName(),this.getLatpoint(),this.getId());
     }
 
     /**
@@ -77,6 +107,12 @@ public class TimelineStation {
         this.id = id;
     }
 
+
+    public void setPoint(double lat, double lng)
+    {
+        this.point = new LatLng(lat, lng);
+    }
+
     /**
      * Set the milestones array of the TimelineStation
      * @param milestones
@@ -86,12 +122,4 @@ public class TimelineStation {
         this.milestones = milestones;
     }
 
-    public MyPoint getMyPoint() {
-
-        return new MyPoint(this.getName(),this.getLng(),this.getId());
-    }
-
-    public LatLng getLng() {
-        return new LatLng(0,0);
-    }
 }

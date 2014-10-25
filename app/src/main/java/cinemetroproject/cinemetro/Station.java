@@ -29,13 +29,6 @@ public class Station {
 
     public Station()
     {
-      /*  points=new ArrayList<LatLng>();
-        points.add(new LatLng(40.640799, 22.934955));
-        points.add( new LatLng(40.633951, 22.936940));
-        points.add( new LatLng(40.633087, 22.938378));
-        points.add( new LatLng(40.631995, 22.940567));
-        points.add(new LatLng(40.633533, 22.946178));
-        points.add(new LatLng(40.626547, 22.948591)); */
     }
 
     /***************************************************************
@@ -97,9 +90,11 @@ public class Station {
     }
 
     public LatLng getLatpoint() {
-        //if(pos>= points.size())pos=0;
-        //return points.get(pos++);
         return this.point;
+    }
+
+    public MyPoint getMyPoint(){
+        return new MyPoint(this.getName(),this.getLatpoint(),this.getId());
     }
 
     /***************************************************************
@@ -131,8 +126,6 @@ public class Station {
         this.point = new LatLng(lat, lng);
     }
 
-    public MyPoint getMyPoint(){
-        return new MyPoint(this.getName(),this.getLatpoint(),this.getId());
-    }
+
 
 }
