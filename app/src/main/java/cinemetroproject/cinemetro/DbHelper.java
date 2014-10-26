@@ -110,7 +110,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // SQL statement to create table timelinestation
         query = "CREATE TABLE IF NOT EXISTS timelinestation ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT), " +
+                "name TEXT, " +
                 "lat REAL," +
                 "lng REAL)";
 
