@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 18;
+    private static final int DATABASE_VERSION = 19;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
 
@@ -110,7 +110,9 @@ public class DbHelper extends SQLiteOpenHelper {
         // SQL statement to create table timelinestation
         query = "CREATE TABLE IF NOT EXISTS timelinestation ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT)";
+                "name TEXT, " +
+                "lat REAL," +
+                "lng REAL)";
 
         // create timelinestation table
         db.execSQL(query);
@@ -356,6 +358,8 @@ public class DbHelper extends SQLiteOpenHelper {
             //ContentValues to add key "column"/value
             ContentValues values = new ContentValues();
             values.put("name", station.getName());
+            values.put("lat", station.getLat());
+            values.put("lng", station.getLng());
 
             //insert
             db.insert("timelinestation", // table
@@ -1068,6 +1072,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 station = new TimelineStation();
                 station.setId(Integer.parseInt(cursor.getString(0))); //id
                 station.setName(cursor.getString(1)); //name
+                station.setPoint(Double.parseDouble(cursor.getString(2)), Double.parseDouble(cursor.getString(3))); //point
                 stations.add(station);
             } while (cursor.moveToNext());
         }

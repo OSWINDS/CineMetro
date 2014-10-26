@@ -150,6 +150,14 @@
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/twitter_share"/>
 
+            <!-- Instagram button -->
+            <Button
+                android:id="@+id/instagram_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/instagram_share"/>
+
         </LinearLayout>
 
 
