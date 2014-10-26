@@ -9,7 +9,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -23,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -46,6 +49,7 @@ public class ViewStation extends ActionBarActivity  {
     private Button goAheadButton;
     private Button facebookButton;
     private Button twitterButton;
+    private Button instagramButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +128,9 @@ public class ViewStation extends ActionBarActivity  {
 
         twitterButton = (Button) findViewById(R.id.twitter_button);
         twitterButton.setOnClickListener(twitterButtonOnClickListener);
+
+        instagramButton = (Button) findViewById(R.id.instagram_button);
+        instagramButton.setOnClickListener(instagramButtonOnClickListener);
 
     }
 
@@ -223,4 +230,28 @@ public class ViewStation extends ActionBarActivity  {
             }
 
         }};
+
+    View.OnClickListener instagramButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = getPackageManager().getLaunchIntentForPackage("com.instagram.android");
+            if (intent != null){
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.setPackage("com.instagram.android");
+                shareIntent.setType("image/jpeg");
+                startActivity(shareIntent);
+            }
+            else{
+                // bring user to the market to download the app.
+                // or let them choose an app?
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setData(Uri.parse("market://details?id="+"com.instagram.android"));
+                startActivity(intent);
+            }
+        }};
+
 }

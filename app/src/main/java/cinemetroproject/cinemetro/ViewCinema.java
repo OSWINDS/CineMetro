@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
@@ -34,6 +36,7 @@ public class ViewCinema extends ActionBarActivity {
     private Button goAheadButton;
     private Button facebookButton;
     private Button twitterButton;
+    private Button instagramButton;
     private int idCinema;
     private int countP;
 
@@ -50,6 +53,13 @@ public class ViewCinema extends ActionBarActivity {
 
         textViewTitle =(TextView)findViewById(R.id.name);
         textViewTitle.setText(DbAdapter.getInstance().getStations().get(idCinema).getName());
+        //textViewTitle.setBackgroundColor(Color.RED);
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(DbAdapter.getInstance().getRoutes().get(1).getColour());
+            int drawableId = field.getInt(null);
+            textViewTitle.setBackgroundResource(drawableId);
+        } catch (Exception e) {}
 
         scrollView = (LinearLayout)findViewById(R.id.cinemaHsV);
 
@@ -82,6 +92,9 @@ public class ViewCinema extends ActionBarActivity {
 
         twitterButton = (Button) findViewById(R.id.twitter_button);
         twitterButton.setOnClickListener(twitterButtonOnClickListener);
+
+        instagramButton = (Button) findViewById(R.id.instagram_button);
+        instagramButton.setOnClickListener(instagramButtonOnClickListener);
     }
 
     @Override
@@ -96,14 +109,31 @@ public class ViewCinema extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
 
-            case android.R.id.home:
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            onBackPressed();
+            return true;
+        }
+        switch (item.getItemId()) {
+            case R.id.menu_item_share:
+                shareIt();
+                return true;
+            default:
                 onBackPressed();
                 return true;
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    //from actionbar
+    private void shareIt() {
+
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idCinema).getName();
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "CineMetro");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
     View.OnClickListener goAheadButtonOnClickListener = new View.OnClickListener(){
@@ -162,5 +192,28 @@ public class ViewCinema extends ActionBarActivity {
                 }
             }
 
+        }};
+
+    View.OnClickListener instagramButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = getPackageManager().getLaunchIntentForPackage("com.instagram.android");
+            if (intent != null){
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.setPackage("com.instagram.android");
+                shareIntent.setType("image/jpeg");
+                startActivity(shareIntent);
+            }
+            else{
+                // bring user to the market to download the app.
+                // or let them choose an app?
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setData(Uri.parse("market://details?id=" + "com.instagram.android"));
+                startActivity(intent);
+            }
         }};
 }

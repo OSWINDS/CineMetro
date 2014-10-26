@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CineMetro</string>
+    <string name="app_name">CineMetro Thess</string>
     <string name="map_button">Map</string>
     <string name="lines_button">Lines</string>
     <string name="profile_button">Profile</string>
