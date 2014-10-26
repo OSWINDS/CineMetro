@@ -1,8 +1,9 @@
 package cinemetroproject.cinemetro;
 
 import java.lang.reflect.Field;
-import java.sql.SQLDataException;
 import java.util.ArrayList;
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
 
 /**
  * Handles the communication of other classes with the database
