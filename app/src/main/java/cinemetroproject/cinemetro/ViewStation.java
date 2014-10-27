@@ -95,7 +95,7 @@ public class ViewStation extends ActionBarActivity  {
         textViewDirector.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
 
         actors = DbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
-        actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
+        actorsScrollView = (LinearLayout)findViewById(R.id.about);
 
         for (int i=0; i<actors; i++) {
             View actor = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.actor, null);
