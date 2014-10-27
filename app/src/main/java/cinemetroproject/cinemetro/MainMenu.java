@@ -11,8 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
+//import com.parse.Parse;
+//import com.parse.ParseAnalytics;
 
 public class MainMenu extends ActionBarActivity {
 
@@ -43,7 +43,7 @@ public class MainMenu extends ActionBarActivity {
         aboutButton = (Button) findViewById(R.id.about_button);
         aboutButton.setOnClickListener(aboutButtonOnClickListener);
 
-        Parse.initialize(this, "swhW7tnXLp2qdr7ZqbQ1JRCZMuRaQE5CXY12mp7c", "lrNR1Wa2YThA7SjlkitdaCtMmEBJJM69bHcwpifD");
+        //Parse.initialize(this, "swhW7tnXLp2qdr7ZqbQ1JRCZMuRaQE5CXY12mp7c", "lrNR1Wa2YThA7SjlkitdaCtMmEBJJM69bHcwpifD");
     }
 
     @Override

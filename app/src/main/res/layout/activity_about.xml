@@ -8,28 +8,16 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="cinemetroproject.cinemetro.AboutActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+            <!-- about screen -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/about"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                </LinearLayout>
+            </HorizontalScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <ImageButton
-                android:layout_height="100dp"
-                android:layout_width="100dp"
-                android:background="@drawable/ic_launcher"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/image_logo" />
-
-            <TextView
-                android:text="@string/about_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </ScrollView>
 </RelativeLayout>
