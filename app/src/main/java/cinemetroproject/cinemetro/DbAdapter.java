@@ -4,6 +4,14 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseException;
+import com.parse.FindCallback;
+import java.util.List;
+
+
+
 
 /**
  * Handles the communication of other classes with the database
@@ -360,6 +368,50 @@ final class DbAdapter {
         {
             this.timelineStations.get(i).setMilestones( getTimelineStationMilestones(this.timelineStations.get(i).getId()));
         }
+    }
+
+    /**
+     * Updates the user ratings to the parse online database
+     */
+    private void updateUserToParse(final User user)
+    {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
+        query.whereEqualTo("username", user.getUsername());
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> userList, ParseException e) {
+                if (e == null) {
+                    //user exists,update his profile
+
+                } else {
+                    //create a new user with this username
+                    ParseObject parse_user = new ParseObject("User");
+                    parse_user.put("username", user.getUsername());
+                    parse_user.put("password", user.getPassword());
+                    parse_user.put("redLine", 0);
+                    parse_user.put("blueLine", 0);
+                    parse_user.put("greenLine", 0);
+                    parse_user.put("totalPoints", 0);
+
+                    int[] redLineStations = new int[getStationByRoute(0).size()];
+                    for (int i = 0; i < getStationByRoute(0).size(); i++) {
+                        redLineStations[i] = 0;
+                    }
+                    int[] blueLineStations = new int[getStationByRoute(1).size()];
+                    for (int i = 0; i < getStationByRoute(1).size(); i++) {
+                        blueLineStations[i] = 0;
+                    }
+                    int[] greenLineStations = new int[getStationByRoute(2).size()];
+                    for (int i = 0; i < getStationByRoute(2).size(); i++) {
+                        greenLineStations[i] = 0;
+                    }
+
+                    parse_user.put("redLineStations", redLineStations);
+                    parse_user.put("greenLineStations", greenLineStations);
+                    parse_user.put("blueLineStations", blueLineStations);
+                }
+            }
+        });
     }
 
     /**
