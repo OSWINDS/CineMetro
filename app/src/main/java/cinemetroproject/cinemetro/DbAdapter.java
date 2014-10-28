@@ -2,12 +2,10 @@ package cinemetroproject.cinemetro;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-//import com.parse.Parse;
-//import com.parse.ParseAnalytics;
-//import com.parse.ParseObject;
-//import com.parse.ParseQuery;
-//import com.parse.ParseException;
-//import com.parse.FindCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseException;
+import com.parse.FindCallback;
 import java.util.List;
 
 
@@ -373,8 +371,49 @@ final class DbAdapter {
     /**
      * Updates the user ratings to the parse online database
      */
-    /**private void updateUserToParse(final User user)
+    private void updateUserToParse(final User user)
     {
+
+        //initialize arrays for each line
+        final float[] redLineStations = new float[getStationByRoute(0).size()];
+        final float[] blueLineStations = new float[getStationByRoute(1).size()];
+        final float[] greenLineStations = new float[getStationByRoute(2).size()];
+
+        final float redLine;
+        final float blueLine;
+        final float greenLine;
+        final float totalPoints;
+
+        float sum = 0;
+        int station_id = 1;
+        //get his rating for each station for each line
+        for(int i=0; i<redLineStations.length; i++, station_id++)
+        {
+            redLineStations[i] = getUserRatingForStation(station_id, user.getId());
+            sum += redLineStations[i];
+        }
+        redLine = sum;
+        sum = 0;
+        for(int i=0; i<blueLineStations.length; i++, station_id++)
+        {
+            blueLineStations[i] = getUserRatingForStation(station_id, user.getId());
+            sum += blueLineStations[i];
+        }
+        blueLine = sum;
+        sum = 0;
+        for(int i=0; i<greenLineStations.length; i++, station_id++)
+        {
+            greenLineStations[i] = getUserRatingForStation(station_id, user.getId());
+            sum += greenLineStations[i];
+        }
+        greenLine = sum;
+        totalPoints = redLine + blueLine + greenLine;
+
+        final ParseObject parse_user = new ParseObject("User");
+
+
+
+        //query parse to get the user we want to update
         ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
         query.whereEqualTo("username", user.getUsername());
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -382,37 +421,34 @@ final class DbAdapter {
             public void done(List<ParseObject> userList, ParseException e) {
                 if (e == null) {
                     //user exists,update his profile
-
-                } else {
+                    userList.get(0).put("username", user.getUsername());
+                    userList.get(0).put("password", user.getPassword());
+                    userList.get(0).put("redLine", redLine);
+                    userList.get(0).put("blueLine", blueLine);
+                    userList.get(0).put("greenLine", greenLine);
+                    userList.get(0).put("totalPoints", totalPoints);
+                    userList.get(0).put("redLineStations", redLineStations);
+                    userList.get(0).put("greenLineStations", greenLineStations);
+                    userList.get(0).put("blueLineStations", blueLineStations);
+                    userList.get(0).saveInBackground();
+                }
+                else
+                {
                     //create a new user with this username
-                    ParseObject parse_user = new ParseObject("User");
                     parse_user.put("username", user.getUsername());
                     parse_user.put("password", user.getPassword());
-                    parse_user.put("redLine", 0);
-                    parse_user.put("blueLine", 0);
-                    parse_user.put("greenLine", 0);
-                    parse_user.put("totalPoints", 0);
-
-                    int[] redLineStations = new int[getStationByRoute(0).size()];
-                    for (int i = 0; i < getStationByRoute(0).size(); i++) {
-                        redLineStations[i] = 0;
-                    }
-                    int[] blueLineStations = new int[getStationByRoute(1).size()];
-                    for (int i = 0; i < getStationByRoute(1).size(); i++) {
-                        blueLineStations[i] = 0;
-                    }
-                    int[] greenLineStations = new int[getStationByRoute(2).size()];
-                    for (int i = 0; i < getStationByRoute(2).size(); i++) {
-                        greenLineStations[i] = 0;
-                    }
-
+                    parse_user.put("redLine", redLine);
+                    parse_user.put("blueLine", blueLine);
+                    parse_user.put("greenLine", greenLine);
+                    parse_user.put("totalPoints", totalPoints);
                     parse_user.put("redLineStations", redLineStations);
                     parse_user.put("greenLineStations", greenLineStations);
                     parse_user.put("blueLineStations", blueLineStations);
+                    parse_user.saveInBackground();
                 }
             }
         });
-    }*/
+    }
 
     /**
      * Inserts the data into the tables
