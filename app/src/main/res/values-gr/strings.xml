@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CineMetro Thess</string>
+    <string name="map_button">Χάρτης</string>
+    <string name="lines_button">Γραμμές</string>
+    <string name="profile_button">Προφίλ</string>
+    <string name="about_button">Σχετικά</string>
+    <string name="title_activity_map">Χάρτης</string>
+    <string name="map_activity">Χάρτης</string>
+    <string name="action_settings">Ρυθμίσεις</string>
+    <string name="title_activity_lines">Γραμμές</string>
+    <string name="lines_activity">Γραμμές</string>
+    <string name="title_activity_profile">Προφίλ</string>
+    <string name="profile_activity">Προφίλ</string>
+    <string name="title_activity_about">Σχετικά</string>
+    <string name="title_activity_log_in">Σύνδεση</string>
+    <string name="hello_world">Γεια σου κόσμε</string>
+    <string name="title_activity_sign_up">Εγγραφή</string>
+    <string name="Email">E-mail:</string>
+    <string name="PasswordText">Κωδικός:</string>
+    <string name="title_activity_maps">Χάρτης</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_when_retrieving_data">error with data</string>
+    <string name="go">  Συνέχησε  </string>
+    <string name="skip">  Παράλειψη  </string>
+    <string name="about_text1">
+            \n\t Το CineMetro είναι μια εφαρμογή για κινητές συσκευές, η οποία σχεδιάζεται εθελοντικά από ομάδα φοιτητών του Τμήματος Πληροφορικής του Α.Π.Θ., υπό την εποπτεία της καθηγήτριας Αθηνάς Βακάλη, σε συνεργασία με τη δημοσιογράφο και ιστορικό κινηματογράφου Δρ. Αγγελική Μυλωνάκη και τον δημοσιογράφο και κριτικό κινηματογράφου κ. Ιωάννη Γκροσδάνη.
+            Στην iOS εφαρμοφή εργάστηκε ο Γιώργος Χαριστός ενώ η ομάδα των φοιτητών που εργάστηκε στην Android εφαρμογή απαρτίζεται από τους
+            Βαενά Παρασκευή, Καλτιμιρίδου Ευφροσύνη, Πανισκάκη Κυριακή, Παπάζογλου Χρήστος-Παναγιώτης και Συρτάρη Χαρίκλεια.\n
+    </string>
+    <string name="about_text2">
+        \n\t Η εφαρμογή είναι εκπαιδευτικού χαρακτήρα, με στόχο να προσφέρει γνώσεις και να εξοικειώσει τους πολίτες με την κινηματογραφική ιστορία της Θεσσαλονίκης, μέσω μιας σύγχρονης εμπειρίας πλοήγησης στην πόλη.
+        Σημεία της πόλης στα οποία υπάρχει ενδεικτικό υλικό από ταινίες θα ορίζονται ως «στάσεις» και οι πολίτες θα μπορούν σε κάθε στάση να δουν το εκάστοτε υλικό (π.χ. φωτογραφίες, μικρό κείμενο, ήχο/video) εάν είναι διαθέσιμο.
+    </string>
+    <string name="about_text3">
+        \n\t Τα πνευματικά δικαιώματα του περιεχομένου (εικόνες, πληροφορίες για τις ταινίες) της εφαρμογής ανήκουν στους δημιουργούς τους.\n
+        Πηγές φωτογραφικού υλικού:
+        Finos Films, Ελληνικό Κέντρο Κινηματογράφου, Φεστιβάλ Κινηματογράφου Θεσσαλονίκης, Κοινωνία Κληρονόμων Θ. Αγγελόπουλου\n
+        \t Η εφαρμογή λειτουργεί για έκδοση\n
+    </string>
+
+
+
+
+</resources>

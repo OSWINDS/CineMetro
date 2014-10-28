@@ -4,42 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/nm"
+
     tools:context=".MainMenu">
 
         <LinearLayout android:id="@+id/fullscreen_content_controls"
-            android:layout_width="200dp"
-            android:layout_height="400dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-
-            tools:ignore="UselessParent">
+            tools:ignore="UselessParent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:weightSum="1">
 
             <!-- Navigation Button -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/imageView"
+                android:background="@drawable/logo_background"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_horizontal"
+                 />
+
             <Button
-                android:text="Navigation"
+                android:text="@string/map_button"
                 android:layout_width="150dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
-                android:layout_marginTop="70dp"
-                android:background="@color/background_tab_pressed"
-                android:textSize="10pt"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_background"
+                android:textColor="@color/letter_colour"
                 android:textStyle="bold"
+                android:textSize="10pt"
                 android:id="@+id/navigation_button"
                 />
 
             <!-- Lines Button -->
             <Button
-                android:text="Lines"
+                android:text="@string/lines_button"
                 android:layout_width="150dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_marginTop="1dp"
-                android:background="@color/background_tab_pressed"
+                android:background="@drawable/button_background"
+                android:textColor="@color/letter_colour"
                 android:textSize="10pt"
                 android:textStyle="bold"
                 android:id="@+id/lines_button"
@@ -47,13 +62,14 @@
 
             <!-- About Button -->
             <Button
-                android:text="About"
+                android:text="@string/about_button"
                 android:layout_width="150dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_marginTop="1dp"
-                android:background="@color/background_tab_pressed"
+                android:background="@drawable/button_background"
+                android:textColor="@color/letter_colour"
                 android:textSize="10pt"
                 android:textStyle="bold"
                 android:id="@+id/about_button"

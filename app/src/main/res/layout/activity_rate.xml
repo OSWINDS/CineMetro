@@ -13,18 +13,23 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=">>Παράλειψη"
+        android:text="@string/skip"
         android:textStyle="italic"
+        android:textAlignment="center"
         android:layout_gravity="right"
         android:orientation="horizontal"
         android:layout_marginTop="35dp"
+        android:background="@drawable/button_background"
+        android:textColor="@color/letter_colour"
         android:id="@+id/skipButton" />
 
     <TextView
-        android:text="\n\n\n\n Βαθμολόγησε αυτή τη στάση: \n\n"
+        android:text="\n\n\n\ Βαθμολόγησε αυτή τη στάση: \n\n"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:id="@+id/rate" />
 
     <RatingBar
@@ -42,11 +47,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go!"
+        android:text="@string/go"
         android:textStyle="italic"
+        android:textAlignment="center"
         android:layout_gravity="right"
         android:orientation="horizontal"
         android:layout_marginTop="35dp"
+        android:background="@drawable/button_background"
+        android:textColor="@color/letter_colour"
         android:id="@+id/goButton" />
 
 </LinearLayout>

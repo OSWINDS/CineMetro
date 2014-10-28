@@ -805,7 +805,7 @@ public class DbHelper extends SQLiteOpenHelper {
             return rating;
         }
         else {
-            return -1;
+            return 0;
         }
     }
 

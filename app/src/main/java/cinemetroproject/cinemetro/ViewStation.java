@@ -45,11 +45,13 @@ public class ViewStation extends ActionBarActivity  {
     private TextView textViewDirector;
     private ImageButton directorImage;
     private TextView textViewInfo;
+    private ImageButton showInMap;
     private TextView points;
     private Button goAheadButton;
     private Button facebookButton;
     private Button twitterButton;
     private Button instagramButton;
+    private Button pinterestButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +119,9 @@ public class ViewStation extends ActionBarActivity  {
         textViewInfo = (TextView)findViewById(R.id.info);
         textViewInfo.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDescription());
 
+        showInMap = (ImageButton)findViewById(R.id.showInMap);
+        showInMap.setOnClickListener(showInMapButtonOnClickListener);
+
         points = (TextView) findViewById(R.id.points);
         points.setText(String.valueOf(DbAdapter.getInstance().getStationRating(idStation)) + "  ");
 
@@ -131,6 +136,9 @@ public class ViewStation extends ActionBarActivity  {
 
         instagramButton = (Button) findViewById(R.id.instagram_button);
         instagramButton.setOnClickListener(instagramButtonOnClickListener);
+
+        pinterestButton = (Button) findViewById(R.id.pinterest_button);
+        pinterestButton.setOnClickListener(pinterestButtonOnClickListener);
 
     }
 
@@ -172,6 +180,16 @@ public class ViewStation extends ActionBarActivity  {
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+
+    View.OnClickListener showInMapButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = new Intent(ViewStation.this, MapActivity.class);
+            intent.putExtra("button_id", ++idStation);
+            ViewStation.this.startActivity(intent);
+        }};
 
     View.OnClickListener goAheadButtonOnClickListener = new View.OnClickListener(){
 
@@ -252,6 +270,31 @@ public class ViewStation extends ActionBarActivity  {
                 intent.setData(Uri.parse("market://details?id="+"com.instagram.android"));
                 startActivity(intent);
             }
+        }};
+
+    View.OnClickListener pinterestButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idStation).getName();
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            PackageManager pm = view.getContext().getPackageManager();
+            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+            for (final ResolveInfo app : activityList) {
+                if ((app.activityInfo.name).contains("pinterest")) {
+                    final ActivityInfo activity = app.activityInfo;
+                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    shareIntent.setComponent(name);
+                    view.getContext().startActivity(shareIntent);
+                    break;
+                }
+            }
+
         }};
 
 }

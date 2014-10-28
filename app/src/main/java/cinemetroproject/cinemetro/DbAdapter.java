@@ -2,6 +2,14 @@ package cinemetroproject.cinemetro;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseException;
+import com.parse.FindCallback;
+import java.util.List;
+
+
+
 
 /**
  * Handles the communication of other classes with the database
@@ -357,6 +365,138 @@ final class DbAdapter {
         for(int i =0; i<this.timelineStations.size(); i++)
         {
             this.timelineStations.get(i).setMilestones( getTimelineStationMilestones(this.timelineStations.get(i).getId()));
+        }
+    }
+
+    /**
+     * Updates the user ratings to the parse online database
+     */
+    public void updateUserToParse(final User user)
+    {
+
+        //initialize arrays for each line
+        final float[] redLineStations = new float[getStationByRoute(0).size()];
+        final float[] blueLineStations = new float[getStationByRoute(1).size()];
+        final float[] greenLineStations = new float[getStationByRoute(2).size()];
+
+        final float redLine;
+        final float blueLine;
+        final float greenLine;
+        final float totalPoints;
+
+        float sum = 0;
+        int station_id = 1;
+        //get his rating for each station for each line
+        for(int i=0; i<redLineStations.length; i++, station_id++)
+        {
+            redLineStations[i] = getUserRatingForStation(station_id, user.getId());
+            sum += redLineStations[i];
+        }
+        redLine = sum;
+        sum = 0;
+        for(int i=0; i<blueLineStations.length; i++, station_id++)
+        {
+            blueLineStations[i] = getUserRatingForStation(station_id, user.getId());
+            sum += blueLineStations[i];
+        }
+        blueLine = sum;
+        sum = 0;
+        for(int i=0; i<greenLineStations.length; i++, station_id++)
+        {
+            greenLineStations[i] = getUserRatingForStation(station_id, user.getId());
+            sum += greenLineStations[i];
+        }
+        greenLine = sum;
+        totalPoints = redLine + blueLine + greenLine;
+
+        final ParseObject parse_user = new ParseObject("User");
+
+
+
+        //query parse to get the user we want to update
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
+        query.whereEqualTo("username", user.getUsername());
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> userList, ParseException e) {
+                if (e == null) {
+                    //user exists,update his profile
+                    userList.get(0).put("username", user.getUsername());
+                    userList.get(0).put("password", user.getPassword());
+                    userList.get(0).put("redLine", redLine);
+                    userList.get(0).put("blueLine", blueLine);
+                    userList.get(0).put("greenLine", greenLine);
+                    userList.get(0).put("totalPoints", totalPoints);
+                    userList.get(0).put("redLineStations", redLineStations);
+                    userList.get(0).put("greenLineStations", greenLineStations);
+                    userList.get(0).put("blueLineStations", blueLineStations);
+                    userList.get(0).saveInBackground();
+                }
+                else
+                {
+                    //create a new user with this username
+                    parse_user.put("username", user.getUsername());
+                    parse_user.put("password", user.getPassword());
+                    parse_user.put("redLine", redLine);
+                    parse_user.put("blueLine", blueLine);
+                    parse_user.put("greenLine", greenLine);
+                    parse_user.put("totalPoints", totalPoints);
+                    parse_user.put("redLineStations", redLineStations);
+                    parse_user.put("greenLineStations", greenLineStations);
+                    parse_user.put("blueLineStations", blueLineStations);
+                    parse_user.saveInBackground();
+                }
+            }
+        });
+    }
+
+    /**
+     * Get the user ratings from parse for a specific user and for each one add them to the db
+     */
+    private void getUserFromParse(final User user)
+    {
+            //query parse to get the user
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
+            query.whereEqualTo("username", user.getUsername());
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> userList, ParseException e) {
+                    if (e == null) {
+                        String stations =  userList.get(0).getString("redLineStations");
+                        addRatingsFromString(user.getId(), stations, 0);
+
+                        stations =  userList.get(0).getString("blueLineStations");
+                        addRatingsFromString(user.getId(), stations, getStationByRoute(0).size());
+
+                        stations =  userList.get(0).getString("greenLineStations");
+                        addRatingsFromString(user.getId(), stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                    } else {
+
+                    }
+                }
+            });
+
+    }
+
+    /**
+     * adds to the db the ratings of this user for the stations from string
+     * @param user_id
+     * @param stations
+     * @param previous_stations, the stations before this line, needed for the station_id param
+     */
+    private void addRatingsFromString(int user_id, String stations, int previous_stations) {
+        System.out.println(stations);
+        stations = stations.replace("[", "");
+        stations = stations.replace("]", "");
+        String[] numbers = stations.split(",");
+        int i = 1;
+        for (String number : numbers) {
+            float rating = Float.parseFloat(number);
+            if (rating != 0) {
+                int station_id = previous_stations + i;
+                if(getUserRatingForStation(station_id, user_id) == 0) {
+                    this.addUserRating(station_id, user_id, rating);
+                }
+            }
+            i++;
         }
     }
 

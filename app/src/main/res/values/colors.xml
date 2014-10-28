@@ -1,5 +1,7 @@
 <resources>
 
     <color name="black_overlay">#66000000</color>
+    <color name="my_blue">#ff3c52a4</color>
+    <color name="letter_colour">#ff2c4789</color>
 
 </resources>
