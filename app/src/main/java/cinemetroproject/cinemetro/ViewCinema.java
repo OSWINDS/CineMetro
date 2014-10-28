@@ -39,6 +39,7 @@ public class ViewCinema extends ActionBarActivity {
     private Button facebookButton;
     private Button twitterButton;
     private Button instagramButton;
+    private Button pinterestButton;
     private int idCinema;
     private int countP;
 
@@ -100,6 +101,10 @@ public class ViewCinema extends ActionBarActivity {
 
         instagramButton = (Button) findViewById(R.id.instagram_button);
         instagramButton.setOnClickListener(instagramButtonOnClickListener);
+
+        pinterestButton = (Button) findViewById(R.id.pinterest_button);
+        pinterestButton.setOnClickListener(pinterestButtonOnClickListener);
+
     }
 
     @Override
@@ -230,5 +235,30 @@ public class ViewCinema extends ActionBarActivity {
                 intent.setData(Uri.parse("market://details?id=" + "com.instagram.android"));
                 startActivity(intent);
             }
+        }};
+
+    View.OnClickListener pinterestButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idCinema).getName();
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            PackageManager pm = view.getContext().getPackageManager();
+            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+            for (final ResolveInfo app : activityList) {
+                if ((app.activityInfo.name).contains("pinterest")) {
+                    final ActivityInfo activity = app.activityInfo;
+                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    shareIntent.setComponent(name);
+                    view.getContext().startActivity(shareIntent);
+                    break;
+                }
+            }
+
         }};
 }

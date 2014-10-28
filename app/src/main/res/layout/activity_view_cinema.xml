@@ -86,37 +86,49 @@
                 android:textColor="@color/letter_colour"
                 android:id="@+id/go_ahead_button"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
 
-                <!-- Facebook button -->
-                <Button
-                    android:id="@+id/facebook_button"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:background="@drawable/facebook_share"/>
+                    <!-- Facebook button -->
+                    <Button
+                        android:id="@+id/facebook_button"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:background="@drawable/facebook_share"/>
 
-                <!-- Twitter button -->
-                <Button
-                    android:id="@+id/twitter_button"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/twitter_share"/>
+                    <!-- Twitter button -->
+                    <Button
+                        android:id="@+id/twitter_button"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/twitter_share"/>
 
-                <!-- Instagram button -->
-                <Button
-                    android:id="@+id/instagram_button"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/instagram_share"/>
+                    <!-- Instagram button -->
+                    <Button
+                        android:id="@+id/instagram_button"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/instagram_share" />
 
-            </LinearLayout>
+                    <!-- Pinterest button -->
+                    <Button
+                        android:id="@+id/pinterest_button"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/pinterest_share"/>
+
+                </LinearLayout>
+            </HorizontalScrollView>
 
 
         </LinearLayout>
