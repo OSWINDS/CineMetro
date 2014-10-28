@@ -371,7 +371,7 @@ final class DbAdapter {
     /**
      * Updates the user ratings to the parse online database
      */
-    private void updateUserToParse(final User user)
+    public void updateUserToParse(final User user)
     {
 
         //initialize arrays for each line
@@ -417,7 +417,6 @@ final class DbAdapter {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
         query.whereEqualTo("username", user.getUsername());
         query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
             public void done(List<ParseObject> userList, ParseException e) {
                 if (e == null) {
                     //user exists,update his profile
@@ -448,6 +447,57 @@ final class DbAdapter {
                 }
             }
         });
+    }
+
+    /**
+     * Get the user ratings from parse for a specific user and for each one add them to the db
+     */
+    private void getUserFromParse(final User user)
+    {
+            //query parse to get the user
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
+            query.whereEqualTo("username", user.getUsername());
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> userList, ParseException e) {
+                    if (e == null) {
+                        String stations =  userList.get(0).getString("redLineStations");
+                        addRatingsFromString(user.getId(), stations, 0);
+
+                        stations =  userList.get(0).getString("blueLineStations");
+                        addRatingsFromString(user.getId(), stations, getStationByRoute(0).size());
+
+                        stations =  userList.get(0).getString("greenLineStations");
+                        addRatingsFromString(user.getId(), stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                    } else {
+
+                    }
+                }
+            });
+
+    }
+
+    /**
+     * adds to the db the ratings of this user for the stations from string
+     * @param user_id
+     * @param stations
+     * @param previous_stations, the stations before this line, needed for the station_id param
+     */
+    private void addRatingsFromString(int user_id, String stations, int previous_stations) {
+        System.out.println(stations);
+        stations = stations.replace("[", "");
+        stations = stations.replace("]", "");
+        String[] numbers = stations.split(",");
+        int i = 1;
+        for (String number : numbers) {
+            float rating = Float.parseFloat(number);
+            if (rating != 0) {
+                int station_id = previous_stations + i;
+                if(getUserRatingForStation(station_id, user_id) == 0) {
+                    this.addUserRating(station_id, user_id, rating);
+                }
+            }
+            i++;
+        }
     }
 
     /**
