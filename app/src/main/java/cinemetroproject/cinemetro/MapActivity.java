@@ -124,7 +124,8 @@ public class MapActivity extends Activity implements LocationListener {
             mΜap.setMyLocationEnabled(true);
         }
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 600000, 3, this);
+        currentLocation=lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 180000, 3, this);
 
     }
 
@@ -257,6 +258,7 @@ public class MapActivity extends Activity implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
+        currentLocation=new Location("");
         currentLocation = location;
 
         if (this.mΜap == null) return;
@@ -335,19 +337,27 @@ public class MapActivity extends Activity implements LocationListener {
                 itemView = getLayoutInflater().inflate(R.layout.maplistitem, parent, false);
             }
 
-            String s1, s2, s3;
-
-            s1 = (pos + 1) + "η Στάση";
-            s2 = line.get(pos).getName();
-            s3 = "Distance: " + line.get(pos).getDistance() + " m";
-
-
             TextView text1 = (TextView) itemView.findViewById(R.id.station);
-            text1.setText(s1);
+            switch(nLine){
+                case 1:
+                    text1.setTextColor(Color.rgb(227, 30, 25));
+                    break;
+                case 2:
+                    text1.setTextColor(Color.rgb(9, 0, 160));
+                    break;
+                case 3:
+                    text1.setTextColor(Color.rgb(63, 129, 42));
+                    break;
+                default:
+                    text1.setTextColor(Color.rgb(9, 0, 160));
+                    break;
+            }
+
+            text1.setText((pos + 1) + "η Στάση");
             TextView text2 = (TextView) itemView.findViewById(R.id.stationInfo);
-            text2.setText(s2);
+            text2.setText(line.get(pos).getName());
             TextView text3 = (TextView) itemView.findViewById(R.id.distance);
-            text3.setText(s3);
+            text3.setText(line.get(pos).getDistance2());
 
             return itemView;
         }

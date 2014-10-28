@@ -49,4 +49,14 @@ public class MyPoint {
     public void setDistance(float distance) {
         this.distance = distance;
     }
+
+    public String getDistance2(){
+        if(getDistance() != 0.0){
+            if((getDistance()/1000) < 1){
+                return "Απόσταση: " + (String.format("%.02f", getDistance())) + " m";
+            }
+            return "Απόσταση: " + (String.format("%.02f", getDistance()/1000)) + " km";
+        }
+        return "";
+    }
 }
