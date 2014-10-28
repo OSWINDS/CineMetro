@@ -2,12 +2,12 @@ package cinemetroproject.cinemetro;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseException;
-import com.parse.FindCallback;
+//import com.parse.Parse;
+//import com.parse.ParseAnalytics;
+//import com.parse.ParseObject;
+//import com.parse.ParseQuery;
+//import com.parse.ParseException;
+//import com.parse.FindCallback;
 import java.util.List;
 
 
@@ -373,7 +373,7 @@ final class DbAdapter {
     /**
      * Updates the user ratings to the parse online database
      */
-    private void updateUserToParse(final User user)
+    /**private void updateUserToParse(final User user)
     {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
         query.whereEqualTo("username", user.getUsername());
@@ -412,7 +412,7 @@ final class DbAdapter {
                 }
             }
         });
-    }
+    }*/
 
     /**
      * Inserts the data into the tables

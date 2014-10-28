@@ -94,6 +94,15 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/info" />
 
+            <!-- show In Map-->
+            <ImageButton
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:background="@drawable/show_in_map"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/showInMap"
+                />
+
             <!-- points of station -->
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -122,10 +131,13 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Go ahead!!!"
+                android:text="@string/go"
                 android:layout_gravity="right"
+                android:textAlignment="center"
                 android:orientation="horizontal"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/button_background"
+                android:textColor="@color/letter_colour"
                 android:id="@+id/go_ahead_button"/>
 
             <LinearLayout

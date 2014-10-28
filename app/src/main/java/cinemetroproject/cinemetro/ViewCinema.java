@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.lang.reflect.Field;
@@ -33,6 +34,7 @@ public class ViewCinema extends ActionBarActivity {
     private TextView textViewTitle;
     private TextView description;
     private TextView points;
+    private ImageButton showInMap;
     private Button goAheadButton;
     private Button facebookButton;
     private Button twitterButton;
@@ -83,6 +85,9 @@ public class ViewCinema extends ActionBarActivity {
 
         points = (TextView) findViewById(R.id.points);
         points.setText(String.valueOf(DbAdapter.getInstance().getStationRating(idCinema)) + "  ");
+
+        showInMap = (ImageButton)findViewById(R.id.showInMap);
+        showInMap.setOnClickListener(showInMapButtonOnClickListener);
 
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
@@ -135,6 +140,16 @@ public class ViewCinema extends ActionBarActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+
+    View.OnClickListener showInMapButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = new Intent(ViewCinema.this, MapActivity.class);
+            intent.putExtra("button_id", idCinema+1);
+            ViewCinema.this.startActivity(intent);
+        }};
 
     View.OnClickListener goAheadButtonOnClickListener = new View.OnClickListener(){
 

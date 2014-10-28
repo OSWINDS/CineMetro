@@ -2,28 +2,28 @@
 <resources>
 
     <string name="app_name">CineMetro Thess</string>
-    <string name="map_button">Navigation</string>
-    <string name="lines_button">Lines</string>
-    <string name="profile_button">Profile</string>
-    <string name="about_button">About</string>
-    <string name="title_activity_map">MapActivity</string>
-    <string name="map_activity">Map activity!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_lines">LinesActivity</string>
-    <string name="lines_activity">Lines activity!</string>
-    <string name="title_activity_profile">ProfileActivity</string>
-    <string name="profile_activity">Profile activity!</string>
-    <string name="title_activity_about">AboutActivity</string>
-    <string name="title_activity_log_in">LogIn</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_sign_up">SignUp</string>
+    <string name="map_button">Χάρτης</string>
+    <string name="lines_button">Γραμμές</string>
+    <string name="profile_button">Προφίλ</string>
+    <string name="about_button">Σχετικά</string>
+    <string name="title_activity_map">Χάρτης</string>
+    <string name="map_activity">Χάρτης</string>
+    <string name="action_settings">Ρυθμίσεις</string>
+    <string name="title_activity_lines">Γραμμές</string>
+    <string name="lines_activity">Γραμμές</string>
+    <string name="title_activity_profile">Προφίλ</string>
+    <string name="profile_activity">Προφίλ</string>
+    <string name="title_activity_about">Σχετικά</string>
+    <string name="title_activity_log_in">Σύνδεση</string>
+    <string name="hello_world">Γεια σου κόσμε</string>
+    <string name="title_activity_sign_up">Εγγραφή</string>
     <string name="Email">E-mail:</string>
-    <string name="PasswordText">Password:</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="PasswordText">Κωδικός:</string>
+    <string name="title_activity_maps">Χάρτης</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_when_retrieving_data">error with data</string>
-    <string name="go"> Go </string>
-    <string name="skip"> Skip </string>
+    <string name="go">  Συνέχησε  </string>
+    <string name="skip">  Παράλειψη  </string>
     <string name="about_text1">
             \n\t Το CineMetro είναι μια εφαρμογή για κινητές συσκευές, η οποία σχεδιάζεται εθελοντικά από ομάδα φοιτητών του Τμήματος Πληροφορικής του Α.Π.Θ., υπό την εποπτεία της καθηγήτριας Αθηνάς Βακάλη, σε συνεργασία με τη δημοσιογράφο και ιστορικό κινηματογράφου Δρ. Αγγελική Μυλωνάκη και τον δημοσιογράφο και κριτικό κινηματογράφου κ. Ιωάννη Γκροσδάνη.
             Στην iOS εφαρμοφή εργάστηκε ο Γιώργος Χαριστός ενώ η ομάδα των φοιτητών που εργάστηκε στην Android εφαρμογή απαρτίζεται από τους

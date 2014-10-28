@@ -48,7 +48,7 @@ public class AboutActivity extends ActionBarActivity {
             TextView text = (TextView) screen.findViewById(R.id.textAbout);
             text.setMaxWidth(width-30);
             text.setMaxHeight(height-30);
-            image.setBackgroundResource(R.drawable.ic_launcher);
+            image.setBackgroundResource(R.drawable.logo_background);
             text.setText(texts[i]);
             aboutScrollView.addView(screen);
         }

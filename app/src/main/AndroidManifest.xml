@@ -43,7 +43,7 @@
         </activity>
         <activity
             android:name=".LinesActivity"
-            android:label="@string/title_activity_lines"
+            android:label="@string/lines_activity"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainMenu">
             <meta-data
@@ -52,7 +52,7 @@
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:label="About"
+            android:label="@string/title_activity_about"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainMenu">
             <meta-data

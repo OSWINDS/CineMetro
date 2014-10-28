@@ -32,7 +32,7 @@
                  />
 
             <Button
-                android:text="Navigation"
+                android:text="@string/map_button"
                 android:layout_width="150dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
@@ -47,7 +47,7 @@
 
             <!-- Lines Button -->
             <Button
-                android:text="Lines"
+                android:text="@string/lines_button"
                 android:layout_width="150dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
@@ -62,7 +62,7 @@
 
             <!-- About Button -->
             <Button
-                android:text="About"
+                android:text="@string/about_button"
                 android:layout_width="150dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"

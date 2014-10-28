@@ -45,6 +45,7 @@ public class ViewStation extends ActionBarActivity  {
     private TextView textViewDirector;
     private ImageButton directorImage;
     private TextView textViewInfo;
+    private ImageButton showInMap;
     private TextView points;
     private Button goAheadButton;
     private Button facebookButton;
@@ -95,7 +96,7 @@ public class ViewStation extends ActionBarActivity  {
         textViewDirector.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
 
         actors = DbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
-        actorsScrollView = (LinearLayout)findViewById(R.id.about);
+        actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
 
         for (int i=0; i<actors; i++) {
             View actor = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.actor, null);
@@ -116,6 +117,9 @@ public class ViewStation extends ActionBarActivity  {
 
         textViewInfo = (TextView)findViewById(R.id.info);
         textViewInfo.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDescription());
+
+        showInMap = (ImageButton)findViewById(R.id.showInMap);
+        showInMap.setOnClickListener(showInMapButtonOnClickListener);
 
         points = (TextView) findViewById(R.id.points);
         points.setText(String.valueOf(DbAdapter.getInstance().getStationRating(idStation)) + "  ");
@@ -172,6 +176,16 @@ public class ViewStation extends ActionBarActivity  {
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
+
+    View.OnClickListener showInMapButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = new Intent(ViewStation.this, MapActivity.class);
+            intent.putExtra("button_id", ++idStation);
+            ViewStation.this.startActivity(intent);
+        }};
 
     View.OnClickListener goAheadButtonOnClickListener = new View.OnClickListener(){
 
