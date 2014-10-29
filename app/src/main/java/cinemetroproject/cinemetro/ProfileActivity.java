@@ -40,11 +40,11 @@ public class ProfileActivity extends ActionBarActivity {
         blue=(TextView) findViewById(R.id.blue_line);
         green=(TextView) findViewById(R.id.green_line);
 
-        email.setText("Email: ");
-        points.setText("Total Points: ");
-        red.setText("    Red Line:       ");
-        blue.setText("    Blue Line:      ");
-        green.setText("    Green Line:   ");
+        email.setText("Email: " + connectedUser.getUsername());
+        points.setText("Total Points: " + "3");
+        red.setText("    Red Line:       " + "2");
+        blue.setText("    Blue Line:      " + "");
+        green.setText("    Green Line:   " + "1");
 
         logOut = (Button) findViewById(R.id.log_out);
 
@@ -99,7 +99,7 @@ public class ProfileActivity extends ActionBarActivity {
 
     public void logOutClicked() {
 
-        connectedUser=null;
+        connectedUser=new User();
         Intent intent;
         intent = new Intent(ProfileActivity.this, LogIn.class);
         startActivity(intent);

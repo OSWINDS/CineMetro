@@ -76,9 +76,9 @@ public class SignUp extends ActionBarActivity {
     }
 
     public void Check_bt_clicked(){
-        String user =email.getText().toString();
-        String passw1 = pass1.getText().toString();
-        String passw2 = pass2.getText().toString();
+        user =email.getText().toString();
+        passw1 = pass1.getText().toString();
+        passw2 = pass2.getText().toString();
 
         ok=true;
 
@@ -121,6 +121,9 @@ public class SignUp extends ActionBarActivity {
         }
 
         //if e-mail unique and password confirmed you can Sign up
+        if((passw1 == passw2) && u!=DbAdapter.getInstance().getUserByUsername(user)){
+            ok=true;
+        }
 
         if (ok) {
             end_bt.setEnabled(true);
@@ -141,12 +144,11 @@ public class SignUp extends ActionBarActivity {
 
         //Add new User to dataBase
         //not implemented yet
+        newUser=new User(0, user, passw1);
+
         dispText.setText("Congrats you successfully signed up!");
 
-        newUser=new User(0, user, passw1);
-        //DbAdapter--addUser()
-
-        //ProfileActivity.getConnectedUser(newUser);
+        ProfileActivity.getConnectedUser(newUser);
         Intent intent;
         intent = new Intent(SignUp.this, ProfileActivity.class);
         startActivity(intent);
