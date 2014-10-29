@@ -32,7 +32,6 @@ public class Timeline extends ActionBarActivity {
     private RadioButton radioButton;
     private ImageView image;
     private View view;
-  //  private Button nextstasion;
     private Button prevstation;
     private int idCinema;
     private int selectedId;
@@ -42,35 +41,33 @@ public class Timeline extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       // this.num = num;
+
         super.onCreate(savedInstanceState);
 
         //full screen to timeline
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_timeline);
-
+        //create radiogroup
         rg = (RadioGroup) findViewById(R.id.radiogroup);
         rg.setOrientation(RadioGroup.VERTICAL);
+
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
         mylayout = (LinearLayout)findViewById(R.id.mylayout);
-        //nextstasion=(Button)findViewById(R.id.nextstation);
-
-
 
         Intent intent = getIntent();
         idCinema = intent.getIntExtra("button_id", 0);
         title=(TextView)findViewById(R.id.title);
         title.setText(DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName());
         description = (TextView) findViewById(R.id.description);
-        description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(1).getDescription());
+        description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(0).getDescription());
         image=(ImageView)findViewById(R.id.image);
+       // rb[0].isChecked();
        try {
             Class res = R.drawable.class;
             Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(0).getPhotoName());
             int drawableId = field.getInt(null);
             image.setBackgroundResource(drawableId);
-            //  imageCinema.setGravity(Gravity.BOTTOM | Gravity.CENTER);
-            //  imageCinema.setLayoutParams(new ViewGroup.LayoutParams(320,300));
+
         } catch (Exception e) {}
         int millestones= DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).size();
 
@@ -101,23 +98,7 @@ public class Timeline extends ActionBarActivity {
                         image.setBackgroundResource(drawableId);
 
                     } catch (Exception e) {}
-                   /* nextstasion.setOnClickListener(new View.OnClickListener() {
 
-                        public void onClick(View v) {
-                            description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId+1).getDescription());
-                            image=(ImageView)findViewById(R.id.image);
-
-                            try {
-                                Class res = R.drawable.class;
-                                Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId+1).getPhotoName());
-                                int drawableId = field.getInt(null);
-                                image.setBackgroundResource(drawableId);
-
-                            } catch (Exception e) {}
-
-
-                        }
-                    }*/
 
 
 

@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -18,15 +19,43 @@ import java.util.ArrayList;
 
 
 public class ProfileActivity extends ActionBarActivity {
+    ImageButton logo;
+    Button logOut;
+    TextView email, points, red ,blue, green;
+    static User connectedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.profile);
 
-        ScrollView sv = (ScrollView) this.findViewById(R.id.scrollView);
+        logo=(ImageButton)findViewById(R.id.logo);
+        logo.setBackgroundResource(R.drawable.logo_background);
+
+        email=(TextView) findViewById(R.id.email);
+        points=(TextView) findViewById(R.id.total_points);
+        red=(TextView) findViewById(R.id.red_line);
+        blue=(TextView) findViewById(R.id.blue_line);
+        green=(TextView) findViewById(R.id.green_line);
+
+        email.setText("Email: " + connectedUser.getUsername());
+        points.setText("Total Points: " + "3");
+        red.setText("    Red Line:       " + "2");
+        blue.setText("    Blue Line:      " + "");
+        green.setText("    Green Line:   " + "1");
+
+        logOut = (Button) findViewById(R.id.log_out);
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOutClicked();
+            }
+        });
+
+        /*ScrollView sv = (ScrollView) this.findViewById(R.id.scrollView);
         LinearLayout ll=new LinearLayout(this);
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
@@ -50,7 +79,7 @@ public class ProfileActivity extends ActionBarActivity {
                 cb.setClickable(false);
                 cb.setText(str);
                 cb.setSelected(true);
-               ll.addView(cb);
+               //ll.addView(cb);
             }
         }
         sv.addView(ll);
@@ -65,9 +94,20 @@ public class ProfileActivity extends ActionBarActivity {
                         ProfileActivity.this.startActivity(intent);
                     }
                 }
-        );
+        );*/
     }
 
+    public void logOutClicked() {
+
+        connectedUser=new User();
+        Intent intent;
+        intent = new Intent(ProfileActivity.this, LogIn.class);
+        startActivity(intent);
+    }
+
+    public static void getConnectedUser(User user){
+        connectedUser=user;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

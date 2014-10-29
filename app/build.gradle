@@ -30,4 +30,8 @@ dependencies {
     compile files('./libs/Parse-1.4.1/Parse-1.4.1.jar')
     compile files('/home/efi/Projects/CineMetroApplication/libs/Parse-1.7.1/Parse-1.7.1.jar')
     compile files('/home/efi/Projects/CineMetroApplication/libs/Parse-1.7.1/bolts-android-1.1.3.jar')
+    compile files('C:/Users/kiki__000/Desktop/CineMetro/libs/Parse-1.7.1/Parse-1.7.1.jar')
+    compile files('C:/Users/kiki__000/Desktop/CineMetro/libs/Parse-1.7.1/bolts-android-1.1.3.jar')
+    compile files('C:/Users/hara/Desktop/CineMetroWithGit/libs/Parse-1.7.1/bolts-android-1.1.3.jar')
+    compile files('C:/Users/hara/Desktop/CineMetroWithGit/libs/Parse-1.7.1/Parse-1.7.1.jar')
 }

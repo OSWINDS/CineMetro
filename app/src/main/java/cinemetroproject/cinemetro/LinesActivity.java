@@ -25,23 +25,23 @@ public class LinesActivity  extends TabActivity {
 
         //line1
         intent =new Intent(this,Line1.class);
-        spec =mTabHost.newTabSpec("")
+        spec =mTabHost.newTabSpec("Cinemas")
                 .setContent(intent)
-                .setIndicator("");
+                .setIndicator("Cinemas");
         mTabHost.addTab(spec);
 
         //line2
         intent =new Intent(this,Line2.class);
-        spec =mTabHost.newTabSpec("")
+        spec =mTabHost.newTabSpec("Movies")
                 .setContent(intent)
-                .setIndicator("");
+                .setIndicator("Movies");
         mTabHost.addTab(spec);
 
         //line 3
         intent =new Intent(this,Line3.class);
-        spec =mTabHost.newTabSpec("")
+        spec =mTabHost.newTabSpec("Timeline")
                 .setContent(intent)
-                .setIndicator("");
+                .setIndicator("Timeline");
         mTabHost.addTab(spec);
 
         mTabHost.setCurrentTab(2);
@@ -50,6 +50,7 @@ public class LinesActivity  extends TabActivity {
             mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#E41C26"));
             mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#2389BE"));
             mTabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#1B9344"));
+
         }
     }
 

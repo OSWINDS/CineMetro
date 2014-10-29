@@ -11,13 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class LogIn extends ActionBarActivity {
 
     Button logbt, signbt;
+    ImageButton logo;
     EditText username, password;
     TextView success, information;
+    User connectedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,9 @@ public class LogIn extends ActionBarActivity {
         password = (EditText) findViewById(R.id.passWord);
         success = (TextView) findViewById(R.id.succesText);
         information = (TextView) findViewById(R.id.information);
+
+        logo=(ImageButton)findViewById(R.id.logo);
+        logo.setBackgroundResource(R.drawable.logo_background);
 
         logbt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,12 +102,26 @@ public class LogIn extends ActionBarActivity {
         //Check if user exits in database
         //Check if password match users passWord
         //if match, send Data to database
+        User u=new User(0, user, pass);
+        if(u!=DbAdapter.getInstance().getUserByUsername(user)){
+            success.setText("User does not exist");
+            ok=false;
+            return;
+        }
+        if(u==DbAdapter.getInstance().getUserByUsername(user) && pass==DbAdapter.getInstance().getUserByUsername(user).getPassword()){
+            ok=true;
+        }
 
         if (ok) {
             success.setText("Success, database Updated :)");
             information.setText("Success, database Updated :)");
-            return;
+            //return;
         }
+
+        //ProfileActivity.getConnectedUser(u);
+        Intent intent;
+        intent = new Intent(LogIn.this, ProfileActivity.class);
+        startActivity(intent);
 
     }
 
@@ -111,7 +131,5 @@ public class LogIn extends ActionBarActivity {
         intent = new Intent(LogIn.this, SignUp.class);
         startActivity(intent);
     }
-
-
 }
 

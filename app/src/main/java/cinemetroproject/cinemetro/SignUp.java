@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import cinemetroproject.cinemetro.R;
@@ -20,6 +22,8 @@ public class SignUp extends ActionBarActivity {
     TextView dispText;
     EditText email,pass1,pass2;
     boolean ok = true;
+    private User newUser;
+    String user, passw1 , passw2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,8 @@ public class SignUp extends ActionBarActivity {
         pass1=(EditText)findViewById(R.id.pass1);
         pass2=(EditText)findViewById(R.id.pass2);
 
-
+        ImageButton logo=(ImageButton)findViewById(R.id.logo);
+        logo.setBackgroundResource(R.drawable.logo_background);
 
         check_bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +76,9 @@ public class SignUp extends ActionBarActivity {
     }
 
     public void Check_bt_clicked(){
-        String user =email.getText().toString();
-        String passw1 = pass1.getText().toString();
-        String passw2 = pass2.getText().toString();
+        user =email.getText().toString();
+        passw1 = pass1.getText().toString();
+        passw2 = pass2.getText().toString();
 
         ok=true;
 
@@ -95,6 +100,12 @@ public class SignUp extends ActionBarActivity {
 
         //Check if user exits in database
         //not implemented yet
+        User u=new User(0, user, passw1);
+        if(u==DbAdapter.getInstance().getUserByUsername(user)){
+            dispText.setText("User already exists");
+            ok=false;
+            return;
+        }
 
         //If password is too small
         if(passw1.length()<5){
@@ -110,6 +121,9 @@ public class SignUp extends ActionBarActivity {
         }
 
         //if e-mail unique and password confirmed you can Sign up
+        if((passw1 == passw2) && u!=DbAdapter.getInstance().getUserByUsername(user)){
+            ok=true;
+        }
 
         if (ok) {
             end_bt.setEnabled(true);
@@ -130,6 +144,13 @@ public class SignUp extends ActionBarActivity {
 
         //Add new User to dataBase
         //not implemented yet
+        newUser=new User(0, user, passw1);
+
         dispText.setText("Congrats you successfully signed up!");
+
+        ProfileActivity.getConnectedUser(newUser);
+        Intent intent;
+        intent = new Intent(SignUp.this, ProfileActivity.class);
+        startActivity(intent);
     }
 }
