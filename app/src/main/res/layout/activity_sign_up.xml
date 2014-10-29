@@ -16,6 +16,20 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:weightSum="1">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/logo"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=""
+                android:id="@+id/help" />
+
             <TextView
                 android:id="@+id/textViewProfile"
                 android:layout_width="wrap_content"
@@ -24,7 +38,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:text="@string/Email"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ff09006e" />
 
             <EditText
                 android:id="@+id/eMail"
@@ -47,7 +62,8 @@
                 android:layout_below="@+id/textViewProfile"
                 android:layout_marginTop="26dp"
                 android:text="@string/PasswordText"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ff09006e" />
 
             <EditText
                 android:id="@+id/pass1"
@@ -70,7 +86,8 @@
                 android:layout_toLeftOf="@+id/eMail"
                 android:layout_toStartOf="@+id/eMail"
                 android:text="Confirm Password"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#fffd322c" />
 
             <EditText
                 android:id="@+id/pass2"
@@ -90,7 +107,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="40dp"
-                android:text="Check" />
+                android:text="Check"
+                android:background="#ff6482f1"
+                android:textColor="#ffffffff" />
 
             <TextView
                 android:id="@+id/DisplayText"
@@ -103,7 +122,8 @@
                 android:layout_marginTop="23dp"
                 android:text="Here Displays if email is valid or if you gave a propper password"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_weight="0.23" />
+                android:layout_weight="0.23"
+                android:textColor="#ff09006e" />
 
             <Button
                 android:id="@+id/End_button"
@@ -117,7 +137,9 @@
                 android:layout_marginBottom="50dp"
                 android:enabled="false"
                 android:text="End"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:background="#ff6482f1"
+                android:textColor="#ffffffff" />
         </LinearLayout>
     </ScrollView>
 

@@ -17,6 +17,19 @@
             android:layout_height="fill_parent"
             android:orientation="vertical">
 
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/logo"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=""
+                android:id="@+id/help" />
+
             <Button
                 android:id="@+id/SignUp_button"
                 android:layout_width="wrap_content"
@@ -26,7 +39,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:layout_above="@+id/userName"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:background="#ff6482f1"
+                android:textColor="#ffffffff" />
 
             <TextView
                 android:id="@+id/textViewProfile"
@@ -38,7 +53,8 @@
                 android:text="E-mail:"
                 android:textSize="30sp"
                 android:layout_toStartOf="@+id/SignUp_button"
-                android:layout_toLeftOf="@+id/SignUp_button" />
+                android:layout_toLeftOf="@+id/SignUp_button"
+                android:textColor="#ff09006e" />
 
             <EditText
                 android:id="@+id/userName"
@@ -60,7 +76,8 @@
                 android:layout_below="@+id/userName"
                 android:layout_marginTop="20dp"
                 android:text="Password:"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:textColor="#fffd322c" />
 
             <EditText
                 android:id="@+id/passWord"
@@ -82,7 +99,9 @@
                 android:layout_below="@+id/passWord"
                 android:layout_alignRight="@+id/passWord"
                 android:layout_alignEnd="@+id/passWord"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:background="#ff6482f1"
+                android:textColor="#ffffffff" />
 
             <TextView
                 android:id="@+id/succesText"
@@ -94,7 +113,8 @@
                 android:layout_toStartOf="@+id/SignUp_button"
                 android:layout_below="@+id/passWord"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:textColor="#ff09006e" />
 
 
             <TextView
@@ -107,7 +127,8 @@
                 android:layout_below="@+id/succesText"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true" />
+                android:layout_alignParentBottom="true"
+                android:textColor="#ff09006e" />
         </LinearLayout>
     </ScrollView>
 

@@ -65,7 +65,7 @@ public class MainMenu extends ActionBarActivity {
         //return super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case R.id.profile:
-                Intent intent = new Intent(this, ProfileActivity.class);
+                Intent intent = new Intent(this, LogIn.class);
                 startActivity(intent);
                 return true;
             default:

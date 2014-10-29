@@ -353,7 +353,7 @@ public class MapActivity extends Activity implements LocationListener {
                     break;
             }
 
-            text1.setText((pos + 1) + "η Στάση");
+            text1.setText("Station " + (pos + 1));
             TextView text2 = (TextView) itemView.findViewById(R.id.stationInfo);
             text2.setText(line.get(pos).getName());
             TextView text3 = (TextView) itemView.findViewById(R.id.distance);
