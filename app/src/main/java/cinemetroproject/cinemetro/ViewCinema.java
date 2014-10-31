@@ -56,7 +56,8 @@ public class ViewCinema extends ActionBarActivity {
 
         textViewTitle =(TextView)findViewById(R.id.name);
         textViewTitle.setText(DbAdapter.getInstance().getStations().get(idCinema).getName());
-        //textViewTitle.setBackgroundColor(Color.RED);
+        textViewTitle.setBackgroundColor(getResources().getColor(R.color.line1));
+
         try {
             Class res = R.drawable.class;
             Field field = res.getField(DbAdapter.getInstance().getRoutes().get(1).getColour());
@@ -151,8 +152,9 @@ public class ViewCinema extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
+            MapActivity.showInMap(1, idCinema+1);
+
             Intent intent = new Intent(ViewCinema.this, MapActivity.class);
-            intent.putExtra("button_id", idCinema+1);
             ViewCinema.this.startActivity(intent);
         }};
 

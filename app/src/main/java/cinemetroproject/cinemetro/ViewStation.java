@@ -67,6 +67,7 @@ public class ViewStation extends ActionBarActivity  {
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
         textViewTitle.setText(DbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + DbAdapter.getInstance().getMovieByStation(idStation).getYear());
+        textViewTitle.setBackgroundColor(getResources().getColor(R.color.line2));
 
         movieImages = DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size();
         movieImagesScrollView = (LinearLayout)findViewById(R.id.movieImagesHsw);
@@ -186,8 +187,9 @@ public class ViewStation extends ActionBarActivity  {
         @Override
         public void onClick(View view) {
 
+            MapActivity.showInMap(1, idStation+1);
+
             Intent intent = new Intent(ViewStation.this, MapActivity.class);
-            intent.putExtra("button_id", ++idStation);
             ViewStation.this.startActivity(intent);
         }};
 

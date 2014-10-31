@@ -50,6 +50,8 @@ public class MapActivity extends Activity implements LocationListener {
     private List<MyPoint> line = new ArrayList<MyPoint>();
     private LocationManager lm;
     private Location currentLocation;
+    private static int idLine = 0;
+    private static int idStation = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,9 @@ public class MapActivity extends Activity implements LocationListener {
         setUpMap();
 
         lv = (ListView) this.findViewById(R.id.lv);
+
+        nLine = idLine;
+        setLine();
 
         Ll1 = (LinearLayout) this.findViewById(R.id.Ll1);
         Ll1.setBackgroundColor(Color.WHITE);
@@ -118,7 +123,6 @@ public class MapActivity extends Activity implements LocationListener {
         nLine = 0;
         setLine();
 
-
         currentLocation = new Location("");
         if (this.mΜap != null) {
             mΜap.setMyLocationEnabled(true);
@@ -126,6 +130,9 @@ public class MapActivity extends Activity implements LocationListener {
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         currentLocation=lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 180000, 3, this);
+
+        idLine = 0;
+        idStation = 0;
 
     }
 
@@ -198,10 +205,22 @@ public class MapActivity extends Activity implements LocationListener {
             case 3:
                 colour = (float) 120.0;
                 break;
+            case 10:
+                colour = (float) 300.0;
+                break;
             case -1:
                 colour = (float) 120.0;
                 break;
         }
+    }
+
+    public static void showInMap(int idLine, int idStation){
+
+        MapActivity.idLine = idLine;
+        MapActivity.idStation = idStation;
+
+
+
     }
 
 
