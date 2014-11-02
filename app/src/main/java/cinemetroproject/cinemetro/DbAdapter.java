@@ -70,6 +70,11 @@ final class DbAdapter {
      */
     private DbHelper db;
 
+    /**
+     * The active user after a successful login
+     */
+    private User activeUser;
+
 
 
     /**
@@ -254,6 +259,24 @@ final class DbAdapter {
             }
         }
         return null;
+    }
+
+    /**
+     * Sets the active user to the parameter user
+     * @param user
+     */
+    public void setActiveUser(User user)
+    {
+        this.activeUser = user;
+    }
+
+    /**
+     * Returns the active user,could be null if there was no login
+     * @return
+     */
+    public User getActiveUser()
+    {
+        return this.activeUser;
     }
 
     /**
@@ -484,6 +507,8 @@ final class DbAdapter {
             });
 
     }
+
+
 
     /**
      * adds to the db the ratings of this user for the stations from string
