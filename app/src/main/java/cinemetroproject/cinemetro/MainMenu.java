@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -64,7 +65,15 @@ public class MainMenu extends ActionBarActivity {
         //return super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case R.id.profile:
-                Intent intent = new Intent(this, LogIn.class);
+                Intent intent;
+
+                if(DbAdapter.getInstance().getActiveUser()==null){
+                    intent=new Intent(MainMenu.this, LogIn.class);
+                    startActivity(intent);
+                    return true;
+                }
+
+                intent=new Intent(MainMenu.this, ProfileActivity.class);
                 startActivity(intent);
                 return true;
             default:
