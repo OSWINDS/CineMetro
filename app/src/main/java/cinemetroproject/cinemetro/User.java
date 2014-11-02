@@ -17,6 +17,12 @@ public class User {
         this.password = pass;
     }
 
+    public User( String name, String pass)
+    {
+        this.username = name;
+        this.password = pass;
+    }
+
     /***************************************************************
      * Get Functions
      ***************************************************************/

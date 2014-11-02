@@ -232,6 +232,15 @@ final class DbAdapter {
     }
 
     /**
+     * Add new user to db
+     * @param user
+     */
+    public void addNewUser(User user)
+    {
+        db.addUser(user, user.getPassword());
+    }
+
+    /**
      *
      * @param username
      * @return the user with that username, null if username does not exists
