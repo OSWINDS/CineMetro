@@ -450,7 +450,7 @@ final class DbAdapter {
         query.whereEqualTo("username", user.getUsername());
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> userList, ParseException e) {
-                if (e == null) {
+                if (userList.size() > 0) {
                     //user exists,update his profile
                     userList.get(0).put("username", user.getUsername());
                     userList.get(0).put("password", user.getPassword());
