@@ -1,5 +1,6 @@
 package cinemetroproject.cinemetro;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -13,14 +14,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class LogIn extends ActionBarActivity {
 
     Button logbt, signbt;
     ImageButton logo;
     EditText username, password;
-    TextView success, information;
     User connectedUser;
+    boolean readyToSignUp;
+    private ArrayList<User> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +37,12 @@ public class LogIn extends ActionBarActivity {
         signbt = (Button) findViewById(R.id.SignUp_button);
         username = (EditText) findViewById(R.id.userName);
         password = (EditText) findViewById(R.id.passWord);
-        success = (TextView) findViewById(R.id.succesText);
-        information = (TextView) findViewById(R.id.information);
 
         logo=(ImageButton)findViewById(R.id.logo);
         logo.setBackgroundResource(R.drawable.logo_background);
+
+        users=new ArrayList<User>();
+        users=DbAdapter.getInstance().getUsers();
 
         logbt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +59,8 @@ public class LogIn extends ActionBarActivity {
             }
         });
 
-        information.setText("Display the new Achievments here!");
-
+        connectedUser=null;
+        readyToSignUp=false;
 
     }
 
@@ -81,7 +88,7 @@ public class LogIn extends ActionBarActivity {
     private void ButtonClickedtoLogIn() {
         String user = username.getText().toString();
         String pass = password.getText().toString();
-        boolean ok = true;
+        boolean readyToLogIn = false;
 
 
         ConnectivityManager connec = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -93,8 +100,9 @@ public class LogIn extends ActionBarActivity {
         } else if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||
                 connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED) {
             //Not connected.
-            success.setText("You must be connected to the internet");
-            ok = false;
+            Toast.makeText(LogIn.this, "You must be connected to the internet.", Toast.LENGTH_SHORT).show();
+            //success.setText("You must be connected to the internet.");
+            readyToLogIn = false;
             return;
         }
 
@@ -102,34 +110,43 @@ public class LogIn extends ActionBarActivity {
         //Check if user exits in database
         //Check if password match users passWord
         //if match, send Data to database
-        User u=new User(0, user, pass);
-        if(u!=DbAdapter.getInstance().getUserByUsername(user)){
-            success.setText("User does not exist");
-            ok=false;
+        boolean found=false;
+        for(User u : users){
+            if(user.equals(u.getUsername())){
+                found=true;
+            }
+        }
+
+        if(!found){
+            Toast.makeText(LogIn.this, "User does not exist.", Toast.LENGTH_SHORT).show();
+            readyToLogIn=false;
             return;
         }
-        if(u==DbAdapter.getInstance().getUserByUsername(user) && pass==DbAdapter.getInstance().getUserByUsername(user).getPassword()){
-            ok=true;
+
+        if(DbAdapter.getInstance().getUserByUsername(user).checkPassword(pass)){
+            readyToLogIn=true;
+        }else{
+            Toast.makeText(LogIn.this, "Wrong password.", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        if (ok) {
-            success.setText("Success, database Updated :)");
-            information.setText("Success, database Updated :)");
-            //return;
+        if (readyToLogIn){
+            Intent intent;
+            intent = new Intent(LogIn.this, ProfileActivity.class);
+
+            DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(user));
+
+            startActivity(intent);
+            this.finish();
         }
-
-        //ProfileActivity.getConnectedUser(u);
-        Intent intent;
-        intent = new Intent(LogIn.this, ProfileActivity.class);
-        startActivity(intent);
-
     }
 
     public void signUpClicked() {
-
         Intent intent;
         intent = new Intent(LogIn.this, SignUp.class);
         startActivity(intent);
     }
+
+
 }
 

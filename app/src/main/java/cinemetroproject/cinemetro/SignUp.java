@@ -1,5 +1,6 @@
 package cinemetroproject.cinemetro;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -13,17 +14,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import cinemetroproject.cinemetro.R;
 
 public class SignUp extends ActionBarActivity {
 
     Button check_bt,end_bt;
-    TextView dispText;
     EditText email,pass1,pass2;
     boolean ok = true;
-    private User newUser;
-    String user, passw1 , passw2;
+    String username, passw1 , passw2;
+    private ArrayList<User> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +35,13 @@ public class SignUp extends ActionBarActivity {
 
         check_bt=(Button)findViewById(R.id.check_button);
         end_bt=(Button) findViewById(R.id.End_button);
-        dispText=(TextView)findViewById(R.id.DisplayText);
         email=(EditText)findViewById(R.id.eMail);
         pass1=(EditText)findViewById(R.id.pass1);
         pass2=(EditText)findViewById(R.id.pass2);
+
+        users=new ArrayList<User>();
+        users=DbAdapter.getInstance().getUsers();
+        //users.add(new User(1, "chara", "xxxxx"));
 
         ImageButton logo=(ImageButton)findViewById(R.id.logo);
         logo.setBackgroundResource(R.drawable.logo_background);
@@ -76,7 +82,7 @@ public class SignUp extends ActionBarActivity {
     }
 
     public void Check_bt_clicked(){
-        user =email.getText().toString();
+        username = email.getText().toString();
         passw1 = pass1.getText().toString();
         passw2 = pass2.getText().toString();
 
@@ -92,7 +98,7 @@ public class SignUp extends ActionBarActivity {
         } else if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||
                 connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED) {
             //Not connected.
-            dispText.setText("You must be connected to the internet");
+            Toast.makeText(SignUp.this, "You must be connected to the internet.", Toast.LENGTH_SHORT).show();
             ok = false;
             return;
         }
@@ -100,34 +106,37 @@ public class SignUp extends ActionBarActivity {
 
         //Check if user exits in database
         //not implemented yet
-        User u=new User(0, user, passw1);
-        if(u==DbAdapter.getInstance().getUserByUsername(user)){
-            dispText.setText("User already exists");
-            ok=false;
-            return;
+        //boolean found=false;
+
+        for(User u : users){
+            if(u.getUsername().equals(username)){
+                Toast.makeText(SignUp.this, "User already exists.", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
         //If password is too small
         if(passw1.length()<5){
-            dispText.setText("Password mast be at least 5 characters");
+            Toast.makeText(SignUp.this, "Password must be at least 5 characters.", Toast.LENGTH_SHORT).show();
             ok=false;
             return;
         }
         //if password confirmation doesn't match
         if(!passw1.equals(passw2)){
-            dispText.setText("Password doesn't match");
+            Toast.makeText(SignUp.this, "Passwords do not match.", Toast.LENGTH_SHORT).show();
             ok=false;
             return;
         }
 
         //if e-mail unique and password confirmed you can Sign up
-        if((passw1 == passw2) && u!=DbAdapter.getInstance().getUserByUsername(user)){
+        if((passw1 == passw2)){
             ok=true;
         }
 
         if (ok) {
             end_bt.setEnabled(true);
-            dispText.setText("You are ready!!! Touch  the End button to Sign Up ");
+            Toast.makeText(SignUp.this, "You are ready!!!\n" +
+                    "Touch the End button to Sign Up.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -135,22 +144,25 @@ public class SignUp extends ActionBarActivity {
 
     public void End_bt_Clicked(){
         //Check Again if The user cheat and changed smth or the internet connection has been broken.
-        Check_bt_clicked();
-        if(!ok){
-            dispText.setText("You cheater! Undo the change and try Again!");
+       if(!ok){
+           Check_bt_clicked();
+           Toast.makeText(SignUp.this, "You cheater!\n" +
+                    "Undo the change and try again!", Toast.LENGTH_SHORT).show();
             end_bt.setEnabled(false);
             return;
         }
 
-        //Add new User to dataBase
-        //not implemented yet
-        newUser=new User(0, user, passw1);
+        User newUser=new User(username, passw1);
+        DbAdapter.getInstance().addNewUser(newUser);
+        //DbAdapter.getInstance().updateUserToParse(newUser);
 
-        dispText.setText("Congrats you successfully signed up!");
+        Toast.makeText(SignUp.this, "Congrats! You successfully signed up!", Toast.LENGTH_SHORT).show();
 
-        ProfileActivity.getConnectedUser(newUser);
         Intent intent;
         intent = new Intent(SignUp.this, ProfileActivity.class);
+        DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(username));
+
         startActivity(intent);
+        this.finish();
     }
 }
