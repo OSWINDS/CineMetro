@@ -14,6 +14,15 @@
         android:background="#1B9344"
         android:id="@+id/view2" />
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
     <TextView
 
         android:layout_width="wrap_content"
@@ -95,4 +104,100 @@
         android:layout_marginTop="35dp"
         android:background="#1B9344"
         android:id="@+id/view" />
+
+
+        <!-- show In Map-->
+        <ImageButton
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:background="@drawable/show_in_map"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/showInMap"
+            />
+
+        <!-- points of station -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:id="@+id/points"/>
+
+            <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/star"
+                android:id="@+id/pointsImage"/>
+
+        </LinearLayout>
+
+
+        <!-- Go button -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go"
+            android:textAlignment="center"
+            android:layout_gravity="right"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_background"
+            android:textColor="@color/letter_colour"
+            android:id="@+id/go_ahead_button"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <!-- Facebook button -->
+                <Button
+                    android:id="@+id/facebook_button"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:background="@drawable/facebook_share"/>
+
+                <!-- Twitter button -->
+                <Button
+                    android:id="@+id/twitter_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/twitter_share"/>
+
+                <!-- Instagram button -->
+                <Button
+                    android:id="@+id/instagram_button"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/instagram_share" />
+
+                <!-- Pinterest button -->
+                <Button
+                    android:id="@+id/pinterest_button"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/pinterest_share"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+
+
+    </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
