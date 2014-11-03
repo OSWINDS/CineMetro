@@ -701,7 +701,7 @@ final class DbAdapter {
                         "Ο πρωταγωνιστής της ταινίας Στρ. Τζώρτζογλου την ίδια χρονιά θα συμμετέχει στα γυρίσματα της ταινίας " +
                         "του Θ. Αγγελόπουλου “Τοπίο στην Ομίχλη” που γίνονται στην Θεσσαλονίκη.",
                 2, 40.632804, 22.941331));
-        this.db.addStation(new Station("Η Αιωνιότητα και μια μέρα (1998)",
+        this.db.addStation(new Station("Μια Αιωνιότητα και μια μέρα (1998)",
                 "Σκηνοθεσία: Θόδωρος Αγγελόπουλος\n" +
                         "\n" +
                         "Παίζουν: Γκαντζ Μπρούνο, Ρενό Ιζαμπέλ, Μπενιβόλιο Φαμπρίτσιο\n" +
@@ -799,7 +799,7 @@ final class DbAdapter {
                 "Ο πρωταγωνιστής της ταινίας Στρ. Τζώρτζογλου την ίδια χρονιά θα συμμετέχει στα γυρίσματα της ταινίας του Θ. Αγγελόπουλου “Τοπίο στην Ομίχλη” που γίνονται στην Θεσσαλονίκη.",
                 "Τζώρτζογλου Στράτος,Μπαζάκα Θέμις",
                 "Παντελής Βούλγαρης", "1987"));
-        this.db.addMovie(new Movie(12, "Η Αιωνιότητα και μια μέρα",
+        this.db.addMovie(new Movie(12, "Μια Αιωνιότητα και μια μέρα",
                 "Ένας μεσήλικας συγγραφέας, που ασχολείται με το έργο του Δ. Σολωμού, αναζητάει τις αναμνήσεις μιας ζωής σε μια περιπλάνηση μιας ημέρας. \n" +
                 "\n" +
                 "Γυρισμένη σε αρχοντικό της Βασ. Όλγας, στην Παλιά Παραλία, Πλ. Αριστοτέλους και σε χώρους της οδού Τσιμισκή. \n" +
@@ -962,8 +962,6 @@ final class DbAdapter {
         this.db.addPhoto(new Photo("green6", 0, 0, ""));
         this.db.addPhoto(new Photo("green7", 0, 0, ""));
         this.db.addPhoto(new Photo("green8", 0, 0, ""));
-        //red line
-
 
         //TimelineStation 1
         this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)", 40.6271087, 22.9497383));
@@ -1113,6 +1111,8 @@ final class DbAdapter {
                 " Πασκάλιεβιτς,Νουρί Μπιλγκέ Τσεϊλάν και Κριστιάν Μουντζίου και νέα ρεύματα, όπως ο νέος ρουμάνικος κινηματογράφος, " +
                 "που αγκαλιάστηκαν από το διεθνές κοινό.", "p2013",
                 ""));
+
+        this.populateEnglishDB();
     }
 
     private void populateEnglishDB()
@@ -1282,6 +1282,132 @@ final class DbAdapter {
                         ", the City Hall, the White Tower, the Railway Station).",
                 "Dimitris Vainas, Paris Papadopoulos, Olga Sfetsa",
                 "Yorgos Papaioannou", "2011"));
+
+        //add photos
+
+        //line 1
+        // station 1
+        this.db.addPhoto(new Photo("pantheon", 1, -1,"“Pantheon” cinema theatre in Vardaris Square, some years before its " +
+                "demolition"));
+        this.db.addPhoto(new Photo("splendid", 1, -1,"“Splendid” cinema theatre in a vintage postcard"));
+        this.db.addPhoto(new Photo("pantheon_markiza", 1, -1,"“Pantheon” cinema Theatre in its glorious years"));
+        //station 2
+        this.db.addPhoto(new Photo("redmoterlimani", 2, -1,"The Red Moter of the 11th Thessaloniki Documentary Film Festival turns" +
+                " his camera towards the city’s port."));
+        this.db.addPhoto(new Photo("apothikia", 2, -1,"he entrance of Warehouse C venue at the city’s port."));
+        this.db.addPhoto(new Photo("cinemuseuminside", 2, -1,"nterior of the Cinema Museum of Thessaloniki in the city’s port."));
+        //station 3
+        this.db.addPhoto(new Photo("cinemaolympia", 3, -1,"The Olympia cinema theatre (1917), where schoolgirls of the French " +
+                "School were gathered before a screening."));
+        this.db.addPhoto(new Photo("olympia", 3, -1,"The Olympia cinema theatre at the Thessaloniki sea front, as shown in a " +
+                "postcard (beginning of the 20th century)"));
+        this.db.addPhoto(new Photo("pathe", 3, -1,"The “Pathe” cinema theatre in Leoforos Nikis Str, which was ordained by the" +
+                " Germans during the occupation years."));
+        this.db.addPhoto(new Photo("salonica_pathe_1918", 3, -1,"The “Pathe” cinema theatre in the sea front, as shown in postcard" +
+                " (beginning of the 20th century)"));
+        this.db.addPhoto(new Photo("olympiaview", 3, -1,"A view of “Olympia”’s entrance in the sea front."));
+        //station 4
+        this.db.addPhoto(new Photo("hlysia", 4, -1,"The old cinema theatre “Ilissia” in Aristotelous, in the day of Thessaloniki’s" +
+                " Liberation (1940s)"));
+        this.db.addPhoto(new Photo("festivaltree02", 4, -1,"Film frames build a “cinema tree” in Aristotelous Square"));
+        this.db.addPhoto(new Photo("olympionnight", 4, -1,"A night view of “Olympion” cinema theatre, the main venue of the " +
+                "Thessaloniki International Film Festival."));
+        this.db.addPhoto(new Photo("olympioninside", 4, -1,"Interior of “Olympion” cinema theatre"));
+        //station 5
+        this.db.addPhoto(new Photo("dionyssia", 5, -1,"“Dionissia” cinema theatre, which was inaugurated in 1926 (on November 26th)."));
+        this.db.addPhoto(new Photo("makedonikon", 5, -1,"A night view of the “Makedonikon” cinema theatre."));
+        this.db.addPhoto(new Photo("esperos", 5, -1,"A view of “Esperos” cinema theatre, which was identified with the special " +
+                "screenings of the Thessaloniki International Film Festival."));
+        //station 6
+        this.db.addPhoto(new Photo("nauarino", 6, -1,""));
+        this.db.addPhoto(new Photo("efimerida", 6, -1,""));
+        this.db.addPhoto(new Photo("exostis", 6, -1,""));
+        //station 7
+        this.db.addPhoto(new Photo("pallaswhitetower", 7, -1,"The old cinema theatre “Pallas” near the White Tower, designed by E. Modiano, which hosted 860 viewers."));
+        this.db.addPhoto(new Photo("ems", 7, -1,"Crowds outside the Society for Macedonian Studies, which was the Thessaloniki" +
+                " Film Festival’s main venue during the 1970s."));
+        this.db.addPhoto(new Photo("theoreiaems", 7, -1,"The balconies in the Society for Macedonian Studies with the festival’s " +
+                "contestants and guests (the 1960s)."));
+
+        //line2
+        //station 8
+        this.db.addPhoto(new Photo("ksypolitotagma10", 8, 1, ""));      //main
+        this.db.addPhoto(new Photo("tagma", 8, 1, ""));                 //main
+        this.db.addPhoto(new Photo("barefootbattalionmovieposter", 8, 1, ""));
+        this.db.addPhoto(new Photo("xipolitotagma4", 8, 1, ""));
+        this.db.addPhoto(new Photo("xipolitotagma8", 8, 1, ""));
+        this.db.addPhoto(new Photo("greggntallas", -1, 1, ""));
+        this.db.addPhoto(new Photo("kwsti_maria", -1, 1, ""));          //actor
+        this.db.addPhoto(new Photo("fermas_nikos", -1, 1, ""));         //actor
+        this.db.addPhoto(new Photo("fragkedakhs_vasilis", -1, 1, ""));  //actor
+        //station 9
+        this.db.addPhoto(new Photo("p08", 9, 2, ""));
+        this.db.addPhoto(new Photo("atsidas", 9, 2, ""));
+        this.db.addPhoto(new Photo("promoatsidas", 9, 2, ""));
+        this.db.addPhoto(new Photo("dalianidis", -1, 2, ""));
+        this.db.addPhoto(new Photo("eliopoulos", -1, 2, ""));
+        this.db.addPhoto(new Photo("laskari", -1, 2, ""));
+        this.db.addPhoto(new Photo("zervos", -1, 2, ""));
+        this.db.addPhoto(new Photo("stratigos", -1, 2, ""));
+        //station 10
+        this.db.addPhoto(new Photo("katinakaiei0", 10, 3, ""));
+        this.db.addPhoto(new Photo("katinakaiei4", 10, 3, ""));
+        this.db.addPhoto(new Photo("katinakaieiplaz", 10, 3, ""));
+        this.db.addPhoto(new Photo("dalianidis", -1, 3, ""));
+        this.db.addPhoto(new Photo("vlaxopoulou", -1, 3, ""));
+        this.db.addPhoto(new Photo("eliopoulos", -1, 3, ""));
+        this.db.addPhoto(new Photo("karagiannh", -1, 3, ""));
+        this.db.addPhoto(new Photo("nathanahl", -1, 3, ""));
+        this.db.addPhoto(new Photo("voutsas", -1, 3, ""));
+        //station 11
+        this.db.addPhoto(new Photo("p388322", 11, 4, ""));
+        this.db.addPhoto(new Photo("c72", 11, 4, ""));
+        this.db.addPhoto(new Photo("kanelopoulos", -1, 4, ""));
+        this.db.addPhoto(new Photo("ladikou", -1, 4, ""));
+        this.db.addPhoto(new Photo("antwnopoulos", -1, 4, ""));
+        //station 12
+        this.db.addPhoto(new Photo("p64411", 12, 5, ""));
+        this.db.addPhoto(new Photo("p64433", 12, 5, ""));
+        this.db.addPhoto(new Photo("voulgaris", -1, 5, ""));
+        this.db.addPhoto(new Photo("tzortzoglou", -1, 5, ""));
+        this.db.addPhoto(new Photo("bazaka", -1, 5, ""));
+        //station 13
+        this.db.addPhoto(new Photo("eternityandaday", 13, 6, ""));
+        this.db.addPhoto(new Photo("miaaioniotita", 13, 6, ""));
+        this.db.addPhoto(new Photo("aggelopoulos", -1, 6, ""));
+        this.db.addPhoto(new Photo("bruno", -1, 6, ""));
+        this.db.addPhoto(new Photo("isarenauld", -1, 6, ""));
+        this.db.addPhoto(new Photo("bentivolio", -1, 6, ""));
+        //station 14
+        this.db.addPhoto(new Photo("amaliamoutoussihoraproelefsis", 14, 7, ""));
+        this.db.addPhoto(new Photo("christospassalisyoulaboudalifilia", 14, 7, ""));
+        this.db.addPhoto(new Photo("homeland6", 14, 7, ""));
+        this.db.addPhoto(new Photo("syllastzoumerkas", -1, 7, ""));
+        this.db.addPhoto(new Photo("moutousi", -1, 7, ""));
+        this.db.addPhoto(new Photo("samaras", -1, 7, ""));
+        this.db.addPhoto(new Photo("tsirigkouli", -1, 7, ""));
+
+        //station 15
+        this.db.addPhoto(new Photo("p1334779197", 15, 8, ""));
+        this.db.addPhoto(new Photo("souperdimitrios", 15, 8, ""));
+        this.db.addPhoto(new Photo("superdemetriosstill", 15, 8, ""));
+        this.db.addPhoto(new Photo("lefkospyrgos", 15, 8, ""));
+        this.db.addPhoto(new Photo("pyrgosote", 15, 8, ""));
+        this.db.addPhoto(new Photo("papaiwannou", -1, 8, ""));
+        this.db.addPhoto(new Photo("vainas", -1, 8, ""));
+        this.db.addPhoto(new Photo("papadopoulos", -1, 8, ""));
+        this.db.addPhoto(new Photo("sfetsa", -1, 8, ""));
+
+        //green line
+        this.db.addPhoto(new Photo("green1", 0, 0, ""));
+        this.db.addPhoto(new Photo("green2", 0, 0, ""));
+        this.db.addPhoto(new Photo("green3", 0, 0, ""));
+        this.db.addPhoto(new Photo("green4", 0, 0, ""));
+        this.db.addPhoto(new Photo("green5", 0, 0, ""));
+        this.db.addPhoto(new Photo("green6", 0, 0, ""));
+        this.db.addPhoto(new Photo("green7", 0, 0, ""));
+        this.db.addPhoto(new Photo("green8", 0, 0, ""));
+        //red line
 
 
     }
