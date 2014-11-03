@@ -139,10 +139,9 @@ final class DbAdapter {
     {
         this.db = db;
         this.fillArrays();
-        if (this.db.isUpdated() || stations.isEmpty())
+        if ( stations.isEmpty())
         {
             this.populateDB();
-            this.db.setUpdated(false);
         }
         this.fillArrays();
     }
@@ -543,7 +542,7 @@ final class DbAdapter {
         //add routes
         this.db.addRoute(new Route("Τα σινεμά της πόλης","red",1));
         this.db.addRoute(new Route("Θεσσαλονίκη μέσα απο τον ελληνικό κινηματογράφο","blue",1));
-        this.db.addRoute(new Route("Timeline","green",1));
+        this.db.addRoute(new Route("Φεστιβάλ Κινηματογράφου Θεσσαλονίκης","green",1));
 
 
         //add stations
@@ -1114,6 +1113,177 @@ final class DbAdapter {
                 " Πασκάλιεβιτς,Νουρί Μπιλγκέ Τσεϊλάν και Κριστιάν Μουντζίου και νέα ρεύματα, όπως ο νέος ρουμάνικος κινηματογράφος, " +
                 "που αγκαλιάστηκαν από το διεθνές κοινό.", "p2013",
                 ""));
+    }
+
+    private void populateEnglishDB()
+    {
+        //add routes
+        this.db.addRoute(new Route("Cinema theatres of the city","red",1));
+        this.db.addRoute(new Route("Thessaloniki in Greek films","blue",1));
+        this.db.addRoute(new Route("Thessaloniki International Film Festival","green",1));
+
+        //add stations
+        //Line 1
+        this.db.addStation(new Station("Vardaris Square",
+                "The first film screening was held at  the“Turkey” caffé in 1897. Many cinemas have been developed around Vardaris " +
+                "square: Cinema “Splendind” (which was renamed “Ilion”), “Pantheon”, “Atticon” and “Olympion (at Monastiriou Street)" +
+                ", together with the porn cinemas of the square.",
+                1, 40.641142,  22.934721));
+        this.db.addStation(new Station("Sea front (the port)",
+                "The sea front is one of the most filmed spots of the city centre." +
+                        " The Cinema Museum is located inside the port, together with Thessaloniki Cinemateque, as well as with the" +
+                        " four modern festival venues at the port’s warehouse.",
+                1, 40.635650,  22.935431));
+        this.db.addStation(new Station("Sea front (Leoforos Nikis Str.)",
+                "The first cinema in the Balkans, the cinema theatre “Olympia” (1903), is situated in Leoforos Nikis Str. The sea " +
+                        "front appears to be an ideal place for cinemas, like “Pathé” cinema (1911), run by the namesake film company, " +
+                        "and the boat cinema “Koursal”.",
+                1, 40.630440,  22.942912));
+        this.db.addStation(new Station("Aristotelous Square",
+                "During the 1950s, Aristotelous Square hosted 6 open air cinemas (“Rex”, “Ilissia”, “Ellinis”, “Aegean”, “Rio”" +
+                        " and “Zefyros”). Today, the Olympion Theatre, located in the middle of Aristotelous Square, is the main " +
+                        "venue of the Thessaloniki International Film Festival.",
+                1, 40.632804,  22.941331));
+        this.db.addStation(new Station("City centre (Aghias Sofias Str-Alexandrou Svolou Str.)",
+                "An area with many cinema theatres, such as “Dionysia” (in Aghias Sofias Str.), “Esperos” and “Rivoli” (in " +
+                        "Alexandrou Svolou Str.), Makedonikon (in Filikis Eterias Str.). The Stavrakos Film School operated its " +
+                        "subsidiary film school in Thessaloniki, which was located in the same area.",
+                1,  40.632511,  22.947489));
+        /***********************************************************************************|
+         * *********************************************************************************|
+         * ********************************************************************************\ /
+         * ******************************************************************************** *
+         */
+        this.db.addStation(new Station("Κέντρο 2 (Καμάρα - Ναυαρίνο)",
+                "Στο κέντρο της Θεσσαλονίκης υπήρξαν αρκετοί κινηματογράφοι που για χρόνια αποτέλεσαν σημείο αναφοράς στην " +
+                        "καθημερινότητα της πόλης τόσο λόγω της αρχιτεκτονικής όσο και λόγω της αναφοράς τους μέσα σε αυτήν \n" +
+                        "\n" +
+                        "Ενδεικτική αναφορά μερικών που αφορούν την ευρύτερη περιοχή: Ηλύσια, Ναυαρίνο, Έλση, Κλειώ, Ριβολί, Θυμέλη," +
+                        " Φαργκάνη. \n" +
+                        "\n" +
+                        "Οι κινηματογράφοι αλλά και τα κάφε-μπαρ του κέντρου της πόλης αποτέλεσαν, από την δεκαετία του '80 και έπειτα" +
+                        ", σημείο συνάντησης των φανατικών κινηματογραφόφιλων με τα κινηματογραφικά free press της Θεσσαλονίκης (Εξώστης, " +
+                        "Φιξ Καρέ, Παράλλαξη, κλπ).\n" +
+                        "\n" +
+                        "O Εξώστης υπήρξε πανελλαδικά το πρώτο free press. Κυκλοφόρησε το 1987.\n" +
+                        "\n" +
+                        "Στα σινεμά της περιοχής κατά τις δεκαετίες του '80 και '90 διοργανώθηκαν αρκετές πρωτότυπες προβολές, " +
+                        "μεταμεσονύκτιες και κινηματογραφικών λεσχών.",
+                1, 40.6319738, 22.952104));
+        this.db.addStation(new Station("The White Tower",
+                "In 1905 the White Tower’s garden hosted an open air cinema. Opposite to it, there was the EMS building, the main " +
+                        "venue of the Society of Macedonian Studies, as well as the cinema theatres “Pallas” (now operating as " +
+                        "Thessaloniki State Symphony Orchestra’s concert hall) and “Alexandros”.",
+                1, 40.62638,  22.948306));
+
+        //Line 2
+        this.db.addStation(new Station("The Barefoot Badallion (1955)",
+                "Director: Greg Tallas\n" +
+                        "\n" +
+                        "Cast: Maria Kosti, Nikos Fermas, Vassilis Fraghedakis\n" +
+                        "\n" +
+                        "Info: Based on a true story of 160 orphans, who live in Thessaloniki under the German Occupation during " +
+                        "the 1940s. The film wanders around the centre and the acropolis of Thessaloniki.",
+                2, 40.6197797, 22.9638766));
+        this.db.addStation(new Station("The cutie  (1961)",
+                "Director: Yannis Dalianidis\n" +
+                        "\n" +
+                        "Cast: Dinos Iliopoulos, Zoe Laskari, Pandelis Zervos, Stefanos Stratigos\n" +
+                        "\n" +
+                        "Info: Two brothers try to balance between the emotional relations and the conservative principles of a" +
+                        " paternal family. The film is totally shot in Thessaloniki (Panorama, Antheon area, city centre).ς",
+                2, 40.632804, 22.941331));
+        this.db.addStation(new Station("Some like it hot (1964)",
+                "Director: Yannis Dalianidis\n" +
+                        "\n" +
+                        "Cast: Rena Vlachopoulou, Dinos Iliopoulos, Martha Karagianni, Elena Nathanael,Kostas Voutsas\n" +
+                        "\n" +
+                        "Info: During the Thessaloniki International Fair, a group of young people gets involved in funny love affairs.\n" +
+                        "The film is shot in many areas of the city, such as the Thessaloniki International Fair and the White Tower.",
+                2,40.628192, 22.9561));
+        this.db.addStation(new Station("Parenthesis (1968)",
+                "Director: Takis Kanellopoulos\n" +
+                 "Cast: Alexandra Ladikou, Angelos Antonopoulos\n" +
+                 "Info: A train journey with a delayed stop. A strong love affair, a parenthesis in the lives of two people. " +
+                        "The film won 4 prizes in Thessaloniki Film Festival. \n" +
+                 "It was shot in the sea front of Thessaloniki and the area of Aretsou (Nea Krini).",
+                2,40.6223568, 22.9512486));
+        this.db.addStation(new Station("The striker with number 9 (1987)",
+                "Director: Pantelis Voulgaris\n" +
+                        "Cast: Stratos Tzortzoglou, Themis Bazaka\n" +
+                        "Info: The journey of a talented football player  goes through defeats, injuries and background, which will" +
+                        " make him understand that success comes at a price.\n" +
+                        "Part of the film was shot in Thessaloniki (Aristotelous Square, Evosmos).",
+                2, 40.632804, 22.941331));
+        this.db.addStation(new Station("Eternity and a day (1998)",
+                "Director: Theo Angelopoulos\n" +
+                        "Cast: Bruno Ganz, Fabrizio Bentivoglio, Isabelle Renauld\n" +
+                        "\n" +
+                        "Info: The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his " +
+                        "seaside home forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as " +
+                        "in the city’s sea front, Aristotelous Square and Tsimiski Street.",
+                2,40.6148604, 22.954036));
+        this.db.addStation(new Station("Homeland (2010)",
+                "Director: Syllas Tzoumerkas\n" +
+                        "Cast: Amalia Moutoussi, Thanos Samaras, Ioanna Tsiringhouli\n" +
+                        "Info: A story about a family and a country falling apart, inspired by true events. A large part of the film" +
+                        " is shot in central places of Thessaloniki (Leoforos Stratou Str, the sea front, Saint Demetrius Church).",
+                2,40.638799, 22.947769));
+        this.db.addStation(new Station("Super Demetrios (2011)",
+                "Director: Yorgos Papaioannou\n" +
+                        "Cast: Dimitris Vainas, Paris Papadopoulos, Olga Sfetsa\n" +
+                        "Info: In a surreal, parallel universe, Thessaloniki has its very own superhero: Super Demetrios.\n" +
+                        "A film shot around the city of Thessaloniki, showcasing many of the city’s public buildings (the " +
+                        "University, the City Hall, the White Tower, the Railway Station).",
+                2,40.6308363, 22.9543887));
+
+        //add movies
+        this.db.addMovie(new Movie(7, "The Barefoot Badallion",
+                "Based on a true story of 160 orphans, who live in Thessaloniki under the German Occupation during the 1940s. " +
+                        "The film wanders around the centre and the acropolis of Thessaloniki.",
+                "Maria Kosti, Nikos Fermas, Vassilis Fraghedakis",
+                "Greg Tallas", "1955"));
+        this.db.addMovie(new Movie(8, "The cutie",
+                "Two brothers try to balance between the emotional relations and the conservative principles of a paternal family." +
+                        " The film is totally shot in Thessaloniki (Panorama, Antheon area, city centre).",
+                "Dinos Iliopoulos, Zoe Laskari, Pandelis Zervos, Stefanos Stratigos",
+                "Yannis Dalianidis", "1961"));
+        this.db.addMovie(new Movie(9, "Some like it hot",
+                "During the Thessaloniki International Fair, a group of young people gets involved in funny love affairs.\n" +
+                        "The film is shot in many areas of the city, such as the Thessaloniki International Fair and the White Tower.",
+                "Rena Vlachopoulou, Dinos Iliopoulos, Martha Karagianni, Elena Nathanael, Kostas Voutsas",
+                "Yannis Dalianidis", "1964"));
+        this.db.addMovie(new Movie(10, "Parenthesis",
+                "A train journey with a delayed stop. A strong love affair, a parenthesis in the lives of two people. The film won 4" +
+                        " prizes in Thessaloniki Film Festival. \n" +
+                        "It was shot in the sea front of Thessaloniki and the area of Aretsou (Nea Krini).",
+                "Alexandra Ladikou, Angelos Antonopoulos",
+                "Takis Kanellopoulos", "1968"));
+        this.db.addMovie(new Movie(11, "The striker with number 9",
+                "The journey of a talented football player  goes through defeats, injuries and background, which will make him " +
+                        "understand that success comes at a price.\n" +
+                        "Part of the film was shot in Thessaloniki (Aristotelous Square, Evosmos).",
+                "Stratos Tzortzoglou, Themis Bazaka",
+                "Pantelis Voulgaris", "1987"));
+        this.db.addMovie(new Movie(12, "Eternity and a day (1998)",
+                "The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his seaside home " +
+                        "forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as in the " +
+                        "city’s sea front, Aristotelous Square and Tsimiski Street.",
+                "Bruno Ganz, Fabrizio Bentivoglio, Isabelle Renauld",
+                "Theo Angelopoulos", "1998"));
+        this.db.addMovie(new Movie(13, "Homeland",
+                "A story about a family and a country falling apart, inspired by true events. A large part of the film is shot in " +
+                        "central places of Thessaloniki (Leoforos Stratou Str, the sea front, Saint Demetrius Church).",
+                "Amalia Moutoussi, Thanos Samaras, Ioanna Tsiringhouli",
+                "Syllas Tzoumerkas", "2010"));
+        this.db.addMovie(new Movie(14, "Super Demetrios",
+                "In a surreal, parallel universe, Thessaloniki has its very own superhero: Super Demetrios.\n" +
+                        "A film shot around the city of Thessaloniki, showcasing many of the city’s public buildings (the University" +
+                        ", the City Hall, the White Tower, the Railway Station).",
+                "Dimitris Vainas, Paris Papadopoulos, Olga Sfetsa",
+                "Yorgos Papaioannou", "2011"));
+
+
     }
 
     public void Unlock(int Line_id, int Station_id) {
