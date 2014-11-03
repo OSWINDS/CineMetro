@@ -122,6 +122,7 @@ public class MainMenu extends ActionBarActivity {
     public void initializeDB()
     {
         db = new DbHelper(this);
+        db.setLanguage(Language.GREEK); //this should change...
         DbAdapter.getInstance().setDB(db);
     }
 }

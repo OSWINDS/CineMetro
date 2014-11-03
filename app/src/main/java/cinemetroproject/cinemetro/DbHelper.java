@@ -19,25 +19,14 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 19;
+    private static final int DATABASE_VERSION = 20;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
+    //Language choise of the user
+    private Language language;
+    //String used to determine which table will be used according to the language
+    private String lang;
 
-    private boolean updated = false;
-
-    /**
-     *
-     * @return true if the db is updated
-     */
-    public boolean isUpdated()
-    {
-        return this.updated;
-    }
-
-    public void setUpdated(boolean u)
-    {
-        this.updated = u;
-    }
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -98,15 +87,6 @@ public class DbHelper extends SQLiteOpenHelper {
         // create movie table
         db.execSQL(query);
 
-        // SQL statement to create table user
-        query = "CREATE TABLE IF NOT EXISTS user ( " +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "username TEXT, "  +
-                "password TEXT)";
-
-        // create user table
-        db.execSQL(query);
-
         // SQL statement to create table timelinestation
         query = "CREATE TABLE IF NOT EXISTS timelinestation ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -129,6 +109,15 @@ public class DbHelper extends SQLiteOpenHelper {
         // create milestone table
         db.execSQL(query);
 
+        // SQL statement to create table user
+        query = "CREATE TABLE IF NOT EXISTS user ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "username TEXT, "  +
+                "password TEXT)";
+
+        // create user table
+        db.execSQL(query);
+
         // SQL statement to create table rating
         query = "CREATE TABLE IF NOT EXISTS rating ( " +
                 "station_id INTEGER, " +
@@ -147,10 +136,9 @@ public class DbHelper extends SQLiteOpenHelper {
         // create milestone table
         db.execSQL(query);
 
+        //create english db
+        this.CreateEnglishDB(db);
 
-
-
-        this.updated = true;
     }
 
     /**
@@ -179,8 +167,132 @@ public class DbHelper extends SQLiteOpenHelper {
         // Drop older movie milestone if exists
         db.execSQL("DROP TABLE IF EXISTS milestone");
 
+        //Drop English DB
+        this.DropEnglishDB(db);
+
         // create fresh tables
         this.onCreate(db);
+    }
+
+    /**
+     * Create English tables of the DB
+     * @param db
+     */
+    private void CreateEnglishDB(SQLiteDatabase db)
+    {
+        String query;
+        // SQL statement to create table english route
+        query = "CREATE TABLE IF NOT EXISTS en_route ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT, "  +
+                "colour TEXT,"+
+                "state INTEGER)";
+
+        // create route table
+        db.execSQL(query);
+
+        // SQL statement to create table english station
+        query = "CREATE TABLE IF NOT EXISTS en_station ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT, " +
+                "description TEXT, " +
+                "route_id INTEGER," +
+                "lat REAL," +
+                "lng REAL)";
+
+        // create station table
+        db.execSQL(query);
+
+        // SQL statement to create table nglish photo
+        query = "CREATE TABLE IF NOT EXISTS en_photo ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT, " +
+                "station_id INTEGER," +
+                "movie_id INTEGER," +
+                "description TEXT)";
+
+        // create photo table
+        db.execSQL(query);
+
+        // SQL statement to create table nglish movie
+        query = "CREATE TABLE IF NOT EXISTS en_movie ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "station_id INTEGER," +
+                "title TEXT, " +
+                "description TEXT," +
+                "actors TEXT," +
+                "director TEXT," +
+                "year TEXT)";
+
+        // create movie table
+        db.execSQL(query);
+
+        // SQL statement to create table nglish timelinestation
+        query = "CREATE TABLE IF NOT EXISTS en_timelinestation ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT, " +
+                "lat REAL," +
+                "lng REAL)";
+
+        // create timelinestation table
+        db.execSQL(query);
+
+        // SQL statement to create table nglish milestone
+        query = "CREATE TABLE IF NOT EXISTS en_milestone ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "station_id INTEGER, " +
+                "year INTEGER, " +
+                "des TEXT, " +
+                "photo_name TEXT, "  +
+                "photo_des TEXT)";
+
+        // create milestone table
+        db.execSQL(query);
+    }
+
+    /**
+     * Drop english tables of the DB
+     * @param db
+     */
+    private void DropEnglishDB(SQLiteDatabase db)
+    {
+        // Drop older route table if exists
+        db.execSQL("DROP TABLE IF EXISTS route");
+
+        // Drop older station table if exists
+        db.execSQL("DROP TABLE IF EXISTS station");
+
+        // Drop older photo table if exists
+        db.execSQL("DROP TABLE IF EXISTS photo");
+
+        // Drop older movie table if exists
+        db.execSQL("DROP TABLE IF EXISTS movie");
+
+        // Drop older timelinestation table if exists
+        db.execSQL("DROP TABLE IF EXISTS timelinestation");
+
+        // Drop older movie milestone if exists
+        db.execSQL("DROP TABLE IF EXISTS milestone");
+    }
+
+    /**
+     * Set the language of the application for this run
+     * @param lang
+     */
+    public void setLanguage(Language lang)
+    {
+        this.language = lang;
+        switch (this.language)
+        {
+            case GREEK:
+                this.lang="";
+                break;
+            case ENGLISH:
+                this.lang="_en";
+                break;
+            default:
+                this.lang="";
+        }
     }
 
     /**
@@ -189,6 +301,8 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public void addStation(Station station)
     {
+        String table=lang + "station";
+
         SQLiteDatabase db = null;
         // get reference to writable DB
     	try{
@@ -204,7 +318,7 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put("lng", station.getLng());
 
             //insert
-            db.insert("station", // table
+            db.insert(table, // table
                     null, //nullColumnHack
                     values); // key/value -> keys = column names/ values = column values
 
@@ -223,6 +337,8 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public void addRoute(Route route)
     {
+        String table=lang + "route";
+
         SQLiteDatabase db = null;
         // get reference to writable DB
         try{
@@ -237,7 +353,7 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put("state", route.getState());
 
             //insert
-            db.insert("route", // table
+            db.insert(table, // table
                     null, //nullColumnHack
                     values); // key/value -> keys = column names/ values = column values
 
@@ -257,6 +373,8 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public void addPhoto(Photo photo)
     {
+        String table= lang + "photo";
+
         SQLiteDatabase db = null;
         // get reference to writable DB
         try{
@@ -269,7 +387,7 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put("description", photo.getDescription());
 
             //insert
-            db.insert("photo", // table
+            db.insert(table, // table
                     null, //nullColumnHack
                     values); // key/value -> keys = column names/ values = column values
     	}
@@ -287,6 +405,8 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public void addMovie(Movie movie)
     {
+        String table= lang + "movie";
+
         SQLiteDatabase db = null;
         // get reference to writable DB
         try{
@@ -301,7 +421,7 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put("year", movie.getYear());
 
             //insert
-            db.insert("movie", // table
+            db.insert(table, // table
                     null, //nullColumnHack
                     values); // key/value -> keys = column names/ values = column values
     	}
@@ -312,6 +432,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 db.close();
         }
     }
+
 
     /**
      * adds a new entry to the table user
@@ -349,6 +470,8 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public void addTimelineStation(TimelineStation station)
     {
+        String table= lang + "timelinestation";
+
         SQLiteDatabase db = null;
         // get reference to writable DB
         try{
@@ -362,7 +485,7 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put("lng", station.getLng());
 
             //insert
-            db.insert("timelinestation", // table
+            db.insert(table, // table
                     null, //nullColumnHack
                     values); // key/value -> keys = column names/ values = column values
         }
@@ -374,12 +497,15 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
+
     /**
      * adds a new entry to the table milestone
      * @param milestone
      */
     public void addMilestone(Milestone milestone)
     {
+        String table= lang + "milestone";
+
         SQLiteDatabase db = null;
         // get reference to writable DB
         try{
@@ -395,7 +521,7 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put("photo_des", milestone.getPhotoDescription());
 
             //insert
-            db.insert("milestone", // table
+            db.insert(table, // table
                     null, //nullColumnHack
                     values); // key/value -> keys = column names/ values = column values
     	}
@@ -406,6 +532,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 db.close();
         }
     }
+
 
     /**
      * adds a new entry to the table rating
@@ -468,9 +595,6 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-
     /**
      * returns the station with this id
      * @param id
@@ -478,13 +602,15 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public Station getStation(int id)
     {
+        String table= lang + "station";
+
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] columns = {"id","name","description","route_id"};
         //build query
         Cursor cursor =
-                db.query("station", // a. table
+                db.query(table, // a. table
                         columns, // column names
                         " id = ?", // c. selections
                         new String[] { String.valueOf(id) }, // d. selections args
@@ -516,13 +642,15 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public Route getRoute(int id)
     {
+        String table= lang + "route";
+
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] columns = {"id","name","colour","state"};
         //build query
         Cursor cursor =
-                db.query("route", // a. table
+                db.query(table, // a. table
                         columns, // column names
                         " id = ?", // c. selections
                         new String[] { String.valueOf(id) }, // d. selections args
@@ -553,13 +681,15 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public Photo getPhoto(int id)
     {
+        String table= lang + "photo";
+
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] columns = {"id","name","station_id", "movie_id","description"};
         //build query
         Cursor cursor =
-                db.query("photo", // a. table
+                db.query(table, // a. table
                         columns, // column names
                         " id = ?", // c. selections
                         new String[] { String.valueOf(id) }, // d. selections args
@@ -591,13 +721,15 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public Movie getMovie(int id)
     {
+        String table= lang + "movie";
+
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] columns = {"id", "station_id", "title", "description", "actors", "director", "year"};
         //build query
         Cursor cursor =
-                db.query("movie", // a. table
+                db.query(table, // a. table
                         columns, // column names
                         " id = ?", // c. selections
                         new String[] { String.valueOf(id) }, // d. selections args
@@ -669,13 +801,15 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public TimelineStation getTimelineStation(int id)
     {
+        String table= lang + "timelinestation";
+
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] columns = {"id", "name"};
         //build query
         Cursor cursor =
-                db.query("timelinestation", // a. table
+                db.query(table, // a. table
                         columns, // column names
                         " id = ?", // c. selections
                         new String[] { String.valueOf(id) }, // d. selections args
@@ -704,13 +838,15 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public Milestone getMilestone(int id)
     {
+        String table= lang + "milestone";
+
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] columns = {"id", "des", "year", "station_id", "photo_name", "photo_des"};
         //build query
         Cursor cursor =
-                db.query("milestone", // a. table
+                db.query(table, // a. table
                         columns, // column names
                         " id = ?", // c. selections
                         new String[] { String.valueOf(id) }, // d. selections args
@@ -882,10 +1018,12 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public ArrayList<Station> getAllStations()
     {
+        String table= lang + "station";
+
         ArrayList<Station> stations = new ArrayList<Station>();
 
         //build the query
-        String query = "SELECT  * FROM station";
+        String query = "SELECT  * FROM " + table;
 
         //get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -910,16 +1048,19 @@ public class DbHelper extends SQLiteOpenHelper {
         return stations;
     }
 
+
     /**
      *
      * @return all routes in the db
      */
     public ArrayList<Route> getAllRoutes()
     {
+        String table= lang + "route";
+
         ArrayList<Route> routes = new ArrayList<Route>();
 
         //build the query
-        String query = "SELECT  * FROM route";
+        String query = "SELECT  * FROM " + table;
 
         //get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -950,10 +1091,12 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public ArrayList<Photo> getAllPhotos()
     {
+        String table= lang + "photo";
+
         ArrayList<Photo> photos = new ArrayList<Photo>();
 
         //build the query
-        String query = "SELECT  * FROM photo";
+        String query = "SELECT  * FROM " + table;
 
         //get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -984,10 +1127,12 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public ArrayList<Movie> getAllMovies()
     {
+        String table= lang + "movies";
+
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
         //build the query
-        String query = "SELECT  * FROM movie";
+        String query = "SELECT  * FROM " + table;
 
         //get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1055,10 +1200,12 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public ArrayList<TimelineStation> getAllTimelineStations()
     {
+        String table= lang + "timelinestation";
+
         ArrayList<TimelineStation> stations = new ArrayList<TimelineStation>();
 
         //build the query
-        String query = "SELECT  * FROM timelinestation";
+        String query = "SELECT  * FROM " + table;
 
         //get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1088,10 +1235,12 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public ArrayList<Milestone> getAllMilestones()
     {
+        String table= lang + "milestone";
+
         ArrayList<Milestone> milestones = new ArrayList<Milestone>();
 
         //build the query
-        String query = "SELECT  * FROM milestone";
+        String query = "SELECT  * FROM " + table;
 
         //get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1115,28 +1264,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // return milestones
         return milestones;
-    }
-
-
-    public void deleteStation(int id)
-    {
-        SQLiteDatabase db = null;
-    	try{
-            //get reference to writable DB
-            db = this.getWritableDatabase();
-
-            //delete
-            db.delete("station", //table name
-                    "id = ?",  // selections
-                    new String[] { String.valueOf(id) }); //selections args
-
-    	}
-        finally
-        {
-            //close
-            if (null != db)
-            db.close();
-        }
     }
 
     /**
