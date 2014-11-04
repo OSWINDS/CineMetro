@@ -402,7 +402,7 @@ final class DbAdapter {
     /**
      * Updates the user ratings to the parse online database
      */
-    public void updateUserToParse(final User user)
+    public void updateUserToParse(User user)
     {
 
         //initialize arrays for each line
@@ -442,6 +442,8 @@ final class DbAdapter {
 
         final ParseObject parse_user = new ParseObject("User");
 
+        final String username = user.getUsername();
+        final String password = user.getPassword();
 
 
         //query parse to get the user we want to update
@@ -451,8 +453,8 @@ final class DbAdapter {
             public void done(List<ParseObject> userList, ParseException e) {
                 if (userList.size() > 0) {
                     //user exists,update his profile
-                    userList.get(0).put("username", user.getUsername());
-                    userList.get(0).put("password", user.getPassword());
+                    userList.get(0).put("username", username);
+                    userList.get(0).put("password", password);
                     userList.get(0).put("redLine", redLine);
                     userList.get(0).put("blueLine", blueLine);
                     userList.get(0).put("greenLine", greenLine);
@@ -465,8 +467,8 @@ final class DbAdapter {
                 else
                 {
                     //create a new user with this username
-                    parse_user.put("username", user.getUsername());
-                    parse_user.put("password", user.getPassword());
+                    parse_user.put("username", username);
+                    parse_user.put("password", password);
                     parse_user.put("redLine", redLine);
                     parse_user.put("blueLine", blueLine);
                     parse_user.put("greenLine", greenLine);
@@ -485,22 +487,24 @@ final class DbAdapter {
      */
     private void getUserFromParse(final User user)
     {
+            final int id = user.getId();
+
             //query parse to get the user
             ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
             query.whereEqualTo("username", user.getUsername());
             query.findInBackground(new FindCallback<ParseObject>() {
                 public void done(List<ParseObject> userList, ParseException e) {
-                    if (e == null) {
+                    if (userList.size() > 0) {
                         String stations =  userList.get(0).getString("redLineStations");
-                        addRatingsFromString(user.getId(), stations, 0);
+                        addRatingsFromString(id, stations, 0);
 
                         stations =  userList.get(0).getString("blueLineStations");
-                        addRatingsFromString(user.getId(), stations, getStationByRoute(0).size());
+                        addRatingsFromString(id, stations, getStationByRoute(0).size());
 
                         stations =  userList.get(0).getString("greenLineStations");
-                        addRatingsFromString(user.getId(), stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                        addRatingsFromString(id, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
                     } else {
-
+                        updateUserToParse(user);
                     }
                 }
             });
