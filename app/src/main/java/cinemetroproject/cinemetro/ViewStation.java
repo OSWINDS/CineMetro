@@ -1,8 +1,10 @@
 package cinemetroproject.cinemetro;
 
 
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -52,6 +54,8 @@ public class ViewStation extends ActionBarActivity  {
     private Button twitterButton;
     private Button instagramButton;
     private Button pinterestButton;
+    private AlertDialog.Builder dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +145,8 @@ public class ViewStation extends ActionBarActivity  {
         pinterestButton = (Button) findViewById(R.id.pinterest_button);
         pinterestButton.setOnClickListener(pinterestButtonOnClickListener);
 
+        dialog = new AlertDialog.Builder(this);
+
     }
 
     @Override
@@ -208,6 +214,8 @@ public class ViewStation extends ActionBarActivity  {
         @Override
         public void onClick(View view) {
 
+            boolean found=false;
+
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle());
@@ -221,15 +229,32 @@ public class ViewStation extends ActionBarActivity  {
                     shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                     shareIntent.setComponent(name);
                     view.getContext().startActivity(shareIntent);
+                    found=true;
                     break;
                 }
             }
+            if (found == false){
+
+                dialog.setTitle("Facebook");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+
         }};
 
     View.OnClickListener twitterButtonOnClickListener = new View.OnClickListener(){
 
         @Override
         public void onClick(View view) {
+
+            boolean found = false;
 
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             String shareBody = "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle();
@@ -245,8 +270,21 @@ public class ViewStation extends ActionBarActivity  {
                     shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                     shareIntent.setComponent(name);
                     view.getContext().startActivity(shareIntent);
+                    found=true;
                     break;
                 }
+            }
+            if (found == false){
+                dialog.setTitle("Twitter");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
             }
 
         }};
@@ -265,12 +303,16 @@ public class ViewStation extends ActionBarActivity  {
                 startActivity(shareIntent);
             }
             else{
-                // bring user to the market to download the app.
-                // or let them choose an app?
-                intent = new Intent(Intent.ACTION_VIEW);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setData(Uri.parse("market://details?id="+"com.instagram.android"));
-                startActivity(intent);
+                dialog.setTitle("Instagram");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
             }
         }};
 
@@ -278,6 +320,8 @@ public class ViewStation extends ActionBarActivity  {
 
         @Override
         public void onClick(View view) {
+
+            boolean found=false;
 
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idStation).getName();
@@ -293,8 +337,21 @@ public class ViewStation extends ActionBarActivity  {
                     shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                     shareIntent.setComponent(name);
                     view.getContext().startActivity(shareIntent);
+                    found=true;
                     break;
                 }
+            }
+            if (found == false){
+                dialog.setTitle("Pinterest");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
             }
 
         }};
