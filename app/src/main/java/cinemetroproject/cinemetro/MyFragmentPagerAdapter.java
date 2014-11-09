@@ -37,6 +37,13 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "Page #" + ( position + 1 );
+        String temp="\u2022";
+
+        if (position == 0)
+            return temp;
+        else if (position == 1)
+            return temp+temp;
+        else
+            return temp+temp+temp;
     }
 }

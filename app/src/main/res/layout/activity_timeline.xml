@@ -2,214 +2,199 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
     android:layout_centerHorizontal="true"
     android:background="#ffffff"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
     tools:context="cinemetroproject.cinemetro.LinesActivity">
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="35dp"
-        android:background="#1B9344"
-        android:id="@+id/view2" />
-
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
 
     <TextView
 
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="12dp"
         android:layout_centerHorizontal="true"
-        android:textStyle="italic"
+        android:layout_marginTop="0dp"
         android:textColor="#fbf7f7"
-        android:layout_marginTop="10dp"
-        android:id="@+id/title" />
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:text="lalalalla"
+        android:gravity="center_horizontal"
+        android:background="#1B9344"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title">
 
-    <LinearLayout
-        android:id="@+id/scrollView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="0dp"
-        android:paddingTop="35dp"
-        android:paddingBottom="0dp"
-        android:orientation="horizontal"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:weightSum="1">
-
-        <RadioGroup
-            android:id="@+id/radiogroup"
-            android:layout_width="90dp"
-            android:layout_height="fill_parent"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="horizontal"
-            >
-
-        </RadioGroup>
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="fill_parent"
-            android:layout_height="250dp"
-       />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/mylayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_below="@+id/scrollView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
-
-
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:textSize="15dp"
-                android:textColor="#FFFFFF"
-                android:background="#1B9344"
-                />
-
-        </ScrollView>
-
-
-
-    </LinearLayout>
-    <View
-        android:layout_width="3dp"
-        android:layout_height="170dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="35dp"
-        android:background="#1B9344"
-        android:id="@+id/view" />
-
-
-        <!-- show In Map-->
-        <ImageButton
-            android:layout_height="100dp"
-            android:layout_width="100dp"
-            android:background="@drawable/show_in_map"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/showInMap"
-            />
-
-        <!-- points of station -->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="35dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:id="@+id/points"/>
-
-            <ImageButton
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@drawable/star"
-                android:id="@+id/pointsImage"/>
-
-        </LinearLayout>
-
-
-        <!-- Go button -->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/go"
-            android:textAlignment="center"
-            android:layout_gravity="right"
-            android:orientation="horizontal"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/button_background"
-            android:textColor="@color/letter_colour"
-            android:id="@+id/go_ahead_button"/>
-
-        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+
+            <LinearLayout
+                android:id="@+id/scrollView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:orientation="horizontal"
+                android:paddingBottom="0dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="0dp"
+                android:paddingTop="35dp"
+                android:weightSum="1">
+
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/radiogroup"
+                    android:layout_width="90dp"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal">
+
+                </RadioGroup>
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="fill_parent"
+                    android:layout_height="250dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/mylayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/scrollView"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="lalallaala"
+                    android:background="#1B9344"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp" />
+
+
+
+
+            </LinearLayout>
+
+
+
+            <!-- show In Map-->
+            <ImageButton
+                android:id="@+id/showInMap"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/show_in_map" />
+
+            <!-- points of station -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="35dp"
                 android:orientation="horizontal">
 
-                <!-- Facebook button -->
-                <Button
-                    android:id="@+id/facebook_button"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:text="f"
-                    android:textStyle="italic"
-                    android:background="@drawable/button_share"
-                    android:textColor="@color/share_button"/>
+                <TextView
+                    android:id="@+id/points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp" />
 
-                <!-- Twitter button -->
-                <Button
-                    android:id="@+id/twitter_button"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="t"
-                    android:textStyle="italic"
-                    android:background="@drawable/button_share"
-                    android:textColor="@color/share_button"/>
-
-                <!-- Instagram button -->
-                <Button
-                    android:id="@+id/instagram_button"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="i"
-                    android:textStyle="italic"
-                    android:background="@drawable/button_share"
-                    android:textColor="@color/share_button" />
-
-                <!-- Pinterest button -->
-                <Button
-                    android:id="@+id/pinterest_button"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="20dp"
-                    android:text="Pin"
-                    android:textStyle="italic"
-                    android:background="@drawable/button_share"
-                    android:textColor="@color/share_button"/>
+                <ImageButton
+                    android:id="@+id/pointsImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/star" />
 
             </LinearLayout>
-        </HorizontalScrollView>
 
 
+            <!-- Go button -->
+            <Button
+                android:id="@+id/go_ahead_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_background"
+                android:orientation="horizontal"
+                android:text="@string/go"
+                android:textAlignment="center"
+                android:textColor="@color/letter_colour" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <!-- Facebook button -->
+                    <Button
+                        android:id="@+id/facebook_button"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/button_share"
+                        android:text="f"
+                        android:textColor="@color/share_button"
+                        android:textStyle="italic" />
+
+                    <!-- Twitter button -->
+                    <Button
+                        android:id="@+id/twitter_button"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/button_share"
+                        android:text="t"
+                        android:textColor="@color/share_button"
+                        android:textStyle="italic" />
+
+                    <!-- Instagram button -->
+                    <Button
+                        android:id="@+id/instagram_button"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/button_share"
+                        android:text="i"
+                        android:textColor="@color/share_button"
+                        android:textStyle="italic" />
+
+                    <!-- Pinterest button -->
+                    <Button
+                        android:id="@+id/pinterest_button"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/button_share"
+                        android:text="Pin"
+                        android:textColor="@color/share_button"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
 
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>
