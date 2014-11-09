@@ -153,17 +153,23 @@
                     <!-- Facebook button -->
                     <Button
                         android:id="@+id/facebook_button"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/facebook_share"/>
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="f"
+                        android:textStyle="italic"
+                        android:background="@drawable/button_share"
+                        android:textColor="@color/share_button"/>
 
                     <!-- Twitter button -->
                     <Button
                         android:id="@+id/twitter_button"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/twitter_share"/>
+                        android:text="t"
+                        android:textStyle="italic"
+                        android:background="@drawable/button_share"
+                        android:textColor="@color/share_button"/>
 
                     <!-- Instagram button -->
                     <Button
@@ -171,7 +177,10 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/instagram_share" />
+                        android:text="i"
+                        android:textStyle="italic"
+                        android:background="@drawable/button_share"
+                        android:textColor="@color/share_button" />
 
                     <!-- Pinterest button -->
                     <Button
@@ -179,7 +188,10 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/pinterest_share"/>
+                        android:text="Pin"
+                        android:textStyle="italic"
+                        android:background="@drawable/button_share"
+                        android:textColor="@color/share_button"/>
 
                 </LinearLayout>
             </HorizontalScrollView>

@@ -1,6 +1,8 @@
 package cinemetroproject.cinemetro;
 
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -55,7 +57,6 @@ public class ViewStation extends ActionBarActivity  {
     private Button instagramButton;
     private Button pinterestButton;
     private AlertDialog.Builder dialog;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,6 +147,8 @@ public class ViewStation extends ActionBarActivity  {
         pinterestButton.setOnClickListener(pinterestButtonOnClickListener);
 
         dialog = new AlertDialog.Builder(this);
+
+
 
     }
 
@@ -355,5 +358,6 @@ public class ViewStation extends ActionBarActivity  {
             }
 
         }};
+
 
 }
