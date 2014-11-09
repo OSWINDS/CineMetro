@@ -241,7 +241,13 @@ final class DbAdapter {
      */
     public void addNewUser(User user)
     {
-        db.addUser(user, user.getPassword());
+        if (user == null)
+        {
+            System.out.println("null user");
+        }
+        else {
+            db.addUser(user, user.getPassword());
+        }
     }
 
     /**
@@ -1153,26 +1159,14 @@ final class DbAdapter {
                         "Alexandrou Svolou Str.), Makedonikon (in Filikis Eterias Str.). The Stavrakos Film School operated its " +
                         "subsidiary film school in Thessaloniki, which was located in the same area.",
                 1,  40.632511,  22.947489));
-        /***********************************************************************************|
-         * *********************************************************************************|
-         * ********************************************************************************\ /
-         * ******************************************************************************** *
-         */
-        this.db.addStation(new Station("Κέντρο 2 (Καμάρα - Ναυαρίνο)",
-                "Στο κέντρο της Θεσσαλονίκης υπήρξαν αρκετοί κινηματογράφοι που για χρόνια αποτέλεσαν σημείο αναφοράς στην " +
-                        "καθημερινότητα της πόλης τόσο λόγω της αρχιτεκτονικής όσο και λόγω της αναφοράς τους μέσα σε αυτήν \n" +
-                        "\n" +
-                        "Ενδεικτική αναφορά μερικών που αφορούν την ευρύτερη περιοχή: Ηλύσια, Ναυαρίνο, Έλση, Κλειώ, Ριβολί, Θυμέλη," +
-                        " Φαργκάνη. \n" +
-                        "\n" +
-                        "Οι κινηματογράφοι αλλά και τα κάφε-μπαρ του κέντρου της πόλης αποτέλεσαν, από την δεκαετία του '80 και έπειτα" +
-                        ", σημείο συνάντησης των φανατικών κινηματογραφόφιλων με τα κινηματογραφικά free press της Θεσσαλονίκης (Εξώστης, " +
-                        "Φιξ Καρέ, Παράλλαξη, κλπ).\n" +
-                        "\n" +
-                        "O Εξώστης υπήρξε πανελλαδικά το πρώτο free press. Κυκλοφόρησε το 1987.\n" +
-                        "\n" +
-                        "Στα σινεμά της περιοχής κατά τις δεκαετίες του '80 και '90 διοργανώθηκαν αρκετές πρωτότυπες προβολές, " +
-                        "μεταμεσονύκτιες και κινηματογραφικών λεσχών.",
+        this.db.addStation(new Station("Centre 2 (Kamara – Navarinon)",
+                "Many cinema theatres at the city centre (Ilyssia, Navarinon, Elsi, Kleo, Rivoli, Thimeli, Fargani) have functioned " +
+                        "both as architectural landmarks of Thessaloniki as well as venues of its everyday life.\n" +
+                        "Cinema theatres, together with coffee shops and bars, have been celebrated haunts for both film lovers and " +
+                        "cinema free press magazines, such as Exostis, Fix Carre, Parallaxi etc.\n" +
+                        "Exostis, which was first published in 1987, has been the first free press magazine in Greece.\n" +
+                        "Cinemas of the city centre have hosted various special screenings, midnight screenings and film clubs " +
+                        "during the 1980’s and the 1990’s.",
                 1, 40.6319738, 22.952104));
         this.db.addStation(new Station("The White Tower",
                 "In 1905 the White Tower’s garden hosted an open air cinema. Opposite to it, there was the EMS building, the main " +
@@ -1323,9 +1317,9 @@ final class DbAdapter {
         this.db.addPhoto(new Photo("esperos", 5, -1,"A view of “Esperos” cinema theatre, which was identified with the special " +
                 "screenings of the Thessaloniki International Film Festival."));
         //station 6
-        this.db.addPhoto(new Photo("nauarino", 6, -1,""));
-        this.db.addPhoto(new Photo("efimerida", 6, -1,""));
-        this.db.addPhoto(new Photo("exostis", 6, -1,""));
+        this.db.addPhoto(new Photo("nauarino", 6, -1,"Exterior view of Navarinon cinema theatre during the 39th Thessaloniki International Film Festival (1998)"));
+        this.db.addPhoto(new Photo("efimerida", 6, -1,"A film advertisement for a screening at Thymeli cinema theatre (Credits: Macedonia newspaper)"));
+        this.db.addPhoto(new Photo("exostis", 6, -1,"Front page for the first issue of “Exostis” free press"));
         //station 7
         this.db.addPhoto(new Photo("pallaswhitetower", 7, -1,"The old cinema theatre “Pallas” near the White Tower, designed by E. Modiano, which hosted 860 viewers."));
         this.db.addPhoto(new Photo("ems", 7, -1,"Crowds outside the Society for Macedonian Studies, which was the Thessaloniki" +
