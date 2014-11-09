@@ -27,6 +27,7 @@ public class SignUp extends ActionBarActivity {
     boolean ok = true;
     String username, passw1 , passw2;
     private ArrayList<User> users;
+    TextView success;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class SignUp extends ActionBarActivity {
         email=(EditText)findViewById(R.id.eMail);
         pass1=(EditText)findViewById(R.id.pass1);
         pass2=(EditText)findViewById(R.id.pass2);
+        success=(TextView)findViewById(R.id.success);
 
         users=new ArrayList<User>();
         users=DbAdapter.getInstance().getUsers();
@@ -115,6 +117,13 @@ public class SignUp extends ActionBarActivity {
             }
         }
 
+        //check if email is valid
+        /*if(!username.contains("@")){
+            Toast.makeText(SignUp.this, "Email must contain @", Toast.LENGTH_SHORT).show();
+            ok=false;
+            return;
+        }*/
+
         //If password is too small
         if(passw1.length()<5){
             Toast.makeText(SignUp.this, "Password must be at least 5 characters.", Toast.LENGTH_SHORT).show();
@@ -135,8 +144,10 @@ public class SignUp extends ActionBarActivity {
 
         if (ok) {
             end_bt.setEnabled(true);
-            Toast.makeText(SignUp.this, "You are ready!!!\n" +
-                    "Touch the End button to Sign Up.", Toast.LENGTH_SHORT).show();
+            success.setText("You are ready!!!\n" +
+                    "Touch the End button to Sign Up!");
+            //Toast.makeText(SignUp.this, "You are ready!!!\n" +
+            //      "Touch the End button to Sign Up.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -144,23 +155,22 @@ public class SignUp extends ActionBarActivity {
 
     public void End_bt_Clicked(){
         //Check Again if The user cheat and changed smth or the internet connection has been broken.
-       if(!ok){
-           Check_bt_clicked();
-           Toast.makeText(SignUp.this, "You cheater!\n" +
-                    "Undo the change and try again!", Toast.LENGTH_SHORT).show();
+        Check_bt_clicked();
+        if(!ok){
+            Toast.makeText(SignUp.this, "Undo the change and try again!", Toast.LENGTH_SHORT).show();
             end_bt.setEnabled(false);
             return;
         }
 
         User newUser=new User(username, passw1);
         DbAdapter.getInstance().addNewUser(newUser);
-        //DbAdapter.getInstance().updateUserToParse(newUser);
+        DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(username));
+        //DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(username));
 
-        Toast.makeText(SignUp.this, "Congrats! You successfully signed up!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SignUp.this, "Congrats!\nYou successfully signed up!", Toast.LENGTH_SHORT).show();
 
         Intent intent;
         intent = new Intent(SignUp.this, ProfileActivity.class);
-        DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(username));
 
         startActivity(intent);
         this.finish();

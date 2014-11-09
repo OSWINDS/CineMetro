@@ -3,7 +3,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rl_profile">
+    android:id="@+id/rl_profile"
+    android:background="#ffffff">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -150,18 +151,6 @@
                 android:id="@+id/help8"
                 android:layout_gravity="center_horizontal" />
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Log Out"
-                android:id="@+id/log_out"
-                android:layout_gravity="center_horizontal"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="93dp"
-                android:background="#ff6482f1"
-                android:textColor="#ffffffff" />
         </LinearLayout>
     </ScrollView>
 

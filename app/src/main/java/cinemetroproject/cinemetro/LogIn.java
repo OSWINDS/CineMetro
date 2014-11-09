@@ -24,7 +24,7 @@ public class LogIn extends ActionBarActivity {
     Button logbt, signbt;
     ImageButton logo;
     EditText username, password;
-    User connectedUser;
+    //User connectedUser;
     boolean readyToSignUp;
     private ArrayList<User> users;
 
@@ -59,7 +59,7 @@ public class LogIn extends ActionBarActivity {
             }
         });
 
-        connectedUser=null;
+        //connectedUser=null;
         readyToSignUp=false;
 
     }
@@ -131,10 +131,9 @@ public class LogIn extends ActionBarActivity {
         }
 
         if (readyToLogIn){
+            DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(user));
             Intent intent;
             intent = new Intent(LogIn.this, ProfileActivity.class);
-
-            DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(user));
 
             startActivity(intent);
             this.finish();

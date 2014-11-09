@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cinemetroproject.cinemetro.SignUp">
+    tools:context="cinemetroproject.cinemetro.SignUp"
+    android:background="#ffffff">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -63,7 +64,7 @@
                 android:layout_marginTop="26dp"
                 android:text="@string/PasswordText"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#ff09006e" />
+                android:textColor="#fffd322c" />
 
             <EditText
                 android:id="@+id/pass1"
@@ -113,10 +114,18 @@
                 android:layout_above="@+id/End_button"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginBottom="40dp"
                 android:text="Check"
                 android:background="#ff6482f1"
                 android:textColor="#ffffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/success"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#ff09006e" />
 
             <Button
                 android:id="@+id/End_button"
