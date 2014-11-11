@@ -1,11 +1,12 @@
 package cinemetroproject.cinemetro;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseException;
-import com.parse.FindCallback;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -591,7 +592,7 @@ final class DbAdapter {
                         "\n" +
                         "Ταινίες που γυρίστηκαν εδώ (ενδεικτική αναφορά): Η Αιωνιότητα και μια Ημέρα, Φανέλα με το 9, Γεννέθλια Πόλη, Ατσίδας.",
                 1, 40.632804,  22.941331));
-        this.db.addStation(new Station("Κέντρο (Αγίας Σοφίας-Αλ. Σβώλου)",
+        this.db.addStation(new Station("Κέντρο "+" (Αγίας Σοφίας-Αλ. Σβώλου)",
                 "Μια περιοχή με πολλούς κινηματογράφους: Διονύσια (Αγίας Σοφίας), Έσπερος και Ριβολί (Αλ.Σβώλου), Μακεδονικόν (Φιλ.Εταιρείας) . \n" +
                         "\n" +
                         "Εδώ λειτούργησε στη δεκαετία του ’50 παράρτημα Θεσσαλονίκης της κινηματογραφικής σχολής Σταυράκου. \n" +
@@ -976,7 +977,7 @@ final class DbAdapter {
         this.db.addPhoto(new Photo("green8", 0, 0, ""));
 
         //TimelineStation 1
-        this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)", 40.6271087, 22.9497383));
+        this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-\n"+"Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)", 40.6271087, 22.9497383));
         //Milestones
         this.db.addMilestone(new Milestone(1, "1964", "Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
                 "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά για περίπου 3,5 δεκαετίες (5η Εβδομάς " +
@@ -1029,7 +1030,7 @@ final class DbAdapter {
 
 
         //TimelineStation 3
-        this.db.addTimelineStation(new TimelineStation("Σβώλου – Πλ. Ναυαρίνο (Έσπερος-Ανατόλια-Μακεδονικών – Ναυαρίνο – Βακούρα)", 40.6330961, 22.9470789));
+        this.db.addTimelineStation(new TimelineStation("Σβώλου – Πλ. Ναυαρίνο", 40.6330961, 22.9470789));
         //Milestones
         this.db.addMilestone(new Milestone(3, "1987", "Ο κινηματογράφος Έσπερος φιλοξενεί τις παράλληλες εκδηλώσεις του φεστιβάλ. \n" +
                 ".Ο Έσπερος θα λειτουργήσει ως αίθουσα προβολών για το φεστιβάλ ως το 1996. Στις ξεχωριστές προβολές " +
@@ -1051,7 +1052,7 @@ final class DbAdapter {
 
 
         //TimelineStation 4
-        this.db.addTimelineStation(new TimelineStation("Ολύμπιον-Πλατεία Αριστοτέλους", 40.6326916, 22.9416844));
+        this.db.addTimelineStation(new TimelineStation("Ολύμπιον-\n"+"Πλατεία Αριστοτέλους", 40.6326916, 22.9416844));
         //Milestones
         this.db.addMilestone(new Milestone(4, "1960", "H Διεθνής Έκθεση Θεσσαλονίκης διοργανώνει σειρά πολιτιστικών εκδηλώσεων για το σινεμά" +
                 " στη Θεσσαλονίκη με αφορμή τα 25 χρόνια λειτουργίας της (1η Εβδομάς Ελληνικού Κινηματογράφου, 1960) \n" +
@@ -1282,6 +1283,151 @@ final class DbAdapter {
                         ", the City Hall, the White Tower, the Railway Station).",
                 "Dimitris Vainas, Paris Papadopoulos, Olga Sfetsa",
                 "Yorgos Papaioannou", "2011"));
+
+        //TimelineStation 1
+        this.db.addTimelineStation(new TimelineStation("White Tower – Society of Macedonian Studies Hall (EMS)", 40.6271087, 22.9497383));
+        //Milestones
+        this.db.addMilestone(new Milestone(1, "1964", " The film festival’s headquarters move from the Olympion" +
+                " theatre to the EMS hall, a place, which will be closely linked to the festival’s history for more" +
+                " than three decades (5th Greek Film Week, 1964)","theatesems", "Viewers attend a festival screening at the EMS hall"));
+        this.db.addMilestone(new Milestone(1, "1966", "Greek-American film producer James Paris, a famous festival figure during the years" +
+                " 1966-1972, hires a tank to march around the White Tower’s square in order to publicize his film " +
+                "“Forgotten Heores” (7th Greek Film Week, 1966). \n" +
+                "The screening is full of surprises. More than 1.500 viewers that attend Paris’ film find a pack of cigarettes in" +
+                " their seat, a promo gift on behalf of the producer.","paris_ems",  "Yorgos Tzavellas and James Paris attend a festival screening at the EMS hall"));
+        this.db.addMilestone(new Milestone(1, "1970", "The “2nd Balcony” is a special place in EMS hall, which will be identified with the dynamic" +
+                " young public of the Thessaloniki Film Festival that playσ an important role in the forming of a local festival culture" +
+                " (11th Greek Film Week, 1970). \n" +
+                "\n" +
+                " The “2nd Balcony” is named after the homonymous seat category at the EMS hall, which is  the students’ favorite place because" +
+                " of cheap entrance fees..", "exostes",
+                "A view of the EMS hall and its “2nd Balcony”"));
+        this.db.addMilestone(new Milestone(1,"1972", "The 1st Thessaloniki International Film Festival is held at the EMS hall in 1972," +
+                " in the occasion of the 13th Greek Film Week in 1972.\n" +
+                "\n" +
+                "The festival’s international section concerns foreign short films and it is held a week after the official competition" +
+                " of the Greek section, under the auspices of the Thessaloniki" +
+                " International Fair Trade and the International Federation of Film Producers Associations (FIAPF). "
+                , "diethnesfilmfestival",
+                " A view of the EMS hall, during the 10th anniversary of the Thessaloniki International Film Festival for Short Films. "));
+        this.db.addMilestone(new Milestone(1,"1992","Film Festival becomes officially International . Official competition hosts movies from new " +
+                "and emerging creators from all over the world . \n" +
+                "In parallel hosts until 1997 the Greek Film Festival .", "p1992", ""));
+        this.db.addMilestone(new Milestone(1,"1995","Festival hosted for last time at the EMS hall . The building will be refurbished radically " +
+                "within it from Cultural Capital Organization Thessaloniki 1997 , leaving behind a bright " +
+                "cinematic history for the city . ", "p1995", ""));
+
+
+
+
+        //TimelineStation 2
+        this.db.addTimelineStation(new TimelineStation("Caffé “Do-re” & “Alexandros”", 40.6269345, 22.9493905));
+        //Milestones
+
+        this.db.addMilestone(new Milestone(2, "1963",
+                "“Alexandros” cinema theatre is located just below the Thessaloniki Military Club and it is very close to the EMS hall," +
+                        " which serves as the festival’s seat and a place for short film screenings for many years.\n"+ "\n"+
+                        "Here is a sculptured marble in the honor of filmmaker Takis Kanellopoulos, whose name was particularly connected" +
+                        " to the Thessaloniki Film Festival and to the caffé “Do-re”, one of the festival’s most popular haunts", "cinealexandros02",
+                "A view of the “Alexandros” cinema theatre, which hosted festival screenings."));
+        this.db.addMilestone(new Milestone(2, "1990", "The caffé “Do-re”, opposite the White Tower, was a popular haunt, which was frequented by " +
+                "artists as well as festival viewers during the 60s and onwards, since the festival’s internationalization in the 1990s." +
+                "\n" +
+                "Debates between filmmakers and viewers at the caffé “Do-re” usually begin after the screenings" +
+                " and carry on until dawn, adding to a festive atmosphere.", "jamesparis",
+                "Greek-American film producer James Paris chats with colleagues at the caffe “Do-re” after a festival screening."));
+
+
+        //TimelineStation 3
+        this.db.addTimelineStation(new TimelineStation("Alexandrou Svolou Str. – Navarinon Square ", 40.6330961, 22.9470789));
+        //Milestones
+        this.db.addMilestone(new Milestone(3, "1987", "«Esperos” cinema theatre hosts the festival’s sidebar events. . \n" +
+                ".Among the popular screenings which were held at “Esperos”, there is a film music concert of Germaine Dula’s films" +
+                ", with pianist-composer Sakis Papadimitriou and singer Georgia Silleou (28th Thessaloniki Film Festival, 1987).",
+                "esperos28filmfestival",
+                "“Esperos” cinema theatre at Alexandrou Svolou str."));
+        this.db.addMilestone(new Milestone(3, "1994", "Japanese filmmaker Nagisa Osima is the dominant figure in the 35th edition of the Thessaloniki Film Festival," +
+                " which organizes a retrospective of his work in “Esperos” cinema theatre. \n" +
+                "Nagisa Osima visits Thessaloniki for a few days in order to prologue his films, which are screened in crowded halls. Osima meets with his friend Theo"+
+                "Angelopoulos and entertains himself at a concert with singer Dimitra Galani.", "",
+                ""));
+        this.db.addMilestone(new Milestone(3, "1996", "In 1996 the Thessaloniki Film Festival is held in “Anatolia” cinema theatre," +
+                " for the first –and last- time in its history.\n" +
+                "In front of “Anatolia” cinema theatre there is a special construction which marks the festival’s presence on the spot.", "anatolia",
+                "The “Anatolia” cinema theatre before its reconstruction in order to host the festival’s screenings."));
+
+
+        //TimelineStation 4
+        this.db.addTimelineStation(new TimelineStation("Ολύμπιον-\n"+"Πλατεία Αριστοτέλους", 40.6326916, 22.9416844));
+        //Milestones
+        this.db.addMilestone(new Milestone(4, "1960", "The Thessaloniki International Trade Fair organizes a series of" +
+                " film events in Thessaloniki, in the occasion of its 25th anniversary (1st Greek Film Week, 1960) " +
+                "in collaboration with the Film Club of the Macedonian Society “Techne”.\n" +
+                "The 1st Greek Film Week is officially inaugurated on September 20th, 1960, in the Olympion cinema theatre, by the" +
+                " Minister of Industry Nikolaos Martis, who supervises the event.", "protievdomas1960",
+                "A snapshot during the opening ceremony of the 1st Greek Film Week, with the president of the Thessaloniki International Trade Fair " +
+                        "Yorgos Georgiadis, who lights a cigarette for actress Maro Kontou.\n "));
+        this.db.addMilestone(new Milestone(4, "1997", "It is a traditional cinema theatre which will be identified with the festival’s history, that will change " +
+                "many seats to finally return to the refurbished “Olympion” venue in 1997.\n", "olympion02",
+                "The “Olympion” complex, located at the Aristotelous Square."));
+        this.db.addMilestone(new Milestone(4, "1997", "Olympion cinema theatre was totally renovated in 1997, the year when Thessaloniki" +
+                " was the Cultural Capital of Europe.", "olympion38filmfestival",
+                "A view of the renovated “Olympion” cinema theatre."));
+        this.db.addMilestone(new Milestone(4, "2000", "In the spring of 2000, film festival curator Dimitris Eipidis establishes a new film event," +
+                " the Thessaloniki Documentary Festival" +
+                " – Images of the 21st century”, which gathers an average of 30.000 viewers every year in its screenings. ", "peopleolympion38filmfestival",
+                "People crowding outside the “Olympion” cinema theatre during the 38th Thessaloniki International Film Festival\n"));
+        this.db.addMilestone(new Milestone(4, "2010", "From 2010 Festival changing line and influenced from the serious financial crisis of \n" +
+                "Greece turned to afresh open cinematic horizons . \n" +
+                "To these years the audience has the opportunity to discover alternative directors , like \n" +
+                "Alain Guiraudie , Bahman Ghobadi and Ole Christian Madsen but also to connect afresh \n" +
+                "with timeless favorite stars like Hanna Schygulla , and creators , like Aki Kaurismäki , \n" +
+                "Paolo Sorrentino , and Constantine Giannaris .", "p2014",
+                ""));
+        this.db.addMilestone(new Milestone(4, "2014", "From its re-opening in 1997 until today, the “Olympion” cinema theatre hosts the main corpus" +
+                " of film festival activities. It has been a popular venue, which was visited by acclaimed personalities of world cinema (Coppola, " +
+                "Stone, Desplas, Kusturica, Kitano, Herzog etc).)", "olympion39filmfestival",
+                "Exterior view of the “Olympion” cinema theatre at the Aristotelous Square"));
+
+
+        //TimelineStation 5
+        this.db.addTimelineStation(new TimelineStation("Λιμάνι", 40.631721, 22.93505));
+        //Milestones
+
+
+        this.db.addMilestone(new Milestone(5, "1994", "Warehouses at the city’s port host interesting art exhibitions \n" +
+                "such as “Painting in film: Giant film posters”, a film poster exhibition of Hellafi collection (35th TIFF, 1994)," +
+                " as well as the settings and costumes exhibitions of Mikes Karapiperis-Giorgos Ziakas-Giorgos Patsas from Theo" +
+                " Angelopoulos’ film shootings. Warehouse D hosts a film poster exhibition, inspired by films of the famous Greek auteur.",
+                "apothikesinside",
+                "The “Hellafi” collection exhibition at the port \n" +
+                        "(41o ΦΚΘ, Κωδ. Φωτο 01.017108)"));
+        this.db.addMilestone(new Milestone(5, "1996", "Journalists visit the settings of Theo Angelopoulos’ film “Eternity and a day”, " +
+                "which was shot in Thessaloniki (37th TIFF, 1996) \n" +
+                "A few months later the film wins the “Palme d’ Or” at the Cannes Film Festival and thus becomes " +
+                "the first –and the last, up until now- Greek film, which has achieved this prominent award.",
+                "eternityandaday1",
+                "Scene from Theo Angelopoulos’ film “Eternity and a day”"));
+        this.db.addMilestone(new Milestone(5, "2001", "he four warehouses at the city’s port are renovated into cinema theatres and become a" +
+                " vital part of Thessaloniki Film Festival (42nd TIFF, 2001).\n" +
+                "hey are named after four prominent Greek filmmakers: “Tonia Marketaki” and “John Cassavetes” (Warehouse A’) and “Frida Liappa” " +
+                "and “Takis Kanellopoulos” (Warehouse D’). The “Takis Kanellopoulos” hall is later renamed as “Stavros Tornes” hall in order to avoid" +
+                " confusion with “Kanellopoulos” hall, the main venue of the neighboring Cinema Museum.",
+                "cineprovlita01",
+                "Exterior view of Warehouse A’, the halls of which are named “Tonia Marketaki” and “John Cassavetes” (40th TIFF)"));
+        this.db.addMilestone(new Milestone(5, "2008", "Oliver Stone and Emir Kusturica join No Smoking Band’s concert at the Warehouse " +
+                "C, held at the city’s port (49th TIFF, 2008).", "stonekusturica",
+                "Oliver Stone and Emir Kusturica together on stage.\n" +
+                        "(Motionteam, κωδικός: 445484)"));
+        this.db.addMilestone(new Milestone(5, "2013", "One of all favorites and innovative sections of Festival , the Balkan Survey , celebrating 20 \n" +
+                "years of creative presence . " +
+                "Between these two decades Thessaloniki with this parallel panorama of films shows all new " +
+                "trends and look of directors from the whole Balkan . " +
+                "At once it presented special retro-spectives to important creators , like Lucian Pintilie , " +
+                "Goran Paskaljevic , Nuri Bilge Ceylan , and Cristian Mungiu and new flows , like new " +
+                "Romanian cinema , that embraced from the international audience .", "p2013",
+                ""));
+
 
         //add photos
 
