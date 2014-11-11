@@ -247,6 +247,8 @@ final class DbAdapter {
         }
         else {
             db.addUser(user, user.getPassword());
+            this.users.clear();
+            this.users = db.getAllUsers();
         }
     }
 
