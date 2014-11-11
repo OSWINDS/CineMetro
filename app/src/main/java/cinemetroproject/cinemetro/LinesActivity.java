@@ -44,6 +44,8 @@ public class LinesActivity  extends TabActivity {
                 .setIndicator("Timeline");
         mTabHost.addTab(spec);
 
+        //mTabHost.getTabWidget().setStripEnabled(false);
+
         mTabHost.setCurrentTab(2);
         for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
         {

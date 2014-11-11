@@ -3,6 +3,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowContentOverlay">@null</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -16,6 +17,7 @@
 
     <style name="ButtonBar">
         <item name="android:paddingLeft">2dp</item>
+        <item name="android:windowContentOverlay">@null</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingRight">2dp</item>
         <item name="android:paddingBottom">0dp</item>
