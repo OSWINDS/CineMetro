@@ -176,4 +176,3 @@ public class SignUp extends ActionBarActivity {
         this.finish();
     }
 }
-//

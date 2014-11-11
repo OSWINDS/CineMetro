@@ -1,21 +1,31 @@
 package cinemetroproject.cinemetro;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class Line2 extends ActionBarActivity {
 
 
     private LinearLayout scrollView;
+    private ArrayList<String> titles;
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.line2);
@@ -34,8 +44,42 @@ public class Line2 extends ActionBarActivity {
             scrollView.addView(stationButton);
         }
 
+    }*/
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.lines);
+
+        LinearLayout ll=(LinearLayout)findViewById(R.id.linear_layout_lines);
+        ll.setBackgroundColor(Color.argb(255, 35, 137, 190));
+
+        TextView tv=(TextView)findViewById(R.id.lines_textView);
+        tv.setText("Θεσσαλονίκη μέσα από τον Eλληνικό Κινηματογράφο");
+
+        titles=new ArrayList<String>();
+
+        for (int i=0; i<=7; i++) {
+            titles.add(DbAdapter.getInstance().getMovies().get(i).getTitle());
+        }
+
+        showList();
     }
 
+    private void showList(){
+        ArrayAdapter<String> adapter=new MyArrayAdapter();
+        ListView list=(ListView) findViewById(R.id.lines_listview);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //TextView textView = (TextView) view;
+                Intent intent = new Intent(Line2.this, ViewStation.class);
+                intent.putExtra("button_id", i+7);
+                Line2.this.startActivity(intent);
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,4 +110,30 @@ public class Line2 extends ActionBarActivity {
             intent.putExtra("button_id", view.getId());
             Line2.this.startActivity(intent);
         }};
+
+    private class MyArrayAdapter extends ArrayAdapter<String> {
+        public MyArrayAdapter() {
+            super(Line2.this, R.layout.lines_item, titles);
+        }
+
+        @Override
+        public View getView(int pos, View convertView, ViewGroup parent) {
+            View itemView = convertView;
+            if (itemView == null) {
+                itemView = getLayoutInflater().inflate(R.layout.lines_item, parent, false);
+            }
+
+            ImageView image = (ImageView) itemView.findViewById(R.id.thumbnail);
+            image.setBackgroundResource(DbAdapter.getInstance().getPhotoDrawableID("green" + Integer.toString(pos+1)));
+
+            TextView station = (TextView) itemView.findViewById(R.id.station_number);
+            station.setTextColor(Color.rgb(9, 0, 160));
+            station.setText("Στάση " + (pos + 1));
+
+            TextView title = (TextView) itemView.findViewById(R.id.station_title);
+            title.setText(titles.get(pos));
+
+            return itemView;
+        }
+    }
 }
