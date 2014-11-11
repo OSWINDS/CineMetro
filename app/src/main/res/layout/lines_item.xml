@@ -1,29 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="75dp"
     android:background="#ffffff"
-    android:id="@+id/relative_layout_item">
+    android:id="@+id/relative_layout_item"
+    android:orientation="horizontal"
+    >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="95dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
         android:id="@+id/thumbnail" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Station"
-        android:id="@+id/station_number"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/linear_layout_item"
+        >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Title"
-        android:id="@+id/station_title"
-        android:layout_below="@+id/station_number"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Station"
+            android:id="@+id/station_number"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="54dp"
+             />
+
+        <ImageView
+                android:layout_height="20dp"
+                android:layout_width="20dp"
+                android:background="@drawable/star"
+                android:id="@+id/pointsImage"
+                android:layout_alignParentRight="true"
+                android:layout_alignRight="@id/station_number"
+                android:layout_marginRight="26dp"
+
+              />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Title"
+            android:id="@+id/station_title"
+            android:layout_below="@+id/station_number"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+
+
+             />
+
+
+
+    </RelativeLayout>
+</LinearLayout>
