@@ -1125,7 +1125,7 @@ final class DbAdapter {
                 "που αγκαλιάστηκαν από το διεθνές κοινό.", "p2013",
                 ""));
 
-        this.populateEnglishDB();
+        //this.populateEnglishDB();
     }
 
     private void populateEnglishDB()
