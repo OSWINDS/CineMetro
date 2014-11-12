@@ -101,29 +101,6 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/show_in_map" />
 
-            <!-- points of station -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="35dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/points"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp" />
-
-                <ImageButton
-                    android:id="@+id/pointsImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/star" />
-
-            </LinearLayout>
-
-
             <!-- Go button -->
             <Button
                 android:id="@+id/go_ahead_button"

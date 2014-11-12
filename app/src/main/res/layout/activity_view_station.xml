@@ -23,6 +23,7 @@
                 android:textStyle="italic"
                 android:id="@+id/titleYear" />
 
+            <!--movie Images -->
             <android.support.v4.view.ViewPager
                 android:id="@+id/pagerImage"
                 android:layout_width="match_parent"

@@ -35,6 +35,13 @@ public class ImageFragment extends Fragment{
         ImageView image = (ImageView) v.findViewById(R.id.image);
 
         if (line == 1) {
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(id+1).get(mCurrentPage - 1).getName());
+                int drawableId = field.getInt(null);
+                image.setBackgroundResource(drawableId);
+            } catch (Exception e) {}
+
             return v;
         }
         else{

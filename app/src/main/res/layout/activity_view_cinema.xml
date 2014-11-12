@@ -22,17 +22,24 @@
                 android:textStyle="italic"
                 android:id="@+id/name" />
 
-            <!-- images of cinema -->
-            <HorizontalScrollView
+            <!--cinema Images -->
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pagerImage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:id="@+id/cinemaHsV"
-                    android:layout_width="wrap_content"
+                android:layout_height="200dp">
+
+                <android.support.v4.view.PagerTabStrip
+                    android:id="@+id/pager_title_strip"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                </LinearLayout>
-            </HorizontalScrollView>
+                    android:layout_gravity="top"
+                    android:background="#33b5e5"
+                    android:textColor="#fff"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp" />
+
+            </android.support.v4.view.ViewPager>
+
 
             <!-- info -->
             <TextView
@@ -49,29 +56,6 @@
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/showInMap"
                 />
-
-            <!-- points of station -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="35dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:id="@+id/points"/>
-
-                <ImageButton
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:background="@drawable/star"
-                    android:id="@+id/pointsImage"/>
-
-            </LinearLayout>
-
 
             <!-- Go button -->
             <Button

@@ -7,21 +7,17 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -30,12 +26,10 @@ import java.util.List;
  *
  * ViewCinema shows the features (photo and text) of a cinema
  */
-public class ViewCinema extends ActionBarActivity {
+public class ViewCinema extends FragmentActivity {
 
-    private LinearLayout scrollView;
     private TextView textViewTitle;
     private TextView description;
-    private TextView points;
     private ImageButton showInMap;
     private Button goAheadButton;
     private Button facebookButton;
@@ -51,7 +45,7 @@ public class ViewCinema extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_view_cinema);
 
         Intent intent = getIntent();
@@ -61,35 +55,23 @@ public class ViewCinema extends ActionBarActivity {
         textViewTitle.setText(DbAdapter.getInstance().getStations().get(idCinema).getName());
         textViewTitle.setBackgroundColor(getResources().getColor(R.color.line1));
 
-        try {
-            Class res = R.drawable.class;
-            Field field = res.getField(DbAdapter.getInstance().getRoutes().get(1).getColour());
-            int drawableId = field.getInt(null);
-            textViewTitle.setBackgroundResource(drawableId);
-        } catch (Exception e) {}
+        /** Getting a reference to the ViewPager defined the layout file */
+        ViewPager pager = (ViewPager) findViewById(R.id.pagerImage);
 
-        scrollView = (LinearLayout)findViewById(R.id.cinemaHsV);
+        /** Getting fragment manager */
+        FragmentManager fm = getSupportFragmentManager();
 
         countP = DbAdapter.getInstance().getPhotosByStation(idCinema+1).size();
-        for (int i=0; i<countP; i++) {
-            Button imageCinema = new Button(this);
-            try {
-                Class res = R.drawable.class;
-                Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(idCinema+1).get(i).getName());
-                int drawableId = field.getInt(null);
-                imageCinema.setBackgroundResource(drawableId);
-                imageCinema.setGravity(Gravity.BOTTOM | Gravity.CENTER);
-                imageCinema.setLayoutParams(new ViewGroup.LayoutParams(320,300));
-        } catch (Exception e) {}
+        /** Instantiating FragmentPagerAdapter */
+        ImageAdapter pagerAdapter = new ImageAdapter(fm, countP/2);
+        ImageFragment.id=idCinema;
+        ImageFragment.line=1;
 
-            scrollView.addView(imageCinema);
-        }
+        /** Setting the pagerAdapter to the pager object */
+        pager.setAdapter(pagerAdapter);
 
         description = (TextView)findViewById(R.id.description);
         description.setText(DbAdapter.getInstance().getStations().get(idCinema).getDescription());
-
-        points = (TextView) findViewById(R.id.points);
-        points.setText(String.valueOf(DbAdapter.getInstance().getStationRating(idCinema)) + "  ");
 
         showInMap = (ImageButton)findViewById(R.id.showInMap);
         showInMap.setOnClickListener(showInMapButtonOnClickListener);

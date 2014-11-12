@@ -46,7 +46,6 @@ public class Timeline extends ActionBarActivity {
     private int selectedId;
     private TextView title;
     private ImageButton showInMap;
-    private TextView points;
     private Button goAheadButton;
     private Button facebookButton;
     private Button twitterButton;
@@ -128,9 +127,6 @@ public class Timeline extends ActionBarActivity {
 
         showInMap = (ImageButton)findViewById(R.id.showInMap);
         showInMap.setOnClickListener(showInMapButtonOnClickListener);
-
-        points = (TextView) findViewById(R.id.points);
-        points.setText(String.valueOf(DbAdapter.getInstance().getStationRating(idCinema)) + "  ");
 
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,6 +55,8 @@ public class ViewStation extends FragmentActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+       // (ViewStation)getActivity().getSupportActionBar.setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         idStation = intent.getIntExtra("button_id", 0);
 
@@ -75,8 +78,6 @@ public class ViewStation extends FragmentActivity {
 
         /** Setting the pagerAdapter to the pager object */
         pager.setAdapter(pagerAdapter);
-
-       //ActionBarActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         directorImage = (ImageButton)findViewById(R.id.directorImage);
         try {
