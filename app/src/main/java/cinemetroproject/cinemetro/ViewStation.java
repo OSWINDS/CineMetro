@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class ViewStation extends FragmentActivity {
     private TextView textViewInfo;
     private ImageButton showInMap;
     private Button goAheadButton;
+    private HorizontalScrollView sharing;
     private Button facebookButton;
     private Button twitterButton;
     private Button instagramButton;
@@ -72,7 +74,7 @@ public class ViewStation extends FragmentActivity {
 
         movieImages = DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size();
         /** Instantiating FragmentPagerAdapter */
-        ImageAdapter pagerAdapter = new ImageAdapter(fm, movieImages/2);
+        ImageAdapter pagerAdapter = new ImageAdapter(fm, movieImages);
         ImageFragment.id=idStation;
         ImageFragment.line=2;
 
@@ -118,6 +120,9 @@ public class ViewStation extends FragmentActivity {
 
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
+
+        sharing = (HorizontalScrollView) findViewById(R.id.sharing);
+        sharing.smoothScrollTo(150,10);
 
         facebookButton = (Button) findViewById(R.id.facebook_button);
         facebookButton.setOnClickListener(facebookButtonOnClickListener);
@@ -194,7 +199,6 @@ public class ViewStation extends FragmentActivity {
             intent.putExtra("button_id", ++idStation);
             ViewStation.this.startActivity(intent);
         }};
-
 
     public View.OnClickListener facebookButtonOnClickListener = new View.OnClickListener(){
 

@@ -123,8 +123,9 @@
                 android:id="@+id/go_ahead_button"/>
 
             <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sharing">
 
                 <LinearLayout
                     android:layout_width="wrap_content"

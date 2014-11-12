@@ -126,6 +126,7 @@ public class MapActivity extends Activity implements LocationListener {
         currentLocation = new Location("");
         if (this.mΜap != null) {
             mΜap.setMyLocationEnabled(true);
+            mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257,22.944343),8));
         }
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         currentLocation=lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -147,7 +148,7 @@ public class MapActivity extends Activity implements LocationListener {
         mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         if (mΜap != null) {
             mΜap.clear();
-            //mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257,22.944343),8));
+
         }
     }
 

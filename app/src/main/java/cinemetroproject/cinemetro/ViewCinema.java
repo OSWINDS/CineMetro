@@ -63,7 +63,7 @@ public class ViewCinema extends FragmentActivity {
 
         countP = DbAdapter.getInstance().getPhotosByStation(idCinema+1).size();
         /** Instantiating FragmentPagerAdapter */
-        ImageAdapter pagerAdapter = new ImageAdapter(fm, countP/2);
+        ImageAdapter pagerAdapter = new ImageAdapter(fm, countP);
         ImageFragment.id=idCinema;
         ImageFragment.line=1;
 
