@@ -1,8 +1,5 @@
 package cinemetroproject.cinemetro;
 
-
-import android.animation.Animator;
-import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,25 +8,19 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -38,19 +29,17 @@ import java.util.List;
  * Se ayto to activity anaparistatai to ViewStation
  * Dimiourgeitai otan epilegetai mia stasi apo LinesActivity
  */
-public class ViewStation extends ActionBarActivity  {
+public class ViewStation extends FragmentActivity {
 
     private int idStation;
     private int actors; //count of actors
     private int movieImages;
     private TextView textViewTitle;
-    private LinearLayout movieImagesScrollView;
     private LinearLayout actorsScrollView;
     private TextView textViewDirector;
     private ImageButton directorImage;
     private TextView textViewInfo;
     private ImageButton showInMap;
-    private TextView points;
     private Button goAheadButton;
     private Button facebookButton;
     private Button twitterButton;
@@ -59,13 +48,11 @@ public class ViewStation extends ActionBarActivity  {
     private AlertDialog.Builder dialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        //setTheme(android.R.style.Theme_Light_Panel);
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_station);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_view_station);
 
         Intent intent = getIntent();
         idStation = intent.getIntExtra("button_id", 0);
@@ -74,22 +61,22 @@ public class ViewStation extends ActionBarActivity  {
         textViewTitle.setText(DbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + DbAdapter.getInstance().getMovieByStation(idStation).getYear());
         textViewTitle.setBackgroundColor(getResources().getColor(R.color.line2));
 
+        /** Getting a reference to the ViewPager defined the layout file */
+        ViewPager pager = (ViewPager) findViewById(R.id.pagerImage);
+
+        /** Getting fragment manager */
+        FragmentManager fm = getSupportFragmentManager();
+
         movieImages = DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size();
-        movieImagesScrollView = (LinearLayout)findViewById(R.id.movieImagesHsw);
-        for (int i=0; i<=(movieImages-1); i++) {
-            Button movieImage = new Button(this);
-            try {
-                Class res = R.drawable.class;
-                Field field = res.getField((DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).get(i).getName()));
-                int drawableId = field.getInt(null);
-                movieImage.setBackgroundResource(drawableId);
-                movieImage.setLayoutParams(new ViewGroup.LayoutParams(320, 300));
-            } catch (Exception e) {}
-            movieImage.setGravity(Gravity.BOTTOM | Gravity.CENTER);
+        /** Instantiating FragmentPagerAdapter */
+        ImageAdapter pagerAdapter = new ImageAdapter(fm, movieImages/2);
+        ImageFragment.id=idStation;
+        ImageFragment.line=2;
 
-            movieImagesScrollView.addView(movieImage);
+        /** Setting the pagerAdapter to the pager object */
+        pager.setAdapter(pagerAdapter);
 
-        }
+       //ActionBarActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         directorImage = (ImageButton)findViewById(R.id.directorImage);
         try {
@@ -128,9 +115,6 @@ public class ViewStation extends ActionBarActivity  {
         showInMap = (ImageButton)findViewById(R.id.showInMap);
         showInMap.setOnClickListener(showInMapButtonOnClickListener);
 
-        points = (TextView) findViewById(R.id.points);
-        points.setText(String.valueOf(DbAdapter.getInstance().getStationRating(idStation)) + "  ");
-
         goAheadButton = (Button) findViewById(R.id.go_ahead_button);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
 
@@ -147,8 +131,6 @@ public class ViewStation extends ActionBarActivity  {
         pinterestButton.setOnClickListener(pinterestButtonOnClickListener);
 
         dialog = new AlertDialog.Builder(this);
-
-
 
     }
 
@@ -211,6 +193,7 @@ public class ViewStation extends ActionBarActivity  {
             intent.putExtra("button_id", ++idStation);
             ViewStation.this.startActivity(intent);
         }};
+
 
     public View.OnClickListener facebookButtonOnClickListener = new View.OnClickListener(){
 
@@ -358,6 +341,5 @@ public class ViewStation extends ActionBarActivity  {
             }
 
         }};
-
 
 }
