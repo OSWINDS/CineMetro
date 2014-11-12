@@ -31,7 +31,7 @@ import java.util.List;
  * Se ayto to activity anaparistatai to ViewStation
  * Dimiourgeitai otan epilegetai mia stasi apo LinesActivity
  */
-public class ViewStation extends FragmentActivity {
+public class ViewStation extends ActionBarActivity {
 
     private int idStation;
     private int actors; //count of actors
@@ -57,7 +57,7 @@ public class ViewStation extends FragmentActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-       // (ViewStation)getActivity().getSupportActionBar.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         idStation = intent.getIntExtra("button_id", 0);

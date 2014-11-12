@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +27,7 @@ import java.util.List;
  *
  * ViewCinema shows the features (photo and text) of a cinema
  */
-public class ViewCinema extends FragmentActivity {
+public class ViewCinema extends ActionBarActivity {
 
     private TextView textViewTitle;
     private TextView description;
@@ -45,7 +46,7 @@ public class ViewCinema extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_view_cinema);
 
         Intent intent = getIntent();

@@ -63,6 +63,7 @@ public class Timeline extends ActionBarActivity {
         //full screen to timeline
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_timeline);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //create radiogroup
         rg = (RadioGroup) findViewById(R.id.radiogroup);
         rg.setOrientation(RadioGroup.VERTICAL);
@@ -180,7 +181,7 @@ public class Timeline extends ActionBarActivity {
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idCinema).getName();
+        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName();
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "CineMetro");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
