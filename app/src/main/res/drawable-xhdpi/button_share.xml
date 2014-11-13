@@ -11,6 +11,6 @@
     <corners
         android:radius="5dp" />
     <stroke
-        android:width="10px"
+        android:width="5px"
         android:color="@color/share_button" />
 </shape>
