@@ -143,7 +143,18 @@ final class DbAdapter {
         if ( stations.isEmpty())
         {
 
-            this.populateDB();
+            Language language = db.getLanguage();
+            switch (language)
+            {
+                case GREEK:
+                    this.populateDB();
+                    break;
+                case ENGLISH:
+                    this.populateEnglishDB();
+                    break;
+                default:
+                    this.populateDB();
+            }
         }
         this.fillArrays();
     }
@@ -1142,8 +1153,6 @@ final class DbAdapter {
                 " Πασκάλιεβιτς,Νουρί Μπιλγκέ Τσεϊλάν και Κριστιάν Μουντζίου και νέα ρεύματα, όπως ο νέος ρουμάνικος κινηματογράφος, " +
                 "που αγκαλιάστηκαν από το διεθνές κοινό.", "p2013",
                 ""));
-
-        //this.populateEnglishDB();
     }
 
     private void populateEnglishDB()

@@ -296,6 +296,15 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * Return currently set language
+     * @return
+     */
+    public Language getLanguage()
+    {
+        return this.language;
+    }
+
+    /**
      * adds a new entry station to the table station
      * @param station
      */
