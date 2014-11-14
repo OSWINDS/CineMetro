@@ -142,6 +142,7 @@ final class DbAdapter {
         this.fillArrays();
         if ( stations.isEmpty())
         {
+            if()
             this.populateDB();
         }
         this.fillArrays();
@@ -544,6 +545,23 @@ final class DbAdapter {
             }
             i++;
         }
+    }
+
+    /**
+     * Returns the name of the photo from the first milestone of the timeline station with this id
+     * @param id
+     * @return
+     */
+    public String getTimelineStationBackground(int id)
+    {
+        for(TimelineStation station : this.timelineStations)
+        {
+            if (station.getId() == id)
+            {
+                return station.getMilestones().get(0).getPhotoName();
+            }
+        }
+        return null;
     }
 
     /**
