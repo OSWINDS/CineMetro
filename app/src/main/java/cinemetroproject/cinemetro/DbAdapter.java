@@ -142,7 +142,7 @@ final class DbAdapter {
         this.fillArrays();
         if ( stations.isEmpty())
         {
-            if()
+
             this.populateDB();
         }
         this.fillArrays();
