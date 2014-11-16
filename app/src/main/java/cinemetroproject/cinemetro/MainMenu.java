@@ -54,7 +54,7 @@ public class MainMenu extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        this.initializeDB();
+        this.initializeDB(Language.GREEK);
 
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -164,12 +164,12 @@ public class MainMenu extends ActionBarActivity {
             MainMenu.this.startActivity(intent);
         }};
 
-    private DbHelper db;
+    private static DbHelper db;
     //Initialize the db and add data
-    public void initializeDB()
+    public void initializeDB(Language lang)
     {
         db = new DbHelper(this);
-        db.setLanguage(Language.GREEK); //this should change...
+        db.setLanguage(lang); //this should change...
         DbAdapter.getInstance().setDB(db);
     }
 }

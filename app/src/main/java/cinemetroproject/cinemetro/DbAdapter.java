@@ -9,9 +9,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 /**
  * Handles the communication of other classes with the database
  * @author efi
@@ -432,6 +429,16 @@ final class DbAdapter {
         {
             this.timelineStations.get(i).setMilestones( getTimelineStationMilestones(this.timelineStations.get(i).getId()));
         }
+    }
+
+    /**
+     * Change the language of the db to the one given in the parameter
+     * @param lang
+     */
+    public void changeLanguage(Language lang)
+    {
+        db.setLanguage(lang);
+        this.setDB(this.db);
     }
 
     /**
