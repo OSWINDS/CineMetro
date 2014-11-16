@@ -1314,7 +1314,7 @@ final class DbAdapter {
                         "Part of the film was shot in Thessaloniki (Aristotelous Square, Evosmos).",
                 "Stratos Tzortzoglou, Themis Bazaka",
                 "Pantelis Voulgaris", "1987"));
-        this.db.addMovie(new Movie(12, "Eternity and a day (1998)",
+        this.db.addMovie(new Movie(12, "Eternity and a day",
                 "The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his seaside home " +
                         "forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as in the " +
                         "city’s sea front, Aristotelous Square and Tsimiski Street.",

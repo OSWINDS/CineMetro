@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 23;
+    private static final int DATABASE_VERSION = 25;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
     //Language choise of the user
@@ -172,6 +172,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // create fresh tables
         this.onCreate(db);
+        this.CreateEnglishDB(db);
     }
 
     /**
@@ -203,7 +204,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // create station table
         db.execSQL(query);
 
-        // SQL statement to create table nglish photo
+        // SQL statement to create table english photo
         query = "CREATE TABLE IF NOT EXISTS en_photo ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT, " +
@@ -214,7 +215,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // create photo table
         db.execSQL(query);
 
-        // SQL statement to create table nglish movie
+        // SQL statement to create table english movie
         query = "CREATE TABLE IF NOT EXISTS en_movie ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "station_id INTEGER," +
@@ -227,7 +228,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // create movie table
         db.execSQL(query);
 
-        // SQL statement to create table nglish timelinestation
+        // SQL statement to create table english timelinestation
         query = "CREATE TABLE IF NOT EXISTS en_timelinestation ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT, " +
@@ -237,7 +238,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // create timelinestation table
         db.execSQL(query);
 
-        // SQL statement to create table nglish milestone
+        // SQL statement to create table english milestone
         query = "CREATE TABLE IF NOT EXISTS en_milestone ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "station_id INTEGER, " +
@@ -257,22 +258,22 @@ public class DbHelper extends SQLiteOpenHelper {
     private void DropEnglishDB(SQLiteDatabase db)
     {
         // Drop older route table if exists
-        db.execSQL("DROP TABLE IF EXISTS route");
+        db.execSQL("DROP TABLE IF EXISTS en_route");
 
         // Drop older station table if exists
-        db.execSQL("DROP TABLE IF EXISTS station");
+        db.execSQL("DROP TABLE IF EXISTS en_station");
 
         // Drop older photo table if exists
-        db.execSQL("DROP TABLE IF EXISTS photo");
+        db.execSQL("DROP TABLE IF EXISTS en_photo");
 
         // Drop older movie table if exists
-        db.execSQL("DROP TABLE IF EXISTS movie");
+        db.execSQL("DROP TABLE IF EXISTS en_movie");
 
         // Drop older timelinestation table if exists
-        db.execSQL("DROP TABLE IF EXISTS timelinestation");
+        db.execSQL("DROP TABLE IF EXISTS en_timelinestation");
 
         // Drop older movie milestone if exists
-        db.execSQL("DROP TABLE IF EXISTS milestone");
+        db.execSQL("DROP TABLE IF EXISTS en_milestone");
     }
 
     /**
@@ -288,7 +289,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 this.lang="";
                 break;
             case ENGLISH:
-                this.lang="_en";
+                this.lang="en_";
                 break;
             default:
                 this.lang="";
