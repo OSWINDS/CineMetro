@@ -196,6 +196,7 @@ public class ViewStation extends ActionBarActivity {
         public void onClick(View view) {
 
             Intent intent = new Intent(ViewStation.this, RateActivity.class);
+            intent.putExtra("line", 2);
             intent.putExtra("button_id", ++idStation);
             ViewStation.this.startActivity(intent);
         }};

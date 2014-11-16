@@ -143,6 +143,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cinemetroproject.cinemetro.MainMenu" />
         </activity>
+        <activity
+            android:name=".LanguageActivity"
+            android:label="@string/title_activity_language"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainMenu">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cinemetroproject.cinemetro.MainMenu" />
+        </activity>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
