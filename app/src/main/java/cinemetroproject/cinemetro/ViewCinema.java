@@ -152,6 +152,7 @@ public class ViewCinema extends ActionBarActivity {
         public void onClick(View view) {
 
             Intent intent = new Intent(ViewCinema.this, RateActivity.class);
+            intent.putExtra("line", 1);
             intent.putExtra("button_id", idCinema+1);
             ViewCinema.this.startActivity(intent);
         }};

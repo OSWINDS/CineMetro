@@ -27,6 +27,7 @@ public class RateActivity extends ActionBarActivity {
     private RatingBar ratingBar;
     private AlertDialog.Builder dialog;
     private int id;
+    private int line;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -39,15 +40,19 @@ public class RateActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         id = intent.getIntExtra("button_id", 0);
+        line = intent.getIntExtra("line",0);
 
-        try {
-            Class res = R.drawable.class;
-            Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(id).get(0).getName());
-            int drawableId = field.getInt(null);
-            LinearLayout linearLayout = (LinearLayout)findViewById(R.id.layout);
-            linearLayout.setBackgroundResource(drawableId);
-            linearLayout.getBackground().setAlpha(128); //opacity gia to Background
-        } catch (Exception e) {}
+
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(id).get(0).getName());
+                int drawableId = field.getInt(null);
+                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout);
+                linearLayout.setBackgroundResource(drawableId);
+                linearLayout.getBackground().setAlpha(128); //opacity gia to Background
+            } catch (Exception e) {
+            }
+
 
         skipButton = (Button) findViewById(R.id.skipButton);
         skipButton.setOnClickListener(skipButtonOnClickListener);

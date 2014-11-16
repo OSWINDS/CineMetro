@@ -1,9 +1,16 @@
 package cinemetroproject.cinemetro;
 
 import android.annotation.TargetApi;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -11,8 +18,24 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
 import com.parse.Parse;
+
+import java.util.ArrayList;
+import android.os.Bundle;
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainMenu extends ActionBarActivity {
 
@@ -20,9 +43,13 @@ public class MainMenu extends ActionBarActivity {
     private Button navigationButton;
     private Button linesButton;
     private Button aboutButton;
-    private Button testdbButton;
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    String[] menu;
+    DrawerLayout dLayout;
+    ListView dList;
+    ArrayAdapter<String> adapter;
+
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,7 +61,6 @@ public class MainMenu extends ActionBarActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_menu);
 
-
         navigationButton = (Button) findViewById(R.id.navigation_button);
         navigationButton.setOnClickListener(navigationButtonOnClickListener);
 
@@ -43,6 +69,26 @@ public class MainMenu extends ActionBarActivity {
 
         aboutButton = (Button) findViewById(R.id.about_button);
         aboutButton.setOnClickListener(aboutButtonOnClickListener);
+
+        menu = new String[]{"Profile","Language"};
+        dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        dList = (ListView) findViewById(R.id.left_drawer);
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
+        dList.setAdapter(adapter);
+        dList.setSelector(android.R.color.holo_blue_dark);
+        dList.setOnItemClickListener(new OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+                dLayout.closeDrawers();
+                Bundle args = new Bundle();
+                args.putString("Menu", ""+position);
+                Fragment detail = new DetailFragment();
+                detail.setArguments(args);
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
+            }
+        });
+
 
         Parse.initialize(this, "swhW7tnXLp2qdr7ZqbQ1JRCZMuRaQE5CXY12mp7c", "lrNR1Wa2YThA7SjlkitdaCtMmEBJJM69bHcwpifD");
     }
@@ -58,27 +104,28 @@ public class MainMenu extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Take appropriate action for each action item click
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        //return super.onOptionsItemSelected(item);
-        switch (item.getItemId()) {
+         int id = item.getItemId();
+         if (id == R.id.action_settings) {
+             return true;
+         }
+         //return super.onOptionsItemSelected(item);
+         switch (item.getItemId()) {
             case R.id.profile:
-                Intent intent;
+            Intent intent;
 
-                if(DbAdapter.getInstance().getActiveUser()==null){
-                    intent=new Intent(MainMenu.this, LogIn.class);
-                    startActivity(intent);
-                    return true;
-                }
+             if(DbAdapter.getInstance().getActiveUser()==null){
+             intent=new Intent(MainMenu.this, LogIn.class);
+             startActivity(intent);
+             return true;
+         }
 
-                intent=new Intent(MainMenu.this, ProfileActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+         intent=new Intent(MainMenu.this, ProfileActivity.class);
+         startActivity(intent);
+         return true;
+         default:
+         return super.onOptionsItemSelected(item);
+         }
+
     }
 
     @Override

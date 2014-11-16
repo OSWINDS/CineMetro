@@ -15,6 +15,7 @@
     <string name="profile_activity">Profile activity!</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_log_in">LogIn</string>
+    <string name="title_activity_language">Language</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_sign_up">SignUp</string>
     <string name="Email">E-mail:</string>
@@ -25,6 +26,7 @@
     <string name="go"> Go </string>
     <string name="skip"> Skip </string>
     <string name="noApp"> This application is not installed </string>
+    <string name="select_language"> Select Language </string>
     <string name="about_text1">
             \n\t Το CineMetro είναι μια εφαρμογή για κινητές συσκευές, η οποία σχεδιάζεται εθελοντικά από ομάδα φοιτητών του Τμήματος Πληροφορικής του Α.Π.Θ., υπό την εποπτεία της καθηγήτριας Αθηνάς Βακάλη, σε συνεργασία με τη δημοσιογράφο και ιστορικό κινηματογράφου Δρ. Αγγελική Μυλωνάκη και τον δημοσιογράφο και κριτικό κινηματογράφου κ. Ιωάννη Γκροσδάνη.
             Στην iOS εφαρμοφή εργάστηκε ο Γιώργος Χαριστός ενώ η ομάδα των φοιτητών που εργάστηκε στην Android εφαρμογή απαρτίζεται από τους
