@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context=".MainMenu">
 
-    <!--  android:divider="@android:color/transparent"-->
     <android.support.v4.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/drawer_layout"
@@ -15,85 +14,80 @@
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+            <LinearLayout android:id="@+id/fullscreen_content_controls"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                tools:ignore="UselessParent"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/imageView"
+                    android:background="@drawable/logo_background"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <!-- Navigation Button -->
+                <Button
+                    android:text="@string/map_button"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_background"
+                    android:textColor="@color/letter_colour"
+                    android:textStyle="bold"
+                    android:textSize="10pt"
+                    android:id="@+id/navigation_button"
+                    />
+
+                <!-- Lines Button -->
+                <Button
+                    android:text="@string/lines_button"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/button_background"
+                    android:textColor="@color/letter_colour"
+                    android:textSize="10pt"
+                    android:textStyle="bold"
+                    android:id="@+id/lines_button"
+                    />
+
+                <!-- About Button -->
+                <Button
+                    android:text="@string/about_button"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/button_background"
+                    android:textColor="@color/letter_colour"
+                    android:textSize="10pt"
+                    android:textStyle="bold"
+                    android:id="@+id/about_button"
+                    />
+
+            </LinearLayout>
+        </FrameLayout>
+
         <ListView android:id="@+id/left_drawer"
-            android:layout_width="240dp"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:choiceMode="singleChoice"
-
             android:dividerHeight="0dp"
-            android:background="#fff"/>
+            android:background="@color/my_blue"
+            android:divider="@android:color/transparent" />
     </android.support.v4.widget.DrawerLayout>
 
-        <LinearLayout android:id="@+id/fullscreen_content_controls"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            tools:ignore="UselessParent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:weightSum="1">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:id="@+id/imageView"
-                android:background="@drawable/logo_background"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center_horizontal"
-                 />
-
-            <!-- Navigation Button -->
-            <Button
-                android:text="@string/map_button"
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button_background"
-                android:textColor="@color/letter_colour"
-                android:textStyle="bold"
-                android:textSize="10pt"
-                android:id="@+id/navigation_button"
-                />
-
-            <!-- Lines Button -->
-            <Button
-                android:text="@string/lines_button"
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_marginTop="1dp"
-                android:background="@drawable/button_background"
-                android:textColor="@color/letter_colour"
-                android:textSize="10pt"
-                android:textStyle="bold"
-                android:id="@+id/lines_button"
-                />
-
-            <!-- About Button -->
-            <Button
-                android:text="@string/about_button"
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_marginTop="1dp"
-                android:background="@drawable/button_background"
-                android:textColor="@color/letter_colour"
-                android:textSize="10pt"
-                android:textStyle="bold"
-                android:id="@+id/about_button"
-                />
-
-        </LinearLayout>
 
 </RelativeLayout>

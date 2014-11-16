@@ -18,6 +18,9 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:choiceMode="singleChoice"
+            android:dividerHeight="0dp"
             android:id="@+id/language">
          </ListView>
 

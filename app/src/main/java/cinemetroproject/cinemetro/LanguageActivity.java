@@ -1,12 +1,8 @@
 package cinemetroproject.cinemetro;
 
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +21,7 @@ public class LanguageActivity extends ActionBarActivity {
         private ListView listview;
         private ArrayAdapter<String> listAdapter;
         private String[] menu = new String[]{"Ελληνικά","English"};
+        private int lang=-1;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +30,11 @@ public class LanguageActivity extends ActionBarActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
             setContentView(R.layout.activity_language);
 
-
             listview = (ListView)findViewById(R.id.language);
 
-            listAdapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice,menu);
+            listAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice,menu);
             listview.setAdapter(listAdapter);
 
-            //listview.setSelector(android.R.color.holo_blue_bright);
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
@@ -49,18 +44,21 @@ public class LanguageActivity extends ActionBarActivity {
                         c.locale = new Locale("en", "en");
                         getResources().updateConfiguration(c, getResources().getDisplayMetrics());
                         DbAdapter.getInstance().changeLanguage(Language.ENGLISH);
-                        Intent intent = getIntent();
+                        onResume();
+                      /**  Intent intent = getIntent();
                         finish();
-                        startActivity(intent);
+                        startActivity(intent);*/
                     } else {
                         Configuration c = new Configuration(getResources().getConfiguration());
                         c.locale = new Locale("el", "EL");
                         getResources().updateConfiguration(c, getResources().getDisplayMetrics());
                         DbAdapter.getInstance().changeLanguage(Language.GREEK);
-                        Intent intent = getIntent();
+                        onResume();
+                        /*Intent intent = getIntent();
                         finish();
-                        startActivity(intent);
+                        startActivity(intent);*/
                     }
+
                 }
             });
 
