@@ -139,6 +139,15 @@ final class DbAdapter {
     public void setDB(DbHelper db)
     {
         this.db = db;
+        if(!stations.isEmpty())
+        {
+            this.stations.clear();
+            this.routes.clear();
+            this.milestones.clear();
+            this.timelineStations.clear();
+            this.movies.clear();
+            this.photos.clear();
+        }
         this.fillArrays();
         if ( stations.isEmpty())
         {
@@ -157,6 +166,11 @@ final class DbAdapter {
             }
         }
         this.fillArrays();
+    }
+
+    public Language getLanguage()
+    {
+        return db.getLanguage();
     }
 
     /**
@@ -584,7 +598,7 @@ final class DbAdapter {
         //add routes
         this.db.addRoute(new Route("Τα σινεμά της πόλης","red",1));
         this.db.addRoute(new Route("Θεσσαλονίκη μέσα απο τον ελληνικό κινηματογράφο","blue",1));
-        this.db.addRoute(new Route("Φεστιβάλ Κινηματογράφου Θεσσαλονίκης","green",1));
+        //this.db.addRoute(new Route("Φεστιβάλ Κινηματογράφου Θεσσαλονίκης","green",1));
 
 
         //add stations
@@ -1160,7 +1174,7 @@ final class DbAdapter {
         //add routes
         this.db.addRoute(new Route("Cinema theatres of the city","red",1));
         this.db.addRoute(new Route("Thessaloniki in Greek films","blue",1));
-        this.db.addRoute(new Route("Thessaloniki International Film Festival","green",1));
+        //this.db.addRoute(new Route("Thessaloniki International Film Festival","green",1));
 
         //add stations
         //Line 1
