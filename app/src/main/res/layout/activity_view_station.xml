@@ -43,9 +43,11 @@
 
             <!-- director -->
             <TextView
-                android:text="\n\n Σκηνοθεσία \n"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/direct"
+                android:paddingTop="10dp"
+                android:paddingBottom="4dp"
                 android:gravity="center_horizontal"
                 android:textSize="15dp"
                 android:id="@+id/director" />
@@ -68,9 +70,11 @@
 
             <!-- cast -->
             <TextView
-                android:text="\n\n Πρωταγωνιστούν \n"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/cast"
+                android:paddingTop="10dp"
+                android:paddingBottom="4dp"
                 android:gravity="center_horizontal"
                 android:textSize="15dp"
                 android:id="@+id/cast" />
@@ -89,9 +93,11 @@
 
             <!-- info -->
             <TextView
-                android:text="\n\n Πληροφορίες \n"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/info"
+                android:paddingTop="10dp"
+                android:paddingBottom="4dp"
                 android:gravity="center_horizontal"
                 android:textSize="15dp"
                 android:id="@+id/inf" />

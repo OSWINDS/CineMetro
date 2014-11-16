@@ -1,18 +1,11 @@
 package cinemetroproject.cinemetro;
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,18 +17,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.parse.Parse;
-
-import java.util.ArrayList;
-import android.os.Bundle;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.support.v4.widget.DrawerLayout;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 public class MainMenu extends ActionBarActivity {
 
@@ -80,15 +62,23 @@ public class MainMenu extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
                 dLayout.closeDrawers();
-                Bundle args = new Bundle();
-                args.putString("Menu", ""+position);
-                Fragment detail = new DetailFragment();
-                detail.setArguments(args);
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, detail).commit();
+                if (position == 0) {
+                    Intent intent;
+                    if(DbAdapter.getInstance().getActiveUser()==null){
+                        intent=new Intent(MainMenu.this, LogIn.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        intent = new Intent(MainMenu.this, ProfileActivity.class);
+                        startActivity(intent);
+                    }
+                }
+                if (position == 1) {
+                    Intent intent = new Intent(MainMenu.this, LanguageActivity.class);
+                    startActivity(intent);
+                }
             }
         });
-
 
         Parse.initialize(this, "swhW7tnXLp2qdr7ZqbQ1JRCZMuRaQE5CXY12mp7c", "lrNR1Wa2YThA7SjlkitdaCtMmEBJJM69bHcwpifD");
     }
@@ -111,19 +101,17 @@ public class MainMenu extends ActionBarActivity {
          //return super.onOptionsItemSelected(item);
          switch (item.getItemId()) {
             case R.id.profile:
-            Intent intent;
-
-             if(DbAdapter.getInstance().getActiveUser()==null){
-             intent=new Intent(MainMenu.this, LogIn.class);
-             startActivity(intent);
-             return true;
-         }
-
-         intent=new Intent(MainMenu.this, ProfileActivity.class);
-         startActivity(intent);
-         return true;
+                 Intent intent;
+                 if(DbAdapter.getInstance().getActiveUser()==null){
+                     intent=new Intent(MainMenu.this, LogIn.class);
+                     startActivity(intent);
+                     return true;
+                }
+                intent=new Intent(MainMenu.this, ProfileActivity.class);
+                startActivity(intent);
+                return true;
          default:
-         return super.onOptionsItemSelected(item);
+            return super.onOptionsItemSelected(item);
          }
 
     }
@@ -146,7 +134,6 @@ public class MainMenu extends ActionBarActivity {
 
     //Starts the lines activity when the button Lines is pressed
     View.OnClickListener linesButtonOnClickListener = new View.OnClickListener(){
-
         @Override
         public void onClick(View view) {
 

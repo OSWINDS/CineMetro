@@ -4,10 +4,10 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
 
-    <TextView
+ <!--   <TextView
         android:id="@+id/lang"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" /> -->
 
     <RadioButton
         android:id="@+id/radio_list"

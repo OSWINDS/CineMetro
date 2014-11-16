@@ -23,6 +23,11 @@
     <string name="title_activity_maps">Map</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_when_retrieving_data">error with data</string>
+    <string name="direct"> Director </string>
+    <string name="cast"> Cast </string>
+    <string name="info"> Information </string>
+    <string name="rate"> Rate this station </string>
+    <string name="points"> Points </string>
     <string name="go"> Go </string>
     <string name="skip"> Skip </string>
     <string name="noApp"> This application is not installed </string>

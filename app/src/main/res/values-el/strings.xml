@@ -23,6 +23,11 @@
     <string name="title_activity_language">Γλώσσα</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_when_retrieving_data">error with data</string>
+    <string name="direct"> Σκηνοθεσία </string>
+    <string name="cast"> Πρωταγωνιστούν </string>
+    <string name="info"> Πληροφορίες </string>
+    <string name="rate"> Βαθμολόγησε αυτή τη στάση </string>
+    <string name="points"> Πόντοι </string>
     <string name="go">  Συνέχησε  </string>
     <string name="skip">  Παράλειψη  </string>
     <string name="noApp"> Αυτή η εφαρμογή δεν είναι εγκατεστημένη</string>

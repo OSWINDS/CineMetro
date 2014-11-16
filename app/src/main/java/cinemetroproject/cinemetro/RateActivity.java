@@ -117,10 +117,10 @@ public class RateActivity extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            dialog.setTitle("Points");
+            dialog.setTitle(getResources().getString(R.string.points));
             DbAdapter.getInstance().addRating(id,ratingBar.getRating());
             DbAdapter.getInstance().addUserRating(id,0,ratingBar.getRating());
-            dialog.setMessage("You gave " + ratingBar.getRating() + " points");
+            dialog.setMessage("+" + ratingBar.getRating());
             dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
