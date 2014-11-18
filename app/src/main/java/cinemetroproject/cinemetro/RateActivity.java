@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.app.AlertDialog;
-
 import java.lang.reflect.Field;
 
 /**
@@ -42,7 +42,17 @@ public class RateActivity extends ActionBarActivity {
         id = intent.getIntExtra("button_id", 0);
         line = intent.getIntExtra("line",0);
 
-
+        if (line == 3){
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField(DbAdapter.getInstance().getTimelineStationBackground(id));
+                int drawableId = field.getInt(null);
+                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout);
+                linearLayout.setBackgroundResource(drawableId);
+                linearLayout.getBackground().setAlpha(128); //opacity gia to Background
+            } catch (Exception e) {}
+        }
+        else {
             try {
                 Class res = R.drawable.class;
                 Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(id).get(0).getName());
@@ -50,9 +60,8 @@ public class RateActivity extends ActionBarActivity {
                 LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout);
                 linearLayout.setBackgroundResource(drawableId);
                 linearLayout.getBackground().setAlpha(128); //opacity gia to Background
-            } catch (Exception e) {
-            }
-
+            } catch (Exception e) {}
+        }
 
         skipButton = (Button) findViewById(R.id.skipButton);
         skipButton.setOnClickListener(skipButtonOnClickListener);
@@ -107,9 +116,8 @@ public class RateActivity extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            Intent intent = new Intent(RateActivity.this, MapActivity.class);
-            RateActivity.this.startActivity(intent);
-            //finish();
+            onBackPressed();
+            //return true;
         }};
 
     View.OnClickListener goButtonOnClickListener = new View.OnClickListener() {
@@ -124,9 +132,8 @@ public class RateActivity extends ActionBarActivity {
             dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Intent intent = new Intent(RateActivity.this, MapActivity.class);
-                    RateActivity.this.startActivity(intent);
-                    finish();
+                    onBackPressed();
+
 
                 }
             });

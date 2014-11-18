@@ -94,7 +94,7 @@
         </activity>
         <activity
             android:name=".ViewStation"
-            android:label="ViewStation"
+            android:label="@string/title_activity_ViewStation"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:parentActivityName=".LinesActivity">
@@ -104,7 +104,7 @@
         </activity>
         <activity
             android:name=".RateActivity"
-            android:label="Rate"
+            android:label="@string/title_activity_RateActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:parentActivityName=".ViewStation">
@@ -114,7 +114,7 @@
         </activity>
         <activity
             android:name=".ViewCinema"
-            android:label="ViewCinema"
+            android:label="@string/title_activity_ViewCinema"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize|locale"
             android:parentActivityName=".LinesActivity">

@@ -85,7 +85,7 @@
             android:layout_gravity="start"
             android:choiceMode="singleChoice"
             android:dividerHeight="0dp"
-            android:background="@color/my_blue"
+            android:background="@color/black_overlay"
             android:divider="@android:color/transparent" />
     </android.support.v4.widget.DrawerLayout>
 

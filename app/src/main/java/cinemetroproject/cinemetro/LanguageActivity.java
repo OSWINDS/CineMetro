@@ -1,5 +1,6 @@
 package cinemetroproject.cinemetro;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.Locale;
@@ -21,7 +23,7 @@ public class LanguageActivity extends ActionBarActivity {
         private ListView listview;
         private ArrayAdapter<String> listAdapter;
         private String[] menu = new String[]{"Ελληνικά","English"};
-        private int lang=-1;
+        private Button saveButton;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +46,20 @@ public class LanguageActivity extends ActionBarActivity {
                         c.locale = new Locale("en", "en");
                         getResources().updateConfiguration(c, getResources().getDisplayMetrics());
                         DbAdapter.getInstance().changeLanguage(Language.ENGLISH);
-                        onResume();
-                      /**  Intent intent = getIntent();
-                        finish();
-                        startActivity(intent);*/
+                        saveButton.setEnabled(true);
                     } else {
                         Configuration c = new Configuration(getResources().getConfiguration());
                         c.locale = new Locale("el", "EL");
                         getResources().updateConfiguration(c, getResources().getDisplayMetrics());
                         DbAdapter.getInstance().changeLanguage(Language.GREEK);
-                        onResume();
-                        /*Intent intent = getIntent();
-                        finish();
-                        startActivity(intent);*/
+                        saveButton.setEnabled(true);
                     }
-
                 }
             });
+
+            saveButton = (Button) findViewById(R.id.save);
+            saveButton.setEnabled(false);
+            saveButton.setOnClickListener(saveOnClickListener);
 
         }
 
@@ -86,5 +85,14 @@ public class LanguageActivity extends ActionBarActivity {
 
             return super.onOptionsItemSelected(item);
         }
+
+    View.OnClickListener saveOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = new Intent(LanguageActivity.this, MainMenu.class);
+            LanguageActivity.this.startActivity(intent);
+        }};
 
 }

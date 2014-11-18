@@ -110,7 +110,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/button_background"
                 android:orientation="horizontal"
-                android:text="@string/go"
+                android:text="@string/rate_button"
                 android:textAlignment="center"
                 android:textColor="@color/letter_colour" />
 

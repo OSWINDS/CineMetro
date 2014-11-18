@@ -55,7 +55,10 @@ public class MainMenu extends ActionBarActivity {
         menu = new String[]{"Profile","Language"};
         dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         dList = (ListView) findViewById(R.id.left_drawer);
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
+        //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
+
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,menu);
+
         dList.setAdapter(adapter);
         dList.setSelector(android.R.color.holo_blue_dark);
         dList.setOnItemClickListener(new OnItemClickListener(){

@@ -14,6 +14,9 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="profile_activity">Profile activity!</string>
     <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_ViewStation">Movie</string>
+    <string name="title_activity_ViewCinema">Cinema</string>
+    <string name="title_activity_RateActivity">Rating</string>
     <string name="title_activity_log_in">LogIn</string>
     <string name="title_activity_language">Language</string>
     <string name="hello_world">Hello world!</string>
@@ -28,27 +31,31 @@
     <string name="info"> Information </string>
     <string name="rate"> Rate this station </string>
     <string name="points"> Points </string>
-    <string name="go"> Go </string>
+    <string name="rate_button"> Rate </string>
     <string name="skip"> Skip </string>
     <string name="noApp"> This application is not installed </string>
     <string name="select_language"> Select Language </string>
     <string name="left_scroll_item1">Profile</string>
     <string name="left_scroll_item2">Language</string>
+    <string name="save">Save</string>
     <string name="about_text1">
-            \n\t Το CineMetro είναι μια εφαρμογή για κινητές συσκευές, η οποία σχεδιάζεται εθελοντικά από ομάδα φοιτητών του Τμήματος Πληροφορικής του Α.Π.Θ., υπό την εποπτεία της καθηγήτριας Αθηνάς Βακάλη, σε συνεργασία με τη δημοσιογράφο και ιστορικό κινηματογράφου Δρ. Αγγελική Μυλωνάκη και τον δημοσιογράφο και κριτικό κινηματογράφου κ. Ιωάννη Γκροσδάνη.
-            Στην iOS εφαρμοφή εργάστηκε ο Γιώργος Χαριστός ενώ η ομάδα των φοιτητών που εργάστηκε στην Android εφαρμογή απαρτίζεται από τους
-            Βαενά Παρασκευή, Καλτιμιρίδου Ευφροσύνη, Πανισκάκη Κυριακή, Παπάζογλου Χρήστος-Παναγιώτης και Συρτάρη Χαρίκλεια.\n
+            \n\tCine Metro is an application for mobile phones and tablets, which is designed and developed voluntarily by a student group of the
+    Informatics Department of the Aristotle University of Thessaloniki, under the guidance of professor Athena Vakali,
+    in collaboration with Dr Angeliki Milonaki (journalist, film historian) and Yannis Grosdanis (journalist, film critic).
+    The students joining the developers team are George Xaristos, who developed and designed the iOS app and for the Android app
+    Vaena Paraskeyi, Kaltirimidou Efrosini, Paniskaki Kyriaki, Papazoglou Christos-Panagiwtis and Sirtari Chariklia.
     </string>
     <string name="about_text2">
-        \n\t Η εφαρμογή είναι εκπαιδευτικού χαρακτήρα, με στόχο να προσφέρει γνώσεις και να εξοικειώσει τους πολίτες με την κινηματογραφική ιστορία της Θεσσαλονίκης, μέσω μιας σύγχρονης εμπειρίας πλοήγησης στην πόλη.
-        Σημεία της πόλης στα οποία υπάρχει ενδεικτικό υλικό από ταινίες θα ορίζονται ως «στάσεις» και οι πολίτες θα μπορούν σε κάθε στάση να δουν το εκάστοτε υλικό (π.χ. φωτογραφίες, μικρό κείμενο, ήχο/video) εάν είναι διαθέσιμο.
+        \n\t The application is an educational tool aiming at informing as well as familiarizing the public about Thessaloniki’s rich
+    cinematic history through a modern navigation experience in the city.
+    Various city’s landmarks, which are linked to films shot in Thessaloniki, will be used as “stations”, where citizens can step
+    by in order to see what’s available (e.g. photos, texts, videos, podcasts, etc).
     </string>
     <string name="about_text3">
-        \n\t Τα πνευματικά δικαιώματα του περιεχομένου (εικόνες, πληροφορίες για τις ταινίες) της εφαρμογής ανήκουν στους δημιουργούς τους.\n
-        Πηγές φωτογραφικού υλικού:
-        Finos Films, Ελληνικό Κέντρο Κινηματογράφου, Φεστιβάλ Κινηματογράφου Θεσσαλονίκης, Κοινωνία Κληρονόμων Θ. Αγγελόπουλου\n
-        \t Η εφαρμογή λειτουργεί για έκδοση\n
+        \n\t Image rights are held by the respective copyright owners as indicated in the app.
     </string>
+
+
 
 
 

@@ -205,7 +205,7 @@ public class Timeline extends ActionBarActivity {
 
             Intent intent = new Intent(Timeline.this, RateActivity.class);
             intent.putExtra("line", 3);
-            intent.putExtra("button_id", idCinema+14);
+            intent.putExtra("button_id", idCinema-14);
             Timeline.this.startActivity(intent);
         }};
 
