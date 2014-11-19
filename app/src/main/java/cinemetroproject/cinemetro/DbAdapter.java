@@ -7,6 +7,7 @@ import com.parse.ParseQuery;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -448,9 +449,9 @@ final class DbAdapter {
     {
 
         //initialize arrays for each line
-        final float[] redLineStations = new float[getStationByRoute(0).size()];
-        final float[] blueLineStations = new float[getStationByRoute(1).size()];
-        final float[] greenLineStations = new float[getStationByRoute(2).size()];
+        final ArrayList<Float> blueLineStations = new ArrayList<Float>();
+        final ArrayList<Float> greenLineStations = new ArrayList<Float>();
+        final ArrayList<Float> redLineStations = new ArrayList<Float>();
 
         final float redLine;
         final float blueLine;
@@ -460,24 +461,24 @@ final class DbAdapter {
         float sum = 0;
         int station_id = 1;
         //get his rating for each station for each line
-        for(int i=0; i<redLineStations.length; i++, station_id++)
+        for(int i=0; i<getStationByRoute(1).size(); i++, station_id++)
         {
-            redLineStations[i] = getUserRatingForStation(station_id, user.getId());
-            sum += redLineStations[i];
+            redLineStations.add(getUserRatingForStation(station_id, user.getId()));
+            sum += redLineStations.get(i);
         }
         redLine = sum;
         sum = 0;
-        for(int i=0; i<blueLineStations.length; i++, station_id++)
+        for(int i=0; i<getStationByRoute(2).size(); i++, station_id++)
         {
-            blueLineStations[i] = getUserRatingForStation(station_id, user.getId());
-            sum += blueLineStations[i];
+            blueLineStations.add(getUserRatingForStation(station_id, user.getId()));
+            sum += blueLineStations.get(i);
         }
         blueLine = sum;
         sum = 0;
-        for(int i=0; i<greenLineStations.length; i++, station_id++)
+        for(int i=0; i<getStationByRoute(3).size(); i++, station_id++)
         {
-            greenLineStations[i] = getUserRatingForStation(station_id, user.getId());
-            sum += greenLineStations[i];
+            greenLineStations.add(new Float(0));
+            sum += greenLineStations.get(i);
         }
         greenLine = sum;
         totalPoints = redLine + blueLine + greenLine;
@@ -515,9 +516,9 @@ final class DbAdapter {
                     parse_user.put("blueLine", blueLine);
                     parse_user.put("greenLine", greenLine);
                     parse_user.put("totalPoints", totalPoints);
-                    parse_user.put("redLineStations", redLineStations);
-                    parse_user.put("greenLineStations", greenLineStations);
-                    parse_user.put("blueLineStations", blueLineStations);
+                    parse_user.addAllUnique("redLineStations", Arrays.asList(redLineStations));
+                    parse_user.addAllUnique("blueLineStations", Arrays.asList(blueLineStations));
+                    parse_user.addAllUnique("greenLineStations", Arrays.asList(greenLineStations));
                     parse_user.saveInBackground();
                 }
             }

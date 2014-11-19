@@ -951,7 +951,7 @@ public class DbHelper extends SQLiteOpenHelper {
             return rating;
         }
         else {
-            return 0;
+            return -1;
         }
     }
 
