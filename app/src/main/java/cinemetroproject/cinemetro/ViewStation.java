@@ -195,10 +195,41 @@ public class ViewStation extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            Intent intent = new Intent(ViewStation.this, RateActivity.class);
-            intent.putExtra("line", 2);
-            intent.putExtra("button_id", ++idStation);
-            ViewStation.this.startActivity(intent);
+            //user should sign up
+            if(DbAdapter.getInstance().getActiveUser() == null){
+                dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
+                dialog.setMessage(getResources().getString(R.string.must_sign_up));
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                dialog.setIcon(R.drawable.logo_background);
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+            //user has already rated for this station
+            else if (DbAdapter.getInstance().getUserRatingForStation(idStation, DbAdapter.getInstance().getActiveUser().getId()) == -1){
+                dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
+                dialog.setMessage(getResources().getString(R.string.already_rate));
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                dialog.setIcon(R.drawable.logo_background);
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+            //user can rate
+            else {
+                Intent intent = new Intent(ViewStation.this, RateActivity.class);
+                intent.putExtra("line", 2);
+                intent.putExtra("button_id", ++idStation);
+                ViewStation.this.startActivity(intent);
+            }
         }};
 
     public class sharingOnClickListener implements View.OnClickListener {

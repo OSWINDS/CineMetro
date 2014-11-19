@@ -38,6 +38,8 @@
     <string name="left_scroll_item1">Profile</string>
     <string name="left_scroll_item2">Language</string>
     <string name="save">Save</string>
+    <string name="must_sign_up">You should log in order to rate for this station </string>
+    <string name="already_rate">You have rate for this station </string>
     <string name="about_text1">
             \n\tCine Metro is an application for mobile phones and tablets, which is designed and developed voluntarily by a student group of the
     Informatics Department of the Aristotle University of Thessaloniki, under the guidance of professor Athena Vakali,

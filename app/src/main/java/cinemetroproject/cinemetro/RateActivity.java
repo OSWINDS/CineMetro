@@ -127,20 +127,17 @@ public class RateActivity extends ActionBarActivity {
 
             dialog.setTitle(getResources().getString(R.string.points));
             DbAdapter.getInstance().addRating(id,ratingBar.getRating());
-            DbAdapter.getInstance().addUserRating(id,0,ratingBar.getRating());
+            DbAdapter.getInstance().addUserRating(id,DbAdapter.getInstance().getActiveUser().getId(),ratingBar.getRating());
             dialog.setMessage("+" + ratingBar.getRating());
             dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     onBackPressed();
-
-
                 }
             });
             dialog.setIcon(R.drawable.pressed);
             AlertDialog alert = dialog.create();
             alert.show();
-
         }};
 
 }
