@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -54,11 +55,35 @@ public class MainMenu extends ActionBarActivity {
 
         menu = new String[]{"Profile","Language"};
         dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+        ListViewAdapter adapter = new ListViewAdapter(MainMenu.this, menu);
         dList = (ListView) findViewById(R.id.left_drawer);
-        //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
+        dList.setAdapter(adapter);
+        dList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                dLayout.closeDrawers();
+                if (position == 0) {
+                    Intent intent;
+                    if(DbAdapter.getInstance().getActiveUser()==null){
+                        intent=new Intent(MainMenu.this, LogIn.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        intent = new Intent(MainMenu.this, ProfileActivity.class);
+                        startActivity(intent);
+                    }
+                }
+                if (position == 1) {
+                    Intent intent = new Intent(MainMenu.this, LanguageActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
 
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,menu);
 
+       /** adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
         dList.setAdapter(adapter);
         dList.setSelector(android.R.color.holo_blue_dark);
         dList.setOnItemClickListener(new OnItemClickListener(){
@@ -81,7 +106,7 @@ public class MainMenu extends ActionBarActivity {
                     startActivity(intent);
                 }
             }
-        });
+        });*/
 
         Parse.initialize(this, "swhW7tnXLp2qdr7ZqbQ1JRCZMuRaQE5CXY12mp7c", "lrNR1Wa2YThA7SjlkitdaCtMmEBJJM69bHcwpifD");
     }
@@ -113,6 +138,13 @@ public class MainMenu extends ActionBarActivity {
                 intent=new Intent(MainMenu.this, ProfileActivity.class);
                 startActivity(intent);
                 return true;
+             case R.id.left_scroll:
+                 if (dLayout.isDrawerOpen(Gravity.LEFT))
+                     dLayout.closeDrawers();
+                 else
+
+                     dLayout.openDrawer(Gravity.LEFT);
+                 return true;
          default:
             return super.onOptionsItemSelected(item);
          }

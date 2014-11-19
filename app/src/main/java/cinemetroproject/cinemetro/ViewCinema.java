@@ -161,7 +161,6 @@ public class ViewCinema extends ActionBarActivity {
                         dialog.setCancelable(true);
                     }
                 });
-                dialog.setIcon(R.drawable.logo_background);
                 AlertDialog alert = dialog.create();
                 alert.show();
             }
@@ -175,7 +174,6 @@ public class ViewCinema extends ActionBarActivity {
                         dialog.setCancelable(true);
                     }
                 });
-                dialog.setIcon(R.drawable.logo_background);
                 AlertDialog alert = dialog.create();
                 alert.show();
             }

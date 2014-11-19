@@ -3,13 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- left scroll drawer -->
+    <item
+        android:id="@+id/left_scroll"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_drawer"
+        android:title="Settings"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
 
     <!-- Settings Profile -->
     <item
         android:id="@+id/profile"
         app:showAsAction="always"
         android:icon="@drawable/ic_menu_myplaces"
-        android:title="Settings" />
+        android:title="Settings"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"/>
 
 
 </menu>

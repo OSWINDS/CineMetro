@@ -214,7 +214,6 @@ public class Timeline extends ActionBarActivity {
                         dialog.setCancelable(true);
                     }
                 });
-                dialog.setIcon(R.drawable.logo_background);
                 AlertDialog alert = dialog.create();
                 alert.show();
             }
@@ -228,7 +227,6 @@ public class Timeline extends ActionBarActivity {
                         dialog.setCancelable(true);
                     }
                 });
-                dialog.setIcon(R.drawable.logo_background);
                 AlertDialog alert = dialog.create();
                 alert.show();
             }
