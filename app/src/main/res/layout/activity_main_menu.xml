@@ -21,60 +21,57 @@
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 tools:ignore="UselessParent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:background="@drawable/background1">
 
                 <ImageView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="200dp"
-                    android:id="@+id/imageView"
-                    android:background="@drawable/logo_background"
-                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/logo"
                     />
 
-                <!-- Navigation Button -->
-                <Button
-                    android:text="@string/map_button"
-                    android:layout_width="150dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_horizontal"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="50dp"
                     android:orientation="vertical"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/button_background"
-                    android:textColor="@color/letter_colour"
-                    android:textStyle="bold"
-                    android:textSize="10pt"
-                    android:id="@+id/navigation_button"
-                    />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    >
+                    <!-- Navigation Button -->
+                    <Button
+                        android:text="@string/map_button"
+                        android:layout_width="245dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/cinemetro_button"
+                        android:textColor="#ffe23543"
+                        android:textSize="10pt"
+                        android:id="@+id/navigation_button"
+                        android:layout_gravity="center_horizontal" />
 
-                <!-- Lines Button -->
-                <Button
-                    android:text="@string/lines_button"
-                    android:layout_width="150dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:layout_marginTop="1dp"
-                    android:background="@drawable/button_background"
-                    android:textColor="@color/letter_colour"
-                    android:textSize="10pt"
-                    android:textStyle="bold"
-                    android:id="@+id/lines_button"
-                    />
+                    <!-- Lines Button -->
+                    <Button
+                        android:layout_marginTop="10dp"
+                        android:text="@string/lines_button"
+                        android:layout_width="245dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/cinemetro_button"
+                        android:textColor="#ffe23543"
+                        android:textSize="10pt"
+                        android:id="@+id/lines_button"
+                        android:layout_gravity="center_horizontal" />
 
-                <!-- About Button -->
-                <Button
-                    android:text="@string/about_button"
-                    android:layout_width="150dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:layout_marginTop="1dp"
-                    android:background="@drawable/button_background"
-                    android:textColor="@color/letter_colour"
-                    android:textSize="10pt"
-                    android:textStyle="bold"
-                    android:id="@+id/about_button"
-                    />
+                    <!-- About Button -->
+                    <Button
+                        android:layout_marginTop="10dp"
+                        android:text="@string/about_button"
+                        android:layout_width="245dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/cinemetro_button"
+                        android:textColor="#ffe23543"
+                        android:textSize="10pt"
+                        android:id="@+id/about_button"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
 
             </LinearLayout>
         </FrameLayout>
