@@ -8,22 +8,24 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
+
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -32,7 +34,7 @@ import java.util.List;
  * Se ayto to activity anaparistatai to ViewStation
  * Dimiourgeitai otan epilegetai mia stasi apo LinesActivity
  */
-public class ViewStation extends ActionBarActivity {
+public class ViewStation extends FragmentActivity implements View.OnClickListener {
 
     private int idStation;
     private int actors; //count of actors
@@ -40,16 +42,24 @@ public class ViewStation extends ActionBarActivity {
     private TextView textViewTitle;
     private LinearLayout actorsScrollView;
     private TextView textViewDirector;
-    private ImageButton directorImage;
+    private Button directorImage;
     private TextView textViewInfo;
     private ImageButton showInMap;
-    private Button goAheadButton;
-    private HorizontalScrollView sharing;
+    private ImageButton goAheadButton;
+    private ImageButton share;
     private Button facebookButton;
     private Button twitterButton;
     private Button instagramButton;
     private Button pinterestButton;
     private AlertDialog.Builder dialog;
+
+    private int imag;
+    private ImageView image;
+    private  LinearLayout layout1;
+    private  LinearLayout general_layout;
+    private ViewFlipper vf;
+    private TextView info_cast;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,86 +67,152 @@ public class ViewStation extends ActionBarActivity {
         setContentView(R.layout.activity_view_station);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        image=(ImageView)findViewById(R.id.image);
+        general_layout=(LinearLayout)findViewById(R.id.general_layout);
+        vf = (ViewFlipper) findViewById(R.id.vf);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // (ViewStation)getActivity().getSupportActionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         idStation = intent.getIntExtra("button_id", 0);
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
         textViewTitle.setText(DbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + DbAdapter.getInstance().getMovieByStation(idStation).getYear());
-        textViewTitle.setBackgroundColor(getResources().getColor(R.color.line2));
+        // textViewTitle.setBackgroundColor(getResources().getColor(R.color.line2));
 
         /** Getting a reference to the ViewPager defined the layout file */
-        ViewPager pager = (ViewPager) findViewById(R.id.pagerImage);
+        // ViewPager pager = (ViewPager) findViewById(R.id.pagerImage);
+
+
+
 
         /** Getting fragment manager */
         FragmentManager fm = getSupportFragmentManager();
 
-        movieImages = DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size();
+
+
+
         /** Instantiating FragmentPagerAdapter */
-        ImageAdapter pagerAdapter = new ImageAdapter(fm, movieImages);
-        ImageFragment.id=idStation;
-        ImageFragment.line=2;
+       /* ImageAdapter pagerAdapter = new ImageAdapter(fm, movieImages/2);
+       ImageFragment.id=idStation;
+       ImageFragment.line=2;
 
         /** Setting the pagerAdapter to the pager object */
-        pager.setAdapter(pagerAdapter);
+        /*pager.setAdapter(pagerAdapter);
 
-        directorImage = (ImageButton)findViewById(R.id.directorImage);
+
+
+
+*/
+
+        for (int i = 0; i < DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size(); i++) {
+            try {
+                Class res = R.drawable.class;
+                Field field = res.getField(DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).get(i).getName());
+                int drawableId = field.getInt(null);
+                ImageView imageView = new ImageView(ViewStation.this);
+                imageView.setImageResource(drawableId);
+                vf.addView(imageView);
+
+            } catch (Exception e) {}
+        }
+
+
+        vf.setAutoStart(true);
+        vf.setFlipInterval(4000);
+        vf.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_in));
+        vf.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_out));
+        vf.startFlipping();
+
+        actors = DbAdapter.getInstance().getMovieByStation(idStation).getActors().size()+1;
+        actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
+
+        View director = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.actor, null);
+        Button imageDirector = (Button) director.findViewById(R.id.actorImage);
+        Button nameDirector = (Button) director.findViewById(R.id.actorName);
+        nameDirector.setBackgroundColor(Color.WHITE);
+
         try {
             Class res = R.drawable.class;
             Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(0).getName());
             int drawableId = field.getInt(null);
-            directorImage.setBackgroundResource(drawableId);
+            imageDirector.setBackgroundResource(drawableId);
         } catch (Exception e) {}
+        String string1 = DbAdapter.getInstance().getMovieByStation(idStation).getDirector();
+        String[] parts1 = string1.split(" ");
+        nameDirector.setText(parts1[0] + "\n" + parts1[1]);
+        nameDirector.setTextSize(12);
+        nameDirector.setTextColor(Color.argb(255, 9, 0, 100));
 
-        textViewDirector = (TextView)findViewById(R.id.directorName);
-        textViewDirector.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
+        actorsScrollView.addView(director);
 
-        actors = DbAdapter.getInstance().getMovieByStation(idStation).getActors().size();
-        actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
-
-        for (int i=0; i<actors; i++) {
+        for (int i=1; i<actors; i++) {
             View actor = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.actor, null);
             Button imageActor = (Button) actor.findViewById(R.id.actorImage);
             Button nameActor = (Button) actor.findViewById(R.id.actorName);
+            nameActor.setBackgroundColor(Color.WHITE);
+
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(i+1).getName());
+                Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(i).getName());
                 int drawableId = field.getInt(null);
                 imageActor.setBackgroundResource(drawableId);
             } catch (Exception e) {}
-            String string = DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i);
+            String string = DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i-1);
             String[] parts = string.split(" ");
             nameActor.setText(parts[0] + "\n" + parts[1]);
+            nameActor.setTextSize(12);
+            nameActor.setTextColor(Color.argb(255, 9, 0, 100));
 
             actorsScrollView.addView(actor);
         }
 
+
         textViewInfo = (TextView)findViewById(R.id.info);
         textViewInfo.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDescription());
+        layout1=(LinearLayout)findViewById(R.id.layout1);
 
         showInMap = (ImageButton)findViewById(R.id.showInMap);
         showInMap.setOnClickListener(showInMapButtonOnClickListener);
 
-        goAheadButton = (Button) findViewById(R.id.go_ahead_button);
+        goAheadButton = (ImageButton)findViewById(R.id.go_ahead);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
 
-        sharing = (HorizontalScrollView) findViewById(R.id.sharing);
+        share = (ImageButton)findViewById(R.id.share);
+        share.setOnClickListener(ShareButtonOnClickListener);
+
+
 
         facebookButton = (Button) findViewById(R.id.facebook_button);
-        facebookButton.setOnClickListener(new sharingOnClickListener("facebook"));
+        facebookButton.setOnClickListener(facebookButtonOnClickListener);
+        facebookButton.setVisibility(View.INVISIBLE);
 
         twitterButton = (Button) findViewById(R.id.twitter_button);
-        twitterButton.setOnClickListener(new sharingOnClickListener("twitter"));
+        twitterButton.setOnClickListener(twitterButtonOnClickListener);
+        twitterButton.setVisibility(View.INVISIBLE);
 
         instagramButton = (Button) findViewById(R.id.instagram_button);
-        instagramButton.setOnClickListener(new sharingOnClickListener("instagram"));
+        instagramButton.setOnClickListener(instagramButtonOnClickListener);
+        instagramButton.setVisibility(View.INVISIBLE);
 
         pinterestButton = (Button) findViewById(R.id.pinterest_button);
-        pinterestButton.setOnClickListener(new sharingOnClickListener("pinterest"));
+        pinterestButton.setOnClickListener(pinterestButtonOnClickListener);
+        pinterestButton.setVisibility(View.INVISIBLE);
 
         dialog = new AlertDialog.Builder(this);
+
+        info_cast=(TextView)findViewById(R.id.info_cast);
+        StringBuilder sb = new StringBuilder();
+        sb.append(Html.fromHtml("Σκηνοθέτης: "));
+        sb.append(" ").append(DbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
+        sb.append("\n"); sb.append("Παίζουν: ");
+        for (int i=1; i<actors; i++) {
+            sb.append(" ").append(DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i-1));
+            sb.append(" ");
+            sb.toString();
+        }
+        info_cast.setText(sb);
 
     }
 
@@ -195,53 +271,65 @@ public class ViewStation extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            //user should sign up
-            if(DbAdapter.getInstance().getActiveUser() == null){
-                dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
-                dialog.setMessage(getResources().getString(R.string.must_sign_up));
-                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.setCancelable(true);
-                    }
-                });
-                AlertDialog alert = dialog.create();
-                alert.show();
-            }
-            //user has already rated for this station
-            else if (DbAdapter.getInstance().getUserRatingForStation(idStation, DbAdapter.getInstance().getActiveUser().getId()) != -1){
-                dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
-                dialog.setMessage(getResources().getString(R.string.already_rate));
-                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.setCancelable(true);
-                    }
-                });
-                AlertDialog alert = dialog.create();
-                alert.show();
-            }
-            //user can rate
-            else {
-                Intent intent = new Intent(ViewStation.this, RateActivity.class);
-                intent.putExtra("line", 2);
-                intent.putExtra("button_id", ++idStation);
-                ViewStation.this.startActivity(intent);
-            }
+            Intent intent = new Intent(ViewStation.this, RateActivity.class);
+            intent.putExtra("button_id", ++idStation);
+            ViewStation.this.startActivity(intent);
         }};
 
-    public class sharingOnClickListener implements View.OnClickListener {
-
-        String appName;
-
-        public sharingOnClickListener(String appName) {
-            this.appName = appName;
-        }
+    View.OnClickListener ShareButtonOnClickListener  = new View.OnClickListener() {
 
         @Override
         public void onClick(View view) {
 
-            boolean found = false;
+
+
+            layout1.setBackgroundColor(Color.parseColor("#ff0b3f64"));
+            share.setVisibility(View.INVISIBLE);
+            goAheadButton.setVisibility(View.INVISIBLE);
+            showInMap.setVisibility(View.INVISIBLE);
+            facebookButton.setVisibility(View.VISIBLE);
+            twitterButton.setVisibility(View.VISIBLE);
+            instagramButton.setVisibility(View.VISIBLE);
+            pinterestButton.setVisibility(View.VISIBLE);
+            general_layout.setOnClickListener(layoutOnClickListener);
+
+        }
+    };
+
+    View.OnClickListener layoutOnClickListener  = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+            layout1.setBackgroundColor(Color.parseColor("#ff0b3f64"));
+            share.setVisibility(View.VISIBLE);
+            goAheadButton.setVisibility(View.VISIBLE);
+            showInMap.setVisibility(View.VISIBLE);
+            facebookButton.setVisibility(View.INVISIBLE);
+            twitterButton.setVisibility(View.INVISIBLE);
+            instagramButton.setVisibility(View.INVISIBLE);
+            pinterestButton.setVisibility(View.INVISIBLE);
+
+
+        }
+    };
+
+
+
+    @Override
+    public void onClick(View view) {
+
+
+
+
+    }
+
+
+    public View.OnClickListener facebookButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            boolean found=false;
 
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
@@ -249,22 +337,90 @@ public class ViewStation extends ActionBarActivity {
             PackageManager pm = view.getContext().getPackageManager();
             List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
             for (final ResolveInfo app : activityList) {
-                if ((app.activityInfo.name).contains(appName)) {
+                if ((app.activityInfo.name).contains("facebook")) {
                     final ActivityInfo activity = app.activityInfo;
                     final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
                     shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
                     shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                     shareIntent.setComponent(name);
                     view.getContext().startActivity(shareIntent);
-                    found = true;
+                    found=true;
                     break;
                 }
             }
-            if (found == false) {
+            if (found == false){
 
-                dialog.setTitle(appName);
+                dialog.setTitle("Facebook");
                 dialog.setMessage(R.string.noApp);
-                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+
+        }};
+
+    View.OnClickListener twitterButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            boolean found = false;
+
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle();
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            PackageManager pm = view.getContext().getPackageManager();
+            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+            for (final ResolveInfo app : activityList) {
+                if ((app.activityInfo.name).contains("twitter")) {
+                    final ActivityInfo activity = app.activityInfo;
+                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    shareIntent.setComponent(name);
+                    view.getContext().startActivity(shareIntent);
+                    found=true;
+                    break;
+                }
+            }
+            if (found == false){
+                dialog.setTitle("Twitter");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+
+        }};
+
+    View.OnClickListener instagramButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = getPackageManager().getLaunchIntentForPackage("com.instagram.android");
+            if (intent != null){
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.setPackage("com.instagram.android");
+                shareIntent.setType("image/jpeg");
+                startActivity(shareIntent);
+            }
+            else{
+                dialog.setTitle("Instagram");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialog.setCancelable(true);
@@ -274,4 +430,45 @@ public class ViewStation extends ActionBarActivity {
                 alert.show();
             }
         }};
+
+    View.OnClickListener pinterestButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            boolean found=false;
+
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idStation).getName();
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            PackageManager pm = view.getContext().getPackageManager();
+            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+            for (final ResolveInfo app : activityList) {
+                if ((app.activityInfo.name).contains("pinterest")) {
+                    final ActivityInfo activity = app.activityInfo;
+                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    shareIntent.setComponent(name);
+                    view.getContext().startActivity(shareIntent);
+                    found=true;
+                    break;
+                }
+            }
+            if (found == false){
+                dialog.setTitle("Pinterest");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+
+        }};
+
 }
