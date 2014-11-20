@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -28,27 +26,6 @@ public class Line3 extends ActionBarActivity {
     private LinearLayout scrollView;
     private ArrayList<String> titles;
 
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.line3);
-        scrollView = (LinearLayout)findViewById(R.id.scrollView);
-
-        for (int i=0; i<5; i++) {
-            Button stationButton = new Button(this);
-            stationButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getTimelineStations().get(i).getName());
-            stationButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            stationButton.setId(i+15);
-            stationButton.setWidth(100);
-            stationButton.setHeight(150);
-            //stationButton.setBackgroundColor(Color.parseColor("#dee6ef"));
-            stationButton.setCompoundDrawablesWithIntrinsicBounds( +DbAdapter.getInstance().getPhotoDrawableID("prasino"+Integer.toString(i+1)), 0, 0, 0);
-
-            stationButton.setOnClickListener(stationButtonOnClickListener);
-            scrollView.addView(stationButton);
-        }
-
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +33,11 @@ public class Line3 extends ActionBarActivity {
         setContentView(R.layout.lines);
 
         LinearLayout ll=(LinearLayout)findViewById(R.id.linear_layout_lines);
-        ll.setBackgroundColor(Color.argb(255, 27, 147, 68));
+        ll.setBackgroundColor(Color.parseColor("#115533"));
 
         TextView tv=(TextView)findViewById(R.id.lines_textView);
         tv.setText("Χρονολόγιο");
+
 
         titles=new ArrayList<String>();
 
@@ -110,9 +88,9 @@ public class Line3 extends ActionBarActivity {
         public void onClick(View view) {
 
 
-           Intent intent = new Intent(Line3.this, Timeline.class);
-           intent.putExtra("button_id", view.getId());
-           Line3.this.startActivity(intent);
+            Intent intent = new Intent(Line3.this, Timeline.class);
+            intent.putExtra("button_id", view.getId());
+            Line3.this.startActivity(intent);
         }};
 
     private class MyArrayAdapter extends ArrayAdapter<String> {
@@ -131,7 +109,7 @@ public class Line3 extends ActionBarActivity {
             image.setBackgroundResource(DbAdapter.getInstance().getPhotoDrawableID("prasino" + Integer.toString(pos+1)));
 
             TextView station = (TextView) itemView.findViewById(R.id.station_number);
-            station.setTextColor(Color.rgb(63, 129, 42));
+            station.setTextColor(Color.parseColor("#115533"));
             station.setText("Στάση " + (pos + 1));
 
             TextView title = (TextView) itemView.findViewById(R.id.station_title);

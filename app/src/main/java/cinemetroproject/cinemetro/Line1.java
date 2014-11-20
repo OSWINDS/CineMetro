@@ -10,15 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by vivi  on 10/9/2014.
@@ -28,44 +25,16 @@ public class Line1 extends ActionBarActivity {
     private LinearLayout scrollView;
     private ArrayList<String> titles;
 
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.line1);
-
-        scrollView = (LinearLayout)findViewById(R.id.scrollView);
-
-        for (int i=0; i<7; i++) {
-            Button cinemaButton = new Button(this);
-            cinemaButton.setText("Στάση "+(i+1)+"\n"+ DbAdapter.getInstance().getStations().get(i).getName());
-            cinemaButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            cinemaButton.setId(i);
-            cinemaButton.setWidth(100);
-            cinemaButton.setHeight(150);
-            cinemaButton.setCompoundDrawablesWithIntrinsicBounds( +DbAdapter.getInstance().getPhotoDrawableID("red"+Integer.toString(i+1)), 0, 0, 0);
-
-          //  cinemaButton.setBackgroundColor(Color.parseColor("#debebb"));
-
-
-
-            cinemaButton.setOnClickListener(cinemaButtonOnClickListener);
-
-            scrollView.addView(cinemaButton);
-           // scrollView.setBackgroundColor(Color.parseColor("060606"));
-        }
-
-    }*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lines);
 
         LinearLayout ll=(LinearLayout)findViewById(R.id.linear_layout_lines);
-        ll.setBackgroundColor(Color.argb(255, 228, 28, 38));
+        ll.setBackgroundColor(Color.parseColor("#ff8f0101"));
 
         TextView tv=(TextView)findViewById(R.id.lines_textView);
-        tv.setText("Τα  σινεμά  της  πόλης");
+        tv.setText("Τα σινεμά της πόλης");
 
         titles=new ArrayList<String>();
 
@@ -136,8 +105,8 @@ public class Line1 extends ActionBarActivity {
             image.setBackgroundResource(DbAdapter.getInstance().getPhotoDrawableID("red" + Integer.toString(pos+1)));
 
             TextView station = (TextView) itemView.findViewById(R.id.station_number);
-            station.setTextColor(Color.rgb(227, 30, 25));
-            station.setText("Στάση " + (pos + 1));
+            station.setTextColor(Color.parseColor("#ff8f0101"));
+            station.setText("Στάση" + (pos + 1));
 
             TextView title = (TextView) itemView.findViewById(R.id.station_title);
             title.setText(titles.get(pos));
