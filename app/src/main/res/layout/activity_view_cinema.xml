@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ff8f0101"
     android:orientation="vertical" >
 
     <ScrollView
@@ -9,9 +10,12 @@
         android:layout_height="fill_parent" >
 
         <LinearLayout
+            android:id="@+id/general_layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:background="#ff8f0101"
+            android:weightSum="1">
 
             <!-- name of station-->
             <TextView
@@ -19,26 +23,19 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:textSize="25dp"
+                android:textColor="#FFFFFF"
                 android:textStyle="italic"
+                android:background="#ff8f0101"
                 android:id="@+id/name" />
 
-            <!--cinema Images -->
-            <android.support.v4.view.ViewPager
-                android:id="@+id/pagerImage"
-                android:layout_width="match_parent"
-                android:layout_height="300dp">
-
-                <android.support.v4.view.PagerTabStrip
-                    android:id="@+id/pager_title_strip"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:background="@color/black_overlay"
-                    android:textColor="#fff"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp" />
-
-            </android.support.v4.view.ViewPager>
+            <ViewFlipper
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:id="@+id/vf"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"/>
 
 
             <!-- info -->
@@ -46,85 +43,105 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:id="@+id/description" />
-
-            <!-- show In Map-->
-            <ImageButton
-                android:layout_height="100dp"
-                android:layout_width="100dp"
-                android:background="@drawable/show_in_map"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/showInMap"
+                android:id="@+id/description"
+                android:textColor="#FFFFFF"
                 />
 
-            <!-- Go button -->
-            <Button
-                android:layout_width="wrap_content"
+            <!-- show In Map-->
+
+            <LinearLayout
+                android:id="@+id/layout1"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rate_button"
-                android:textAlignment="center"
-                android:layout_gravity="right"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/button_background"
-                android:textColor="@color/letter_colour"
-                android:id="@+id/go_ahead_button"/>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background= "#ff8f0101"
+                android:orientation="horizontal">
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+
+                <Button
+                    android:id="@+id/facebook_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textStyle="italic"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="0dp"
+                    android:background="@drawable/facebook"
+                    android:textColor="@color/share_button" />
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:textAlignment="center"
+                    android:orientation="horizontal"
                     android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/star_off"
+                    android:textColor="@color/letter_colour"
+                    android:id="@+id/go_ahead"/>
 
-                    <!-- Facebook button -->
-                    <Button
-                        android:id="@+id/facebook_button"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:text="f"
-                        android:textStyle="italic"
-                        android:background="@drawable/button_share"
-                        android:textColor="@color/share_button"/>
 
-                    <!-- Twitter button -->
-                    <Button
-                        android:id="@+id/twitter_button"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="t"
-                        android:textStyle="italic"
-                        android:background="@drawable/button_share"
-                        android:textColor="@color/share_button"/>
+                <!-- Twitter button -->
 
-                    <!-- Instagram button -->
-                    <Button
-                        android:id="@+id/instagram_button"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="i"
-                        android:textStyle="italic"
-                        android:background="@drawable/button_share"
-                        android:textColor="@color/share_button" />
+                <Button
+                    android:id="@+id/twitter_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
 
-                    <!-- Pinterest button -->
-                    <Button
-                        android:id="@+id/pinterest_button"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="Pin"
-                        android:textStyle="italic"
-                        android:background="@drawable/button_share"
-                        android:textColor="@color/share_button"/>
+                    android:textStyle="italic"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/twitter"
+                    android:textColor="@color/share_button" />
 
-                </LinearLayout>
-            </HorizontalScrollView>
+                <ImageButton
+                    android:layout_height="40dp"
+                    android:layout_width="45dp"
+                    android:background="@drawable/map"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/showInMap"
+                    />
+                <!-- Instagram button -->
+                <Button
+                    android:id="@+id/instagram_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="0dp"
+                    android:textStyle="italic"
+                    android:background="@drawable/instagram"
+                    android:textColor="@color/share_button" />
+
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+
+                    android:layout_gravity="right"
+                    android:textAlignment="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="0dp"
+                    android:background="@drawable/share"
+                    android:textColor="@color/letter_colour"
+                    android:id="@+id/share"/>
+
+
+
+                <!-- Pinterest button -->
+                <Button
+                    android:id="@+id/pinterest_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:textStyle="italic"
+                    android:background="@drawable/pinterest"
+                    android:textColor="@color/share_button"/>
+
+
+            </LinearLayout>
+
 
 
         </LinearLayout>
