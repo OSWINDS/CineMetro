@@ -15,15 +15,15 @@
 
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_centerHorizontal="true"
         android:textSize="20dp"
         android:textStyle="italic"
         android:textColor="#ffffff"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:id="@+id/lines_textView"
-        android:text=""
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal" />
 
     <ListView
         android:layout_width="fill_parent"
