@@ -26,11 +26,10 @@ public class MainMenu extends ActionBarActivity {
     private Button navigationButton;
     private Button linesButton;
     private Button aboutButton;
-
-    String[] menu;
-    DrawerLayout dLayout;
-    ListView dList;
-    ArrayAdapter<String> adapter;
+    private String[] menu;
+    private DrawerLayout dLayout;
+    private ListView dList;
+    private ArrayAdapter<String> adapter;
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
@@ -56,14 +55,13 @@ public class MainMenu extends ActionBarActivity {
         menu = new String[]{"Profile","Language"};
         dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-
         ListViewAdapter adapter = new ListViewAdapter(MainMenu.this, menu);
         dList = (ListView) findViewById(R.id.left_drawer);
         dList.setAdapter(adapter);
         dList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                dLayout.closeDrawers();
+                //dLayout.closeDrawers();
                 if (position == 0) {
                     Intent intent;
                     if(DbAdapter.getInstance().getActiveUser()==null){
@@ -81,32 +79,6 @@ public class MainMenu extends ActionBarActivity {
                 }
             }
         });
-
-
-       /** adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
-        dList.setAdapter(adapter);
-        dList.setSelector(android.R.color.holo_blue_dark);
-        dList.setOnItemClickListener(new OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-                dLayout.closeDrawers();
-                if (position == 0) {
-                    Intent intent;
-                    if(DbAdapter.getInstance().getActiveUser()==null){
-                        intent=new Intent(MainMenu.this, LogIn.class);
-                        startActivity(intent);
-                    }
-                    else {
-                        intent = new Intent(MainMenu.this, ProfileActivity.class);
-                        startActivity(intent);
-                    }
-                }
-                if (position == 1) {
-                    Intent intent = new Intent(MainMenu.this, LanguageActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });*/
 
         Parse.initialize(this, "swhW7tnXLp2qdr7ZqbQ1JRCZMuRaQE5CXY12mp7c", "lrNR1Wa2YThA7SjlkitdaCtMmEBJJM69bHcwpifD");
     }
@@ -128,16 +100,6 @@ public class MainMenu extends ActionBarActivity {
          }
          //return super.onOptionsItemSelected(item);
          switch (item.getItemId()) {
-            case R.id.profile:
-                 Intent intent;
-                 if(DbAdapter.getInstance().getActiveUser()==null){
-                     intent=new Intent(MainMenu.this, LogIn.class);
-                     startActivity(intent);
-                     return true;
-                }
-                intent=new Intent(MainMenu.this, ProfileActivity.class);
-                startActivity(intent);
-                return true;
              case R.id.left_scroll:
                  if (dLayout.isDrawerOpen(Gravity.LEFT))
                      dLayout.closeDrawers();
@@ -145,8 +107,8 @@ public class MainMenu extends ActionBarActivity {
 
                      dLayout.openDrawer(Gravity.LEFT);
                  return true;
-         default:
-            return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
          }
 
     }

@@ -134,16 +134,16 @@ public class Timeline extends ActionBarActivity {
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
 
         facebookButton = (Button) findViewById(R.id.facebook_button);
-        facebookButton.setOnClickListener(new sharingOnClickListener("Facebook"));
+        facebookButton.setOnClickListener(new sharingOnClickListener("facebook"));
 
         twitterButton = (Button) findViewById(R.id.twitter_button);
-        twitterButton.setOnClickListener(new sharingOnClickListener("Twitter"));
+        twitterButton.setOnClickListener(new sharingOnClickListener("twitter"));
 
         instagramButton = (Button) findViewById(R.id.instagram_button);
-        instagramButton.setOnClickListener(new sharingOnClickListener("Instagram"));
+        instagramButton.setOnClickListener(new sharingOnClickListener("instagram"));
 
         pinterestButton = (Button) findViewById(R.id.pinterest_button);
-        pinterestButton.setOnClickListener(new sharingOnClickListener("Pinterest"));
+        pinterestButton.setOnClickListener(new sharingOnClickListener("pinterest"));
 
         dialog = new AlertDialog.Builder(this);
 
