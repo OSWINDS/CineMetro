@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.net.Uri;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -24,7 +24,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
-import java.sql.Time;
 import java.util.List;
 
 /**
@@ -47,12 +46,15 @@ public class Timeline extends ActionBarActivity {
     private int selectedId;
     private TextView title;
     private ImageButton showInMap;
-    private Button goAheadButton;
+    private ImageButton goAheadButton;
+    private ImageButton share;
     private Button facebookButton;
     private Button twitterButton;
     private Button instagramButton;
     private Button pinterestButton;
     private AlertDialog.Builder dialog;
+    private LinearLayout layout1;
+    private LinearLayout general_layout;
 
 
 
@@ -64,23 +66,25 @@ public class Timeline extends ActionBarActivity {
         //full screen to timeline
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_timeline);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //create radiogroup
         rg = (RadioGroup) findViewById(R.id.radiogroup);
         rg.setOrientation(RadioGroup.VERTICAL);
 
         scrollView = (LinearLayout)findViewById(R.id.scrollView);
         mylayout = (LinearLayout)findViewById(R.id.mylayout);
+        layout1 = (LinearLayout)findViewById(R.id.layout1);
+        general_layout = (LinearLayout)findViewById(R.id.general_layout);
 
         Intent intent = getIntent();
         idCinema = intent.getIntExtra("button_id", 0);
         title=(TextView)findViewById(R.id.title);
         title.setText(DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName());
+        title.setTextColor(Color.WHITE);
         description = (TextView) findViewById(R.id.description);
         description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(0).getDescription());
         image=(ImageView)findViewById(R.id.image);
-       // rb[0].isChecked();
-       try {
+        // rb[0].isChecked();
+        try {
             Class res = R.drawable.class;
             Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(0).getPhotoName());
             int drawableId = field.getInt(null);
@@ -92,8 +96,13 @@ public class Timeline extends ActionBarActivity {
         for (int i=0; i<millestones; i++) {
             rb[i]  = new RadioButton(this);
             rb[i].setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(i).getYear());
+            rb[i].setTextColor(Color.WHITE);
             rb[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             rb[i].setId(i);
+
+            //rb[i].setButtonDrawable( getResources().getDrawable( R.drawable.radiobutton ));
+            rb[i].setTextSize(20);
+
             rb[i].setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -101,7 +110,7 @@ public class Timeline extends ActionBarActivity {
 
 
                     // get selected radio button from radioGroup
-                     selectedId = rg.getCheckedRadioButtonId();
+                    selectedId = rg.getCheckedRadioButtonId();
 
                     // find the radiobutton by returned id
                     radioButton = (RadioButton) findViewById(selectedId);
@@ -120,34 +129,81 @@ public class Timeline extends ActionBarActivity {
 
 
 
+
                 }
 
 
             });;
             rg.addView(rb[i]);
+            rg.check(rb[0].getId());
+
         }
 
         showInMap = (ImageButton)findViewById(R.id.showInMap);
         showInMap.setOnClickListener(showInMapButtonOnClickListener);
 
-        goAheadButton = (Button) findViewById(R.id.go_ahead_button);
+        goAheadButton = (ImageButton) findViewById(R.id.go_ahead);
         goAheadButton.setOnClickListener(goAheadButtonOnClickListener);
 
+        share = (ImageButton) findViewById(R.id.share);
+        share.setOnClickListener(ShareButtonOnClickListener);
+
+
         facebookButton = (Button) findViewById(R.id.facebook_button);
-        facebookButton.setOnClickListener(new sharingOnClickListener("facebook"));
+        facebookButton.setOnClickListener(facebookButtonOnClickListener);
+        facebookButton.setVisibility(View.INVISIBLE);
 
         twitterButton = (Button) findViewById(R.id.twitter_button);
-        twitterButton.setOnClickListener(new sharingOnClickListener("twitter"));
+        twitterButton.setOnClickListener(twitterButtonOnClickListener);
+        twitterButton.setVisibility(View.INVISIBLE);
 
         instagramButton = (Button) findViewById(R.id.instagram_button);
-        instagramButton.setOnClickListener(new sharingOnClickListener("instagram"));
+        instagramButton.setOnClickListener(instagramButtonOnClickListener);
+        instagramButton.setVisibility(View.INVISIBLE);
 
         pinterestButton = (Button) findViewById(R.id.pinterest_button);
-        pinterestButton.setOnClickListener(new sharingOnClickListener("pinterest"));
+        pinterestButton.setOnClickListener(pinterestButtonOnClickListener);
+        pinterestButton.setVisibility(View.INVISIBLE);
 
         dialog = new AlertDialog.Builder(this);
 
     }
+    View.OnClickListener ShareButtonOnClickListener  = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+
+
+
+            // layout1.setBackgroundColor(Color.parseColor("#113355"));
+            share.setVisibility(View.INVISIBLE);
+            goAheadButton.setVisibility(View.INVISIBLE);
+            showInMap.setVisibility(View.INVISIBLE);
+            facebookButton.setVisibility(View.VISIBLE);
+            twitterButton.setVisibility(View.VISIBLE);
+            instagramButton.setVisibility(View.VISIBLE);
+            pinterestButton.setVisibility(View.VISIBLE);
+            general_layout.setOnClickListener(layoutOnClickListener);
+
+        }
+    };
+
+    View.OnClickListener layoutOnClickListener  = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+            // layout1.setBackgroundColor(Color.parseColor("#113355"));
+            share.setVisibility(View.VISIBLE);
+            goAheadButton.setVisibility(View.VISIBLE);
+            showInMap.setVisibility(View.VISIBLE);
+            facebookButton.setVisibility(View.INVISIBLE);
+            twitterButton.setVisibility(View.INVISIBLE);
+            instagramButton.setVisibility(View.INVISIBLE);
+            pinterestButton.setVisibility(View.INVISIBLE);
+
+
+        }
+    };
 
 
     @Override
@@ -182,7 +238,7 @@ public class Timeline extends ActionBarActivity {
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName();
+        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idCinema).getName();
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "CineMetro");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
@@ -204,53 +260,17 @@ public class Timeline extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            //user should sign up
-            if(DbAdapter.getInstance().getActiveUser() == null){
-                dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
-                dialog.setMessage(getResources().getString(R.string.must_sign_up));
-                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.setCancelable(true);
-                    }
-                });
-                AlertDialog alert = dialog.create();
-                alert.show();
-            }
-            //user has already rated for this station
-            else if (DbAdapter.getInstance().getUserRatingForStation(idCinema, DbAdapter.getInstance().getActiveUser().getId()) != -1){
-                dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
-                dialog.setMessage(getResources().getString(R.string.already_rate));
-                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.setCancelable(true);
-                    }
-                });
-                AlertDialog alert = dialog.create();
-                alert.show();
-            }
-            //user can rate
-            else {
-                Intent intent = new Intent(Timeline.this, RateActivity.class);
-                intent.putExtra("line", 3);
-                intent.putExtra("button_id", idCinema-14);
-                Timeline.this.startActivity(intent);
-            }
+            Intent intent = new Intent(Timeline.this, RateActivity.class);
+            intent.putExtra("button_id", idCinema+14);
+            Timeline.this.startActivity(intent);
         }};
 
-    public class sharingOnClickListener implements View.OnClickListener {
-
-        String appName;
-
-        public sharingOnClickListener(String appName) {
-            this.appName = appName;
-        }
+    public View.OnClickListener facebookButtonOnClickListener = new View.OnClickListener(){
 
         @Override
         public void onClick(View view) {
 
-            boolean found = false;
+            boolean found=false;
 
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
@@ -258,22 +278,90 @@ public class Timeline extends ActionBarActivity {
             PackageManager pm = view.getContext().getPackageManager();
             List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
             for (final ResolveInfo app : activityList) {
-                if ((app.activityInfo.name).contains(appName)) {
+                if ((app.activityInfo.name).contains("facebook")) {
                     final ActivityInfo activity = app.activityInfo;
                     final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
                     shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
                     shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                     shareIntent.setComponent(name);
                     view.getContext().startActivity(shareIntent);
-                    found = true;
+                    found=true;
                     break;
                 }
             }
-            if (found == false) {
+            if (found == false){
 
-                dialog.setTitle(appName);
+                dialog.setTitle("Facebook");
                 dialog.setMessage(R.string.noApp);
-                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+
+        }};
+
+    View.OnClickListener twitterButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            boolean found = false;
+
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName();
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            PackageManager pm = view.getContext().getPackageManager();
+            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+            for (final ResolveInfo app : activityList) {
+                if ((app.activityInfo.name).contains("twitter")) {
+                    final ActivityInfo activity = app.activityInfo;
+                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    shareIntent.setComponent(name);
+                    view.getContext().startActivity(shareIntent);
+                    found=true;
+                    break;
+                }
+            }
+            if (found == false){
+                dialog.setTitle("Twitter");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+
+        }};
+
+    View.OnClickListener instagramButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = getPackageManager().getLaunchIntentForPackage("com.instagram.android");
+            if (intent != null){
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.setPackage("com.instagram.android");
+                shareIntent.setType("image/jpeg");
+                startActivity(shareIntent);
+            }
+            else{
+                dialog.setTitle("Instagram");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialog.setCancelable(true);
@@ -283,4 +371,47 @@ public class Timeline extends ActionBarActivity {
                 alert.show();
             }
         }};
+
+    View.OnClickListener pinterestButtonOnClickListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+
+            boolean found=false;
+
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName();
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            PackageManager pm = view.getContext().getPackageManager();
+            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+            for (final ResolveInfo app : activityList) {
+                if ((app.activityInfo.name).contains("pinterest")) {
+                    final ActivityInfo activity = app.activityInfo;
+                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    shareIntent.setComponent(name);
+                    view.getContext().startActivity(shareIntent);
+                    found=true;
+                    break;
+                }
+            }
+            if (found == false){
+                dialog.setTitle("Pinterest");
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+
+        }};
+
+
+
 }
