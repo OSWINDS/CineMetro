@@ -1,49 +1,178 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#ff0b3f64">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ff0b3f64">
 
     <ScrollView
 
-        android:layout_width="fill_parent" android:layout_height="fill_parent" >
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-        <LinearLayout android:id="@+id/general_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginLeft="10dp" android:layout_marginRight="5dp" android:weightSum="1">
+        <LinearLayout
+            android:id="@+id/general_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:weightSum="1">
 
-            <!-- title, year --> <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_horizontal" android:textSize="25dp" android:textStyle="italic" android:id="@+id/titleYear" android:textColor="#FFFFFF" android:background="#ff0b3f64"/>
+            <!-- title, year -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="25dp"
+                android:textStyle="italic"
+                android:id="@+id/titleYear"
+                android:textColor="#FFFFFF"
+                android:background="#ff0b3f64"/>
 
-            <!--movie Images --> <ViewFlipper android:layout_width="fill_parent" android:layout_height="250dp" android:id="@+id/vf" android:layout_marginLeft="20dp" android:layout_marginRight="20dp" android:layout_below="@+id/textView" android:layout_centerHorizontal="true"/>
+            <!--movie Images -->
+            <ViewFlipper
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:id="@+id/vf"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"/>
 
-            <!-- info --> <TextView android:text="\n\n Πληροφορίες \n" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_horizontal" android:textStyle="bold" android:textSize="15dp" android:textColor="#FFFFFF" android:id="@+id/inf" android:background="#ff0b3f64" /> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/info" android:textColor="#FFFFFF" android:background="#ff0b3f64" />
+            <!-- info -->
+            <TextView
+                android:text="\n\n Πληροφορίες \n"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
+                android:id="@+id/inf"
+                android:background="#ff0b3f64" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/info"
+                android:textColor="#FFFFFF"
+                android:background="#ff0b3f64" />
 
             <TextView
 
-                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:textColor="#FFFFFF"
+                android:id="@+id/info_cast"
+                android:background="#ff0b3f64" />
 
-                android:layout_marginTop="10dp" android:textStyle="bold" android:textSize="14dp" android:textColor="#FFFFFF" android:id="@+id/info_cast" android:background="#ff0b3f64" />
-
-            <!-- images of cast --> <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_gravity="center" > <LinearLayout android:id="@+id/actorsHsw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" >> </LinearLayout> </HorizontalScrollView>
+            <!-- images of cast -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center" >
+                <LinearLayout
+                    android:id="@+id/actorsHsw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >>
+                </LinearLayout>
+            </HorizontalScrollView>
 
             <!-- show In Map-->
 
             <!-- Go button -->
 
-            <LinearLayout android:id="@+id/layout1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:layout_marginTop="25dp" android:background="#ff174064" android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/layout1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background="#ff174064"
+                android:orientation="horizontal">
 
-                <Button android:id="@+id/facebook_button" android:layout_width="40dp" android:layout_height="40dp" android:textStyle="italic" android:layout_marginLeft="0dp" android:layout_marginRight="0dp" android:background="@drawable/facebook" android:textColor="@color/share_button" /> <ImageButton android:layout_width="40dp" android:layout_height="40dp" android:layout_gravity="right" android:textAlignment="center" android:orientation="horizontal" android:layout_marginTop="15dp" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:background="@drawable/star_off" android:textColor="@color/letter_colour" android:id="@+id/go_ahead"/>
+                <Button
+                    android:id="@+id/facebook_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textStyle="italic"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:background="@drawable/facebook"
+                    android:textColor="@color/share_button" />
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:textAlignment="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/star_off"
+                    android:textColor="@color/letter_colour"
+                    android:id="@+id/go_ahead"/>
 
                 <!-- Twitter button -->
 
-                <Button android:id="@+id/twitter_button" android:layout_width="40dp" android:layout_height="40dp"
+                <Button
+                    android:id="@+id/twitter_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textStyle="italic"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/twitter"
+                    android:textColor="@color/share_button" />
 
-                    android:textStyle="italic" android:layout_marginLeft="3dp" android:layout_marginRight="5dp" android:background="@drawable/twitter" android:textColor="@color/share_button" />
+                <ImageButton
+                    android:layout_height="40dp"
+                    android:layout_width="45dp"
+                    android:background="@drawable/map"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/showInMap" />
+                <!-- Instagram button -->
+                <Button
+                    android:id="@+id/instagram_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="italic"
+                    android:background="@drawable/instagram"
+                    android:textColor="@color/share_button" />
 
-                <ImageButton android:layout_height="40dp" android:layout_width="45dp" android:background="@drawable/map" android:layout_marginRight="1dp" android:layout_marginLeft="10dp" android:layout_gravity="center_horizontal" android:id="@+id/showInMap" /> <!-- Instagram button --> <Button android:id="@+id/instagram_button" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginRight="5dp" android:textStyle="italic" android:background="@drawable/instagram" android:textColor="@color/share_button" />
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:textAlignment="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/share"
+                    android:textColor="@color/letter_colour"
+                    android:id="@+id/share"/>
 
-                <ImageButton android:layout_width="40dp" android:layout_height="40dp"
-
-                    android:layout_gravity="right" android:textAlignment="center" android:orientation="horizontal" android:layout_marginTop="15dp" android:layout_marginLeft="0dp" android:layout_marginRight="5dp" android:background="@drawable/share" android:textColor="@color/letter_colour" android:id="@+id/share"/>
-
-                <!-- Pinterest button --> <Button android:id="@+id/pinterest_button" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginLeft="0dp" android:textStyle="italic" android:background="@drawable/pinterest" android:textColor="@color/share_button"/>
+                <!-- Pinterest button -->
+                <Button
+                    android:id="@+id/pinterest_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="0dp"
+                    android:textStyle="italic"
+                    android:background="@drawable/pinterest"
+                    android:textColor="@color/share_button"/>
 
             </LinearLayout>
 
-        </LinearLayout> </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
