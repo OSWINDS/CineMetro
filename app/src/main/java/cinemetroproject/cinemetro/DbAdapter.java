@@ -3,6 +3,7 @@ package cinemetroproject.cinemetro;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.parse.ParseQuery;
 
 import java.lang.reflect.Field;
@@ -381,7 +382,7 @@ final class DbAdapter {
      * @param station_id
      * @param user_id
      * @return the rating of the station with this id from this user
-     * returns -1 if the user has not voted for this station
+     * returns 0 if the user has not voted for this station
      */
     public float getUserRatingForStation(int station_id, int user_id)
     {
@@ -443,6 +444,62 @@ final class DbAdapter {
     }
 
     /**
+     * Sighs up a new user to parse
+     * @param user
+     */
+    public void signUpUserToParse(User user)
+    {
+        final ArrayList<Float> blueLineStations = new ArrayList<Float>();
+        final ArrayList<Float> greenLineStations = new ArrayList<Float>();
+        final ArrayList<Float> redLineStations = new ArrayList<Float>();
+
+        final float redLine;
+        final float blueLine;
+        final float greenLine;
+        final float totalPoints;
+
+        Float zero = new Float(0);
+
+        //get his rating for each station for each line
+        for(int i=0; i<getStationByRoute(this.routes.get(0).getId()).size(); i++)
+        {
+            //redLineStations.add(getUserRatingForStation(station_id, user.getId()));
+            redLineStations.add(zero);
+        }
+        redLine = 0;
+        for(int i=0; i<getStationByRoute(this.routes.get(1).getId()).size(); i++)
+        {
+            //blueLineStations.add(getUserRatingForStation(station_id, user.getId()));
+            blueLineStations.add(zero);
+        }
+        blueLine = 0;
+        for(int i=0; i<getStationByRoute(3).size(); i++)
+        {
+            greenLineStations.add(zero);
+        }
+        greenLine = 0;
+        totalPoints = 0;
+
+        final ParseUser parse_user = new ParseUser();
+
+        final String username = user.getUsername();
+        final String password = user.getPassword();
+
+        //create a new user with this username
+        parse_user.setPassword(password);
+        parse_user.setUsername(username);
+        parse_user.put("redLine", redLine);
+        parse_user.put("blueLine", blueLine);
+        parse_user.put("greenLine", greenLine);
+        parse_user.put("totalPoints", totalPoints);
+        parse_user.put("redLineStations", redLineStations);
+        parse_user.put("blueLineStations", blueLineStations);
+        parse_user.put("greenLineStations", greenLineStations);
+        parse_user.signUpInBackground();
+
+    }
+
+    /**
      * Updates the user ratings to the parse online database
      */
     public void updateUserToParse(User user)
@@ -483,46 +540,23 @@ final class DbAdapter {
         greenLine = sum;
         totalPoints = redLine + blueLine + greenLine;
 
-        final ParseObject parse_user = new ParseObject("User");
+        final ParseUser parse_user = new ParseUser();
 
         final String username = user.getUsername();
         final String password = user.getPassword();
 
+        parse_user.logInInBackground(username, password);
+        parse_user.addUnique("redLine", redLine);
+        parse_user.addUnique("blueLine", blueLine);
+        parse_user.addUnique("greenLine", greenLine);
+        parse_user.addUnique("totalPoints", totalPoints);
+        parse_user.addAllUnique("redLineStations", redLineStations);
+        parse_user.addAllUnique("blueLineStations", blueLineStations);
+        parse_user.addAllUnique("greenLineStations", greenLineStations);
+        parse_user.logInInBackground(username, password);
+        parse_user.saveInBackground();
+        parse_user.logOut();
 
-        //query parse to get the user we want to update
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
-        query.whereEqualTo("username", user.getUsername());
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> userList, ParseException e) {
-                if (userList.size() > 0) {
-                    //user exists,update his profile
-                    userList.get(0).put("username", username);
-                    userList.get(0).put("password", password);
-                    userList.get(0).put("redLine", redLine);
-                    userList.get(0).put("blueLine", blueLine);
-                    userList.get(0).put("greenLine", greenLine);
-                    userList.get(0).put("totalPoints", totalPoints);
-                    userList.get(0).put("redLineStations", redLineStations);
-                    userList.get(0).put("greenLineStations", greenLineStations);
-                    userList.get(0).put("blueLineStations", blueLineStations);
-                    userList.get(0).saveInBackground();
-                }
-                else
-                {
-                    //create a new user with this username
-                    parse_user.put("username", username);
-                    parse_user.put("password", password);
-                    parse_user.put("redLine", redLine);
-                    parse_user.put("blueLine", blueLine);
-                    parse_user.put("greenLine", greenLine);
-                    parse_user.put("totalPoints", totalPoints);
-                    parse_user.addAllUnique("redLineStations", Arrays.asList(redLineStations));
-                    parse_user.addAllUnique("blueLineStations", Arrays.asList(blueLineStations));
-                    parse_user.addAllUnique("greenLineStations", Arrays.asList(greenLineStations));
-                    parse_user.saveInBackground();
-                }
-            }
-        });
     }
 
     /**

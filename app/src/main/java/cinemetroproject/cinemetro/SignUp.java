@@ -166,6 +166,7 @@ public class SignUp extends ActionBarActivity {
         DbAdapter.getInstance().addNewUser(newUser);
         DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(username));
         //DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(username));
+        DbAdapter.getInstance().signUpUserToParse(DbAdapter.getInstance().getActiveUser());
 
         Toast.makeText(SignUp.this, "Congrats!\nYou successfully signed up!", Toast.LENGTH_SHORT).show();
 
