@@ -380,6 +380,25 @@ final class DbAdapter {
     /**
      *
      * @param station_id
+     * @return the rating of the station with this id
+     */
+    public float getTimelineStationRating(int station_id)
+    {
+        float rating = db.getTimelineStationRating(station_id);
+        if (rating < 0)
+        {
+            this.initializeTimelineRatings();
+            return 0;
+        }
+        else
+        {
+            return rating;
+        }
+    }
+
+    /**
+     *
+     * @param station_id
      * @param user_id
      * @return the rating of the station with this id from this user
      * returns 0 if the user has not voted for this station
@@ -390,12 +409,35 @@ final class DbAdapter {
     }
 
     /**
+     *
+     * @param station_id
+     * @param user_id
+     * @return the rating of the timeline station with this id from this user
+     * returns 0 if the user has not voted for this station
+     */
+    public float getUserRatingForTimelineStation(int station_id, int user_id)
+    {
+        return db.getUserTimelineStationRating(station_id, user_id);
+    }
+
+    /**
      * Adds the param rating to the ratings of the station with this id
      * @param station_id
      */
     public void addRating(int station_id, float rating)
     {
-        db.updateRatings(station_id, db.getSum(station_id) + rating, db.getCounter(station_id)+1);
+        String table  = "rating";
+        db.updateRatings(station_id, db.getSum(station_id, table) + rating, db.getCounter(station_id, table)+1);
+    }
+
+    /**
+     * Adds the param rating to the ratings of the timeline station with this id
+     * @param station_id
+     */
+    public void addTimelineStationRating(int station_id, float rating)
+    {
+        String table = "timeline_station_rating";
+        db.updateTimelineStationRatings(station_id, db.getSum(station_id, table) + rating, db.getCounter(station_id, table)+1);
     }
 
     /**
@@ -405,6 +447,15 @@ final class DbAdapter {
     public void addUserRating(int station_id, int user_id, float rating)
     {
         db.addUserRating(station_id, user_id, rating);
+    }
+
+    /**
+     * Adds the param rating to the ratings of the timeline station with this id from this user
+     * @param station_id
+     */
+    public void addUserTimelineStationRating(int station_id, int user_id, float rating)
+    {
+        db.addUserTimelineStationRating(station_id, user_id, rating);
     }
 
     /**
@@ -1655,6 +1706,17 @@ final class DbAdapter {
         for(Station station : this.stations)
         {
             db.addRating(station.getId());
+        }
+    }
+
+    /**
+     * Initialize the ratings of every timeline station to 0
+     */
+    private void initializeTimelineRatings()
+    {
+        for(TimelineStation station : this.timelineStations)
+        {
+            db.addTimelineStationRating(station.getId());
         }
     }
 }
