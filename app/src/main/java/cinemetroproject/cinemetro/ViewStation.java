@@ -185,19 +185,19 @@ public class ViewStation extends FragmentActivity implements View.OnClickListene
 
 
         facebookButton = (Button) findViewById(R.id.facebook_button);
-        facebookButton.setOnClickListener(facebookButtonOnClickListener);
+        facebookButton.setOnClickListener(new sharingOnClickListener("facebook"));
         facebookButton.setVisibility(View.INVISIBLE);
 
         twitterButton = (Button) findViewById(R.id.twitter_button);
-        twitterButton.setOnClickListener(twitterButtonOnClickListener);
+        twitterButton.setOnClickListener(new sharingOnClickListener("twitter"));
         twitterButton.setVisibility(View.INVISIBLE);
 
         instagramButton = (Button) findViewById(R.id.instagram_button);
-        instagramButton.setOnClickListener(instagramButtonOnClickListener);
+        instagramButton.setOnClickListener(new sharingOnClickListener("instagram"));
         instagramButton.setVisibility(View.INVISIBLE);
 
         pinterestButton = (Button) findViewById(R.id.pinterest_button);
-        pinterestButton.setOnClickListener(pinterestButtonOnClickListener);
+        pinterestButton.setOnClickListener(new sharingOnClickListener("pinterest"));
         pinterestButton.setVisibility(View.INVISIBLE);
 
         dialog = new AlertDialog.Builder(this);
@@ -271,10 +271,82 @@ public class ViewStation extends FragmentActivity implements View.OnClickListene
         @Override
         public void onClick(View view) {
 
-            Intent intent = new Intent(ViewStation.this, RateActivity.class);
-            intent.putExtra("button_id", ++idStation);
-            ViewStation.this.startActivity(intent);
+            //user should sign up
+            if(DbAdapter.getInstance().getActiveUser() == null){
+                dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
+                dialog.setMessage(getResources().getString(R.string.must_sign_up));
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+            //user has already rated for this station
+            else if (DbAdapter.getInstance().getUserRatingForStation(idStation, DbAdapter.getInstance().getActiveUser().getId()) != 0){
+                dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
+                dialog.setMessage(getResources().getString(R.string.already_rate));
+                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+            //user can rate
+            else {
+                Intent intent = new Intent(ViewStation.this, RateActivity.class);
+                intent.putExtra("line", 2);
+                intent.putExtra("button_id", idStation+1);
+                ViewStation.this.startActivity(intent);
+            }
         }};
+
+    public class sharingOnClickListener implements View.OnClickListener {
+        String appName;
+
+        public sharingOnClickListener(String appName) {
+            this.appName = appName;
+        }
+        @Override
+        public void onClick(View view) {
+            boolean found = false;
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle());
+            PackageManager pm = view.getContext().getPackageManager();
+            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+            for (final ResolveInfo app : activityList) {
+                if ((app.activityInfo.name).contains(appName)) {
+                    final ActivityInfo activity = app.activityInfo;
+                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    shareIntent.setComponent(name);
+                    view.getContext().startActivity(shareIntent);
+                    found = true;
+                    break;
+                }
+            }
+            if (found == false) {
+                dialog.setTitle(appName);
+                dialog.setMessage(R.string.noApp);
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.setCancelable(true);
+                    }
+                });
+                AlertDialog alert = dialog.create();
+                alert.show();
+            }
+        }
+    }
+
 
     View.OnClickListener ShareButtonOnClickListener  = new View.OnClickListener() {
 
@@ -324,151 +396,5 @@ public class ViewStation extends FragmentActivity implements View.OnClickListene
     }
 
 
-    public View.OnClickListener facebookButtonOnClickListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View view) {
-
-            boolean found=false;
-
-            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle());
-            PackageManager pm = view.getContext().getPackageManager();
-            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
-            for (final ResolveInfo app : activityList) {
-                if ((app.activityInfo.name).contains("facebook")) {
-                    final ActivityInfo activity = app.activityInfo;
-                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
-                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-                    shareIntent.setComponent(name);
-                    view.getContext().startActivity(shareIntent);
-                    found=true;
-                    break;
-                }
-            }
-            if (found == false){
-
-                dialog.setTitle("Facebook");
-                dialog.setMessage(R.string.noApp);
-                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.setCancelable(true);
-                    }
-                });
-                AlertDialog alert = dialog.create();
-                alert.show();
-            }
-
-        }};
-
-    View.OnClickListener twitterButtonOnClickListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View view) {
-
-            boolean found = false;
-
-            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle();
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-            PackageManager pm = view.getContext().getPackageManager();
-            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
-            for (final ResolveInfo app : activityList) {
-                if ((app.activityInfo.name).contains("twitter")) {
-                    final ActivityInfo activity = app.activityInfo;
-                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
-                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-                    shareIntent.setComponent(name);
-                    view.getContext().startActivity(shareIntent);
-                    found=true;
-                    break;
-                }
-            }
-            if (found == false){
-                dialog.setTitle("Twitter");
-                dialog.setMessage(R.string.noApp);
-                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.setCancelable(true);
-                    }
-                });
-                AlertDialog alert = dialog.create();
-                alert.show();
-            }
-
-        }};
-
-    View.OnClickListener instagramButtonOnClickListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View view) {
-
-            Intent intent = getPackageManager().getLaunchIntentForPackage("com.instagram.android");
-            if (intent != null){
-                Intent shareIntent = new Intent();
-                shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.setPackage("com.instagram.android");
-                shareIntent.setType("image/jpeg");
-                startActivity(shareIntent);
-            }
-            else{
-                dialog.setTitle("Instagram");
-                dialog.setMessage(R.string.noApp);
-                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.setCancelable(true);
-                    }
-                });
-                AlertDialog alert = dialog.create();
-                alert.show();
-            }
-        }};
-
-    View.OnClickListener pinterestButtonOnClickListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View view) {
-
-            boolean found=false;
-
-            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-            String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idStation).getName();
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-            PackageManager pm = view.getContext().getPackageManager();
-            List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
-            for (final ResolveInfo app : activityList) {
-                if ((app.activityInfo.name).contains("pinterest")) {
-                    final ActivityInfo activity = app.activityInfo;
-                    final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
-                    shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-                    shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-                    shareIntent.setComponent(name);
-                    view.getContext().startActivity(shareIntent);
-                    found=true;
-                    break;
-                }
-            }
-            if (found == false){
-                dialog.setTitle("Pinterest");
-                dialog.setMessage(R.string.noApp);
-                dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.setCancelable(true);
-                    }
-                });
-                AlertDialog alert = dialog.create();
-                alert.show();
-            }
-
-        }};
 
 }

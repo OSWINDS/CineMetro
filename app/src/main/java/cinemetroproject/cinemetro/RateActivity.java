@@ -126,8 +126,14 @@ public class RateActivity extends ActionBarActivity {
         public void onClick(View view) {
 
             dialog.setTitle(getResources().getString(R.string.points));
-            DbAdapter.getInstance().addRating(id,ratingBar.getRating());
-            DbAdapter.getInstance().addUserRating(id,DbAdapter.getInstance().getActiveUser().getId(),ratingBar.getRating());
+            if (line == 3) {
+                DbAdapter.getInstance().addTimelineStationRating(id, ratingBar.getRating());
+                DbAdapter.getInstance().addUserTimelineStationRating(id, DbAdapter.getInstance().getActiveUser().getId(), ratingBar.getRating());
+            }
+            else{
+                DbAdapter.getInstance().addRating(id, ratingBar.getRating());
+                DbAdapter.getInstance().addUserRating(id, DbAdapter.getInstance().getActiveUser().getId(), ratingBar.getRating());
+            }
             dialog.setMessage("+" + ratingBar.getRating());
             dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                 @Override
