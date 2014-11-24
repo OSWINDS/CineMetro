@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 26;
+    private static final int DATABASE_VERSION = 28;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
     //Language choise of the user
@@ -132,6 +132,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 "station_id INTEGER, " +
                 "user_id INTEGER, " +
                 "rating REAL)";
+
+        // create milestone table
+        db.execSQL(query);
 
         // SQL statement to create table timeline station rating
         query = "CREATE TABLE IF NOT EXISTS timeline_station_rating ( " +

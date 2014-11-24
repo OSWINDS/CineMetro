@@ -588,25 +588,30 @@ final class DbAdapter {
             greenLineStations.add(new Float(0));
             sum += greenLineStations.get(i);
         }
-        greenLine = sum;
+        greenLine = 0;
         totalPoints = redLine + blueLine + greenLine;
 
-        final ParseUser parse_user = new ParseUser();
-
         final String username = user.getUsername();
-        final String password = user.getPassword();
 
-        parse_user.logInInBackground(username, password);
-        parse_user.addUnique("redLine", redLine);
-        parse_user.addUnique("blueLine", blueLine);
-        parse_user.addUnique("greenLine", greenLine);
-        parse_user.addUnique("totalPoints", totalPoints);
-        parse_user.addAllUnique("redLineStations", redLineStations);
-        parse_user.addAllUnique("blueLineStations", blueLineStations);
-        parse_user.addAllUnique("greenLineStations", greenLineStations);
-        parse_user.logInInBackground(username, password);
-        parse_user.saveInBackground();
-        parse_user.logOut();
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("username", username);
+        query.setLimit(1);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> users, ParseException e) {
+                if (e == null) {
+                    users.get(0).put("blueLine", blueLine);
+                    users.get(0).put("greenLine", greenLine);
+                    users.get(0).put("redLine", redLine);
+                    users.get(0).put("totalPoints", totalPoints);
+                    users.get(0).put("redLineStations", redLineStations);
+                    users.get(0).put("blueLineStations", blueLineStations);
+                    users.get(0).put("greenLineStations", greenLineStations);
+                    users.get(0).saveInBackground();
+                } else {
+                    // Something went wrong.
+                }
+            }
+        });
 
     }
 
@@ -618,10 +623,11 @@ final class DbAdapter {
             final int id = user.getId();
 
             //query parse to get the user
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
+            ParseQuery<ParseUser> query = ParseUser.getQuery();
             query.whereEqualTo("username", user.getUsername());
-            query.findInBackground(new FindCallback<ParseObject>() {
-                public void done(List<ParseObject> userList, ParseException e) {
+            query.setLimit(1);
+            query.findInBackground(new FindCallback<ParseUser>() {
+                public void done(List<ParseUser> userList, ParseException e) {
                     if (userList.size() > 0) {
                         String stations =  userList.get(0).getString("redLineStations");
                         addRatingsFromString(id, stations, 0);
@@ -632,7 +638,6 @@ final class DbAdapter {
                         stations =  userList.get(0).getString("greenLineStations");
                         addRatingsFromString(id, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
                     } else {
-                        updateUserToParse(user);
                     }
                 }
             });
