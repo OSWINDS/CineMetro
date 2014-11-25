@@ -128,11 +128,11 @@ public class RateActivity extends ActionBarActivity {
             dialog.setTitle(getResources().getString(R.string.points));
             if (line == 3) {
                 DbAdapter.getInstance().addTimelineStationRating(id, ratingBar.getRating());
-                DbAdapter.getInstance().addUserTimelineStationRating(id, DbAdapter.getInstance().getActiveUser().getId(), ratingBar.getRating());
+                DbAdapter.getInstance().addUserTimelineStationRating(id, DbAdapter.getInstance().getActiveUser().getUsername(), ratingBar.getRating());
             }
             else{
                 DbAdapter.getInstance().addRating(id, ratingBar.getRating());
-                DbAdapter.getInstance().addUserRating(id, DbAdapter.getInstance().getActiveUser().getId(), ratingBar.getRating());
+                DbAdapter.getInstance().addUserRating(id, DbAdapter.getInstance().getActiveUser().getUsername(), ratingBar.getRating());
             }
             dialog.setMessage("+" + ratingBar.getRating());
             dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {

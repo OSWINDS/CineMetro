@@ -270,7 +270,7 @@ public class ViewCinema extends FragmentActivity {
                 alert.show();
             }
             //user has already rated for this station
-            else if (DbAdapter.getInstance().getUserRatingForStation(idCinema, DbAdapter.getInstance().getActiveUser().getId()) !=0){
+            else if (DbAdapter.getInstance().getUserRatingForStation(idCinema, DbAdapter.getInstance().getActiveUser().getUsername()) !=0){
                 dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
                 dialog.setMessage(getResources().getString(R.string.already_rate));
                 dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {

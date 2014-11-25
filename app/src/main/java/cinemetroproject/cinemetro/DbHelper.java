@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 28;
+    private static final int DATABASE_VERSION = 29;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
     //Language choise of the user
@@ -130,7 +130,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // SQL statement to create table user_rating
         query = "CREATE TABLE IF NOT EXISTS user_rating ( " +
                 "station_id INTEGER, " +
-                "user_id INTEGER, " +
+                "username TEXT, " +
                 "rating REAL)";
 
         // create milestone table
@@ -148,7 +148,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // SQL statement to create table user_rating
         query = "CREATE TABLE IF NOT EXISTS timeline_station_user_rating ( " +
                 "station_id INTEGER, " +
-                "user_id INTEGER, " +
+                "username TEXT, " +
                 "rating REAL)";
 
 
@@ -183,8 +183,19 @@ public class DbHelper extends SQLiteOpenHelper {
         // Drop older timelinestation table if exists
         db.execSQL("DROP TABLE IF EXISTS timelinestation");
 
-        // Drop older movie milestone if exists
+        // Drop older milestone table if exists
         db.execSQL("DROP TABLE IF EXISTS milestone");
+
+        //Non droppable in production
+        // Drop older user_rating table if exists
+        db.execSQL("DROP TABLE IF EXISTS user_rating");
+        // Drop older rating table if exists
+        db.execSQL("DROP TABLE IF EXISTS rating");
+        // Drop older timeline_station_user_rating table if exists
+        db.execSQL("DROP TABLE IF EXISTS timeline_station_user_rating");
+        // Drop older timeline_station_rating table if exists
+        db.execSQL("DROP TABLE IF EXISTS timeline_station_rating");
+
 
         //Drop English DB
         this.DropEnglishDB(db);
@@ -625,7 +636,7 @@ public class DbHelper extends SQLiteOpenHelper {
     /**
      * adds a new entry to the table user_rating
      */
-    public void addUserRating(int station_id, int user_id,float rating)
+    public void addUserRating(int station_id, String username,float rating)
     {
         SQLiteDatabase db = null;
         // get reference to writable DB
@@ -636,7 +647,7 @@ public class DbHelper extends SQLiteOpenHelper {
             //ContentValues to add key "column"/value
             ContentValues values = new ContentValues();
             values.put("station_id", station_id);
-	        values.put("user_id", user_id);
+	        values.put("username", username);
             values.put("rating", rating);
 
             //insert
@@ -654,7 +665,7 @@ public class DbHelper extends SQLiteOpenHelper {
     /**
      * adds a new entry to the table timeline_station_user_rating
      */
-    public void addUserTimelineStationRating(int station_id, int user_id,float rating)
+    public void addUserTimelineStationRating(int station_id, String username,float rating)
     {
         SQLiteDatabase db = null;
         // get reference to writable DB
@@ -665,7 +676,7 @@ public class DbHelper extends SQLiteOpenHelper {
             //ContentValues to add key "column"/value
             ContentValues values = new ContentValues();
             values.put("station_id", station_id);
-	        values.put("user_id", user_id);
+	        values.put("username", username);
             values.put("rating", rating);
 
             //insert
@@ -1042,17 +1053,17 @@ public class DbHelper extends SQLiteOpenHelper {
      * @param station_id
      * @return
      */
-    public float getUserRating(int station_id, int user_id) {
+    public float getUserRating(int station_id, String username) {
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String[] columns = {"station_id", "user_id", "rating"};
+        String[] columns = {"station_id", "username", "rating"};
         //build query
         Cursor cursor =
                 db.query("user_rating", // a. table
                         columns, // column names
-                        " station_id = ? and user_id = ?", // c. selections
-                        new String[]{String.valueOf(station_id), String.valueOf(user_id)}, // d. selections args
+                        " station_id = ? and username = ?", // c. selections
+                        new String[]{String.valueOf(station_id), username}, // d. selections args
                         null, // e. group by
                         null, // f. having
                         null, // g. order by
@@ -1074,18 +1085,18 @@ public class DbHelper extends SQLiteOpenHelper {
      * @param station_id
      * @return
      */
-    public float getUserTimelineStationRating(int station_id, int user_id)
+    public float getUserTimelineStationRating(int station_id, String username)
     {
         //reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String[] columns = {"station_id","user_id","rating"};
+        String[] columns = {"station_id","username","rating"};
         //build query
         Cursor cursor =
                 db.query("timeline_station_user_rating", // a. table
                         columns, // column names
-                        " station_id = ? and user_id = ?", // c. selections
-                        new String[] { String.valueOf(station_id), String.valueOf(user_id) }, // d. selections args
+                        " station_id = ? and username = ?", // c. selections
+                        new String[] { String.valueOf(station_id), username }, // d. selections args
                         null, // e. group by
                         null, // f. having
                         null, // g. order by

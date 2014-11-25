@@ -399,25 +399,25 @@ final class DbAdapter {
     /**
      *
      * @param station_id
-     * @param user_id
+     * @param username
      * @return the rating of the station with this id from this user
      * returns 0 if the user has not voted for this station
      */
-    public float getUserRatingForStation(int station_id, int user_id)
+    public float getUserRatingForStation(int station_id, String username)
     {
-        return db.getUserRating(station_id, user_id);
+        return db.getUserRating(station_id, username);
     }
 
     /**
      *
      * @param station_id
-     * @param user_id
+     * @param username
      * @return the rating of the timeline station with this id from this user
      * returns 0 if the user has not voted for this station
      */
-    public float getUserRatingForTimelineStation(int station_id, int user_id)
+    public float getUserRatingForTimelineStation(int station_id, String username)
     {
-        return db.getUserTimelineStationRating(station_id, user_id);
+        return db.getUserTimelineStationRating(station_id, username);
     }
 
     /**
@@ -444,18 +444,18 @@ final class DbAdapter {
      * Adds the param rating to the ratings of the station with this id from this user
      * @param station_id
      */
-    public void addUserRating(int station_id, int user_id, float rating)
+    public void addUserRating(int station_id, String username, float rating)
     {
-        db.addUserRating(station_id, user_id, rating);
+        db.addUserRating(station_id, username, rating);
     }
 
     /**
      * Adds the param rating to the ratings of the timeline station with this id from this user
      * @param station_id
      */
-    public void addUserTimelineStationRating(int station_id, int user_id, float rating)
+    public void addUserTimelineStationRating(int station_id, String username, float rating)
     {
-        db.addUserTimelineStationRating(station_id, user_id, rating);
+        db.addUserTimelineStationRating(station_id, username, rating);
     }
 
     /**
@@ -571,14 +571,14 @@ final class DbAdapter {
         //get his rating for each station for each line
         for(int i=0; i<getStationByRoute(1).size(); i++, station_id++)
         {
-            redLineStations.add(getUserRatingForStation(station_id, user.getId()));
+            redLineStations.add(getUserRatingForStation(station_id, user.getUsername()));
             sum += redLineStations.get(i);
         }
         redLine = sum;
         sum = 0;
         for(int i=0; i<getStationByRoute(2).size(); i++, station_id++)
         {
-            blueLineStations.add(getUserRatingForStation(station_id, user.getId()));
+            blueLineStations.add(getUserRatingForStation(station_id, user.getUsername()));
             sum += blueLineStations.get(i);
         }
         blueLine = sum;
@@ -620,7 +620,7 @@ final class DbAdapter {
      */
     private void getUserFromParse(final User user)
     {
-            final int id = user.getId();
+            final String username = user.getUsername();
 
             //query parse to get the user
             ParseQuery<ParseUser> query = ParseUser.getQuery();
@@ -630,13 +630,13 @@ final class DbAdapter {
                 public void done(List<ParseUser> userList, ParseException e) {
                     if (userList.size() > 0) {
                         String stations =  userList.get(0).getString("redLineStations");
-                        addRatingsFromString(id, stations, 0);
+                        addRatingsFromString(username, stations, 0);
 
                         stations =  userList.get(0).getString("blueLineStations");
-                        addRatingsFromString(id, stations, getStationByRoute(0).size());
+                        addRatingsFromString(username, stations, getStationByRoute(0).size());
 
                         stations =  userList.get(0).getString("greenLineStations");
-                        addRatingsFromString(id, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                        addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
                     } else {
                     }
                 }
@@ -648,11 +648,11 @@ final class DbAdapter {
 
     /**
      * adds to the db the ratings of this user for the stations from string
-     * @param user_id
+     * @param username
      * @param stations
      * @param previous_stations, the stations before this line, needed for the station_id param
      */
-    private void addRatingsFromString(int user_id, String stations, int previous_stations) {
+    private void addRatingsFromString(String username, String stations, int previous_stations) {
         System.out.println(stations);
         stations = stations.replace("[", "");
         stations = stations.replace("]", "");
@@ -662,8 +662,8 @@ final class DbAdapter {
             float rating = Float.parseFloat(number);
             if (rating != 0) {
                 int station_id = previous_stations + i;
-                if(getUserRatingForStation(station_id, user_id) == 0) {
-                    this.addUserRating(station_id, user_id, rating);
+                if(getUserRatingForStation(station_id, username) == 0) {
+                    this.addUserRating(station_id, username, rating);
                 }
             }
             i++;
