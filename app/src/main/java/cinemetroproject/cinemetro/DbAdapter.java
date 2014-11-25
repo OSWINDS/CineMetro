@@ -1724,4 +1724,14 @@ final class DbAdapter {
             db.addTimelineStationRating(station.getId());
         }
     }
+
+    public Station getStationByID(int idStation) {
+        for(int i=0;i<this.stations.size();i++){
+            if(this.stations.get(i).getId()==idStation){
+                return this.stations.get(i);
+            }
+
+        }
+            return null;
+    }
 }

@@ -36,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cinemetroproject.cinemetro.util.Colours;
+
 
 public class MapActivity extends Activity implements LocationListener {
 
@@ -45,7 +47,7 @@ public class MapActivity extends Activity implements LocationListener {
     private GoogleMap mΜap;
     private LatLng current;
     private Marker mCurrent;
-    private float colour;
+    private static float colour;
     private int nLine;
     private List<MyPoint> line = new ArrayList<MyPoint>();
     private LocationManager lm;
@@ -126,7 +128,7 @@ public class MapActivity extends Activity implements LocationListener {
         currentLocation = new Location("");
         if (this.mΜap != null) {
             mΜap.setMyLocationEnabled(true);
-            mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257,22.944343),8));
+            mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257,22.944343),10));
         }
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         currentLocation=lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -195,7 +197,7 @@ public class MapActivity extends Activity implements LocationListener {
         showList();
     }
 
-    private void setColour(int k) {
+    public static void setColour(int k) {
         switch (k) {
             case 1:
                 colour = (float) 0.0;

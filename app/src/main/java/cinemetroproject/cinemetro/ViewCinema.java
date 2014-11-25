@@ -23,6 +23,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -49,6 +55,7 @@ public class ViewCinema extends FragmentActivity {
     private LinearLayout layout1;
     private LinearLayout general_layout;
     private ViewFlipper vf;
+    private GoogleMap mMap;
 
     protected void onCreate(Bundle savedInstanceState) {
         //setTheme(android.R.style.Theme_Light_Panel);
@@ -136,6 +143,26 @@ public class ViewCinema extends FragmentActivity {
 
         dialog = new AlertDialog.Builder(this);
 
+        this.setUpMap();
+        if(mMap!=null){
+            MyPoint point= DbAdapter.getInstance().getStations().get(idCinema).getMyPoint();
+            mMap.addMarker(new MarkerOptions()
+                    .position(point.getLng())
+                    .title(point.getName())
+                    .icon(BitmapDescriptorFactory.defaultMarker((float) 240.0)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point.getLng(), 11));
+
+        }
+
+    }
+
+
+    public void setUpMap() {
+        mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        if (mMap != null) {
+            mMap.clear();
+
+        }
     }
 
     View.OnClickListener ShareButtonOnClickListener  = new View.OnClickListener() {

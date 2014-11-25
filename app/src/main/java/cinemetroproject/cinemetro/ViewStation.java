@@ -26,6 +26,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -52,6 +59,7 @@ public class ViewStation extends FragmentActivity implements View.OnClickListene
     private Button instagramButton;
     private Button pinterestButton;
     private AlertDialog.Builder dialog;
+    private GoogleMap mMap;
 
     private int imag;
     private ImageView image;
@@ -214,6 +222,26 @@ public class ViewStation extends FragmentActivity implements View.OnClickListene
         }
         info_cast.setText(sb);
 
+        this.setUpMap();
+        if(mMap!=null){
+            MyPoint point= DbAdapter.getInstance().getStationByID(idStation).getMyPoint();
+            mMap.addMarker(new MarkerOptions()
+                    .position(point.getLng())
+                    .title(point.getName())
+                    .icon(BitmapDescriptorFactory.defaultMarker((float)0.0)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point.getLng(), 11));
+
+        }
+
+    }
+
+
+    public void setUpMap() {
+        mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        if (mMap != null) {
+            mMap.clear();
+
+        }
     }
 
     @Override

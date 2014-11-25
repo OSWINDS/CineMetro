@@ -4,3 +4,8 @@
 .DS_Store
 /build
 app/src/main/res/drawable-mdpi/
+*.jpg
+*.png
+*.jpeg
+app/src/main/res/drawable-hdpi/button_background.xml
+app/src/main/res/drawable-hdpi/info_button.xml

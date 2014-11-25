@@ -23,6 +23,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -55,7 +61,7 @@ public class Timeline extends ActionBarActivity {
     private AlertDialog.Builder dialog;
     private LinearLayout layout1;
     private LinearLayout general_layout;
-
+    private GoogleMap mMap;
 
 
     @Override
@@ -97,7 +103,7 @@ public class Timeline extends ActionBarActivity {
             rb[i]  = new RadioButton(this);
             rb[i].setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(i).getYear());
             rb[i].setTextColor(Color.WHITE);
-            rb[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            rb[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             rb[i].setId(i);
 
             //rb[i].setButtonDrawable( getResources().getDrawable( R.drawable.radiobutton ));
@@ -167,7 +173,32 @@ public class Timeline extends ActionBarActivity {
 
         dialog = new AlertDialog.Builder(this);
 
+        this.setUpMap();
+        if(mMap!=null){
+            MyPoint point= DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getMyPoint();
+            mMap.addMarker(new MarkerOptions()
+                    .position(point.getLng())
+                    .title(point.getName())
+                    .icon(BitmapDescriptorFactory.defaultMarker((float) 120.0)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point.getLng(), 11));
+
+        }
+
     }
+
+
+    public void setUpMap() {
+        mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        if (mMap != null) {
+            mMap.clear();
+
+        }
+    }
+
+
+
+
+
     View.OnClickListener ShareButtonOnClickListener  = new View.OnClickListener() {
 
         @Override
