@@ -83,7 +83,10 @@
             android:choiceMode="singleChoice"
             android:dividerHeight="0dp"
             android:background="@color/black_overlay"
-            android:divider="@android:color/transparent" />
+            android:divider="@android:color/transparent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"/>
     </android.support.v4.widget.DrawerLayout>
 
 

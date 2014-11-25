@@ -1,7 +1,10 @@
 package cinemetroproject.cinemetro;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -29,7 +32,6 @@ public class MainMenu extends ActionBarActivity {
     private String[] menu;
     private DrawerLayout dLayout;
     private ListView dList;
-    private ArrayAdapter<String> adapter;
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
@@ -38,9 +40,9 @@ public class MainMenu extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         this.initializeDB(Language.GREEK);
 
+
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_menu);
 
         navigationButton = (Button) findViewById(R.id.navigation_button);
@@ -64,7 +66,7 @@ public class MainMenu extends ActionBarActivity {
                 //dLayout.closeDrawers();
                 if (position == 0) {
                     Intent intent;
-                    if(DbAdapter.getInstance().getActiveUser()==null){
+                    if(DbAdapter.getInstance().getActiveUser() == null){
                         intent=new Intent(MainMenu.this, LogIn.class);
                         startActivity(intent);
                     }
@@ -104,7 +106,6 @@ public class MainMenu extends ActionBarActivity {
                  if (dLayout.isDrawerOpen(Gravity.LEFT))
                      dLayout.closeDrawers();
                  else
-
                      dLayout.openDrawer(Gravity.LEFT);
                  return true;
             default:
@@ -116,6 +117,12 @@ public class MainMenu extends ActionBarActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+    }
+
+    public void restartActivity() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
 
     }
 
