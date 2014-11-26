@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -9,8 +10,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 
 import cinemetroproject.cinemetro.R;
-
-public class AboutActivity extends FragmentActivity {
+/**FragmentActivity*/
+public class AboutActivity extends ActionBarActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class AboutActivity extends FragmentActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_about));
 
         /** Getting a reference to the ViewPager defined the layout file */
         ViewPager pager = (ViewPager) findViewById(R.id.pager);

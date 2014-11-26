@@ -19,6 +19,7 @@
     <string name="title_activity_RateActivity">Rating</string>
     <string name="title_activity_log_in">LogIn</string>
     <string name="title_activity_language">Language</string>
+    <string name="title_activity_timeline">Timeline</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_sign_up">SignUp</string>
     <string name="Email">E-mail:</string>

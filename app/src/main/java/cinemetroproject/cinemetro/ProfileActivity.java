@@ -38,6 +38,7 @@ public class ProfileActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_profile));
         setContentView(R.layout.activity_profile);
 
         logo=(ImageButton)findViewById(R.id.logo);

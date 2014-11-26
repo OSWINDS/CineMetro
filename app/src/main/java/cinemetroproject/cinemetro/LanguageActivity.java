@@ -33,6 +33,7 @@ public class LanguageActivity extends ActionBarActivity {
             super.onCreate(savedInstanceState);
 
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_language));
             setContentView(R.layout.activity_language);
 
             listview = (ListView)findViewById(R.id.language);
@@ -103,12 +104,5 @@ public class LanguageActivity extends ActionBarActivity {
             finish();
 
         }};
-
-    private void restartActivity() {
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
-
-    }
 
 }

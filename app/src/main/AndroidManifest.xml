@@ -133,20 +133,32 @@
             android:name=".Line1"
             android:label="line1"
             android:screenOrientation="portrait"
-            android:configChanges="locale|layoutDirection|orientation|keyboardHidden|screenSize">
+            android:configChanges="locale|layoutDirection|orientation|keyboardHidden|screenSize"
+            android:parentActivityName=".LinesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cinemetroproject.cinemetro.LinesActivity" />
         </activity>
         <activity android:name=".Line2"
             android:screenOrientation="portrait"
-            android:configChanges="locale|orientation|keyboardHidden|screenSize">
+            android:configChanges="locale|orientation|keyboardHidden|screenSize"
+            android:parentActivityName=".LinesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cinemetroproject.cinemetro.LinesActivity" />
         </activity>
         <activity android:name=".Line3"
             android:screenOrientation="portrait"
-            android:configChanges="locale|layoutDirection|orientation|keyboardHidden|screenSize">
+            android:configChanges="locale|layoutDirection|orientation|keyboardHidden|screenSize"
+            android:parentActivityName=".LinesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cinemetroproject.cinemetro.LinesActivity" />
         </activity>
 
         <activity
             android:name=".Timeline"
-            android:label="Timeline"
+            android:label="@string/title_activity_timeline"
             android:screenOrientation="portrait"
             android:configChanges="locale|layoutDirection|orientation|keyboardHidden|screenSize"
             android:parentActivityName=".LinesActivity">

@@ -33,6 +33,7 @@ public class LogIn extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_log_in));
         setContentView(R.layout.activity_log_in);
 
         logbt = (Button) findViewById(R.id.logIn);

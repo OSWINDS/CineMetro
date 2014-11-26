@@ -2,9 +2,11 @@ package cinemetroproject.cinemetro;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -39,7 +41,6 @@ public class MainMenu extends ActionBarActivity {
 
         super.onCreate(savedInstanceState);
         this.initializeDB(Language.GREEK);
-
 
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -119,10 +120,26 @@ public class MainMenu extends ActionBarActivity {
         super.onPostCreate(savedInstanceState);
     }
 
-    public void restartActivity() {
+    @Override
+    protected void onStart() {
+        super.onStart();  // Always call the superclass method first
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();  // Always call the superclass method first
+
+        // Activity being restarted from stopped state
         Intent intent = getIntent();
         finish();
         startActivity(intent);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // The activity has become visible (it is now "resumed").
+
 
     }
 
@@ -163,4 +180,6 @@ public class MainMenu extends ActionBarActivity {
         db.setLanguage(lang); //this should change...
         DbAdapter.getInstance().setDB(db);
     }
+
+
 }
