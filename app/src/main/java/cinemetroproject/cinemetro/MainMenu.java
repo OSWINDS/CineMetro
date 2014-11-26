@@ -55,7 +55,7 @@ public class MainMenu extends ActionBarActivity {
         aboutButton = (Button) findViewById(R.id.about_button);
         aboutButton.setOnClickListener(aboutButtonOnClickListener);
 
-        menu = new String[]{"Profile","Language"};
+        menu = new String[]{getResources().getString(R.string.left_scroll_item1), getResources().getString(R.string.left_scroll_item2)};
         dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         ListViewAdapter adapter = new ListViewAdapter(MainMenu.this, menu);
@@ -79,6 +79,8 @@ public class MainMenu extends ActionBarActivity {
                 if (position == 1) {
                     Intent intent = new Intent(MainMenu.this, LanguageActivity.class);
                     startActivity(intent);
+                    finish();
+                    onStop();
                 }
             }
         });
@@ -131,9 +133,9 @@ public class MainMenu extends ActionBarActivity {
         super.onRestart();  // Always call the superclass method first
 
         // Activity being restarted from stopped state
-        Intent intent = getIntent();
+       /** Intent intent = getIntent();
         finish();
-        startActivity(intent);
+        startActivity(intent);*/
     }
     @Override
     protected void onResume() {
