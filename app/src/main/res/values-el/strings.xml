@@ -18,6 +18,7 @@
     <string name="title_activity_ViewCinema">Σινεμά</string>
     <string name="title_activity_RateActivity">Βαθμολόγηση</string>
     <string name="title_activity_log_in">Σύνδεση</string>
+    <string name="title_activity_timeline">Χρονολόγιο</string>
     <string name="hello_world">Γεια σου κόσμε</string>
     <string name="title_activity_sign_up">Εγγραφή</string>
     <string name="Email">E-mail:</string>

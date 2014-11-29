@@ -36,6 +36,7 @@ public class RateActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_RateActivity));
         setContentView(R.layout.activity_rate);
 
         Intent intent = getIntent();

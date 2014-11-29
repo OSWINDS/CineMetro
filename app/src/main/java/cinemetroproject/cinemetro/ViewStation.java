@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -41,7 +42,7 @@ import java.util.List;
  * Se ayto to activity anaparistatai to ViewStation
  * Dimiourgeitai otan epilegetai mia stasi apo LinesActivity
  */
-public class ViewStation extends FragmentActivity implements View.OnClickListener {
+public class ViewStation extends ActionBarActivity implements View.OnClickListener {
 
     private int idStation;
     private int actors; //count of actors
@@ -75,6 +76,7 @@ public class ViewStation extends FragmentActivity implements View.OnClickListene
         setContentView(R.layout.activity_view_station);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_ViewCinema));
         image=(ImageView)findViewById(R.id.image);
         general_layout=(LinearLayout)findViewById(R.id.general_layout);
         vf = (ViewFlipper) findViewById(R.id.vf);

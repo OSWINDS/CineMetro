@@ -71,6 +71,7 @@ public class Timeline extends ActionBarActivity {
 
         //full screen to timeline
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_timeline));
         setContentView(R.layout.activity_timeline);
         //create radiogroup
         rg = (RadioGroup) findViewById(R.id.radiogroup);

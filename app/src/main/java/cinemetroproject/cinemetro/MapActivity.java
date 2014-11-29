@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -39,7 +40,7 @@ import java.util.Map;
 import cinemetroproject.cinemetro.util.Colours;
 
 
-public class MapActivity extends Activity implements LocationListener {
+public class MapActivity extends ActionBarActivity implements LocationListener {
 
 
     private ListView lv;
@@ -59,6 +60,7 @@ public class MapActivity extends Activity implements LocationListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_map));
         setContentView(R.layout.activity_map);
 
         setUpMap();
@@ -175,7 +177,9 @@ public class MapActivity extends Activity implements LocationListener {
         int id = item.getItemId();
 
         switch (id) {
-
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             case R.id.Lines:
                 if (Ll1.getVisibility() == View.VISIBLE)
                     Ll1.setVisibility(View.INVISIBLE);
@@ -187,7 +191,6 @@ public class MapActivity extends Activity implements LocationListener {
         }
 
     }
-
     private void setLine() {
         if (!line.isEmpty()) {
             line.clear();

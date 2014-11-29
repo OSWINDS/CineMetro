@@ -1,7 +1,12 @@
 package cinemetroproject.cinemetro;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -31,7 +36,6 @@ public class MainMenu extends ActionBarActivity {
     private String[] menu;
     private DrawerLayout dLayout;
     private ListView dList;
-    private ArrayAdapter<String> adapter;
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
@@ -41,8 +45,7 @@ public class MainMenu extends ActionBarActivity {
         this.initializeDB(Language.GREEK);
 
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_menu);
 
         navigationButton = (Button) findViewById(R.id.navigation_button);
@@ -54,7 +57,7 @@ public class MainMenu extends ActionBarActivity {
         aboutButton = (Button) findViewById(R.id.about_button);
         aboutButton.setOnClickListener(aboutButtonOnClickListener);
 
-        menu = new String[]{"Profile","Language"};
+        menu = new String[]{getResources().getString(R.string.left_scroll_item1), getResources().getString(R.string.left_scroll_item2)};
         dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         ListViewAdapter adapter = new ListViewAdapter(MainMenu.this, menu);
@@ -66,7 +69,7 @@ public class MainMenu extends ActionBarActivity {
                 //dLayout.closeDrawers();
                 if (position == 0) {
                     Intent intent;
-                    if(DbAdapter.getInstance().getActiveUser()==null){
+                    if(DbAdapter.getInstance().getActiveUser() == null){
                         intent=new Intent(MainMenu.this, LogIn.class);
                         startActivity(intent);
                     }
@@ -78,6 +81,8 @@ public class MainMenu extends ActionBarActivity {
                 if (position == 1) {
                     Intent intent = new Intent(MainMenu.this, LanguageActivity.class);
                     startActivity(intent);
+                    finish();
+                    onStop();
                 }
             }
         });
@@ -106,7 +111,6 @@ public class MainMenu extends ActionBarActivity {
                  if (dLayout.isDrawerOpen(Gravity.LEFT))
                      dLayout.closeDrawers();
                  else
-
                      dLayout.openDrawer(Gravity.LEFT);
                  return true;
             default:
@@ -118,6 +122,28 @@ public class MainMenu extends ActionBarActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();  // Always call the superclass method first
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();  // Always call the superclass method first
+
+        // Activity being restarted from stopped state
+       /** Intent intent = getIntent();
+        finish();
+        startActivity(intent);*/
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // The activity has become visible (it is now "resumed").
+
 
     }
 
@@ -158,4 +184,6 @@ public class MainMenu extends ActionBarActivity {
         db.setLanguage(Locale.getDefault().getLanguage());
         DbAdapter.getInstance().setDB(db);
     }
+
+
 }
