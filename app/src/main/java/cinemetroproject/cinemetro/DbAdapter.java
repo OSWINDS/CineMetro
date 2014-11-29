@@ -2,14 +2,13 @@ package cinemetroproject.cinemetro;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.ParseQuery;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Handles the communication of other classes with the database
@@ -150,7 +149,6 @@ final class DbAdapter {
         this.fillArrays();
         if ( stations.isEmpty())
         {
-
             Language language = db.getLanguage();
             switch (language)
             {
@@ -405,7 +403,9 @@ final class DbAdapter {
      */
     public float getUserRatingForStation(int station_id, String username)
     {
-        return db.getUserRating(station_id, username);
+        System.out.println(station_id+", "+username);
+        float i = db.getUserRating(station_id, username);
+        return i;
     }
 
     /**
@@ -490,7 +490,7 @@ final class DbAdapter {
      */
     public void changeLanguage(Language lang)
     {
-        db.setLanguage(lang);
+        db.setLanguage(lang.toString());
         this.setDB(this.db);
     }
 
@@ -1428,12 +1428,12 @@ final class DbAdapter {
         //Milestones
         this.db.addMilestone(new Milestone(1, "1964", " The film festival’s headquarters move from the Olympion" +
                 " theatre to the EMS hall, a place, which will be closely linked to the festival’s history for more" +
-                " than three decades (5th Greek Film Week, 1964)","theatesems", "Viewers attend a festival screening at the EMS hall"));
+                " than three decades (5th Greek Film Week, 1964)", "theatesems", "Viewers attend a festival screening at the EMS hall"));
         this.db.addMilestone(new Milestone(1, "1966", "Greek-American film producer James Paris, a famous festival figure during the years" +
                 " 1966-1972, hires a tank to march around the White Tower’s square in order to publicize his film " +
                 "“Forgotten Heores” (7th Greek Film Week, 1966). \n" +
                 "The screening is full of surprises. More than 1.500 viewers that attend Paris’ film find a pack of cigarettes in" +
-                " their seat, a promo gift on behalf of the producer.","paris_ems",  "Yorgos Tzavellas and James Paris attend a festival screening at the EMS hall"));
+                " their seat, a promo gift on behalf of the producer.", "paris_ems", "Yorgos Tzavellas and James Paris attend a festival screening at the EMS hall"));
         this.db.addMilestone(new Milestone(1, "1970", "The “2nd Balcony” is a special place in EMS hall, which will be identified with the dynamic" +
                 " young public of the Thessaloniki Film Festival that playσ an important role in the forming of a local festival culture" +
                 " (11th Greek Film Week, 1970). \n" +
@@ -1449,10 +1449,10 @@ final class DbAdapter {
                 " International Fair Trade and the International Federation of Film Producers Associations (FIAPF). "
                 , "diethnesfilmfestival",
                 " A view of the EMS hall, during the 10th anniversary of the Thessaloniki International Film Festival for Short Films. "));
-        this.db.addMilestone(new Milestone(1,"1992","Film Festival becomes officially International . Official competition hosts movies from new " +
+        this.db.addMilestone(new Milestone(1, "1992", "Film Festival becomes officially International . Official competition hosts movies from new " +
                 "and emerging creators from all over the world . \n" +
                 "In parallel hosts until 1997 the Greek Film Festival .", "p1992", ""));
-        this.db.addMilestone(new Milestone(1,"1995","Festival hosted for last time at the EMS hall . The building will be refurbished radically " +
+        this.db.addMilestone(new Milestone(1, "1995", "Festival hosted for last time at the EMS hall . The building will be refurbished radically " +
                 "within it from Cultural Capital Organization Thessaloniki 1997 , leaving behind a bright " +
                 "cinematic history for the city . ", "p1995", ""));
 
@@ -1465,7 +1465,7 @@ final class DbAdapter {
 
         this.db.addMilestone(new Milestone(2, "1963",
                 "“Alexandros” cinema theatre is located just below the Thessaloniki Military Club and it is very close to the EMS hall," +
-                        " which serves as the festival’s seat and a place for short film screenings for many years.\n"+ "\n"+
+                        " which serves as the festival’s seat and a place for short film screenings for many years.\n" + "\n" +
                         "Here is a sculptured marble in the honor of filmmaker Takis Kanellopoulos, whose name was particularly connected" +
                         " to the Thessaloniki Film Festival and to the caffé “Do-re”, one of the festival’s most popular haunts", "cinealexandros02",
                 "A view of the “Alexandros” cinema theatre, which hosted festival screenings."));
@@ -1487,7 +1487,7 @@ final class DbAdapter {
                 "“Esperos” cinema theatre at Alexandrou Svolou str."));
         this.db.addMilestone(new Milestone(3, "1994", "Japanese filmmaker Nagisa Osima is the dominant figure in the 35th edition of the Thessaloniki Film Festival," +
                 " which organizes a retrospective of his work in “Esperos” cinema theatre. \n" +
-                "Nagisa Osima visits Thessaloniki for a few days in order to prologue his films, which are screened in crowded halls. Osima meets with his friend Theo"+
+                "Nagisa Osima visits Thessaloniki for a few days in order to prologue his films, which are screened in crowded halls. Osima meets with his friend Theo" +
                 "Angelopoulos and entertains himself at a concert with singer Dimitra Galani.", "",
                 ""));
         this.db.addMilestone(new Milestone(3, "1996", "In 1996 the Thessaloniki Film Festival is held in “Anatolia” cinema theatre," +

@@ -20,6 +20,8 @@ import android.widget.ListView;
 import com.parse.Parse;
 import android.widget.AdapterView.OnItemClickListener;
 
+import java.util.Locale;
+
 public class MainMenu extends ActionBarActivity {
 
     //Buttons
@@ -153,7 +155,7 @@ public class MainMenu extends ActionBarActivity {
     public void initializeDB(Language lang)
     {
         db = new DbHelper(this);
-        db.setLanguage(lang); //this should change...
+        db.setLanguage(Locale.getDefault().getLanguage());
         DbAdapter.getInstance().setDB(db);
     }
 }
