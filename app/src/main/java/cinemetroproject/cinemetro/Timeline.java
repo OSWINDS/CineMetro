@@ -108,7 +108,7 @@ public class Timeline extends ActionBarActivity {
             rb[i].setId(i);
 
             //rb[i].setButtonDrawable( getResources().getDrawable( R.drawable.radiobutton ));
-            rb[i].setTextSize(20);
+            rb[i].setTextSize(16);
 
             rb[i].setOnClickListener(new View.OnClickListener() {
 
