@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -183,8 +184,7 @@ public class ViewCinema extends ActionBarActivity {
             instagramButton.setVisibility(View.VISIBLE);
             pinterestButton.setVisibility(View.VISIBLE);
             general_layout.setOnClickListener(layoutOnClickListener);
-
-        }
+    }
     };
 
     View.OnClickListener layoutOnClickListener  = new View.OnClickListener() {
