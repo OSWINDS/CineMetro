@@ -3,62 +3,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
-    android:background="#ffffff"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
-
+    android:background="@color/line3"
     tools:context="cinemetroproject.cinemetro.LinesActivity">
 
+    <!-- View Station Title -->
     <TextView
-
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-
-        android:textColor="#fbf7f7"
+        android:textColor="@color/letters"
         android:textSize="25dp"
         android:textStyle="italic"
-        android:text="lalalalla"
+        android:gravity="center_horizontal"/>
 
-        android:gravity="center_horizontal"
-        android:background="#115533"/>
+    <!-- LinearLayout Total -->
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:id="@+id/general_layout2"
-        android:background="#115533"
-
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/title">
 
+        <!-- Scrollview total -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/title"
             android:id="@+id/scrollView3">
 
-
-
+            <!-- Dont know why exists -->
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/general_layout"
-                android:background="#115533"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/title">
 
-
-
-
+                <!-- Layout which contains images and radiobuttons -->
                 <LinearLayout
                     android:id="@+id/scrollView"
                     android:layout_width="fill_parent"
@@ -72,11 +62,13 @@
                     android:paddingTop="5dp"
                     android:weightSum="1">
 
+                    <!-- the line -->
                     <View
                         android:layout_width="5dp"
                         android:layout_height="190dp"
                         android:layout_marginLeft="0dp"
-                        android:background="#FFFFFF"/>
+                        android:background="@color/letters"/>
+
                     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/radiogroup"
                         android:layout_width="90dp"
@@ -91,7 +83,7 @@
                         android:layout_height="180dp" />
                 </LinearLayout>
 
-
+                <!-- Text layout -->
                 <LinearLayout
                     android:id="@+id/mylayout"
                     android:layout_width="fill_parent"
@@ -103,49 +95,38 @@
                     android:orientation="horizontal"
                     android:weightSum="1">
 
-
-
-
                     <TextView
                         android:id="@+id/description"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="lalallaala"
                         android:layout_marginTop="25dp"
-                        android:background="#115533"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/letters"
                         android:textSize="15dp" />
-
-
-
 
                 </LinearLayout>
 
 
-
-                <!-- show In Map-->
-
-
-
+                <!-- buttons layout-->
                 <LinearLayout
                     android:id="@+id/layout1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="25dp"
-                    android:background= "#115533"
                     android:orientation="horizontal">
 
-
+                    <!-- facebook button-->
                     <Button
                         android:id="@+id/facebook_button"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:textStyle="italic"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="0dp"
                         android:layout_marginRight="0dp"
-                        android:background="@drawable/facebook"
-                        android:textColor="@color/share_button" />
+                        android:background="@drawable/facebook" />
+
+                    <!-- rating button-->
                     <ImageButton
                         android:layout_width="40dp"
                         android:layout_height="40dp"
@@ -153,71 +134,61 @@
                         android:textAlignment="center"
                         android:orientation="horizontal"
                         android:layout_marginTop="15dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
                         android:background="@drawable/star_off"
-                        android:textColor="@color/letter_colour"
                         android:id="@+id/go_ahead"/>
 
-
                     <!-- Twitter button -->
-
                     <Button
                         android:id="@+id/twitter_button"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-
                         android:textStyle="italic"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="3dp"
                         android:layout_marginRight="5dp"
-                        android:background="@drawable/twitter"
-                        android:textColor="@color/share_button" />
+                        android:background="@drawable/twitter"/>
 
+                    <!-- show in map button -->
                     <ImageButton
                         android:layout_height="40dp"
                         android:layout_width="45dp"
                         android:background="@drawable/map"
-                        android:layout_marginRight="15dp"
+                        android:layout_marginRight="1dp"
                         android:layout_marginLeft="10dp"
                         android:layout_gravity="center_horizontal"
-                        android:id="@+id/showInMap"
-                        />
+                        android:id="@+id/showInMap" />
+
                     <!-- Instagram button -->
                     <Button
                         android:id="@+id/instagram_button"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="5dp"
                         android:textStyle="italic"
-                        android:background="@drawable/instagram"
-                        android:textColor="@color/share_button" />
+                        android:background="@drawable/instagram" />
 
+                    <!-- share button-->
                     <ImageButton
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-
                         android:layout_gravity="right"
                         android:textAlignment="center"
                         android:orientation="horizontal"
                         android:layout_marginTop="15dp"
                         android:layout_marginLeft="0dp"
+                        android:layout_marginRight="5dp"
                         android:background="@drawable/share"
-                        android:textColor="@color/letter_colour"
                         android:id="@+id/share"/>
-
-
 
                     <!-- Pinterest button -->
                     <Button
                         android:id="@+id/pinterest_button"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="0dp"
                         android:textStyle="italic"
-                        android:background="@drawable/pinterest"
-                        android:textColor="@color/share_button"/>
-
-
+                        android:background="@drawable/pinterest"/>
 
                 </LinearLayout>
 

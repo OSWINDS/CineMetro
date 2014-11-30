@@ -2,13 +2,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ff0b3f64">
+    android:background="@color/line2">
 
+    <!-- scrollview total-->
     <ScrollView
 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
 
+        <!-- linearlayout total-->
         <LinearLayout
             android:id="@+id/general_layout"
             android:layout_width="fill_parent"
@@ -26,8 +28,8 @@
                 android:textSize="25dp"
                 android:textStyle="italic"
                 android:id="@+id/titleYear"
-                android:textColor="#FFFFFF"
-                android:background="#ff0b3f64"/>
+                android:textColor="@color/letters"
+                />
 
             <!--movie Images -->
             <ViewFlipper
@@ -47,26 +49,25 @@
                 android:gravity="center_horizontal"
                 android:textStyle="bold"
                 android:textSize="15dp"
-                android:textColor="#FFFFFF"
-                android:id="@+id/inf"
-                android:background="#ff0b3f64" />
+                android:textColor="@color/letters"
+                android:id="@+id/inf" />
+
+            <!-- description-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/info"
-                android:textColor="#FFFFFF"
-                android:background="#ff0b3f64" />
+                android:textColor="@color/letters" />
 
+            <!-- info cast -->
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:textSize="14dp"
-                android:textColor="#FFFFFF"
-                android:id="@+id/info_cast"
-                android:background="#ff0b3f64" />
+                android:textColor="@color/letters"
+                android:id="@+id/info_cast" />
 
             <!-- images of cast -->
             <HorizontalScrollView
@@ -82,23 +83,16 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- show In Map-->
-
-            <!-- Go button -->
-          <ScrollView
-
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              >
+            <!-- buttons layout-->
             <LinearLayout
                 android:id="@+id/layout1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="25dp"
-                android:background="#ff174064"
                 android:orientation="horizontal">
 
+                <!-- facebook button-->
                 <Button
                     android:id="@+id/facebook_button"
                     android:layout_width="40dp"
@@ -106,8 +100,9 @@
                     android:textStyle="italic"
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="0dp"
-                    android:background="@drawable/facebook"
-                    android:textColor="@color/share_button" />
+                    android:background="@drawable/facebook" />
+
+                <!-- rating button-->
                 <ImageButton
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -118,11 +113,9 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="3dp"
                     android:background="@drawable/star_off"
-                    android:textColor="@color/letter_colour"
                     android:id="@+id/go_ahead"/>
 
                 <!-- Twitter button -->
-
                 <Button
                     android:id="@+id/twitter_button"
                     android:layout_width="40dp"
@@ -130,9 +123,9 @@
                     android:textStyle="italic"
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/twitter"
-                    android:textColor="@color/share_button" />
+                    android:background="@drawable/twitter"/>
 
+                <!-- show in map button -->
                 <ImageButton
                     android:layout_height="40dp"
                     android:layout_width="45dp"
@@ -141,6 +134,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_horizontal"
                     android:id="@+id/showInMap" />
+
                 <!-- Instagram button -->
                 <Button
                     android:id="@+id/instagram_button"
@@ -148,9 +142,9 @@
                     android:layout_height="40dp"
                     android:layout_marginRight="5dp"
                     android:textStyle="italic"
-                    android:background="@drawable/instagram"
-                    android:textColor="@color/share_button" />
+                    android:background="@drawable/instagram" />
 
+                <!-- share button-->
                 <ImageButton
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -161,7 +155,6 @@
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/share"
-                    android:textColor="@color/letter_colour"
                     android:id="@+id/share"/>
 
                 <!-- Pinterest button -->
@@ -171,11 +164,10 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="0dp"
                     android:textStyle="italic"
-                    android:background="@drawable/pinterest"
-                    android:textColor="@color/share_button"/>
+                    android:background="@drawable/pinterest"/>
 
             </LinearLayout>
-          </ScrollView>
+
 
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/map"

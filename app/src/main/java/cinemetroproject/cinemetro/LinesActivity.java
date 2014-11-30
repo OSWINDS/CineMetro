@@ -64,11 +64,11 @@ public class LinesActivity  extends TabActivity implements TabHost.OnTabChangeLi
         TextView tv;
         for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
         {
-            mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#ff8f0101"));
+            mTabHost.getTabWidget().getChildAt(0).setBackgroundColor((getResources().getColor(R.color.line1)));
             tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
             tv.setTextColor(Color.WHITE);
-            mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#ff0b3f64"));
-            mTabHost.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#115533"));
+            mTabHost.getTabWidget().getChildAt(1).setBackgroundColor((getResources().getColor(R.color.line2)));
+            mTabHost.getTabWidget().getChildAt(2).setBackgroundColor((getResources().getColor(R.color.line3)));
 
         }
     }

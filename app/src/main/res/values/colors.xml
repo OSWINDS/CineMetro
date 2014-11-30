@@ -4,8 +4,9 @@
     <color name="my_blue">#ff3c52a4</color>
     <color name="share_button">#fc000000</color>
     <color name="letter_colour">#ff2c4789</color>
-    <color name="line1">#E41C26</color>
-    <color name="line2">#2389BE</color>
-    <color name="line3">#1B9344</color>
+    <color name="line1">#ff8f0101</color>
+    <color name="line2">#ff0b3f64</color>
+    <color name="line3">#115533</color>
+    <color name="letters">#FFFFFF</color>>
 
 </resources>
