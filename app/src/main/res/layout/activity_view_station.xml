@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="10dp"
             android:weightSum="1">
 
             <!-- title, year -->
@@ -85,7 +85,11 @@
             <!-- show In Map-->
 
             <!-- Go button -->
+          <ScrollView
 
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              >
             <LinearLayout
                 android:id="@+id/layout1"
                 android:layout_width="fill_parent"
@@ -171,6 +175,7 @@
                     android:textColor="@color/share_button"/>
 
             </LinearLayout>
+          </ScrollView>
 
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/map"
