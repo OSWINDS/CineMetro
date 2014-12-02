@@ -76,7 +76,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
         setContentView(R.layout.activity_view_station);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_ViewCinema));
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_ViewStation));
         image=(ImageView)findViewById(R.id.image);
         general_layout=(LinearLayout)findViewById(R.id.general_layout);
         vf = (ViewFlipper) findViewById(R.id.vf);
