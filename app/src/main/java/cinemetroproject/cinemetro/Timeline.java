@@ -270,7 +270,7 @@ public class Timeline extends ActionBarActivity {
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idCinema-14).getName();
+        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName();
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "CineMetro");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
