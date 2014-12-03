@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lines_item_ll"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:gravity="bottom">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="station"
+        android:textStyle="bold"
+        android:id="@+id/station_number"
+        android:gravity="center_horizontal"
+        android:background="#ffffff"
+        android:alpha=".75" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="title"
+        android:id="@+id/station_title"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/station_number"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:background="#ffffff"
+        android:alpha=".75"/>
+
+</LinearLayout>
