@@ -102,7 +102,7 @@ public class Line1 extends ActionBarActivity {
             }
 
             ImageView image = (ImageView) itemView.findViewById(R.id.thumbnail);
-            image.setBackgroundResource(DbAdapter.getInstance().getPhotoDrawableID("red" + Integer.toString(pos+1)));
+            image.setBackgroundResource(DbAdapter.getInstance().getPhotoDrawableID(DbAdapter.getInstance().getPhotosByStation(pos+1).get(0).getName()));
 
             TextView station = (TextView) itemView.findViewById(R.id.station_number);
             station.setTextColor(Color.parseColor("#ff8f0101"));
