@@ -31,7 +31,7 @@ public class Line1 extends ActionBarActivity {
         setContentView(R.layout.lines);
 
         LinearLayout ll=(LinearLayout)findViewById(R.id.linear_layout_lines);
-        ll.setBackgroundColor(Color.parseColor("#ff8f0101"));
+        ll.setBackgroundColor((getResources().getColor(R.color.line1)));
 
         TextView tv=(TextView)findViewById(R.id.lines_textView);
         tv.setText(R.string.line1_title);
@@ -91,25 +91,26 @@ public class Line1 extends ActionBarActivity {
 
     private class MyArrayAdapter extends ArrayAdapter<String> {
         public MyArrayAdapter() {
-            super(Line1.this, R.layout.lines_item, titles);
+            super(Line1.this, R.layout.lines_item2, titles);
         }
 
         @Override
         public View getView(int pos, View convertView, ViewGroup parent) {
             View itemView = convertView;
             if (itemView == null) {
-                itemView = getLayoutInflater().inflate(R.layout.lines_item, parent, false);
+                itemView = getLayoutInflater().inflate(R.layout.lines_item2, parent, false);
             }
 
-            ImageView image = (ImageView) itemView.findViewById(R.id.thumbnail);
-            image.setBackgroundResource(DbAdapter.getInstance().getPhotoDrawableID(DbAdapter.getInstance().getPhotosByStation(pos+1).get(0).getName()));
+            LinearLayout ll = (LinearLayout) itemView.findViewById(R.id.lines_item_ll);
+            ll.setBackgroundResource(DbAdapter.getInstance().getPhotoDrawableID(DbAdapter.getInstance().getPhotosByStation(pos+1).get(0).getName()));
 
             TextView station = (TextView) itemView.findViewById(R.id.station_number);
-            station.setTextColor(Color.parseColor("#ff8f0101"));
+            station.setTextColor((getResources().getColor(R.color.line1)));
             station.setText(R.string.station_text);
             station.append(" " + (pos+1));
 
             TextView title = (TextView) itemView.findViewById(R.id.station_title);
+            title.setTextColor((getResources().getColor(R.color.line1)));
             title.setText(titles.get(pos));
 
             return itemView;

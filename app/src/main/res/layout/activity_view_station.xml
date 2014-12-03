@@ -106,7 +106,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:textStyle="italic"
-                    android:layout_marginLeft="0dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginRight="0dp"
                     android:background="@drawable/facebook" />
 

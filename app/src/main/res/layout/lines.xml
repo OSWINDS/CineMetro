@@ -32,5 +32,6 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:clickable="false"
-        android:focusable="false"/>
+        android:focusable="false"
+        android:dividerHeight="7dp"/>
 </LinearLayout>
