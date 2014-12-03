@@ -312,12 +312,12 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public void setLanguage(String lang)
     {
-        if (lang.equals("GREEK"))
+        if (lang.equals("el"))
         {
             this.lang="";
             this.language = Language.GREEK;
         }
-        else if (lang.equals("ENGLISH"))
+        else if (lang.equals("en"))
         {
             this.lang="en_";
             this.language = Language.ENGLISH;

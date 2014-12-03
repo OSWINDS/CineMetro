@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -165,12 +166,13 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(i).getName());
+                Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(DbAdapter.getInstance().getMovieByStationId(idStation).getId()).get(i).getName());
                 int drawableId = field.getInt(null);
                 imageActor.setBackgroundResource(drawableId);
             } catch (Exception e) {}
             String string = DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i-1);
-            String[] parts = string.split(" ");
+            Log.i("name",string);
+            String[] parts = string.split("\\s+");
             nameActor.setText(parts[0] + "\n" + parts[1]);
             nameActor.setTextSize(12);
             nameActor.setTextColor(Color.argb(255, 9, 0, 100));

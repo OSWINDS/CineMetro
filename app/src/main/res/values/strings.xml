@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">CineMetro Thess</string>
+    <string name="language">en</string>
     <string name="map_button">Navigation</string>
     <string name="lines_button">Lines</string>
     <string name="profile_button">Profile</string>

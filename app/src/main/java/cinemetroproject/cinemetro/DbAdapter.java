@@ -170,6 +170,17 @@ final class DbAdapter {
         return db.getLanguage();
     }
 
+    public Movie getMovieByStationId(int id)
+    {
+        for (Movie m : this.movies)
+        {
+            if (m.getStation_id() == id)
+            {
+                return m;
+            }
+        }
+        return null;
+    }
     /**
      *
      * @param route_id
@@ -490,7 +501,17 @@ final class DbAdapter {
      */
     public void changeLanguage(Language lang)
     {
-        db.setLanguage(lang.toString());
+        switch (lang)
+        {
+            case GREEK:
+                db.setLanguage("el");
+                break;
+            case ENGLISH:
+                db.setLanguage("en");
+                break;
+            default:
+                db.setLanguage("en");
+        }
         this.setDB(this.db);
     }
 
@@ -1320,7 +1341,7 @@ final class DbAdapter {
         this.db.addStation(new Station("The Barefoot Badallion (1955)",
                 "Director: Greg Tallas\n" +
                         "\n" +
-                        "Cast: Maria Kosti, Nikos Fermas, Vassilis Fraghedakis\n" +
+                        "Cast:Maria Kosti,Nikos Fermas,Vassilis Fraghedakis\n" +
                         "\n" +
                         "Info: Based on a true story of 160 orphans, who live in Thessaloniki under the German Occupation during " +
                         "the 1940s. The film wanders around the centre and the acropolis of Thessaloniki.",
@@ -1328,7 +1349,7 @@ final class DbAdapter {
         this.db.addStation(new Station("The cutie  (1961)",
                 "Director: Yannis Dalianidis\n" +
                         "\n" +
-                        "Cast: Dinos Iliopoulos, Zoe Laskari, Pandelis Zervos, Stefanos Stratigos\n" +
+                        "Cast:Dinos Iliopoulos,Zoe Laskari,Pandelis Zervos,Stefanos Stratigos\n" +
                         "\n" +
                         "Info: Two brothers try to balance between the emotional relations and the conservative principles of a" +
                         " paternal family. The film is totally shot in Thessaloniki (Panorama, Antheon area, city centre).ς",
@@ -1336,28 +1357,28 @@ final class DbAdapter {
         this.db.addStation(new Station("Some like it hot (1964)",
                 "Director: Yannis Dalianidis\n" +
                         "\n" +
-                        "Cast: Rena Vlachopoulou, Dinos Iliopoulos, Martha Karagianni, Elena Nathanael,Kostas Voutsas\n" +
+                        "Cast:Rena Vlachopoulou,Dinos Iliopoulos,Martha Karagianni,Elena Nathanael,Kostas Voutsas\n" +
                         "\n" +
                         "Info: During the Thessaloniki International Fair, a group of young people gets involved in funny love affairs.\n" +
                         "The film is shot in many areas of the city, such as the Thessaloniki International Fair and the White Tower.",
                 2,40.628192, 22.9561));
         this.db.addStation(new Station("Parenthesis (1968)",
                 "Director: Takis Kanellopoulos\n" +
-                 "Cast: Alexandra Ladikou, Angelos Antonopoulos\n" +
+                 "Cast:Alexandra Ladikou,Angelos Antonopoulos\n" +
                  "Info: A train journey with a delayed stop. A strong love affair, a parenthesis in the lives of two people. " +
                         "The film won 4 prizes in Thessaloniki Film Festival. \n" +
                  "It was shot in the sea front of Thessaloniki and the area of Aretsou (Nea Krini).",
                 2,40.6223568, 22.9512486));
         this.db.addStation(new Station("The striker with number 9 (1987)",
-                "Director: Pantelis Voulgaris\n" +
-                        "Cast: Stratos Tzortzoglou, Themis Bazaka\n" +
+                "Director:Pantelis Voulgaris\n" +
+                        "Cast:Stratos Tzortzoglou,Themis Bazaka\n" +
                         "Info: The journey of a talented football player  goes through defeats, injuries and background, which will" +
                         " make him understand that success comes at a price.\n" +
                         "Part of the film was shot in Thessaloniki (Aristotelous Square, Evosmos).",
                 2, 40.632804, 22.941331));
         this.db.addStation(new Station("Eternity and a day (1998)",
                 "Director: Theo Angelopoulos\n" +
-                        "Cast: Bruno Ganz, Fabrizio Bentivoglio, Isabelle Renauld\n" +
+                        "Cast:Bruno Ganz,Fabrizio Bentivoglio,Isabelle Renauld\n" +
                         "\n" +
                         "Info: The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his " +
                         "seaside home forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as " +
@@ -1371,7 +1392,7 @@ final class DbAdapter {
                 2,40.638799, 22.947769));
         this.db.addStation(new Station("Super Demetrios (2011)",
                 "Director: Yorgos Papaioannou\n" +
-                        "Cast: Dimitris Vainas, Paris Papadopoulos, Olga Sfetsa\n" +
+                        "Cast:Dimitris Vainas,Paris Papadopoulos,Olga Sfetsa\n" +
                         "Info: In a surreal, parallel universe, Thessaloniki has its very own superhero: Super Demetrios.\n" +
                         "A film shot around the city of Thessaloniki, showcasing many of the city’s public buildings (the " +
                         "University, the City Hall, the White Tower, the Railway Station).",
@@ -1381,46 +1402,45 @@ final class DbAdapter {
         this.db.addMovie(new Movie(7, "The Barefoot Badallion",
                 "Based on a true story of 160 orphans, who live in Thessaloniki under the German Occupation during the 1940s. " +
                         "The film wanders around the centre and the acropolis of Thessaloniki.",
-                "Maria Kosti, Nikos Fermas, Vassilis Fraghedakis",
+                "Maria Kosti,Nikos Fermas,Vassilis Fraghedakis",
                 "Greg Tallas", "1955"));
         this.db.addMovie(new Movie(8, "The cutie",
                 "Two brothers try to balance between the emotional relations and the conservative principles of a paternal family." +
                         " The film is totally shot in Thessaloniki (Panorama, Antheon area, city centre).",
-                "Dinos Iliopoulos, Zoe Laskari, Pandelis Zervos, Stefanos Stratigos",
+                "Dinos Iliopoulos,Zoe Laskari,Pandelis Zervos,Stefanos Stratigos",
                 "Yannis Dalianidis", "1961"));
         this.db.addMovie(new Movie(9, "Some like it hot",
                 "During the Thessaloniki International Fair, a group of young people gets involved in funny love affairs.\n" +
                         "The film is shot in many areas of the city, such as the Thessaloniki International Fair and the White Tower.",
-                "Rena Vlachopoulou, Dinos Iliopoulos, Martha Karagianni, Elena Nathanael, Kostas Voutsas",
+                "Rena Vlachopoulou,Dinos Iliopoulos,Martha Karagianni,Elena Nathanael,Kostas Voutsas",
                 "Yannis Dalianidis", "1964"));
         this.db.addMovie(new Movie(10, "Parenthesis",
                 "A train journey with a delayed stop. A strong love affair, a parenthesis in the lives of two people. The film won 4" +
                         " prizes in Thessaloniki Film Festival. \n" +
                         "It was shot in the sea front of Thessaloniki and the area of Aretsou (Nea Krini).",
-                "Alexandra Ladikou, Angelos Antonopoulos",
+                "Alexandra Ladikou,Angelos Antonopoulos",
                 "Takis Kanellopoulos", "1968"));
         this.db.addMovie(new Movie(11, "The striker with number 9",
                 "The journey of a talented football player  goes through defeats, injuries and background, which will make him " +
                         "understand that success comes at a price.\n" +
                         "Part of the film was shot in Thessaloniki (Aristotelous Square, Evosmos).",
-                "Stratos Tzortzoglou, Themis Bazaka",
-                "Pantelis Voulgaris", "1987"));
+                "Stratos Tzortzoglou,Themis Bazaka","Pantelis Voulgaris", "1987"));
         this.db.addMovie(new Movie(12, "Eternity and a day",
                 "The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his seaside home " +
                         "forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as in the " +
                         "city’s sea front, Aristotelous Square and Tsimiski Street.",
-                "Bruno Ganz, Fabrizio Bentivoglio, Isabelle Renauld",
+                "Bruno Ganz,Fabrizio Bentivoglio,Isabelle Renauld",
                 "Theo Angelopoulos", "1998"));
         this.db.addMovie(new Movie(13, "Homeland",
                 "A story about a family and a country falling apart, inspired by true events. A large part of the film is shot in " +
                         "central places of Thessaloniki (Leoforos Stratou Str, the sea front, Saint Demetrius Church).",
-                "Amalia Moutoussi, Thanos Samaras, Ioanna Tsiringhouli",
+                "Amalia Moutoussi,Thanos Samaras,Ioanna Tsiringhouli",
                 "Syllas Tzoumerkas", "2010"));
         this.db.addMovie(new Movie(14, "Super Demetrios",
                 "In a surreal, parallel universe, Thessaloniki has its very own superhero: Super Demetrios.\n" +
                         "A film shot around the city of Thessaloniki, showcasing many of the city’s public buildings (the University" +
                         ", the City Hall, the White Tower, the Railway Station).",
-                "Dimitris Vainas, Paris Papadopoulos, Olga Sfetsa",
+                "Dimitris Vainas,Paris Papadopoulos,Olga Sfetsa",
                 "Yorgos Papaioannou", "2011"));
 
         //TimelineStation 1

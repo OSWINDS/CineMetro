@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="2_Parse-1.7.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/Parse-1.7.1/Parse-1.7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Chris/Documents/GitHub/CineMetro/libs/Parse-1.7.1/Parse-1.7.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
