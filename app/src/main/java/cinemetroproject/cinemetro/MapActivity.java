@@ -1,13 +1,14 @@
 package cinemetroproject.cinemetro;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,8 +38,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cinemetroproject.cinemetro.util.Colours;
-
 
 public class MapActivity extends ActionBarActivity implements LocationListener {
 
@@ -55,6 +54,8 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
     private Location currentLocation;
     private static int idLine = 0;
     private static int idStation = 0;
+    private DrawerLayout dLayout;
+    private int resourseColour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,24 +66,26 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
 
         setUpMap();
 
+
+        dLayout = (DrawerLayout) this.findViewById(R.id.drawer_layout);
         lv = (ListView) this.findViewById(R.id.lv);
 
         nLine = idLine;
         setLine();
 
         Ll1 = (LinearLayout) this.findViewById(R.id.Ll1);
-        Ll1.setBackgroundColor(Color.WHITE);
-        Ll1.setAlpha((float) 0.5);
+
 
         LinearLayout Ll2 = (LinearLayout) findViewById(R.id.Ll2);
 
         ArrayList<Route> rt = DbAdapter.getInstance().getRoutes();
         for (int i = 0; i < rt.size(); i++) {
             MyButton bt = new MyButton(this, rt.get(i).getId());
-
-            bt.setText("Route " + rt.get(i).getId());
+            bt.setText(rt.get(i).getName());
             bt.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
             bt.setTextSize(12);
+            this.setColour(i);
+            bt.setBackgroundColor(getResources().getColor(resourseColour));
             bt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -95,7 +98,9 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         }
 
         MyButton bt = new MyButton(this, -1);
-        bt.setText("Route 3");
+        this.setColour(-1);
+        bt.setBackgroundColor(getResources().getColor(resourseColour));
+        bt.setText(getResources().getString(R.string.title_activity_timeline));
         bt.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
         bt.setTextSize(12);
         bt.setOnClickListener(new View.OnClickListener() {
@@ -103,8 +108,6 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             public void onClick(View v) {
                 RouteButtonClicked(v);
             }
-
-
         });
         Ll2.addView(bt);
 
@@ -130,10 +133,10 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         currentLocation = new Location("");
         if (this.mΜap != null) {
             mΜap.setMyLocationEnabled(true);
-            mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257,22.944343),10));
+            mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257, 22.944343), 10));
         }
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        currentLocation=lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        currentLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 180000, 3, this);
 
         idLine = 0;
@@ -174,57 +177,63 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        // Take appropriate action for each action item click
         int id = item.getItemId();
-
-        switch (id) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        //return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
             case R.id.Lines:
-                if (Ll1.getVisibility() == View.VISIBLE)
-                    Ll1.setVisibility(View.INVISIBLE);
+                if (dLayout.isDrawerOpen(Gravity.LEFT))
+                    dLayout.closeDrawers();
                 else
-                    Ll1.setVisibility(View.VISIBLE);
+                    dLayout.openDrawer(Gravity.LEFT);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
+
+
     private void setLine() {
         if (!line.isEmpty()) {
             line.clear();
         }
         AddMarkers();
-        if(nLine!=0)this.drawLines();
+        if (nLine != 0) this.drawLines();
         showList();
     }
 
-    public static void setColour(int k) {
+    public void setColour(int k) {
         switch (k) {
             case 1:
                 colour = (float) 0.0;
+                resourseColour=R.color.line1;
                 break;
             case 2:
                 colour = (float) 240.0;
+                resourseColour=R.color.line2;
                 break;
             case 3:
                 colour = (float) 120.0;
+                resourseColour=R.color.line3;
                 break;
             case 10:
                 colour = (float) 300.0;
+                resourseColour=R.color.my_blue;
                 break;
             case -1:
                 colour = (float) 120.0;
+                resourseColour=R.color.line3;
                 break;
         }
     }
 
-    public static void showInMap(int idLine, int idStation){
+    public static void showInMap(int idLine, int idStation) {
 
         MapActivity.idLine = idLine;
         MapActivity.idStation = idStation;
-
 
 
     }
@@ -283,7 +292,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        currentLocation=new Location("");
+        currentLocation = new Location("");
         currentLocation = location;
 
         if (this.mΜap == null) return;
@@ -306,7 +315,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
     private void Unlock(MyPoint myPoint) {
         if (nLine == 0) return;
 
-            DbAdapter.getInstance().Unlock(nLine, myPoint.getId());
+        DbAdapter.getInstance().Unlock(nLine, myPoint.getId());
 
 
     }
@@ -328,7 +337,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
 
     public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
         Polyline newPolyline;
-        PolylineOptions rectLine = new PolylineOptions().width(3).color(Color.BLUE);
+        PolylineOptions rectLine = new PolylineOptions().width(3).color(getResources().getColor(resourseColour));
         for (int i = 0; i < directionPoints.size(); i++) {
             rectLine.add(directionPoints.get(i));
         }
@@ -363,7 +372,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             }
 
             TextView text1 = (TextView) itemView.findViewById(R.id.station);
-            switch(nLine){
+            switch (nLine) {
                 case 1:
                     text1.setTextColor(Color.rgb(227, 30, 25));
                     break;
