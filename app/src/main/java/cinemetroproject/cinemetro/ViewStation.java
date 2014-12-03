@@ -116,11 +116,10 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
 
 */
-
-        for (int i = 0; i < DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).size(); i++) {
+        for (int i = 0; i < DbAdapter.getInstance().getMainPhotosOfMovie(DbAdapter.getInstance().getMovieByStationId(idStation).getId()).size(); i++) {
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(DbAdapter.getInstance().getMainPhotosOfMovie(idStation-6).get(i).getName());
+                Field field = res.getField(DbAdapter.getInstance().getMainPhotosOfMovie(DbAdapter.getInstance().getMovieByStationId(idStation).getId()).get(i).getName());
                 int drawableId = field.getInt(null);
                 ImageView imageView = new ImageView(ViewStation.this);
                 imageView.setImageResource(drawableId);
@@ -146,7 +145,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
         try {
             Class res = R.drawable.class;
-            Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(idStation-6).get(0).getName());
+            Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(DbAdapter.getInstance().getMovieByStationId(idStation).getId()).get(0).getName());
             int drawableId = field.getInt(null);
             imageDirector.setBackgroundResource(drawableId);
         } catch (Exception e) {}
@@ -171,8 +170,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
                 imageActor.setBackgroundResource(drawableId);
             } catch (Exception e) {}
             String string = DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i-1);
-            Log.i("name",string);
-            String[] parts = string.split("\\s+");
+            String[] parts = string.split(" ");
             nameActor.setText(parts[0] + "\n" + parts[1]);
             nameActor.setTextSize(12);
             nameActor.setTextColor(Color.argb(255, 9, 0, 100));
