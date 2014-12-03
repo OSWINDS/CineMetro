@@ -39,7 +39,7 @@ public class LinesActivity  extends TabActivity implements TabHost.OnTabChangeLi
         intent =new Intent(this,Line1.class);
         spec =mTabHost.newTabSpec("Cinemas")
                 .setContent(intent)
-                .setIndicator("Cinemas");
+                .setIndicator(getResources().getText(R.string.tab1));
 
 
         mTabHost.addTab(spec);
@@ -48,14 +48,14 @@ public class LinesActivity  extends TabActivity implements TabHost.OnTabChangeLi
         intent =new Intent(this,Line2.class);
         spec =mTabHost.newTabSpec("Movies")
                 .setContent(intent)
-                .setIndicator("Movies");
+                .setIndicator(getResources().getText(R.string.tab2));
         mTabHost.addTab(spec);
 
         //line 3
         intent =new Intent(this,Line3.class);
         spec =mTabHost.newTabSpec("Timeline")
                 .setContent(intent)
-                .setIndicator("Timeline");
+                .setIndicator(getResources().getText(R.string.tab3));
         mTabHost.addTab(spec);
 
         //mTabHost.getTabWidget().setStripEnabled(false);

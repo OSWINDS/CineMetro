@@ -57,10 +57,42 @@
     <string name="about_text3">
         \n\t Image rights are held by the respective copyright owners as indicated in the app.
     </string>
-
-
-
-
+    <string name="station_text">Station</string>
+    <string name="line1_title">The cinemas of Thessaloniki</string>
+    <string name="line2_title">Thessaloniki through the greek cinema</string>
+    <string name="line3_title">Timeline</string>
+    <string name="tab1">Cinemas</string>
+    <string name="tab2">Movies</string>
+    <string name="tab3">Timeline</string>
+    <string name="confirm">Confirm password:</string>
+    <string name="gps_on">GPS is enabled.</string>
+    <string name="gps_off">GPS is not enabled.</string>
+    <string name="no_connection">You must be connected to the internet.</string>
+    <string name="database_update">Database was updated successfully!</string>
+    <string name="bye">  Bye!</string>
+    <string name="warning">Warning</string>
+    <string name="positive_button">Update the database and then log out</string>
+    <string name="negative_button">Log out without updating</string>
+    <string name="logout_message">If you sign out without updating the database you will lose all the points you gave after your last login.</string>
+    <string name="user_exists">User already exists.</string>
+    <string name="user_not_exist">User does not exist.</string>
+    <string name="password_length">Password must be at least 5 characters.</string>
+    <string name="password_wrong">Wrong password.</string>
+    <string name="password_not_match">Passwords do not match.</string>
+    <string name="success_text">You are ready!!!\nTouch the End button to Sign Up!</string>
+    <string name="undo_change">Undo the change and try again!</string>
+    <string name="congrats_text">Congrats!\nYou successfully signed up!</string>
+    <string name="inf">\n\n Information \n</string>
+    <string name="director">Director:</string>
+    <string name="playing">Starring:</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="log_out_button">Log Out</string>
+    <string name="log_in_button">Log In</string>
+    <string name="check_button">Check</string>
+    <string name="end_button">End</string>
+    <string name="total_points">Total points:</string>
+    <string name="stations_rated">Stations rated</string>
+    <string name="upadate_button">Update database</string>
 
 
 </resources>

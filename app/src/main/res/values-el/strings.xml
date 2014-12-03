@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">CineMetro Thess</string>
@@ -56,7 +56,42 @@
         Finos Films, Ελληνικό Κέντρο Κινηματογράφου, Φεστιβάλ Κινηματογράφου Θεσσαλονίκης, Κοινωνία Κληρονόμων Θ. Αγγελόπουλου\n
         \t Η εφαρμογή λειτουργεί για έκδοση\n
     </string>
-
+    <string name="station_text">Στάση</string>
+    <string name="line1_title">Τα σινεμά της πόλης</string>
+    <string name="line2_title">Θεσσαλονίκη μέσα από τον ελληνικό κινηματογράφο</string>
+    <string name="line3_title">Χρονολόγιο</string>
+    <string name="tab1">Σινεμα</string>
+    <string name="tab2">Ταινιες</string>
+    <string name="tab3">Χρονολογιο</string>
+    <string name="confirm">Επαλήθευση κωδικού:</string>
+    <string name="gps_on">Ενεργοποιημένο GPS.</string>
+    <string name="gps_off">Απενεργοποιημένο GPS.</string>
+    <string name="no_connection">Πρέπει να είσαι συνδεδεμένος στο διαδίκτυο.</string>
+    <string name="database_update">Η βάση δεδομένων ενημερώθηκε επιτυχώς!</string>
+    <string name="bye"> Αντίο!</string>
+    <string name="warning">Προσοχή!</string>
+    <string name="positive_button">Ενημέρωση της βάσης δεδομένων πριν την έξοδο</string>
+    <string name="negative_button">Αποσύνδεση χωρίς ενημέρωση της βάσης δεδομένων</string>
+    <string name="logout_message">Εάν αποσυνδεθείς χωρίς να ενημερώσεις τη βάση θα χάσεις όλους τους πόντους που έδωσες μετά την τελευταία σου σύνδεση.</string>
+    <string name="user_exists">Ο χρήστης υπάρχει ήδη.</string>
+    <string name="user_not_exist">Ο χρήστης δεν υπάρχει.</string>
+    <string name="password_length">Ο κωδικός πρέπει να περιέχει τουλάχιστον 5 χαρακτήρες.</string>
+    <string name="password_wrong">Λάθος κωδικός.</string>
+    <string name="password_not_match">Οι κωδικοί δεν είναι ίδιοι.</string>
+    <string name="success_text">Είσαι έτοιμος!!!\nΠάτα Τέλος για να γίνει η εγγραφή</string>
+    <string name="undo_change">Ξαναπροσπάθησε!</string>
+    <string name="congrats_text">Συγχαρητήρια!\nΗ εγγραφή σου έγινε με επιτυχία!</string>
+    <string name="inf">\n\n Πληροφορίες \n</string>
+    <string name="director">Σκηνοθέτης:</string>
+    <string name="playing">Πρωταγωνιστούν:</string>
+    <string name="sign_up_button">Εγγραφή</string>
+    <string name="log_out_button">Αποσύνδεση</string>
+    <string name="log_in_button">Σύνδεση</string>
+    <string name="check_button">Έλεγχος</string>
+    <string name="end_button">Τέλος</string>
+    <string name="total_points">Συνολικοί πόντοι:</string>
+    <string name="stations_rated">Βαθμολογημένες στάσεις</string>
+    <string name="upadate_button">Ανανέωση βάσης δεδομένων</string>
 
 
 

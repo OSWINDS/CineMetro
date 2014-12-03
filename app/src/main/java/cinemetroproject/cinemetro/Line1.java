@@ -34,7 +34,7 @@ public class Line1 extends ActionBarActivity {
         ll.setBackgroundColor(Color.parseColor("#ff8f0101"));
 
         TextView tv=(TextView)findViewById(R.id.lines_textView);
-        tv.setText("Τα σινεμά της πόλης");
+        tv.setText(R.string.line1_title);
 
         titles=new ArrayList<String>();
 
@@ -106,7 +106,8 @@ public class Line1 extends ActionBarActivity {
 
             TextView station = (TextView) itemView.findViewById(R.id.station_number);
             station.setTextColor(Color.parseColor("#ff8f0101"));
-            station.setText("Στάση" + (pos + 1));
+            station.setText(R.string.station_text);
+            station.append(" " + (pos+1));
 
             TextView title = (TextView) itemView.findViewById(R.id.station_title);
             title.setText(titles.get(pos));
