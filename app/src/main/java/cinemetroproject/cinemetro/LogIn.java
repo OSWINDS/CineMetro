@@ -41,8 +41,7 @@ public class LogIn extends ActionBarActivity {
         username = (EditText) findViewById(R.id.userName);
         password = (EditText) findViewById(R.id.passWord);
 
-        logo=(ImageButton)findViewById(R.id.logo);
-        logo.setBackgroundResource(R.drawable.logo_background);
+
 
         users=new ArrayList<User>();
         users=DbAdapter.getInstance().getUsers();
@@ -103,7 +102,7 @@ public class LogIn extends ActionBarActivity {
         } else if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||
                 connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED) {
             //Not connected.
-            Toast.makeText(LogIn.this, "You must be connected to the internet.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LogIn.this, R.string.no_connection, Toast.LENGTH_SHORT).show();
             //success.setText("You must be connected to the internet.");
             readyToLogIn = false;
             return;
@@ -121,7 +120,7 @@ public class LogIn extends ActionBarActivity {
         }
 
         if(!found){
-            Toast.makeText(LogIn.this, "User does not exist.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LogIn.this, R.string.user_not_exist, Toast.LENGTH_SHORT).show();
             readyToLogIn=false;
             return;
         }
@@ -129,7 +128,7 @@ public class LogIn extends ActionBarActivity {
         if(DbAdapter.getInstance().getUserByUsername(user).checkPassword(pass)){
             readyToLogIn=true;
         }else{
-            Toast.makeText(LogIn.this, "Wrong password.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LogIn.this, R.string.password_wrong, Toast.LENGTH_SHORT).show();
             return;
         }
 

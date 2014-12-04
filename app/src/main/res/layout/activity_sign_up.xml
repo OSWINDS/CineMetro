@@ -2,12 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cinemetroproject.cinemetro.SignUp"
-    android:background="#ffffff">
+    android:background="@drawable/background1">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -18,18 +14,18 @@
             android:orientation="vertical"
             android:weightSum="1">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/logo"
-                android:layout_gravity="center_horizontal" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text=""
                 android:id="@+id/help1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:background="#fffff9f8"
+            android:alpha=".7">
 
             <TextView
                 android:id="@+id/textViewProfile"
@@ -39,9 +35,10 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:text="@string/Email"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#ff09006e" />
-
+                android:textSize="25sp"
+                android:textColor="#ffe23543"
+                android:layout_gravity="center_horizontal"
+                />
             <EditText
                 android:id="@+id/eMail"
                 android:layout_width="wrap_content"
@@ -52,7 +49,10 @@
                 android:layout_toEndOf="@+id/textView_pass"
                 android:layout_toRightOf="@+id/textView_pass"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#ffe23543"
+                android:textSize="25sp"/>
 
             <TextView
                 android:id="@+id/textView_pass"
@@ -63,8 +63,10 @@
                 android:layout_below="@+id/textViewProfile"
                 android:layout_marginTop="26dp"
                 android:text="@string/PasswordText"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#fffd322c" />
+                android:textSize="25sp"
+                android:textColor="#ffe23543"
+                android:layout_gravity="center_horizontal"
+                />
 
             <EditText
                 android:id="@+id/pass1"
@@ -74,7 +76,11 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:layout_gravity="center_horizontal"
+                android:textSize="25sp"
+                android:text=""
+                android:textColor="#ffe23543"/>
 
             <TextView
                 android:id="@+id/email2"
@@ -86,9 +92,11 @@
                 android:layout_marginTop="28dp"
                 android:layout_toLeftOf="@+id/eMail"
                 android:layout_toStartOf="@+id/eMail"
-                android:text="Confirm Password"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#fffd322c" />
+                android:text="@string/confirm"
+                android:textSize="25sp"
+                android:textColor="#ffe23543"
+                android:layout_gravity="center_horizontal"
+                />
 
             <EditText
                 android:id="@+id/pass2"
@@ -98,7 +106,12 @@
                 android:layout_alignLeft="@+id/pass1"
                 android:layout_alignStart="@+id/pass1"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:layout_gravity="center_horizontal"
+                android:textSize="25sp"
+                android:text=""
+                android:textColor="#ffe23543"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,28 +122,31 @@
 
             <Button
                 android:id="@+id/check_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:layout_above="@+id/End_button"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:text="Check"
-                android:background="#ff6482f1"
-                android:textColor="#ffffffff" />
+                android:text="@string/check_button"
+                android:background="@drawable/cinemetro_button"
+                android:textColor="#ffe23543"
+                android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text=""
                 android:id="@+id/success"
                 android:layout_gravity="center_horizontal"
-                android:textColor="#ff09006e" />
+                android:textColor="#ffe23543"
+                android:textSize="20sp"
+                android:background="#fffff9f8"
+                android:alpha=".7"/>
 
             <Button
                 android:id="@+id/End_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
@@ -138,10 +154,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginBottom="50dp"
                 android:enabled="false"
-                android:text="End"
+                android:text="@string/end_button"
                 android:layout_gravity="center_horizontal"
-                android:background="#ff6482f1"
-                android:textColor="#ffffffff" />
+                android:background="@drawable/cinemetro_button"
+                android:textColor="#ffe23543"/>
         </LinearLayout>
     </ScrollView>
 

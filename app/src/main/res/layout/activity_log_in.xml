@@ -3,60 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cinemetroproject.cinemetro.LogIn"
-    android:background="#ffffff">
+    android:background="@drawable/background1"
+    >
 
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/logo"
-                android:layout_gravity="center_horizontal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
-                android:id="@+id/help1" />
 
             <Button
                 android:id="@+id/SignUp_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sign Up"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/sign_up_button"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:layout_above="@+id/userName"
-                android:layout_gravity="right"
-                android:background="#ff6482f1"
-                android:textColor="#ffffffff" />
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/cinemetro_button"
+                android:textColor="#ffe23543"/>
 
-            <TextView
-                android:id="@+id/textViewProfile"
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:text="E-mail:"
+                android:background="#fffff9f8"
+                android:alpha=".7">
+            <TextView
+                android:layout_marginTop="40dp"
+                android:id="@+id/textViewProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Email"
                 android:textSize="30sp"
-                android:layout_toStartOf="@+id/SignUp_button"
-                android:layout_toLeftOf="@+id/SignUp_button"
-                android:textColor="#ff09006e" />
+                android:textColor="#ffe23543"
+                android:layout_gravity="center_horizontal"
+                />
 
             <EditText
                 android:id="@+id/userName"
@@ -67,19 +58,21 @@
                 android:layout_below="@+id/textViewProfile"
                 android:layout_marginTop="10dp"
                 android:inputType="text"
-                android:text=""/>
+                android:textSize="30sp"
+                android:text=""
+                android:textColor="#ffe23543"/>
 
             <TextView
                 android:id="@+id/textView_pass"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_gravity="center_horizontal"
                 android:layout_below="@+id/userName"
                 android:layout_marginTop="20dp"
-                android:text="Password:"
+                android:text="@string/PasswordText"
                 android:textSize="30sp"
-                android:textColor="#fffd322c" />
+                android:textColor="#ffe23543"
+                />
 
             <EditText
                 android:id="@+id/passWord"
@@ -89,8 +82,11 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView_pass"
                 android:layout_marginTop="10dp"
+                android:textSize="30sp"
                 android:inputType="textPassword"
-                android:text="" />
+                android:text=""
+                android:textColor="#ffe23543"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,18 +96,18 @@
                 android:id="@+id/help2"
                 android:layout_gravity="center_horizontal" />
 
-           <Button
+            <Button
                 android:id="@+id/logIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Log In"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="@string/log_in_button"
                 android:layout_marginTop="15dp"
                 android:layout_below="@+id/passWord"
                 android:layout_alignRight="@+id/passWord"
                 android:layout_alignEnd="@+id/passWord"
                 android:layout_gravity="center_horizontal"
-                android:background="#ff6482f1"
-                android:textColor="#ffffffff" />
+                android:background="@drawable/cinemetro_button"
+                android:textColor="#ffe23543" />
 
 
 

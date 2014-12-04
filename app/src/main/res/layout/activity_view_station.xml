@@ -43,7 +43,7 @@
 
             <!-- info -->
             <TextView
-                android:text="\n\n Πληροφορίες \n"
+                android:text="@string/inf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"

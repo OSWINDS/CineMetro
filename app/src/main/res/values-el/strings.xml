@@ -71,15 +71,15 @@
     <string name="database_update">Η βάση δεδομένων ενημερώθηκε επιτυχώς!</string>
     <string name="bye"> Αντίο!</string>
     <string name="warning">Προσοχή!</string>
-    <string name="positive_button">Ενημέρωση της βάσης δεδομένων πριν την έξοδο</string>
-    <string name="negative_button">Αποσύνδεση χωρίς ενημέρωση της βάσης δεδομένων</string>
-    <string name="logout_message">Εάν αποσυνδεθείς χωρίς να ενημερώσεις τη βάση θα χάσεις όλους τους πόντους που έδωσες μετά την τελευταία σου σύνδεση.</string>
+    <string name="positive_button">Ναι</string>
+    <string name="negative_button">Όχι</string>
+    <string name="logout_message">Εάν αποσυνδεθείς χωρίς να ενημερώσεις τη βάση θα χάσεις όλους τους πόντους που έδωσες μετά την τελευταία σου σύνδεση. Ενημέρωση της βάσης δεδομένων πριν την έξοδο;</string>
     <string name="user_exists">Ο χρήστης υπάρχει ήδη.</string>
     <string name="user_not_exist">Ο χρήστης δεν υπάρχει.</string>
     <string name="password_length">Ο κωδικός πρέπει να περιέχει τουλάχιστον 5 χαρακτήρες.</string>
     <string name="password_wrong">Λάθος κωδικός.</string>
     <string name="password_not_match">Οι κωδικοί δεν είναι ίδιοι.</string>
-    <string name="success_text">Είσαι έτοιμος!!!\nΠάτα Τέλος για να γίνει η εγγραφή</string>
+    <string name="success_text">Είσαι έτοιμος!!!\nΠάτα Τέλος για να γίνει η εγγραφή.</string>
     <string name="undo_change">Ξαναπροσπάθησε!</string>
     <string name="congrats_text">Συγχαρητήρια!\nΗ εγγραφή σου έγινε με επιτυχία!</string>
     <string name="inf">\n\n Πληροφορίες \n</string>
@@ -92,7 +92,11 @@
     <string name="end_button">Τέλος</string>
     <string name="total_points">Συνολικοί πόντοι:</string>
     <string name="stations_rated">Βαθμολογημένες στάσεις</string>
-    <string name="upadate_button">Ανανέωση βάσης δεδομένων</string>
+    <string name="update_button">Ανανέωση βάσης δεδομένων</string>
+    <string name="red">Κόκκινη γραμμή:  </string>
+    <string name="blue">Μπλε γραμμή:     </string>
+    <string name="green">Πράσινη γραμμή:  </string>
+
 
 
 

@@ -41,8 +41,7 @@ public class ProfileActivity extends ActionBarActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_profile));
         setContentView(R.layout.activity_profile);
 
-        logo=(ImageButton)findViewById(R.id.logo);
-        logo.setBackgroundResource(R.drawable.logo_background);
+
 
         email=(TextView) findViewById(R.id.email2);
         points=(TextView) findViewById(R.id.total_points2);
@@ -54,23 +53,17 @@ public class ProfileActivity extends ActionBarActivity {
 
         email.setText(DbAdapter.getInstance().getActiveUser().getUsername());
         points.setText("");
-        red.setText("    Red Line:      ");
-        blue.setText("    Blue Line:     ");
-        green.setText("    Green Line:    ");
+        red.setText(R.string.red);
+        blue.setText(R.string.blue);
+        green.setText(R.string.green);
 
-        //update=0;
+
         readyToLogOut=false;
 
-        //logOut = (Button) findViewById(R.id.log_out);
+
         updatebt = (Button) findViewById(R.id.update_button);
 
 
-        //logOut.setOnClickListener(new View.OnClickListener() {
-        // @Override
-        // public void onClick(View v) {
-        // logOutClicked();
-        // }
-        //});
         updatebt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,8 +73,6 @@ public class ProfileActivity extends ActionBarActivity {
     }
 
     public void updateClicked(){
-        //update++;
-        //readyToLogOut=true;
         ConnectivityManager connec = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if (connec != null &&
@@ -89,42 +80,18 @@ public class ProfileActivity extends ActionBarActivity {
                 (connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED)) {
             //You are connected
             DbAdapter.getInstance().updateUserToParse(DbAdapter.getInstance().getActiveUser());
-            Toast.makeText(ProfileActivity.this, "Database was updated successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ProfileActivity.this, R.string.database_update, Toast.LENGTH_SHORT).show();
+            readyToLogOut=true;
         } else if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||
                 connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED) {
             //Not connected.
-            Toast.makeText(ProfileActivity.this, "You must be connected to the internet.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ProfileActivity.this, R.string.no_connection, Toast.LENGTH_SHORT).show();
             readyToLogOut = false;
             //return;
         }
     }
 
-    /*public void logOutClicked() {
 
-        //if(update == 0){
-            new AlertDialog.Builder(this).setTitle("Warning")
-                    .setMessage("If you sign out without updating the database you will lose" +
-                            " all the points you gave after your last login." +
-                            "\n\nUpdate the database and then log out?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    updateClicked();
-                    signOut();
-                }
-            }).setNegativeButton("Log out without updating", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    readyToLogOut=true;
-                    signOut();
-                }
-            }).show();
-        //}
-
-        //if(readyToLogOut){
-          //  signOut();
-        //}
-    }*/
 
     public void signOut(){
         if(!readyToLogOut){
@@ -133,7 +100,7 @@ public class ProfileActivity extends ActionBarActivity {
 
         DbAdapter.getInstance().setActiveUser(null);
         //update=0;
-        Toast.makeText(ProfileActivity.this, "  Bye!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ProfileActivity.this, R.string.bye, Toast.LENGTH_SHORT).show();
 
         Intent intent;
         intent = new Intent(ProfileActivity.this, LogIn.class);
@@ -157,17 +124,15 @@ public class ProfileActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.sign_out) {
-            new AlertDialog.Builder(this).setTitle("Warning")
-                    .setMessage("If you sign out without updating the database you will lose" +
-                            " all the points you gave after your last login." +
-                            "\n\nUpdate the database and then log out?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this).setTitle(R.string.warning)
+                    .setMessage(R.string.logout_message)
+                    .setPositiveButton(R.string.positive_button, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             updateClicked();
                             signOut();
                         }
-                    }).setNegativeButton("Log out without updating", new DialogInterface.OnClickListener() {
+                    }).setNegativeButton(R.string.negative_button, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     readyToLogOut=true;

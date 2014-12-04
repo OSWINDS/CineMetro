@@ -4,7 +4,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/rl_profile"
-    android:background="#ffffff">
+    android:background="@drawable/background1">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,34 +17,35 @@
             android:orientation="vertical"
             android:id="@+id/ll_profile">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/logo"
-                android:layout_gravity="center_horizontal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#fffff9f8"
+            android:alpha=".7"
+            android:layout_marginTop="10dp"
+            >
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
-                android:id="@+id/help1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Email: "
+                android:textSize="25sp"
+                android:text="@string/Email"
                 android:id="@+id/email1"
-                android:textColor="#ff09006e"
-                android:enabled="false" />
+                android:enabled="false"
+                android:textColor="#ffe23543"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text=""
-                android:id="@+id/email2" />
+                android:id="@+id/email2"
+                android:textSize="25sp"
+                android:textColor="#ffe23543"
+                />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,20 +54,30 @@
                 android:text=""
                 android:id="@+id/help2" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#fffff9f8"
+            android:alpha=".7" >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Total Points: "
+                android:textSize="25sp"
+                android:text="@string/total_points"
                 android:id="@+id/total_points1"
-                android:textColor="#fffd322c" />
+                android:textColor="#ffe23543"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text=""
-                android:id="@+id/total_points2" />
+                android:id="@+id/total_points2"
+                android:textSize="25sp"
+                android:textColor="#ffe23543"
+                />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,57 +86,62 @@
                 android:text=""
                 android:id="@+id/help3" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Stations Rated"
-                android:id="@+id/stations_rated" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text=""
-                android:id="@+id/help4" />
 
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#fffff9f8"
+                android:alpha=".7" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="Stations Rated"
+                    android:id="@+id/stations_rated"
+                    android:textColor="#ffe23543"
+                    android:background="#fffff9f8"
+                    android:alpha=".7"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text=""
+                    android:id="@+id/help4" />
+
+                <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
+                android:layout_marginLeft="15dp"
+                android:text="Red"
                 android:id="@+id/red_line"
-                android:textColor="#ffe31e19" />
+                android:textColor="@color/line1"
+                android:textSize="25sp"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text=""
-                android:id="@+id/help5" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
+                android:layout_marginLeft="15dp"
+                android:text="Blue"
                 android:id="@+id/blue_line"
-                android:textColor="#ff0900a0" />
+                android:textColor="@color/line2"
+                android:textSize="25sp"
+                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text=""
-                android:id="@+id/help6" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
+                android:layout_marginLeft="15dp"
+                android:text="Green"
                 android:id="@+id/green_line"
-                android:textColor="#ff3f812a" />
+                android:textColor="@color/line3"
+                android:textSize="25sp"
+                />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -135,13 +151,12 @@
                 android:id="@+id/help7" />
 
             <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Update database"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:text="@string/update_button"
                 android:id="@+id/update_button"
-                android:background="#ff6482f1"
-                android:textColor="#ffffff"
+                android:background="@drawable/cinemetro_button"
+                android:textColor="#ffe23543"
                 android:layout_gravity="center_horizontal" />
 
             <TextView

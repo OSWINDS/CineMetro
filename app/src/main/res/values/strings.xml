@@ -72,9 +72,9 @@
     <string name="database_update">Database was updated successfully!</string>
     <string name="bye">  Bye!</string>
     <string name="warning">Warning</string>
-    <string name="positive_button">Update the database and then log out</string>
-    <string name="negative_button">Log out without updating</string>
-    <string name="logout_message">If you sign out without updating the database you will lose all the points you gave after your last login.</string>
+    <string name="positive_button">Yes</string>
+    <string name="negative_button">No</string>
+    <string name="logout_message">If you sign out without updating the database you will lose all the points you gave after your last login. Update the database before quiting?</string>
     <string name="user_exists">User already exists.</string>
     <string name="user_not_exist">User does not exist.</string>
     <string name="password_length">Password must be at least 5 characters.</string>
@@ -93,7 +93,10 @@
     <string name="end_button">End</string>
     <string name="total_points">Total points:</string>
     <string name="stations_rated">Stations rated</string>
-    <string name="upadate_button">Update database</string>
+    <string name="update_button">Update database</string>
+    <string name="red">Red line:    </string>
+    <string name="blue">Blue line:   </string>
+    <string name="green">Green line:  </string>
 
 
 </resources>

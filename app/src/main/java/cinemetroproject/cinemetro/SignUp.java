@@ -48,8 +48,6 @@ public class SignUp extends ActionBarActivity {
         users=DbAdapter.getInstance().getUsers();
         //users.add(new User(1, "chara", "xxxxx"));
 
-        ImageButton logo=(ImageButton)findViewById(R.id.logo);
-        logo.setBackgroundResource(R.drawable.logo_background);
 
         check_bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +101,7 @@ public class SignUp extends ActionBarActivity {
         } else if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||
                 connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED) {
             //Not connected.
-            Toast.makeText(SignUp.this, "You must be connected to the internet.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUp.this, R.string.no_connection, Toast.LENGTH_SHORT).show();
             ok = false;
             return;
         }
@@ -115,27 +113,20 @@ public class SignUp extends ActionBarActivity {
 
         for(User u : users){
             if(u.getUsername().equals(username)){
-                Toast.makeText(SignUp.this, "User already exists.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUp.this, R.string.user_exists, Toast.LENGTH_SHORT).show();
                 return;
             }
         }
 
-        //check if email is valid
-        /*if(!username.contains("@")){
-            Toast.makeText(SignUp.this, "Email must contain @", Toast.LENGTH_SHORT).show();
-            ok=false;
-            return;
-        }*/
-
         //If password is too small
         if(passw1.length()<5){
-            Toast.makeText(SignUp.this, "Password must be at least 5 characters.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUp.this, R.string.password_length, Toast.LENGTH_SHORT).show();
             ok=false;
             return;
         }
         //if password confirmation doesn't match
         if(!passw1.equals(passw2)){
-            Toast.makeText(SignUp.this, "Passwords do not match.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUp.this, R.string.password_not_match, Toast.LENGTH_SHORT).show();
             ok=false;
             return;
         }
@@ -147,8 +138,7 @@ public class SignUp extends ActionBarActivity {
 
         if (ok) {
             end_bt.setEnabled(true);
-            success.setText("You are ready!!!\n" +
-                    "Touch the End button to Sign Up!");
+            success.setText(R.string.success_text);
             //Toast.makeText(SignUp.this, "You are ready!!!\n" +
             //      "Touch the End button to Sign Up.", Toast.LENGTH_SHORT).show();
             return;
@@ -160,7 +150,7 @@ public class SignUp extends ActionBarActivity {
         //Check Again if The user cheat and changed smth or the internet connection has been broken.
         Check_bt_clicked();
         if(!ok){
-            Toast.makeText(SignUp.this, "Undo the change and try again!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUp.this, R.string.undo_change, Toast.LENGTH_SHORT).show();
             end_bt.setEnabled(false);
             return;
         }
@@ -171,7 +161,7 @@ public class SignUp extends ActionBarActivity {
         //DbAdapter.getInstance().setActiveUser(DbAdapter.getInstance().getUserByUsername(username));
         DbAdapter.getInstance().signUpUserToParse(DbAdapter.getInstance().getActiveUser());
 
-        Toast.makeText(SignUp.this, "Congrats!\nYou successfully signed up!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SignUp.this, R.string.congrats_text, Toast.LENGTH_SHORT).show();
 
         Intent intent;
         intent = new Intent(SignUp.this, ProfileActivity.class);
