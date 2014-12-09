@@ -28,16 +28,11 @@
             android:dividerHeight="0dp"
             android:orientation="vertical">
 
-            <HorizontalScrollView
+            <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:id="@+id/Ll2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" />
-            </HorizontalScrollView>
+                android:layout_height="wrap_content"
+                android:id="@+id/backButton"
+                android:text="@string/back_button"/>
 
             <ListView
                 android:id="@+id/lv"

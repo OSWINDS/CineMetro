@@ -97,6 +97,13 @@
     <string name="red">Red line:    </string>
     <string name="blue">Blue line:   </string>
     <string name="green">Green line:  </string>
+    <string name="no_Line">No Line</string>
+    <string name="Wifi_Enabled">Wi-fi Enabled</string>
+    <string name="Wifi_Disabled">Wi-Fi Disabled</string>
+    <string name="GPS_Enabled">GPS Enabled</string>
+    <string name="GPS_Disabled">GPS Disabled</string>
+    <string name="back_button">Back to Routes</string>
+    <string name="Linew_menu_button">Lines</string>
 
 
 </resources>

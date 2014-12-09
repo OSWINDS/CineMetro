@@ -1,7 +1,6 @@
 package cinemetroproject.cinemetro;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -17,8 +16,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +25,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -42,20 +38,31 @@ import java.util.Map;
 public class MapActivity extends ActionBarActivity implements LocationListener {
 
 
-    private ListView lv;
-    private LinearLayout Ll1;
-    private GoogleMap mΜap;
-    private LatLng current;
-    private Marker mCurrent;
+    private static final int LINE1 = 1;
+    private static final int LINE3 = 3;
+    private static final int LINE2 = 2;
+    private static final int NOLINE = 0;
     private static float colour;
+    private static int idLine = 0;
+    private static int idStation = 0;
+    private List<MyButton> buttons;
+    private ListView lv;
+    private GoogleMap mΜap;
     private int nLine;
     private List<MyPoint> line = new ArrayList<MyPoint>();
     private LocationManager lm;
     private Location currentLocation;
-    private static int idLine = 0;
-    private static int idStation = 0;
     private DrawerLayout dLayout;
     private int resourseColour;
+    private Button back_bt;
+
+    public static void showInMap(int idLine, int idStation) {
+
+        MapActivity.idLine = idLine;
+        MapActivity.idStation = idStation;
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,65 +77,31 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         dLayout = (DrawerLayout) this.findViewById(R.id.drawer_layout);
         lv = (ListView) this.findViewById(R.id.lv);
 
+        buttons = new ArrayList<MyButton>();
+        buttons.add(new MyButton(LINE1, getResources().getString(R.string.line1_title)));
+        buttons.add(new MyButton(LINE2, getResources().getString(R.string.line2_title)));
+        buttons.add(new MyButton(LINE3, getResources().getString(R.string.line3_title)));
+        buttons.add(new MyButton(NOLINE, getResources().getString(R.string.no_Line)));
+        // buttons.add(new MyButton(LINE1,getResources().getString(R.string.line1_title)));
+        this.showButtonsList();
+
+
+        back_bt=(Button)findViewById(R.id.backButton);
+        back_bt.setVisibility(Button.INVISIBLE);
+        back_bt.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View v) {
+                                           showButtonsList();
+                                           back_bt.setVisibility(Button.INVISIBLE);
+                                       }
+                                   }
+        );
+
+
         nLine = idLine;
-        setLine();
 
-        Ll1 = (LinearLayout) this.findViewById(R.id.Ll1);
+        if (nLine != 0) setLine();
 
-
-        LinearLayout Ll2 = (LinearLayout) findViewById(R.id.Ll2);
-
-        ArrayList<Route> rt = DbAdapter.getInstance().getRoutes();
-        for (int i = 0; i < rt.size(); i++) {
-            MyButton bt = new MyButton(this, rt.get(i).getId());
-            bt.setText(rt.get(i).getName());
-            bt.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
-            bt.setTextSize(12);
-            this.setColour(i);
-            bt.setBackgroundColor(getResources().getColor(resourseColour));
-            bt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    RouteButtonClicked(v);
-                }
-
-
-            });
-            Ll2.addView(bt);
-        }
-
-        MyButton bt = new MyButton(this, -1);
-        this.setColour(-1);
-        bt.setBackgroundColor(getResources().getColor(resourseColour));
-        bt.setText(getResources().getString(R.string.title_activity_timeline));
-        bt.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
-        bt.setTextSize(12);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RouteButtonClicked(v);
-            }
-        });
-        Ll2.addView(bt);
-
-
-        MyButton bt2 = new MyButton(this, 0);
-        bt2.setText("NO Route");
-        bt2.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
-        bt2.setTextSize(12);
-        bt2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RouteButtonClicked(v);
-            }
-
-
-        });
-        Ll2.addView(bt2);
-
-
-        nLine = 0;
-        setLine();
 
         currentLocation = new Location("");
         if (this.mΜap != null) {
@@ -144,20 +117,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
 
     }
 
-    private void RouteButtonClicked(View v) {
-        MyButton bt = (MyButton) v;
-        nLine = bt.getLine();
-        setLine();
 
-    }
-
-    public void setUpMap() {
-        mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-        if (mΜap != null) {
-            mΜap.clear();
-
-        }
-    }
 
 
     @Override
@@ -195,6 +155,14 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         }
     }
 
+    private void RouteButtonClicked(View v) {
+        Button bt = (Button) v;
+        nLine = (int) ((Integer) bt.getTag()).intValue();
+        back_bt.setVisibility(Button.VISIBLE);
+        setLine();
+
+    }
+
 
     private void setLine() {
         if (!line.isEmpty()) {
@@ -205,39 +173,40 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         showList();
     }
 
-    public void setColour(int k) {
-        switch (k) {
-            case 1:
-                colour = (float) 0.0;
-                resourseColour=R.color.line1;
-                break;
-            case 2:
-                colour = (float) 240.0;
-                resourseColour=R.color.line2;
-                break;
-            case 3:
-                colour = (float) 120.0;
-                resourseColour=R.color.line3;
-                break;
-            case 10:
-                colour = (float) 300.0;
-                resourseColour=R.color.my_blue;
-                break;
-            case -1:
-                colour = (float) 120.0;
-                resourseColour=R.color.line3;
-                break;
+    public void showButtonsList() {
+        ArrayAdapter<MyButton> adapter = new myArrayAdapterButton();
+        lv.setAdapter(adapter);
+    }
+
+    public void setUpMap() {
+        mΜap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        if (mΜap != null) {
+            mΜap.clear();
+
         }
     }
 
-    public static void showInMap(int idLine, int idStation) {
+    public void setColour(int k) {
+        switch (k) {
+            case LINE1:
+                colour = (float) 0.0;
+                resourseColour = R.color.line1;
+                break;
+            case LINE2:
+                colour = (float) 240.0;
+                resourseColour = R.color.line2;
+                break;
+            case LINE3:
+                colour = (float) 120.0;
+                resourseColour = R.color.line3;
+                break;
+            case NOLINE:
+                colour = (float) 300.0;
+                resourseColour = R.color.my_blue;
+                break;
 
-        MapActivity.idLine = idLine;
-        MapActivity.idStation = idStation;
-
-
+        }
     }
-
 
     private void AddMarkers() {
 
@@ -245,7 +214,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         if (this.mΜap == null) return;
         ArrayList<Route> rt = DbAdapter.getInstance().getRoutes();
         for (int i = 0; i < rt.size(); i++) {
-            setColour(i + 1);
+            setColour(rt.get(i).getId());
             if (rt.get(i).getId() == nLine || nLine == 0) {
                 ArrayList<Station> st = DbAdapter.getInstance().getStationByRoute(rt.get(i).getId());
                 for (int j = 0; j < st.size(); j++) {
@@ -259,8 +228,8 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
                 }
             }
         }
-        if (nLine == -1 || nLine == 0) {
-            setColour(-1);
+        if (nLine == LINE3|| nLine == 0) {
+            setColour(LINE3);
             ArrayList<TimelineStation> ts = DbAdapter.getInstance().getTimelineStations();
             for (int i = 0; i < ts.size(); i++) {
                 MyPoint point = ts.get(i).getMyPoint();
@@ -284,9 +253,22 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
 
     }
 
+    public void findDirections(double fromPositionDoubleLat, double fromPositionDoubleLong, double toPositionDoubleLat, double toPositionDoubleLong, String mode) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(GetDirectionsAsyncTask.USER_CURRENT_LAT, String.valueOf(fromPositionDoubleLat));
+        map.put(GetDirectionsAsyncTask.USER_CURRENT_LONG, String.valueOf(fromPositionDoubleLong));
+        map.put(GetDirectionsAsyncTask.DESTINATION_LAT, String.valueOf(toPositionDoubleLat));
+        map.put(GetDirectionsAsyncTask.DESTINATION_LONG, String.valueOf(toPositionDoubleLong));
+        map.put(GetDirectionsAsyncTask.DIRECTIONS_MODE, mode);
+
+        GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
+        asyncTask.execute(map);
+    }
+
     private void showList() {
-        ArrayAdapter<MyPoint> adapter = new myArrayAdapter();
+        ArrayAdapter<MyPoint> adapter = new myArrayAdapterPoint();
         lv.setAdapter(adapter);
+
     }
 
 
@@ -312,27 +294,28 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         //showList();
     }
 
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        Toast.makeText(MapActivity.this, getResources().getString(R.string.GPS_Enabled), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Toast.makeText(MapActivity.this, getResources().getString(R.string.GPS_Disabled), Toast.LENGTH_SHORT).show();
+    }
+
+
     private void Unlock(MyPoint myPoint) {
         if (nLine == 0) return;
 
         DbAdapter.getInstance().Unlock(nLine, myPoint.getId());
 
 
-    }
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-        Toast.makeText(MapActivity.this, "GPS is enabled.", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-        Toast.makeText(MapActivity.this, "GPS is not enabled.", Toast.LENGTH_SHORT).show();
     }
 
     public void handleGetDirectionsResult(ArrayList<LatLng> directionPoints) {
@@ -342,25 +325,11 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             rectLine.add(directionPoints.get(i));
         }
         newPolyline = this.mΜap.addPolyline(rectLine);
-
     }
 
-    public void findDirections(double fromPositionDoubleLat, double fromPositionDoubleLong, double toPositionDoubleLat, double toPositionDoubleLong, String mode) {
-        Map<String, String> map = new HashMap<String, String>();
-        map.put(GetDirectionsAsyncTask.USER_CURRENT_LAT, String.valueOf(fromPositionDoubleLat));
-        map.put(GetDirectionsAsyncTask.USER_CURRENT_LONG, String.valueOf(fromPositionDoubleLong));
-        map.put(GetDirectionsAsyncTask.DESTINATION_LAT, String.valueOf(toPositionDoubleLat));
-        map.put(GetDirectionsAsyncTask.DESTINATION_LONG, String.valueOf(toPositionDoubleLong));
-        map.put(GetDirectionsAsyncTask.DIRECTIONS_MODE, mode);
+    private class myArrayAdapterPoint extends ArrayAdapter<MyPoint> {
 
-        GetDirectionsAsyncTask asyncTask = new GetDirectionsAsyncTask(this);
-        asyncTask.execute(map);
-    }
-
-
-    private class myArrayAdapter extends ArrayAdapter<MyPoint> {
-
-        public myArrayAdapter() {
+        public myArrayAdapterPoint() {
             super(MapActivity.this, R.layout.maplistitem, line);
         }
 
@@ -372,20 +341,10 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             }
 
             TextView text1 = (TextView) itemView.findViewById(R.id.station);
-            switch (nLine) {
-                case 1:
-                    text1.setTextColor(Color.rgb(227, 30, 25));
-                    break;
-                case 2:
-                    text1.setTextColor(Color.rgb(9, 0, 160));
-                    break;
-                case 3:
-                    text1.setTextColor(Color.rgb(63, 129, 42));
-                    break;
-                default:
-                    text1.setTextColor(Color.rgb(9, 0, 160));
-                    break;
-            }
+            setColour(nLine);
+
+            text1.setTextColor(getResources().getColor(resourseColour));
+
 
             text1.setText("Station " + (pos + 1));
             TextView text2 = (TextView) itemView.findViewById(R.id.stationInfo);
@@ -397,11 +356,48 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         }
     }
 
-    private class MyButton extends Button {
-        private int line;
+    private class myArrayAdapterButton extends ArrayAdapter<MyButton> {
 
-        public MyButton(Context context, int line) {
-            super(context);
+        public myArrayAdapterButton() {
+            super(MapActivity.this, R.layout.maplistbutton, buttons);
+
+        }
+
+        @Override
+        public View getView(int pos, View convertView, ViewGroup parent) {
+            View itemView = convertView;
+            if (itemView == null) {
+                itemView = getLayoutInflater().inflate(R.layout.maplistbutton, parent, false);
+            }
+
+            Button bt = (Button) itemView.findViewById(R.id.mapbutton);
+            setColour(buttons.get(pos).getLine());
+
+           // bt.setTextColor(getResources().getColor(resourseColour));
+            bt.setBackgroundColor(getResources().getColor(resourseColour));
+
+            bt.setText(buttons.get(pos).getStr());
+            bt.setTag(new Integer(buttons.get(pos).getLine()));
+
+            bt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    RouteButtonClicked(v);
+                }
+            });
+            return itemView;
+        }
+    }
+
+
+    private class MyButton {
+        private int line;
+        private String str;
+
+        public MyButton(int line, String str) {
+
+
+            this.setStr(str);
             this.setLine(line);
         }
 
@@ -411,6 +407,14 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
 
         public void setLine(int line) {
             this.line = line;
+        }
+
+        public String getStr() {
+            return str;
+        }
+
+        public void setStr(String str) {
+            this.str = str;
         }
     }
 }

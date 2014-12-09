@@ -9,7 +9,7 @@
     <item
         android:id="@+id/Lines"
         android:showAsAction="always"
-        android:title="Lines">
+        android:title="@string/Linew_menu_button">
 
     </item>
 
