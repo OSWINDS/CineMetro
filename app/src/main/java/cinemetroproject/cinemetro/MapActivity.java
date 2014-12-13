@@ -1,7 +1,6 @@
 package cinemetroproject.cinemetro;
 
 import android.content.Context;
-import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -81,9 +80,9 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         lv = (ListView) this.findViewById(R.id.lv);
 
         buttons = new ArrayList<MyButton>();
-        buttons.add(new MyButton(LINE1, getResources().getString(R.string.tab1)));
-        buttons.add(new MyButton(LINE2, getResources().getString(R.string.tab2)));
-        buttons.add(new MyButton(LINE3, getResources().getString(R.string.tab3)));
+        buttons.add(new MyButton(LINE1, getResources().getString(R.string.line1_title)));
+        buttons.add(new MyButton(LINE2, getResources().getString(R.string.line2_title)));
+        buttons.add(new MyButton(LINE3, getResources().getString(R.string.line3_title)));
         buttons.add(new MyButton(NOLINE, getResources().getString(R.string.no_Line)));
         // buttons.add(new MyButton(LINE1,getResources().getString(R.string.line1_title)));
         this.showButtonsList();
@@ -355,26 +354,8 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             TextView text3 = (TextView) itemView.findViewById(R.id.distance);
             text3.setText(line.get(pos).getDistance2());
 
-            itemView.setTag(line.get(pos));
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    stationClicked(view);
-                }
-            });
-
             return itemView;
         }
-    }
-
-    private void stationClicked(View view) {
-        MyPoint p=(MyPoint) view.getTag();
-        if(nLine==0)return;
-        //Implent code to Start Activity Lines
-        //Intent inte=new Intent();
-        //inte.putExtra("",nLine);
-        //inte.putExtra("",p.getId());
-
     }
 
     private class myArrayAdapterButton extends ArrayAdapter<MyButton> {
