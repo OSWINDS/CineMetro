@@ -5,7 +5,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -43,10 +45,34 @@ public class MainMenu extends ActionBarActivity {
 
         super.onCreate(savedInstanceState);
         this.initializeDB();
+        SharedPreferences sPrefs = getSharedPreferences("myAppsPreferences", 0);
+        String bCheck = sPrefs.getString("lang", getResources().getString(R.string.language));
+
+        String lang = bCheck;
+        LanguageActivity.language = bCheck;
+
+        if (lang.equals("el")) {
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("el", "EL");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.GREEK);
+        }
+        else{
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("en", "EN");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.ENGLISH);
+        }
+
+
+
+
 
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_menu);
+
+        LanguageActivity.language = getResources().getString(R.string.language);
 
         navigationButton = (Button) findViewById(R.id.navigation_button);
         navigationButton.setOnClickListener(navigationButtonOnClickListener);
@@ -91,6 +117,32 @@ public class MainMenu extends ActionBarActivity {
     }
 
     @Override
+    public void onRestart(){
+        super.onRestart();
+
+        SharedPreferences sPrefs = getSharedPreferences("myAppsPreferences", 0);
+        String bCheck = sPrefs.getString("lang", getResources().getString(R.string.language));
+
+        String lang = bCheck;
+        LanguageActivity.language = bCheck;
+
+        if (lang.equals("el")) {
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("el", "EL");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.GREEK);
+        }
+        else{
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("en", "EN");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.ENGLISH);
+        }
+
+
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
@@ -124,28 +176,10 @@ public class MainMenu extends ActionBarActivity {
         super.onPostCreate(savedInstanceState);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();  // Always call the superclass method first
-
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();  // Always call the superclass method first
-
-        // Activity being restarted from stopped state
-       /** Intent intent = getIntent();
-        finish();
-        startActivity(intent);*/
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // The activity has become visible (it is now "resumed").
 
 
-    }
+
+
 
     //Starts the map activity when the button Map is pressed
     View.OnClickListener navigationButtonOnClickListener = new View.OnClickListener(){

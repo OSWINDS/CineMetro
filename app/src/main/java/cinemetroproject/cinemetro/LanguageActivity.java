@@ -1,9 +1,12 @@
 package cinemetroproject.cinemetro;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +27,7 @@ public class LanguageActivity extends ActionBarActivity {
         private ArrayAdapter<String> listAdapter;
         private String[] menu = new String[]{"Ελληνικά","English"};
         private Button saveButton;
+        public static String language;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,8 @@ public class LanguageActivity extends ActionBarActivity {
             saveButton.setEnabled(false);
             saveButton.setOnClickListener(saveOnClickListener);
 
+            Log.i("locale", language);
+
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
@@ -51,15 +57,18 @@ public class LanguageActivity extends ActionBarActivity {
                         c.locale = new Locale("en", "EN");
                         getResources().updateConfiguration(c, getResources().getDisplayMetrics());
                         DbAdapter.getInstance().changeLanguage(Language.ENGLISH);
+                        language="en";
                         saveButton.setEnabled(true);
                     } else {
                         Configuration c = new Configuration(getResources().getConfiguration());
                         c.locale = new Locale("el", "EL");
                         getResources().updateConfiguration(c, getResources().getDisplayMetrics());
                         DbAdapter.getInstance().changeLanguage(Language.GREEK);
+                        language="el";
                         saveButton.setEnabled(true);
-
                     }
+                    SharedPreferences sPrefs = getSharedPreferences("myAppsPreferences", 0);
+                    sPrefs.edit().putString("lang", language).commit();
                 }
 
             });
@@ -101,5 +110,12 @@ public class LanguageActivity extends ActionBarActivity {
             finish();
 
         }};
+
+    public static void setLocale(){
+
+
+    }
+
+
 
 }

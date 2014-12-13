@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -35,6 +36,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -74,8 +76,24 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
 
+
+        String lang = LanguageActivity.language;
+
+        if (lang.equals("el")) {
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("el", "EL");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.GREEK);
+        }
+        else{
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("en", "EN");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.ENGLISH);
+        }
+
+        setContentView(R.layout.activity_map);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_map));
 

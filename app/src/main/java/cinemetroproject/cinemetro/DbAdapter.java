@@ -1517,7 +1517,7 @@ final class DbAdapter {
 
 
         //TimelineStation 4
-        this.db.addTimelineStation(new TimelineStation("Ολύμπιον-\n"+"Πλατεία Αριστοτέλους", 40.6326916, 22.9416844));
+        this.db.addTimelineStation(new TimelineStation("Olympion-\n"+"Aristotelous Square", 40.6326916, 22.9416844));
         //Milestones
         this.db.addMilestone(new Milestone(4, "1960", "The Thessaloniki International Trade Fair organizes a series of" +
                 " film events in Thessaloniki, in the occasion of its 25th anniversary (1st Greek Film Week, 1960) " +
@@ -1550,7 +1550,7 @@ final class DbAdapter {
 
 
         //TimelineStation 5
-        this.db.addTimelineStation(new TimelineStation("Λιμάνι", 40.631721, 22.93505));
+        this.db.addTimelineStation(new TimelineStation("Port", 40.631721, 22.93505));
         //Milestones
 
 
