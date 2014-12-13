@@ -10,6 +10,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -180,7 +181,7 @@ public class Timeline extends ActionBarActivity {
             mMap.addMarker(new MarkerOptions()
                     .position(point.getLng())
                     .title(point.getName())
-                    .icon(BitmapDescriptorFactory.defaultMarker((float) 120.0)));
+                    .icon(BitmapDescriptorFactory.defaultMarker(MapActivity.MARKER_LINE3)));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point.getLng(), 11));
 
         }
@@ -281,8 +282,8 @@ public class Timeline extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            MapActivity.showInMap(1, idCinema);
-
+            MapActivity.showInMap(MapActivity.LINE3, idCinema-14);
+            Log.i("idcinema",""+idCinema);
             Intent intent = new Intent(Timeline.this, MapActivity.class);
             Timeline.this.startActivity(intent);
         }};

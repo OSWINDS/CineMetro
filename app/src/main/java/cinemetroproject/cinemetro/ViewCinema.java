@@ -152,7 +152,7 @@ public class ViewCinema extends ActionBarActivity {
             mMap.addMarker(new MarkerOptions()
                     .position(point.getLng())
                     .title(point.getName())
-                    .icon(BitmapDescriptorFactory.defaultMarker((float) 240.0)));
+                    .icon(BitmapDescriptorFactory.defaultMarker(MapActivity.MARKER_LINE1)));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point.getLng(), 11));
 
         }
@@ -247,7 +247,7 @@ public class ViewCinema extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            MapActivity.showInMap(1, idCinema+1);
+            MapActivity.showInMap(MapActivity.LINE1, idCinema+1);
 
             Intent intent = new Intent(ViewCinema.this, MapActivity.class);
             ViewCinema.this.startActivity(intent);

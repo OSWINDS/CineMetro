@@ -30,6 +30,9 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,10 +41,14 @@ import java.util.Map;
 public class MapActivity extends ActionBarActivity implements LocationListener {
 
 
-    private static final int LINE1 = 1;
-    private static final int LINE3 = 3;
-    private static final int LINE2 = 2;
+    public static final int LINE1 = 1;
+    public static final int LINE3 = 3;
+    public static final int LINE2 = 2;
     private static final int NOLINE = 0;
+    private static final int SELECTED_STATION =10 ;
+    public static final float MARKER_LINE2 = (float) 240.0;
+    public static final float MARKER_LINE1 = (float) 0.0;
+    public static final float MARKER_LINE3 = (float) 120.0;
     private static float colour;
     private static int idLine = 0;
     private static int idStation = 0;
@@ -80,9 +87,9 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         lv = (ListView) this.findViewById(R.id.lv);
 
         buttons = new ArrayList<MyButton>();
-        buttons.add(new MyButton(LINE1, getResources().getString(R.string.line1_title)));
-        buttons.add(new MyButton(LINE2, getResources().getString(R.string.line2_title)));
-        buttons.add(new MyButton(LINE3, getResources().getString(R.string.line3_title)));
+        buttons.add(new MyButton(LINE1, getResources().getString(R.string.tab1)));
+        buttons.add(new MyButton(LINE2, getResources().getString(R.string.tab2)));
+        buttons.add(new MyButton(LINE3, getResources().getString(R.string.tab3)));
         buttons.add(new MyButton(NOLINE, getResources().getString(R.string.no_Line)));
         // buttons.add(new MyButton(LINE1,getResources().getString(R.string.line1_title)));
         this.showButtonsList();
@@ -102,13 +109,13 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
 
         nLine = idLine;
 
-        if (nLine != 0) setLine();
+        setLine();
 
 
         currentLocation = new Location("");
         if (this.mΜap != null) {
             mΜap.setMyLocationEnabled(true);
-            mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257, 22.944343), 10));
+            mΜap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.633257, 22.944343), 12));
         }
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         currentLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -120,6 +127,18 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
     }
 
 
+
+    private void sortLine(int lineid){
+        if(lineid!=LINE2)return;
+
+        Collections.sort(line, new Comparator<MyPoint>() {
+            @Override
+            public int compare(MyPoint ob1, MyPoint ob2) {
+
+                return ob1.compareTo(ob2);
+            }
+        });
+    }
 
 
     @Override
@@ -171,7 +190,9 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             line.clear();
         }
         AddMarkers();
+        sortLine(nLine);
         if (nLine != 0) this.drawLines();
+        back_bt.setVisibility(Button.VISIBLE);
         showList();
     }
 
@@ -206,7 +227,9 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
                 colour = (float) 300.0;
                 resourseColour = R.color.my_blue;
                 break;
-
+            case SELECTED_STATION:
+                colour= (float) 165.55;
+                break;
         }
     }
 
@@ -222,6 +245,10 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
                 for (int j = 0; j < st.size(); j++) {
                     MyPoint point = st.get(j).getMyPoint();
                     line.add(point);
+                    setColour(rt.get(i).getId());
+                    if(idStation==point.getId()){
+                        setColour(SELECTED_STATION);
+                    }
                     mΜap.addMarker(new MarkerOptions()
                             .position(point.getLng())
                             .title(point.getName())
@@ -231,11 +258,15 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             }
         }
         if (nLine == LINE3|| nLine == 0) {
-            setColour(LINE3);
+
             ArrayList<TimelineStation> ts = DbAdapter.getInstance().getTimelineStations();
             for (int i = 0; i < ts.size(); i++) {
                 MyPoint point = ts.get(i).getMyPoint();
                 line.add(point);
+                setColour(LINE3);
+                if(idStation==point.getId()){
+                    setColour(SELECTED_STATION);
+                }
                 mΜap.addMarker(new MarkerOptions()
                         .position(point.getLng())
                         .title(point.getName())
@@ -348,7 +379,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             text1.setTextColor(getResources().getColor(resourseColour));
 
 
-            text1.setText("Station " + (pos + 1));
+            text1.setText(getResources().getString(R.string.station_text) + " "+(pos + 1));
             TextView text2 = (TextView) itemView.findViewById(R.id.stationInfo);
             text2.setText(line.get(pos).getName());
             TextView text3 = (TextView) itemView.findViewById(R.id.distance);

@@ -59,4 +59,10 @@ public class MyPoint {
         }
         return "";
     }
+
+    public int compareTo(MyPoint ob2) {
+        if(this.getLng().latitude<=ob2.getLng().latitude)
+            return 1;
+        return -1;
+    }
 }

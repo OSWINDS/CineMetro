@@ -227,11 +227,11 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
         this.setUpMap();
         if(mMap!=null){
-            MyPoint point= DbAdapter.getInstance().getStationByID(idStation).getMyPoint();
+            MyPoint point= DbAdapter.getInstance().getStationByID(idStation+1).getMyPoint();
             mMap.addMarker(new MarkerOptions()
                     .position(point.getLng())
                     .title(point.getName())
-                    .icon(BitmapDescriptorFactory.defaultMarker((float)0.0)));
+                    .icon(BitmapDescriptorFactory.defaultMarker(MapActivity.MARKER_LINE2)));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point.getLng(), 11));
 
         }
@@ -291,7 +291,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
         @Override
         public void onClick(View view) {
 
-            MapActivity.showInMap(1, idStation+1);
+            MapActivity.showInMap(MapActivity.LINE2, idStation+1);
 
             Intent intent = new Intent(ViewStation.this, MapActivity.class);
             ViewStation.this.startActivity(intent);
