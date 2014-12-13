@@ -67,9 +67,11 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_map);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_map));
-        setContentView(R.layout.activity_map);
+
 
         setUpMap();
 

@@ -1,19 +1,16 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="cinemetroproject.cinemetro.MapActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-
-
+    <!-- left scroll drawer -->
     <item
         android:id="@+id/Lines"
-        android:showAsAction="always"
-        android:title="@string/Linew_menu_button">
-
-    </item>
-
-
+        app:showAsAction="always"
+        android:icon="@drawable/ic_drawer"
+        android:title="Lines"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"/>
 
 
 </menu>

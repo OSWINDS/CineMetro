@@ -170,6 +170,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
                 imageActor.setBackgroundResource(drawableId);
             } catch (Exception e) {}
             String string = DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i-1);
+            Log.i("name",string);
             String[] parts = string.split(" ");
             nameActor.setText(parts[0] + "\n" + parts[1]);
             nameActor.setTextSize(12);
