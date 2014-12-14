@@ -141,7 +141,7 @@ public class Timeline extends ActionBarActivity {
                 }
 
 
-            });;
+            });
             rg.addView(rb[i]);
             rg.check(rb[0].getId());
 
@@ -293,6 +293,7 @@ public class Timeline extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
+            Log.i("idtimeline", " " + idCinema);
             //user should sign up
             if(DbAdapter.getInstance().getActiveUser() == null){
                 dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
@@ -307,7 +308,7 @@ public class Timeline extends ActionBarActivity {
                 alert.show();
             }
             //user has already rated for this station
-            else if (DbAdapter.getInstance().getUserRatingForTimelineStation(idCinema, DbAdapter.getInstance().getActiveUser().getUsername()) != 0){
+            else if (DbAdapter.getInstance().getUserRatingForTimelineStation(idCinema-14, DbAdapter.getInstance().getActiveUser().getUsername()) != 0){
                 dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
                 dialog.setMessage(getResources().getString(R.string.already_rate));
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {

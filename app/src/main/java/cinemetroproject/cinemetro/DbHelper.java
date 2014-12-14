@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 30;
+    private static final int DATABASE_VERSION = 35;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
     //Language choise of the user
@@ -195,6 +195,8 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS timeline_station_user_rating");
         // Drop older timeline_station_rating table if exists
         db.execSQL("DROP TABLE IF EXISTS timeline_station_rating");
+        db.execSQL("DROP TABLE IF EXISTS user");
+
 
 
         //Drop English DB
@@ -995,9 +997,10 @@ public class DbHelper extends SQLiteOpenHelper {
                         null, // g. order by
                         null); // h. limit
 
+        db.close();
         //if we got results get the first one
-        if (null != cursor && cursor.moveToFirst()) {
-
+        if (null != cursor) {
+            if(cursor.moveToNext()){
             float rating = cursor.getFloat(1);
             int counter = cursor.getInt(2);
             if (counter > 0) {
@@ -1006,6 +1009,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
             //return rating
             return rating;
+            }
+            return 0;
         }
         else {
             return -1;
@@ -1454,6 +1459,8 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put("sum",sum);
         cv.put("counter",counter);
         db.update("rating", cv, "station_id "+"="+station_id, null);
+        db.close();
+
     }
 
     /**

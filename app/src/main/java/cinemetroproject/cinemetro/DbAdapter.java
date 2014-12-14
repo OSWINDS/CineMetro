@@ -278,7 +278,6 @@ final class DbAdapter {
     {
         if (user == null)
         {
-            System.out.println("null user");
         }
         else {
             db.addUser(user, user.getPassword());
@@ -414,7 +413,6 @@ final class DbAdapter {
      */
     public float getUserRatingForStation(int station_id, String username)
     {
-        System.out.println(station_id+", "+username);
         float i = db.getUserRating(station_id, username);
         return i;
     }
@@ -545,7 +543,7 @@ final class DbAdapter {
             blueLineStations.add(zero);
         }
         blueLine = 0;
-        for(int i=0; i<getStationByRoute(3).size(); i++)
+        for(int i=0; i<this.getTimelineStations().size(); i++)
         {
             greenLineStations.add(zero);
         }
@@ -604,12 +602,13 @@ final class DbAdapter {
         }
         blueLine = sum;
         sum = 0;
-        for(int i=0; i<getStationByRoute(3).size(); i++, station_id++)
+        station_id = 1;
+        for(int i=0; i<this.getTimelineStations().size(); i++, station_id++)
         {
-            greenLineStations.add(new Float(0));
+            greenLineStations.add(getUserRatingForTimelineStation(station_id, user.getUsername()));
             sum += greenLineStations.get(i);
         }
-        greenLine = 0;
+        greenLine = sum;
         totalPoints = redLine + blueLine + greenLine;
 
         final String username = user.getUsername();
@@ -674,7 +673,6 @@ final class DbAdapter {
      * @param previous_stations, the stations before this line, needed for the station_id param
      */
     private void addRatingsFromString(String username, String stations, int previous_stations) {
-        System.out.println(stations);
         stations = stations.replace("[", "");
         stations = stations.replace("]", "");
         String[] numbers = stations.split(",");
@@ -689,6 +687,51 @@ final class DbAdapter {
             }
             i++;
         }
+    }
+
+    public float[] getUserRatingsForRoute(int route_id, String username)
+    {
+        ArrayList<Station> stations = getStationByRoute(route_id);
+        float ratings[] = new float[stations.size()];
+        //get his rating for each station for each line
+        for(int i=0; i<stations.size(); i++)
+        {
+            ratings[i] = getUserRatingForStation(stations.get(i).getId(), username);
+        }
+        return ratings;
+    }
+
+    public float[] getUserRatingsForTimeline(String username)
+    {
+        ArrayList<TimelineStation> stations = getTimelineStations();
+        float ratings[] = new float[stations.size()];
+        //get his rating for each station for each line
+        for(int i=0; i<stations.size(); i++)
+        {
+            ratings[i] = getUserRatingForTimelineStation(stations.get(i).getId(), username);
+        }
+        return ratings;
+    }
+
+    public float getSumForRouteRatings(int id, String username)
+    {
+        float ratings[];
+        float sum = 0;
+        if (id == 3)
+        {
+            //timeline
+            ratings = this.getUserRatingsForTimeline(username);
+        }
+        else
+        {
+            ratings = this.getUserRatingsForRoute(id, username);
+        }
+
+        for(int i=0; i<ratings.length; i++)
+        {
+            sum += ratings[i];
+        }
+        return sum;
     }
 
     /**

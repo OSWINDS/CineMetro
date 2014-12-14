@@ -31,6 +31,7 @@ public class ProfileActivity extends ActionBarActivity {
     Button logOut, updatebt;
     private TextView email, points, red ,blue, green;
     private boolean readyToLogOut;
+
     //private int update;
 
     @Override
@@ -49,14 +50,22 @@ public class ProfileActivity extends ActionBarActivity {
         blue=(TextView) findViewById(R.id.blue_line);
         green=(TextView) findViewById(R.id.green_line);
 
-        //User user=DbAdapter.getInstance().getActiveUser();
 
         email.setText(DbAdapter.getInstance().getActiveUser().getUsername());
-        points.setText("");
-        red.setText(R.string.red);
-        blue.setText(R.string.blue);
-        green.setText(R.string.green);
 
+
+        float rating = DbAdapter.getInstance().getSumForRouteRatings(MapActivity.LINE1, DbAdapter.getInstance().getActiveUser().getUsername());
+        float sum = rating;
+        red.setText(getResources().getString(R.string.red) + rating);
+        rating = DbAdapter.getInstance().getSumForRouteRatings(MapActivity.LINE2, DbAdapter.getInstance().getActiveUser().getUsername());
+        sum += rating;
+        blue.setText(getResources().getString(R.string.blue) + rating);
+        rating = DbAdapter.getInstance().getSumForRouteRatings(MapActivity.LINE3, DbAdapter.getInstance().getActiveUser().getUsername());
+        sum += rating;
+        green.setText(getResources().getString(R.string.green) + rating);
+
+
+        points.setText(" "+sum);
 
         readyToLogOut=false;
 

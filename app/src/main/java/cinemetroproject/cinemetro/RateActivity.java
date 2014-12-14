@@ -126,12 +126,15 @@ public class RateActivity extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
+            Log.i("idrate", " " + id);
             dialog.setTitle(getResources().getString(R.string.points));
             if (line == 3) {
+
                 DbAdapter.getInstance().addTimelineStationRating(id, ratingBar.getRating());
                 DbAdapter.getInstance().addUserTimelineStationRating(id, DbAdapter.getInstance().getActiveUser().getUsername(), ratingBar.getRating());
             }
             else{
+                id--;
                 DbAdapter.getInstance().addRating(id, ratingBar.getRating());
                 DbAdapter.getInstance().addUserRating(id, DbAdapter.getInstance().getActiveUser().getUsername(), ratingBar.getRating());
             }
