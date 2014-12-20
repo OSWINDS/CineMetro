@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -31,7 +33,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by vivi dimitris on 22/9/2014.
@@ -63,12 +67,33 @@ public class Timeline extends ActionBarActivity {
     private LinearLayout layout1;
     private LinearLayout general_layout;
     private GoogleMap mMap;
+    private TimelineStation tms;
+    private ArrayList<Milestone> mls;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sPrefs = getSharedPreferences("myAppsPreferences", 0);
+        String bCheck = sPrefs.getString("lang", getResources().getString(R.string.language));
+
+        String lang = bCheck;
+        LanguageActivity.language = bCheck;
+
+        if (lang.equals("el")) {
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("el", "EL");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.GREEK);
+        } else {
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("en", "EN");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.ENGLISH);
+        }
+
 
         //full screen to timeline
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -85,25 +110,30 @@ public class Timeline extends ActionBarActivity {
 
         Intent intent = getIntent();
         idCinema = intent.getIntExtra("button_id", 0);
+        tms = DbAdapter.getInstance().getTimelineStationByID(idCinema);
+        mls = DbAdapter.getInstance().getTimelineStationMilestones(tms.getId());
+
         title=(TextView)findViewById(R.id.title);
-        title.setText(DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName());
+        title.setText(tms.getName());
         title.setTextColor(Color.WHITE);
+
         description = (TextView) findViewById(R.id.description);
-        description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(0).getDescription());
+        description.setText(mls.get(0).getDescription());
+
         image=(ImageView)findViewById(R.id.image);
         // rb[0].isChecked();
         try {
             Class res = R.drawable.class;
-            Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(0).getPhotoName());
+            Field field = res.getField(mls.get(0).getPhotoName());
             int drawableId = field.getInt(null);
             image.setBackgroundResource(drawableId);
 
         } catch (Exception e) {}
-        int millestones= DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).size();
+        int millestones = mls.size();
 
         for (int i=0; i<millestones; i++) {
             rb[i]  = new RadioButton(this);
-            rb[i].setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(i).getYear());
+            rb[i].setText(mls.get(i).getYear());
             rb[i].setTextColor(Color.WHITE);
             rb[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             rb[i].setId(i);
@@ -123,12 +153,12 @@ public class Timeline extends ActionBarActivity {
                     // find the radiobutton by returned id
                     radioButton = (RadioButton) findViewById(selectedId);
                     description = (TextView) findViewById(R.id.description);
-                    description.setText(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId).getDescription());
+                    description.setText(mls.get(selectedId).getDescription());
                     image=(ImageView)findViewById(R.id.image);
 
                     try {
                         Class res = R.drawable.class;
-                        Field field = res.getField(DbAdapter.getInstance().getTimelineStationMilestones(idCinema-14).get(selectedId).getPhotoName());
+                        Field field = res.getField(mls.get(selectedId).getPhotoName());
                         int drawableId = field.getInt(null);
                         image.setBackgroundResource(drawableId);
 
@@ -177,7 +207,7 @@ public class Timeline extends ActionBarActivity {
 
         this.setUpMap();
         if(mMap!=null){
-            MyPoint point= DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getMyPoint();
+            MyPoint point = tms.getMyPoint();
             mMap.addMarker(new MarkerOptions()
                     .position(point.getLng())
                     .title(point.getName())
@@ -271,7 +301,7 @@ public class Timeline extends ActionBarActivity {
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName();
+        String shareBody = "#CineMetro#" + tms.getName();
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "CineMetro");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
@@ -282,7 +312,7 @@ public class Timeline extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            MapActivity.showInMap(MapActivity.LINE3, idCinema-14);
+            MapActivity.showInMap(MapActivity.LINE3, tms.getId());
             Log.i("idcinema",""+idCinema);
             Intent intent = new Intent(Timeline.this, MapActivity.class);
             Timeline.this.startActivity(intent);
@@ -308,7 +338,7 @@ public class Timeline extends ActionBarActivity {
                 alert.show();
             }
             //user has already rated for this station
-            else if (DbAdapter.getInstance().getUserRatingForTimelineStation(idCinema-14, DbAdapter.getInstance().getActiveUser().getUsername()) != 0){
+            else if (DbAdapter.getInstance().getUserRatingForTimelineStation(tms.getId(), DbAdapter.getInstance().getActiveUser().getUsername()) != 0) {
                 dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
                 dialog.setMessage(getResources().getString(R.string.already_rate));
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -323,8 +353,8 @@ public class Timeline extends ActionBarActivity {
             //user can rate
             else {
                 Intent intent = new Intent(Timeline.this, RateActivity.class);
-                intent.putExtra("line", 3);
-                intent.putExtra("button_id", idCinema-14);
+                intent.putExtra("line", MapActivity.LINE3);
+                intent.putExtra("button_id", tms.getId());
                 Timeline.this.startActivity(intent);
             }
         }};
@@ -340,7 +370,7 @@ public class Timeline extends ActionBarActivity {
             boolean found = false;
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + DbAdapter.getInstance().getTimelineStations().get(idCinema-15).getName());
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + tms.getName());
             PackageManager pm = view.getContext().getPackageManager();
             List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
             for (final ResolveInfo app : activityList) {

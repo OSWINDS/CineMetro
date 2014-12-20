@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -14,7 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
-import android.app.AlertDialog;
+
 import java.lang.reflect.Field;
 
 /**
@@ -134,7 +135,7 @@ public class RateActivity extends ActionBarActivity {
                 DbAdapter.getInstance().addUserTimelineStationRating(id, DbAdapter.getInstance().getActiveUser().getUsername(), ratingBar.getRating());
             }
             else{
-                id--;
+
                 DbAdapter.getInstance().addRating(id, ratingBar.getRating());
                 DbAdapter.getInstance().addUserRating(id, DbAdapter.getInstance().getActiveUser().getUsername(), ratingBar.getRating());
             }

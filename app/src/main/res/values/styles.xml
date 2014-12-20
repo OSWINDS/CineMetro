@@ -4,9 +4,17 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:actionBarTabStyle">@style/TabBarStyle</item>
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="TabBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
+        <item name="android:paddingLeft">-2dip</item>
+        <item name="android:paddingRight">-2dip</item>
+        <item name="android:paddingBottom">2dip</item>
+        <item name="android:paddingTop">0dip</item>
+
+    </style>
 
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>

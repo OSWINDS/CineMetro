@@ -42,22 +42,16 @@
     <string name="save">Save</string>
     <string name="must_sign_up">You should log in order to rate for this station </string>
     <string name="already_rate">You have rate for this station </string>
-    <string name="about_text1">
-            \n\tCine Metro is an application for mobile phones and tablets, which is designed and developed voluntarily by a student group of the
+    <string name="about_text1">            \n\tCine Metro is an application for mobile phones and tablets, which is designed and developed voluntarily by a student group of the
     Informatics Department of the Aristotle University of Thessaloniki, under the guidance of professor Athena Vakali,
     in collaboration with Dr Angeliki Milonaki (journalist, film historian) and Yannis Grosdanis (journalist, film critic).
     The students joining the developers team are George Haristos, who developed and designed the iOS app and for the Android app
-    Vaena Paraskevi, Kaltirimidou Effrosyni, Paniskaki Kyriaki, Papazoglou Christos-Panagiotis and Syrtari Charikleia.
-    </string>
-    <string name="about_text2">
-        \n\t The application is an educational tool aiming at informing as well as familiarizing the public about Thessaloniki’s rich
+    Vaena Paraskevi, Kaltirimidou Effrosyni, Paniskaki Kyriaki, Papazoglou Christos-Panagiotis and Syrtari Charikleia.</string>
+    <string name="about_text2">        \n\t The application is an educational tool aiming at informing as well as familiarizing the public about Thessaloniki’s rich
     cinematic history through a modern navigation experience in the city.
     Various city’s landmarks, which are linked to films shot in Thessaloniki, will be used as “stations”, where citizens can step
-    by in order to see what’s available (e.g. photos, texts, videos, podcasts, etc).
-    </string>
-    <string name="about_text3">
-        \n\t Image rights are held by the respective copyright owners as indicated in the app.
-    </string>
+    by in order to see what’s available (e.g. photos, texts, videos, podcasts, etc).</string>
+    <string name="about_text3">        \n\t Image rights are held by the respective copyright owners as indicated in the app.</string>
     <string name="station_text">Station</string>
     <string name="line1_title">The cinemas of Thessaloniki</string>
     <string name="line2_title">Thessaloniki through the greek cinema</string>
@@ -102,8 +96,9 @@
     <string name="Wifi_Disabled">Wi-Fi Disabled</string>
     <string name="GPS_Enabled">GPS Enabled</string>
     <string name="GPS_Disabled">GPS Disabled</string>
-    <string name="back_button"> &#60; LINES</string>
+    <string name="back_button"> &lt; LINES</string>
     <string name="Linew_menu_button">Lines</string>
-
+    <string name="title_activity_tabed_lines">Lines</string>
+    <string name="rated_stations">Stations Rated</string>
 
 </resources>

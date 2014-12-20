@@ -2,18 +2,17 @@ package cinemetroproject.cinemetro;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseUser;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Handles the communication of other classes with the database
- * @author efi
  *
+ * @author efi
  */
 final class DbAdapter {
     private static DbAdapter Instance = new DbAdapter();
@@ -22,7 +21,6 @@ final class DbAdapter {
     }
 
     /**
-     *
      * @return instance of this class
      */
     public static DbAdapter getInstance() {
@@ -75,12 +73,10 @@ final class DbAdapter {
     private User activeUser;
 
 
-
     /**
      * Fills the arrays with data from the DB
      */
-    private void fillArrays()
-    {
+    private void fillArrays() {
         stations = db.getAllStations();
         routes = db.getAllRoutes();
         photos = db.getAllPhotos();
@@ -92,53 +88,55 @@ final class DbAdapter {
     }
 
     /**
-     *
      * @return all the stations in the DB
      */
-    public ArrayList<Station> getStations()
-    {
+    public ArrayList<Station> getStations() {
         return this.stations;
     }
 
     /**
-     *
      * @return all the routes in the DB
      */
-    public ArrayList<Route> getRoutes() {return routes; }
+    public ArrayList<Route> getRoutes() {
+        return routes;
+    }
 
     /**
-     *
      * @return all the photos in the DB
      */
-    public ArrayList<Photo> getPhotos() {return photos; }
+    public ArrayList<Photo> getPhotos() {
+        return photos;
+    }
 
     /**
-     *
      * @return all the users in the DB
      */
-    public ArrayList<User> getUsers() {return users; }
+    public ArrayList<User> getUsers() {
+        return users;
+    }
 
     /**
-     *
      * @return all the movies in the DB
      */
-    public ArrayList<Movie> getMovies() {return movies;}
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
 
     /**
-     *
      * @return all the timeline stations
      */
-    public ArrayList<TimelineStation> getTimelineStations() {return this.timelineStations;}
+    public ArrayList<TimelineStation> getTimelineStations() {
+        return this.timelineStations;
+    }
 
     /**
      * fills the db if data if the tables are empty and then fill the arrays with the data from the db
+     *
      * @param db
      */
-    public void setDB(DbHelper db)
-    {
+    public void setDB(DbHelper db) {
         this.db = db;
-        if(!stations.isEmpty())
-        {
+        if (!stations.isEmpty()) {
             this.stations.clear();
             this.routes.clear();
             this.milestones.clear();
@@ -147,11 +145,9 @@ final class DbAdapter {
             this.photos.clear();
         }
         this.fillArrays();
-        if ( stations.isEmpty())
-        {
+        if (stations.isEmpty()) {
             Language language = db.getLanguage();
-            switch (language)
-            {
+            switch (language) {
                 case GREEK:
                     this.populateDB();
                     break;
@@ -165,34 +161,27 @@ final class DbAdapter {
         this.fillArrays();
     }
 
-    public Language getLanguage()
-    {
+    public Language getLanguage() {
         return db.getLanguage();
     }
 
-    public Movie getMovieByStationId(int id)
-    {
-        for (Movie m : this.movies)
-        {
-            if (m.getStation_id() == id)
-            {
+    public Movie getMovieByStationId(int id) {
+        for (Movie m : this.movies) {
+            if (m.getStation_id() == id) {
                 return m;
             }
         }
         return null;
     }
+
     /**
-     *
      * @param route_id
      * @return the stations that belong to the route with this id
      */
-    public ArrayList<Station> getStationByRoute(int route_id)
-    {
+    public ArrayList<Station> getStationByRoute(int route_id) {
         ArrayList<Station> route_stations = new ArrayList<Station>();
-        for(Station station : stations)
-        {
-            if (station.getRoute_id() == route_id)
-            {
+        for (Station station : stations) {
+            if (station.getRoute_id() == route_id) {
                 route_stations.add(station);
             }
         }
@@ -200,17 +189,13 @@ final class DbAdapter {
     }
 
     /**
-     *
      * @param station_id
      * @return the photos that belong to the station with this id
      */
-    public ArrayList<Photo> getPhotosByStation(int station_id)
-    {
+    public ArrayList<Photo> getPhotosByStation(int station_id) {
         ArrayList<Photo> station_photos = new ArrayList<Photo>();
-        for(Photo photo : photos)
-        {
-            if (photo.getStation_id() == station_id)
-            {
+        for (Photo photo : photos) {
+            if (photo.getStation_id() == station_id) {
                 station_photos.add(photo);
             }
         }
@@ -218,16 +203,12 @@ final class DbAdapter {
     }
 
     /**
-     *
      * @param station_id
      * @return the movie that belongs to the station with this id
      */
-    public Movie getMovieByStation(int station_id)
-    {
-        for(Movie movie : movies)
-        {
-            if (movie.getStation_id() == station_id)
-            {
+    public Movie getMovieByStation(int station_id) {
+        for (Movie movie : movies) {
+            if (movie.getStation_id() == station_id) {
                 return movie;
             }
         }
@@ -235,17 +216,13 @@ final class DbAdapter {
     }
 
     /**
-     *
      * @param movie_id
      * @return the main photos of the movie with this id
      */
-    public ArrayList<Photo> getMainPhotosOfMovie(int movie_id)
-    {
+    public ArrayList<Photo> getMainPhotosOfMovie(int movie_id) {
         ArrayList<Photo> photos = new ArrayList<Photo>();
-        for (Photo p : this.photos)
-        {
-            if (p.getMovie_id() == movie_id && p.getStation_id() != -1 )
-            {
+        for (Photo p : this.photos) {
+            if (p.getMovie_id() == movie_id && p.getStation_id() != -1) {
                 photos.add(p);
             }
         }
@@ -253,17 +230,13 @@ final class DbAdapter {
     }
 
     /**
-     *
      * @param movie_id
      * @return the photos of actors of the movie with this id
      */
-    public ArrayList<Photo> getActorPhotosOfMovie(int movie_id)
-    {
+    public ArrayList<Photo> getActorPhotosOfMovie(int movie_id) {
         ArrayList<Photo> photos = new ArrayList<Photo>();
-        for (Photo p : this.photos)
-        {
-            if (p.getMovie_id() == movie_id && p.getStation_id() == -1 )
-            {
+        for (Photo p : this.photos) {
+            if (p.getMovie_id() == movie_id && p.getStation_id() == -1) {
                 photos.add(p);
             }
         }
@@ -272,14 +245,12 @@ final class DbAdapter {
 
     /**
      * Add new user to db
+     *
      * @param user
      */
-    public void addNewUser(User user)
-    {
-        if (user == null)
-        {
-        }
-        else {
+    public void addNewUser(User user) {
+        if (user == null) {
+        } else {
             db.addUser(user, user.getPassword());
             this.users.clear();
             this.users = db.getAllUsers();
@@ -287,14 +258,11 @@ final class DbAdapter {
     }
 
     /**
-     *
      * @param username
      * @return the user with that username, null if username does not exists
      */
-    public User getUserByUsername(String username)
-    {
-        for (User u : users)
-        {
+    public User getUserByUsername(String username) {
+        for (User u : users) {
             if (u.getUsername().equals((username))) {
                 return u;
             }
@@ -304,29 +272,27 @@ final class DbAdapter {
 
     /**
      * Sets the active user to the parameter user
+     *
      * @param user
      */
-    public void setActiveUser(User user)
-    {
+    public void setActiveUser(User user) {
         this.activeUser = user;
     }
 
     /**
      * Returns the active user,could be null if there was no login
+     *
      * @return
      */
-    public User getActiveUser()
-    {
+    public User getActiveUser() {
         return this.activeUser;
     }
 
     /**
-     *
      * @param name
      * @return the id required to display the photo with that name
      */
-    public int getPhotoDrawableID(String name)
-    {
+    public int getPhotoDrawableID(String name) {
         try {
             Class res = R.drawable.class;
             Field field = res.getField(name);
@@ -336,30 +302,23 @@ final class DbAdapter {
         }
     }
 
-    public ArrayList<String> getGreenLinePhotos()
-    {
+    public ArrayList<String> getGreenLinePhotos() {
         ArrayList<String> green_photos = new ArrayList<String>();
-        for(Photo photo : this.photos)
-        {
-            if ( 0 == photo.getMovie_id() && 0 == photo.getStation_id())
-            {
-            	green_photos.add(photo.getName());
+        for (Photo photo : this.photos) {
+            if (0 == photo.getMovie_id() && 0 == photo.getStation_id()) {
+                green_photos.add(photo.getName());
             }
         }
         return green_photos;
     }
 
     /**
-     *
      * @param id
      * @return TimelineStation with this id,returns null id no station with such id is found
      */
-    public TimelineStation getTimelineStationByID(int id)
-    {
-        for (TimelineStation station : this.timelineStations)
-        {
-            if (id == station.getId())
-            {
+    public TimelineStation getTimelineStationByID(int id) {
+        for (TimelineStation station : this.timelineStations) {
+            if (id == station.getId()) {
                 return station;
             }
         }
@@ -367,140 +326,119 @@ final class DbAdapter {
     }
 
     /**
-     *
      * @param station_id
      * @return the rating of the station with this id
      */
-    public float getStationRating(int station_id)
-    {
+    public float getStationRating(int station_id) {
         float rating = db.getRating(station_id);
-        if (rating < 0)
-        {
+        if (rating < 0) {
             this.initializeRatings();
             return 0;
-        }
-        else
-        {
+        } else {
             return rating;
         }
     }
 
     /**
-     *
      * @param station_id
      * @return the rating of the station with this id
      */
-    public float getTimelineStationRating(int station_id)
-    {
+    public float getTimelineStationRating(int station_id) {
         float rating = db.getTimelineStationRating(station_id);
-        if (rating < 0)
-        {
+        if (rating < 0) {
             this.initializeTimelineRatings();
             return 0;
-        }
-        else
-        {
+        } else {
             return rating;
         }
     }
 
     /**
-     *
      * @param station_id
      * @param username
      * @return the rating of the station with this id from this user
      * returns 0 if the user has not voted for this station
      */
-    public float getUserRatingForStation(int station_id, String username)
-    {
+    public float getUserRatingForStation(int station_id, String username) {
         float i = db.getUserRating(station_id, username);
         return i;
     }
 
     /**
-     *
      * @param station_id
      * @param username
      * @return the rating of the timeline station with this id from this user
      * returns 0 if the user has not voted for this station
      */
-    public float getUserRatingForTimelineStation(int station_id, String username)
-    {
+    public float getUserRatingForTimelineStation(int station_id, String username) {
         return db.getUserTimelineStationRating(station_id, username);
     }
 
     /**
      * Adds the param rating to the ratings of the station with this id
+     *
      * @param station_id
      */
-    public void addRating(int station_id, float rating)
-    {
-        String table  = "rating";
-        db.updateRatings(station_id, db.getSum(station_id, table) + rating, db.getCounter(station_id, table)+1);
+    public void addRating(int station_id, float rating) {
+        String table = "rating";
+        db.updateRatings(station_id, db.getSum(station_id, table) + rating, db.getCounter(station_id, table) + 1);
     }
 
     /**
      * Adds the param rating to the ratings of the timeline station with this id
+     *
      * @param station_id
      */
-    public void addTimelineStationRating(int station_id, float rating)
-    {
+    public void addTimelineStationRating(int station_id, float rating) {
         String table = "timeline_station_rating";
-        db.updateTimelineStationRatings(station_id, db.getSum(station_id, table) + rating, db.getCounter(station_id, table)+1);
+        db.updateTimelineStationRatings(station_id, db.getSum(station_id, table) + rating, db.getCounter(station_id, table) + 1);
     }
 
     /**
      * Adds the param rating to the ratings of the station with this id from this user
+     *
      * @param station_id
      */
-    public void addUserRating(int station_id, String username, float rating)
-    {
+    public void addUserRating(int station_id, String username, float rating) {
         db.addUserRating(station_id, username, rating);
     }
 
     /**
      * Adds the param rating to the ratings of the timeline station with this id from this user
+     *
      * @param station_id
      */
-    public void addUserTimelineStationRating(int station_id, String username, float rating)
-    {
+    public void addUserTimelineStationRating(int station_id, String username, float rating) {
         db.addUserTimelineStationRating(station_id, username, rating);
     }
 
     /**
-     *
      * @param timeline_station_id
      * @return arraylist with all the milestones that belong to the TimelineStation with this id
      */
-    public ArrayList<Milestone> getTimelineStationMilestones(int timeline_station_id)
-    {
+    public ArrayList<Milestone> getTimelineStationMilestones(int timeline_station_id) {
         ArrayList<Milestone> mls = new ArrayList<Milestone>();
-        for(Milestone milestone : this.milestones)
-        {
-            if(milestone.getStation_id() == timeline_station_id)
-            {
+        for (Milestone milestone : this.milestones) {
+            if (milestone.getStation_id() == timeline_station_id) {
                 mls.add(milestone);
             }
         }
         return mls;
     }
 
-    private void setMilestonesToStations()
-    {
-        for(int i =0; i<this.timelineStations.size(); i++)
-        {
-            this.timelineStations.get(i).setMilestones( getTimelineStationMilestones(this.timelineStations.get(i).getId()));
+    private void setMilestonesToStations() {
+        for (int i = 0; i < this.timelineStations.size(); i++) {
+            this.timelineStations.get(i).setMilestones(getTimelineStationMilestones(this.timelineStations.get(i).getId()));
         }
     }
 
     /**
      * Change the language of the db to the one given in the parameter
+     *
      * @param lang
      */
-    public void changeLanguage(Language lang)
-    {
-        switch (lang)
-        {
+    public void changeLanguage(Language lang) {
+        switch (lang) {
             case GREEK:
                 db.setLanguage("el");
                 break;
@@ -515,10 +453,10 @@ final class DbAdapter {
 
     /**
      * Sighs up a new user to parse
+     *
      * @param user
      */
-    public void signUpUserToParse(User user)
-    {
+    public void signUpUserToParse(User user) {
         final ArrayList<Float> blueLineStations = new ArrayList<Float>();
         final ArrayList<Float> greenLineStations = new ArrayList<Float>();
         final ArrayList<Float> redLineStations = new ArrayList<Float>();
@@ -531,20 +469,17 @@ final class DbAdapter {
         Float zero = new Float(0);
 
         //get his rating for each station for each line
-        for(int i=0; i<getStationByRoute(this.routes.get(0).getId()).size(); i++)
-        {
+        for (int i = 0; i < getStationByRoute(this.routes.get(0).getId()).size(); i++) {
             //redLineStations.add(getUserRatingForStation(station_id, user.getId()));
             redLineStations.add(zero);
         }
         redLine = 0;
-        for(int i=0; i<getStationByRoute(this.routes.get(1).getId()).size(); i++)
-        {
+        for (int i = 0; i < getStationByRoute(this.routes.get(1).getId()).size(); i++) {
             //blueLineStations.add(getUserRatingForStation(station_id, user.getId()));
             blueLineStations.add(zero);
         }
         blueLine = 0;
-        for(int i=0; i<this.getTimelineStations().size(); i++)
-        {
+        for (int i = 0; i < this.getTimelineStations().size(); i++) {
             greenLineStations.add(zero);
         }
         greenLine = 0;
@@ -572,8 +507,7 @@ final class DbAdapter {
     /**
      * Updates the user ratings to the parse online database
      */
-    public void updateUserToParse(User user)
-    {
+    public void updateUserToParse(User user) {
 
         //initialize arrays for each line
         final ArrayList<Float> blueLineStations = new ArrayList<Float>();
@@ -588,23 +522,20 @@ final class DbAdapter {
         float sum = 0;
         int station_id = 1;
         //get his rating for each station for each line
-        for(int i=0; i<getStationByRoute(1).size(); i++, station_id++)
-        {
+        for (int i = 0; i < getStationByRoute(1).size(); i++, station_id++) {
             redLineStations.add(getUserRatingForStation(station_id, user.getUsername()));
             sum += redLineStations.get(i);
         }
         redLine = sum;
         sum = 0;
-        for(int i=0; i<getStationByRoute(2).size(); i++, station_id++)
-        {
+        for (int i = 0; i < getStationByRoute(2).size(); i++, station_id++) {
             blueLineStations.add(getUserRatingForStation(station_id, user.getUsername()));
             sum += blueLineStations.get(i);
         }
         blueLine = sum;
         sum = 0;
         station_id = 1;
-        for(int i=0; i<this.getTimelineStations().size(); i++, station_id++)
-        {
+        for (int i = 0; i < this.getTimelineStations().size(); i++, station_id++) {
             greenLineStations.add(getUserRatingForTimelineStation(station_id, user.getUsername()));
             sum += greenLineStations.get(i);
         }
@@ -638,36 +569,35 @@ final class DbAdapter {
     /**
      * Get the user ratings from parse for a specific user and for each one add them to the db
      */
-    private void getUserFromParse(final User user)
-    {
-            final String username = user.getUsername();
+    private void getUserFromParse(final User user) {
+        final String username = user.getUsername();
 
-            //query parse to get the user
-            ParseQuery<ParseUser> query = ParseUser.getQuery();
-            query.whereEqualTo("username", user.getUsername());
-            query.setLimit(1);
-            query.findInBackground(new FindCallback<ParseUser>() {
-                public void done(List<ParseUser> userList, ParseException e) {
-                    if (userList.size() > 0) {
-                        String stations =  userList.get(0).getString("redLineStations");
-                        addRatingsFromString(username, stations, 0);
+        //query parse to get the user
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("username", user.getUsername());
+        query.setLimit(1);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> userList, ParseException e) {
+                if (userList.size() > 0) {
+                    String stations = userList.get(0).getString("redLineStations");
+                    addRatingsFromString(username, stations, 0);
 
-                        stations =  userList.get(0).getString("blueLineStations");
-                        addRatingsFromString(username, stations, getStationByRoute(0).size());
+                    stations = userList.get(0).getString("blueLineStations");
+                    addRatingsFromString(username, stations, getStationByRoute(0).size());
 
-                        stations =  userList.get(0).getString("greenLineStations");
-                        addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
-                    } else {
-                    }
+                    stations = userList.get(0).getString("greenLineStations");
+                    addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                } else {
                 }
-            });
+            }
+        });
 
     }
 
 
-
     /**
      * adds to the db the ratings of this user for the stations from string
+     *
      * @param username
      * @param stations
      * @param previous_stations, the stations before this line, needed for the station_id param
@@ -681,7 +611,7 @@ final class DbAdapter {
             float rating = Float.parseFloat(number);
             if (rating != 0) {
                 int station_id = previous_stations + i;
-                if(getUserRatingForStation(station_id, username) == 0) {
+                if (getUserRatingForStation(station_id, username) == 0) {
                     this.addUserRating(station_id, username, rating);
                 }
             }
@@ -689,46 +619,37 @@ final class DbAdapter {
         }
     }
 
-    public float[] getUserRatingsForRoute(int route_id, String username)
-    {
+    public float[] getUserRatingsForRoute(int route_id, String username) {
         ArrayList<Station> stations = getStationByRoute(route_id);
         float ratings[] = new float[stations.size()];
         //get his rating for each station for each line
-        for(int i=0; i<stations.size(); i++)
-        {
+        for (int i = 0; i < stations.size(); i++) {
             ratings[i] = getUserRatingForStation(stations.get(i).getId(), username);
         }
         return ratings;
     }
 
-    public float[] getUserRatingsForTimeline(String username)
-    {
+    public float[] getUserRatingsForTimeline(String username) {
         ArrayList<TimelineStation> stations = getTimelineStations();
         float ratings[] = new float[stations.size()];
         //get his rating for each station for each line
-        for(int i=0; i<stations.size(); i++)
-        {
+        for (int i = 0; i < stations.size(); i++) {
             ratings[i] = getUserRatingForTimelineStation(stations.get(i).getId(), username);
         }
         return ratings;
     }
 
-    public float getSumForRouteRatings(int id, String username)
-    {
+    public float getSumForRouteRatings(int id, String username) {
         float ratings[];
         float sum = 0;
-        if (id == 3)
-        {
+        if (id == 3) {
             //timeline
             ratings = this.getUserRatingsForTimeline(username);
-        }
-        else
-        {
+        } else {
             ratings = this.getUserRatingsForRoute(id, username);
         }
 
-        for(int i=0; i<ratings.length; i++)
-        {
+        for (int i = 0; i < ratings.length; i++) {
             sum += ratings[i];
         }
         return sum;
@@ -736,15 +657,13 @@ final class DbAdapter {
 
     /**
      * Returns the name of the photo from the first milestone of the timeline station with this id
+     *
      * @param id
      * @return
      */
-    public String getTimelineStationBackground(int id)
-    {
-        for(TimelineStation station : this.timelineStations)
-        {
-            if (station.getId() == id)
-            {
+    public String getTimelineStationBackground(int id) {
+        for (TimelineStation station : this.timelineStations) {
+            if (station.getId() == id) {
                 return station.getMilestones().get(0).getPhotoName();
             }
         }
@@ -754,12 +673,11 @@ final class DbAdapter {
     /**
      * Inserts the data into the tables
      */
-    private void populateDB()
-    {
+    private void populateDB() {
 
         //add routes
-        this.db.addRoute(new Route("Τα σινεμά της πόλης","red",1));
-        this.db.addRoute(new Route("Θεσσαλονίκη μέσα απο τον ελληνικό κινηματογράφο","blue",1));
+        this.db.addRoute(new Route("Τα σινεμά της πόλης", "red", 1));
+        this.db.addRoute(new Route("Θεσσαλονίκη μέσα απο τον ελληνικό κινηματογράφο", "blue", 1));
         //this.db.addRoute(new Route("Φεστιβάλ Κινηματογράφου Θεσσαλονίκης","green",1));
 
 
@@ -768,9 +686,9 @@ final class DbAdapter {
         this.db.addStation(new Station("Βαρδάρη",
                 "Η 1η κινηματογραφική προβολή στην Θεσσαλονίκη έγινε εδώ το 1897, στο καφέ «Η Τουρκία». \n" +
                         "\n" +
-                "Στην ευρύτερη περιοχή της πλατείας χτίστηκαν αρκετά σινεμά όπως: Σπλέντιντ (μετέπειτα Ίλιον), Πάνθεον, " +
+                        "Στην ευρύτερη περιοχή της πλατείας χτίστηκαν αρκετά σινεμά όπως: Σπλέντιντ (μετέπειτα Ίλιον), Πάνθεον, " +
                         "Αττικόν και Ολύμπιον (στη σημερινή οδό Μοναστηρίου), καθώς αργότερα και τα πορνό σινεμά της πλατείας.",
-                1, 40.641142,  22.934721));
+                1, 40.641142, 22.934721));
         this.db.addStation(new Station("Παραλία 1 (Λιμάνι)",
                 "Μια από τις πιο κινηματογραφικές και κινηματογραφημένες γωνιές του κέντρου. \n" +
                         "\n" +
@@ -779,14 +697,14 @@ final class DbAdapter {
                         "\n" +
                         "Ταινίες που γυρίστηκαν εδώ (ενδεικτική αναφορά): Το Λιβάδι που δακρύζει, Ταξίδι στα Κύθηρα, Τοπίο στην Ομίχλη," +
                         " Ο Κλοιός.",
-                1, 40.635650,  22.935431));
+                1, 40.635650, 22.935431));
         this.db.addStation(new Station("Παραλία 2 (Λεωφόρος Νίκης)",
                 "Στην Λεωφόρο Νίκης δημιουργείται η πρώτη κινηματογραφική αίθουσα στα Βαλκάνια, το Ολύμπια (1903). \n" +
                         "\n" +
                         "Εδώ λειτουργεί από το 1911 ο κινηματογράφος Πατέ με ταινίες της ομώνυμης εταιρείας παραγωγής.\n" +
                         "\n" +
                         "Ταινίες που γυρίστηκαν στην Παραλία (ενδεικτική αναφορά): Μια Αιωνιότητα και μια μέρα, Ρ20, Όλα είναι δρόμος.",
-                1, 40.630440,  22.942912));
+                1, 40.630440, 22.942912));
         this.db.addStation(new Station("Πλατεία Αριστοτέλους",
                 "Κατά τη δεκαετία του ’50 η πλατεία μετρούσε 6 θερινά σινεμά (Ρεξ, Ηλύσια, Ελληνίς, Αιγαίο, Ρίο και Ζέφυρος). \n" +
                         "\n" +
@@ -796,8 +714,8 @@ final class DbAdapter {
                         "μεσοπολεμικά με βάση του την Παλιά Παραλία της πόλης.\n" +
                         "\n" +
                         "Ταινίες που γυρίστηκαν εδώ (ενδεικτική αναφορά): Η Αιωνιότητα και μια Ημέρα, Φανέλα με το 9, Γεννέθλια Πόλη, Ατσίδας.",
-                1, 40.632804,  22.941331));
-        this.db.addStation(new Station("Κέντρο "+" (Αγίας Σοφίας-Αλ. Σβώλου)",
+                1, 40.632804, 22.941331));
+        this.db.addStation(new Station("Κέντρο " + " (Αγίας Σοφίας-Αλ. Σβώλου)",
                 "Μια περιοχή με πολλούς κινηματογράφους: Διονύσια (Αγίας Σοφίας), Έσπερος και Ριβολί (Αλ.Σβώλου), Μακεδονικόν (Φιλ.Εταιρείας) . \n" +
                         "\n" +
                         "Εδώ λειτούργησε στη δεκαετία του ’50 παράρτημα Θεσσαλονίκης της κινηματογραφικής σχολής Σταυράκου. \n" +
@@ -806,7 +724,7 @@ final class DbAdapter {
                         "\n" +
                         "Στην πορεία του χρόνου η βιντεοκασσέτα αντικαταστάθηκε απο το dvd και το blue-ray. Στην ίδια περιοχή " +
                         "(Οδός Α. Σβώλου) διατηρούνται ακόμη δύο απο τα -κάποτε αμέτρητα – βιντεο/dvd club της πόλης (AZA και Seven Film Gallery). ",
-                1,  40.632511,  22.947489));
+                1, 40.632511, 22.947489));
         this.db.addStation(new Station("Κέντρο 2 (Καμάρα - Ναυαρίνο)",
                 "Στο κέντρο της Θεσσαλονίκης υπήρξαν αρκετοί κινηματογράφοι που για χρόνια αποτέλεσαν σημείο αναφοράς στην " +
                         "καθημερινότητα της πόλης τόσο λόγω της αρχιτεκτονικής όσο και λόγω της αναφοράς τους μέσα σε αυτήν \n" +
@@ -838,7 +756,7 @@ final class DbAdapter {
                         "παλιού αλλά και του νέου ελληνικού κινηματογράφου (ενδεικτική αναφορά): Ο Φάκελος Πολκ στον αέρα, Κάτι να καίει," +
                         " Το βλέμμα του Οδυσσέα, Η Αιωνιότητα και μια Ημέρα, Το Λιβάδι που δακρύζει, Γεννέθλια Πόλη, Παρένθεση, " +
                         "Χώμα και Νερό",
-                1, 40.62638,  22.948306));
+                1, 40.62638, 22.948306));
 
         //Line 2
         this.db.addStation(new Station("Το ξυπόλητο τάγμα (1955)",
@@ -885,7 +803,7 @@ final class DbAdapter {
                         "Το πρώτο μιούζικαλ του Γιάννη Δαλιανίδη και παράλληλα η πρώτη ελληνική ταινία σινεμασκόπ\n" +
                         "\n" +
                         "Πρώτη κινηματογραφική εμφάνιση για την 17χρόνη Έλενα Ναθαναήλ",
-                2,40.628192, 22.9561));
+                2, 40.628192, 22.9561));
         this.db.addStation(new Station("Παρένθεση (1968)",
                 "Σκηνοθεσία: Τάκης Κανελλόπουλος\n" +
                         "\n" +
@@ -900,7 +818,7 @@ final class DbAdapter {
                         "4 βραβεία στο Φεστιβάλ Θεσσαλονίκης\n" +
                         "\n" +
                         "Η ταινία γυρίστηκε σε: Νέο Σιδηροδρομικό Σταθμό, Νέα Παραλία Θεσσαλονίκης και στην περιοχή Αρετσού (Ν. Κρήνη)",
-                2,40.6223568, 22.9512486));
+                2, 40.6223568, 22.9512486));
         this.db.addStation(new Station("Η Φανέλλα με το Νο9 (1987)",
                 "Σκηνοθεσία: Παντελής Βούλγαρης\n" +
                         "\n" +
@@ -933,7 +851,7 @@ final class DbAdapter {
                         "Ο Θόδωρος Αγγελόπουλος γύρισε στην Θεσσαλονίκη μέρος ή εξ ολοκλήρου 4 ταινίες. Ανάμεσα τους και την “Αιωνιότητα”\n" +
                         "\n" +
                         "Χρυσός Φοίνικας στο Φεστιβάλ Καννών του 1998",
-                2,40.6148604, 22.954036));
+                2, 40.6148604, 22.954036));
         this.db.addStation(new Station("Χώρα Προέλευσης (2010)",
                 "Σκηνοθεσία: Σύλλας Τζουμέρκας\n" +
                         "\n" +
@@ -946,7 +864,7 @@ final class DbAdapter {
                         "Η ταινία πραγματοποιεί μεγάλο μέρος της δράσης της σε γνωστά σημεία της σημερινής Θεσσαλονίκης: Λεωφόρος Στρατού (ΕΡΤ3), Νέα Παραλία, Αγίος Δημήτριος. \n" +
                         "\n" +
                         "Συμμετοχή στην Εβδομάδα Κριτικής του Φεστιβάλ Βενετίας",
-                2,40.638799, 22.947769));
+                2, 40.638799, 22.947769));
         this.db.addStation(new Station("Σούπερ Δημήτριος (2011)",
                 "Σκηνοθεσία: Γιώργος Παπαιωάνου\n" +
                         " \n" +
@@ -961,80 +879,82 @@ final class DbAdapter {
                         "Τόποι γυρισμάτων: Θεολογική Σχολή ΑΠΘ, Νέο Δημαρχειακό Μέγαρο, Λευκός Πύργος, ΟΣΕ, Τούμπα \n" +
                         "\n" +
                         "Βραβείο κοινού στο Φεστιβάλ Θεσσαλονίκης",
-                2,40.6308363, 22.9543887));
+                2, 40.6308363, 22.9543887));
 
         //add movies
-        this.db.addMovie(new Movie(7, "Το ξυπόλητο τάγμα",
+
+
+        this.db.addMovie(new Movie(8, "Το ξυπόλητο τάγμα",
                 "Η αληθινή ιστορία επιβίωσης 160 παιδιών στην Θεσσαλονίκη της Κατοχής. \n" +
-                "\n" +
-                "Η ταινία έχει σαν χώρο δράσης την Θεσσαλονίκη μεταξύ των δεκαετιών 1940-50.\n" +
-                "\n" +
-                "Μέρος των γυρισμάτων έγινε στο Επταπύργιο-Άνω Πόλη. \n" +
-                "\n" +
-                "Οι μικροί πρωταγωνιστές προέρχονται απο το Ορφανοτροφείο Αθηνών.\n" +
-                "\n" +
-                "Χρυσό Βραβείο στο Φεστιβάλ Κινηματογράφου του Εδιμβούργου (1955).",
+                        "\n" +
+                        "Η ταινία έχει σαν χώρο δράσης την Θεσσαλονίκη μεταξύ των δεκαετιών 1940-50.\n" +
+                        "\n" +
+                        "Μέρος των γυρισμάτων έγινε στο Επταπύργιο-Άνω Πόλη. \n" +
+                        "\n" +
+                        "Οι μικροί πρωταγωνιστές προέρχονται απο το Ορφανοτροφείο Αθηνών.\n" +
+                        "\n" +
+                        "Χρυσό Βραβείο στο Φεστιβάλ Κινηματογράφου του Εδιμβούργου (1955).",
                 "Κωστή Μαρία,Φερμας Νίκος,Φραγκεδάκης Βασίλης",
                 "Γκρεγκ Τάλλας", "1955"));
-        this.db.addMovie(new Movie(8, "Ο ατσίδας",
+        this.db.addMovie(new Movie(9, "Ο ατσίδας",
                 "Δύο αδέρφια προσπαθούν να ισορροπήσουν ανάμεσα στις αισθηματικές τους σχέσεις και την συντηρητικές αρχές της πατρικής οικίας τους. \n" +
-                "\n" +
-                "Εξ ολοκλήρου γυρισμένη στην Θεσσαλονίκη: Πανόραμα, περιοχή Ανθέων, Πλ. Αριστοτέλους\n" +
-                "\n" +
-                "Μεταφορά του θεατρικού έργου του Δ. Ψαθά “Εξοχικόν Κέντρον ο Έρως”",
+                        "\n" +
+                        "Εξ ολοκλήρου γυρισμένη στην Θεσσαλονίκη: Πανόραμα, περιοχή Ανθέων, Πλ. Αριστοτέλους\n" +
+                        "\n" +
+                        "Μεταφορά του θεατρικού έργου του Δ. Ψαθά “Εξοχικόν Κέντρον ο Έρως”",
                 "Ηλιόπουλος Ντίνος,Λάσκαρη Ζώη,Ζερβός Παντελής,Στρατηγός Στέφανος",
                 "Γιάννης Δαλιανίδης", "1961"));
-        this.db.addMovie(new Movie(9, "Κάτι να καίει",
+        this.db.addMovie(new Movie(10, "Κάτι να καίει",
                 "Ένα νεανικό μουσικό συγκρότημα, ένας προσωπάρχης που συνοδέυει την κόρη του αφεντικού του στη Θεσσαλονίκη, μια κληρονομιά που περιμένει έναν γάμο. Μια παρέα νέων ανθρώπων σε αστείες και ρομαντικές περιπέτειες. \n" +
-                "\n" +
-                "Η ταινία έχει γυρίσματα σε χώρους όπως ΔΕΘ, Λευκός Πύργος, κ.α.\n" +
-                "\n" +
-                "Το πρώτο μιούζικαλ του Γιάννη Δαλιανίδη και παράλληλα η πρώτη ελληνική ταινία σινεμασκόπ\n" +
-                "\n" +
-                "Πρώτη κινηματογραφική εμφάνιση για την 17χρόνη Έλενα Ναθαναήλ",
+                        "\n" +
+                        "Η ταινία έχει γυρίσματα σε χώρους όπως ΔΕΘ, Λευκός Πύργος, κ.α.\n" +
+                        "\n" +
+                        "Το πρώτο μιούζικαλ του Γιάννη Δαλιανίδη και παράλληλα η πρώτη ελληνική ταινία σινεμασκόπ\n" +
+                        "\n" +
+                        "Πρώτη κινηματογραφική εμφάνιση για την 17χρόνη Έλενα Ναθαναήλ",
                 "Βλαχοπούλου Ρένα,Ηλιόπουλος Ντίνος,Καραγιάννη Μάρθα,Ναθαναήλ Έλενα,Βουτσάς Κώστας",
                 "Γιάννης Δαλιανίδης", "1964"));
-        this.db.addMovie(new Movie(10, "Παρένθεση",
+        this.db.addMovie(new Movie(11, "Παρένθεση",
                 "Ένα ταξίδι με τρένο, μια στάση με ολιγόωρη καθυστέρηση, ένας δυνατός έρωτας δύο ανθρώπων, μια παρένθεση. \n" +
-                "\n" +
-                "Βασισμένη στο θεατρικό έργο του Νοέλ Κάουαρντ “Ασάλευτη Ζωή”\n" +
-                "\n" +
-                "4 βραβεία στο Φεστιβάλ Θεσσαλονίκης\n" +
-                "\n" +
-                "Η ταινία γυρίστηκε σε: Νέο Σιδηροδρομικό Σταθμό, Νέα Παραλία Θεσσαλονίκης και στην περιοχή Αρετσού (Ν. Κρήνη))",
+                        "\n" +
+                        "Βασισμένη στο θεατρικό έργο του Νοέλ Κάουαρντ “Ασάλευτη Ζωή”\n" +
+                        "\n" +
+                        "4 βραβεία στο Φεστιβάλ Θεσσαλονίκης\n" +
+                        "\n" +
+                        "Η ταινία γυρίστηκε σε: Νέο Σιδηροδρομικό Σταθμό, Νέα Παραλία Θεσσαλονίκης και στην περιοχή Αρετσού (Ν. Κρήνη))",
                 "Λαδικού Αλεξάνδρα,Αντωνόπουλος Άγγελος",
                 "Τάκης Κανελλόπουλος", "1968"));
-        this.db.addMovie(new Movie(11, "Η Φανέλλα με το Νο9",
+        this.db.addMovie(new Movie(12, "Η Φανέλλα με το Νο9",
                 "Η πορεία ενός ταλαντούχου ποδοσφαιριστή, ο οποίος μέσα από νίκες και ήττες, τραυματισμούς και παρασκήνιο, " +
-                "θα καταλάβει ότι η επιτυχία έχει το τίμημά της. \n" +
-                "\n" +
-                "Μέρος της ταινίας έχει γυριστεί στην Θεσσαλονίκη: Πλ. Αριστοτέλους, Εύοσμος.\n" +
-                "\n" +
-                "Βασισμενη στο ομόνυμο μυθιστόρημα του Μένη Κουμανταρέα\n" +
-                "\n" +
-                "2 βραβεία στο Φεστιβάλ Θεσσαλονίκης\n" +
-                "\n" +
-                "Ο πρωταγωνιστής της ταινίας Στρ. Τζώρτζογλου την ίδια χρονιά θα συμμετέχει στα γυρίσματα της ταινίας του Θ. Αγγελόπουλου “Τοπίο στην Ομίχλη” που γίνονται στην Θεσσαλονίκη.",
+                        "θα καταλάβει ότι η επιτυχία έχει το τίμημά της. \n" +
+                        "\n" +
+                        "Μέρος της ταινίας έχει γυριστεί στην Θεσσαλονίκη: Πλ. Αριστοτέλους, Εύοσμος.\n" +
+                        "\n" +
+                        "Βασισμενη στο ομόνυμο μυθιστόρημα του Μένη Κουμανταρέα\n" +
+                        "\n" +
+                        "2 βραβεία στο Φεστιβάλ Θεσσαλονίκης\n" +
+                        "\n" +
+                        "Ο πρωταγωνιστής της ταινίας Στρ. Τζώρτζογλου την ίδια χρονιά θα συμμετέχει στα γυρίσματα της ταινίας του Θ. Αγγελόπουλου “Τοπίο στην Ομίχλη” που γίνονται στην Θεσσαλονίκη.",
                 "Τζώρτζογλου Στράτος,Μπαζάκα Θέμις",
                 "Παντελής Βούλγαρης", "1987"));
-        this.db.addMovie(new Movie(12, "Μια Αιωνιότητα και μια μέρα",
+        this.db.addMovie(new Movie(13, "Μια Αιωνιότητα και μια μέρα",
                 "Ένας μεσήλικας συγγραφέας, που ασχολείται με το έργο του Δ. Σολωμού, αναζητάει τις αναμνήσεις μιας ζωής σε μια περιπλάνηση μιας ημέρας. \n" +
-                "\n" +
-                "Γυρισμένη σε αρχοντικό της Βασ. Όλγας, στην Παλιά Παραλία, Πλ. Αριστοτέλους και σε χώρους της οδού Τσιμισκή. \n" +
-                "\n" +
-                "Ο Θόδωρος Αγγελόπουλος γύρισε στην Θεσσαλονίκη μέρος ή εξ ολοκλήρου 4 ταινίες. Ανάμεσα τους και την “Αιωνιότητα”\n" +
-                "\n" +
-                "Χρυσός Φοίνικας στο Φεστιβάλ Καννών του 1998",
+                        "\n" +
+                        "Γυρισμένη σε αρχοντικό της Βασ. Όλγας, στην Παλιά Παραλία, Πλ. Αριστοτέλους και σε χώρους της οδού Τσιμισκή. \n" +
+                        "\n" +
+                        "Ο Θόδωρος Αγγελόπουλος γύρισε στην Θεσσαλονίκη μέρος ή εξ ολοκλήρου 4 ταινίες. Ανάμεσα τους και την “Αιωνιότητα”\n" +
+                        "\n" +
+                        "Χρυσός Φοίνικας στο Φεστιβάλ Καννών του 1998",
                 "Γκαντζ Μπρούνο,Ρενό Ιζαμπέλ,Μπενιβόλιο Φαμπρίτσιο",
                 "Θόδωρος Αγγελόπουλος", "1998"));
-        this.db.addMovie(new Movie(13, "Χώρα Προέλευσης", "Οικογενειακό δράμα ως ακτινογραφία της νεοελληνικής κοινωνικής πραγματικότητας. \n" +
+        this.db.addMovie(new Movie(14, "Χώρα Προέλευσης", "Οικογενειακό δράμα ως ακτινογραφία της νεοελληνικής κοινωνικής πραγματικότητας. \n" +
                 "\n" +
                 "Η ταινία πραγματοποιεί μεγάλο μέρος της δράσης της σε γνωστά σημεία της σημερινής Θεσσαλονίκης: Λεωφόρος Στρατού (ΕΡΤ3), Νέα Παραλία, Αγίος Δημήτριος. \n" +
                 "\n" +
                 "Συμμετοχή στην Εβδομάδα Κριτικής του Φεστιβάλ Βενετίας",
                 "Μουτούση Αμαλία,Σαμαράς Θάνος,Τσιριγκούλη Ιωάννα",
                 "Σύλλας Τζουμέρκας", "2010"));
-        this.db.addMovie(new Movie(14, "Σούπερ Δημήτριος", "Όταν ο Κάπτεν Φ.Ρομ, απαιτώντας να τον φωνάζουν με το πραγματικό του " +
+        this.db.addMovie(new Movie(15, "Σούπερ Δημήτριος", "Όταν ο Κάπτεν Φ.Ρομ, απαιτώντας να τον φωνάζουν με το πραγματικό του " +
                 "όνομα, μετατρέπει τον Λευκό Πύργο σε γιγάντιο φραπέ κι εξαφανίζει όλο το γύρο από τα σουβλατζίδικα της Θεσσαλονίκης, ο Σούπερ Δημήτριος αναλαμβάνει να σώσει τη συμπρωτεύουσα.\n" +
                 "\n" +
                 "Σάτιρα θεσσαλονικιώτικων και βορειοελλαδικών κλισέ με της Μεταπολίτευσης με πολύ χιούμορ. \n" +
@@ -1050,57 +970,57 @@ final class DbAdapter {
 
         //line 1
         // station 1
-        this.db.addPhoto(new Photo("pantheon", 1, -1,"Ο κινηματογράφος Πάνθεον στο Βαρδάρη, λίγο πριν την κατεδάφισή του\n" +
+        this.db.addPhoto(new Photo("pantheon", 1, -1, "Ο κινηματογράφος Πάνθεον στο Βαρδάρη, λίγο πριν την κατεδάφισή του\n" +
                 "(Αρχείο Ν. Θεοδοσίου – Σινέ Θεσσαλονίκη, σ. 33)"));
-        this.db.addPhoto(new Photo("splendid", 1, -1,"Ο κινηματογράφος Σπλέντιτ όπως απεικονίζεται σε καρτ ποστάλ\n" +
+        this.db.addPhoto(new Photo("splendid", 1, -1, "Ο κινηματογράφος Σπλέντιτ όπως απεικονίζεται σε καρτ ποστάλ\n" +
                 "(Αρχείο Ν. Θεοδοσίου)"));
-        this.db.addPhoto(new Photo("pantheon_markiza", 1, -1,"Ο κινηματογράφος Πάνθεον στις δόξες του\n" +
+        this.db.addPhoto(new Photo("pantheon_markiza", 1, -1, "Ο κινηματογράφος Πάνθεον στις δόξες του\n" +
                 "Αρχείο Ν.Θεοδοσίου"));
         //station 2
-        this.db.addPhoto(new Photo("redmoterlimani", 2, -1,"Ο κόκκινος μοτέρ του 11ου Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης στρέφει την κάμερα στο λιμάνι της πόλης \n" +
+        this.db.addPhoto(new Photo("redmoterlimani", 2, -1, "Ο κόκκινος μοτέρ του 11ου Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης στρέφει την κάμερα στο λιμάνι της πόλης \n" +
                 "Αρχείο ΦΚΘ – Σινέ Θεσσαλονίκη, σ.158)"));
-        this.db.addPhoto(new Photo("apothikia", 2, -1,"Η είσοδος της Αποθήκης Γ στο Λιμάνι\n" +
+        this.db.addPhoto(new Photo("apothikia", 2, -1, "Η είσοδος της Αποθήκης Γ στο Λιμάνι\n" +
                 "Αρχείο ΦΚΘ)"));
-        this.db.addPhoto(new Photo("cinemuseuminside", 2, -1,"Το εσωτερικό του Μουσείου Κινηματογράφου στο λιμάνι.\n" +
+        this.db.addPhoto(new Photo("cinemuseuminside", 2, -1, "Το εσωτερικό του Μουσείου Κινηματογράφου στο λιμάνι.\n" +
                 "Αρχείο ΦΚΘ"));
         //station 3
-        this.db.addPhoto(new Photo("cinemaolympia", 3, -1,"Ο κινηματογράφος Ολύμπια (1917), όπου συγκεντρώνονται μαθήτριες του γαλλικού σχολείου πριν την προβολή\n" +
+        this.db.addPhoto(new Photo("cinemaolympia", 3, -1, "Ο κινηματογράφος Ολύμπια (1917), όπου συγκεντρώνονται μαθήτριες του γαλλικού σχολείου πριν την προβολή\n" +
                 "Αρχείο Κέντρου Ιστορίας Θεσσαλονίκης – Σινέ Θεσσαλονίκη, σ. 40)"));
-        this.db.addPhoto(new Photo("olympia", 3, -1,"Ο κινηματογράφος Ολύμπια στην προκυμαία της Θεσσαλονίκης – Καρτ ποστάλ των αρχών του 20ού αιώνα\n" +
+        this.db.addPhoto(new Photo("olympia", 3, -1, "Ο κινηματογράφος Ολύμπια στην προκυμαία της Θεσσαλονίκης – Καρτ ποστάλ των αρχών του 20ού αιώνα\n" +
                 "(Αρχείο Ν. Θεοδοσίου- Σινέ Θεσσαλονίκη, σ.29)"));
-        this.db.addPhoto(new Photo("pathe", 3, -1,"Ο κινηματογράφος Πατέ στη Λεωφόρο Νίκης, επιταγμένος από τους Γερμανούς στην Κατοχή\n" +
+        this.db.addPhoto(new Photo("pathe", 3, -1, "Ο κινηματογράφος Πατέ στη Λεωφόρο Νίκης, επιταγμένος από τους Γερμανούς στην Κατοχή\n" +
                 "Σινέ Θεσσαλονίκη, σ.31"));
-        this.db.addPhoto(new Photo("salonica_pathe_1918", 3, -1,"Ο κινηματογράφος Πατέ στην παραλία σε καρτ ποστάλ των αρχών του 20ού αιώνα"));
-        this.db.addPhoto(new Photo("olympiaview", 3, -1,"Άποψη από την είσοδο του κινηματογράφου Ολύμπια στην παραλία\n" +
+        this.db.addPhoto(new Photo("salonica_pathe_1918", 3, -1, "Ο κινηματογράφος Πατέ στην παραλία σε καρτ ποστάλ των αρχών του 20ού αιώνα"));
+        this.db.addPhoto(new Photo("olympiaview", 3, -1, "Άποψη από την είσοδο του κινηματογράφου Ολύμπια στην παραλία\n" +
                 "(Αρχείο Ν.Θεοδοσίου – Ίντερνετ)"));
         //station 4
-        this.db.addPhoto(new Photo("hlysia", 4, -1,"Ο παλιός κινηματογράφος Ηλύσια στην Αριστοτέλους την ημέρα της απελευθέρωσης της Θεσσαλονίκης (δεκαετία ’40) \n" +
+        this.db.addPhoto(new Photo("hlysia", 4, -1, "Ο παλιός κινηματογράφος Ηλύσια στην Αριστοτέλους την ημέρα της απελευθέρωσης της Θεσσαλονίκης (δεκαετία ’40) \n" +
                 "(Αναδημοσίευση από το Σινέ Θεσσαλονίκη, σ.32)"));
-        this.db.addPhoto(new Photo("festivaltree02", 4, -1,"Κινηματογραφικά καρέ σχηματίζουν το δέντρο του σινεμά στην πλατεία Αριστοτέλους\n" +
+        this.db.addPhoto(new Photo("festivaltree02", 4, -1, "Κινηματογραφικά καρέ σχηματίζουν το δέντρο του σινεμά στην πλατεία Αριστοτέλους\n" +
                 "Σινέ Θεσσαλονίκη, σ.157, Αρχείο ΦΚΘ"));
-        this.db.addPhoto(new Photo("olympionnight", 4, -1,"Νυχτερινή άποψη του κινηματογράφου Ολύμπιον, της έδρας του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
+        this.db.addPhoto(new Photo("olympionnight", 4, -1, "Νυχτερινή άποψη του κινηματογράφου Ολύμπιον, της έδρας του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
                 "Αρχείο ΦΚΘ"));
-        this.db.addPhoto(new Photo("olympioninside", 4, -1,"Εσωτερικό του κινηματογράφου Ολύμπιον\n" +
+        this.db.addPhoto(new Photo("olympioninside", 4, -1, "Εσωτερικό του κινηματογράφου Ολύμπιον\n" +
                 "Αρχείο ΦΚΘ"));
         //station 5
-        this.db.addPhoto(new Photo("dionyssia", 5, -1,"Το κινηματοθέατρο Διονύσια, που εγκαινιάστηκε στις 26 Νοεμβρίου 1926\n" +
+        this.db.addPhoto(new Photo("dionyssia", 5, -1, "Το κινηματοθέατρο Διονύσια, που εγκαινιάστηκε στις 26 Νοεμβρίου 1926\n" +
                 "(Βιβλίο Κ. Τομανά –Οι κινηματογράφοι της παλιάς Θεσσαλονίκης/ Αναδημοσίευση στο Σινέ Θεσσαλονίκη σ. 41)"));
-        this.db.addPhoto(new Photo("makedonikon", 5, -1,"Νυχτερινή άποψη του σινεμά Μακεδονικόν\n" +
+        this.db.addPhoto(new Photo("makedonikon", 5, -1, "Νυχτερινή άποψη του σινεμά Μακεδονικόν\n" +
                 "(Αρχείο ΚΙΘ-Σινέ Θεσσαλονίκη, σ.46)"));
-        this.db.addPhoto(new Photo("esperos", 5, -1,"Άποψη του κινηματογράφου Έσπερος, που ταυτίστηκε συχνά με τις προβολές του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
+        this.db.addPhoto(new Photo("esperos", 5, -1, "Άποψη του κινηματογράφου Έσπερος, που ταυτίστηκε συχνά με τις προβολές του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης\n" +
                 "(Αρχείο ΦΚΘ – Σινέ Θεσσαλονίκη σ.47)"));
         //station 6
-        this.db.addPhoto(new Photo("nauarino", 6, -1,"Εξωτερική όψη του κινηματογράφου Ναυαρίνον την περίοδο του Φεστιβάλ " +
+        this.db.addPhoto(new Photo("nauarino", 6, -1, "Εξωτερική όψη του κινηματογράφου Ναυαρίνον την περίοδο του Φεστιβάλ " +
                 "Κινηματογράφου (1998)"));
-        this.db.addPhoto(new Photo("efimerida", 6, -1,"Διαφημιση ταινίας που προβλήθηκε στον κινηματογράφο Θυμέλη " +
+        this.db.addPhoto(new Photo("efimerida", 6, -1, "Διαφημιση ταινίας που προβλήθηκε στον κινηματογράφο Θυμέλη " +
                 "(Πηγή: Εφημερίδα Μακεδονία)"));
-        this.db.addPhoto(new Photo("exostis", 6, -1,"Πρωτοσέλιδο του πρώτου τεύχους του ιστορικού free press Εξώστης)"));
+        this.db.addPhoto(new Photo("exostis", 6, -1, "Πρωτοσέλιδο του πρώτου τεύχους του ιστορικού free press Εξώστης)"));
         //station 7
-        this.db.addPhoto(new Photo("pallaswhitetower", 7, -1,"Το παλιό κινηματοθέατρο Παλλάς κοντά στο Λευκό Πύργο, με αρχιτεκτονικό σχέδιο Ε. Μοδιάνο και 860 πολυτελείς θέσεις.\n" +
+        this.db.addPhoto(new Photo("pallaswhitetower", 7, -1, "Το παλιό κινηματοθέατρο Παλλάς κοντά στο Λευκό Πύργο, με αρχιτεκτονικό σχέδιο Ε. Μοδιάνο και 860 πολυτελείς θέσεις.\n" +
                 "Αρχείο Ν.Θεοδοσίου – Ίντερνετ."));
-        this.db.addPhoto(new Photo("ems", 7, -1,"Κόσμος έξω από την Εταιρεία Μακεδονικών Σπουδών, που υπήρξε έδρα του Φεστιβάλ Κινηματογράφου στη δεκαετία του ’70.\n" +
+        this.db.addPhoto(new Photo("ems", 7, -1, "Κόσμος έξω από την Εταιρεία Μακεδονικών Σπουδών, που υπήρξε έδρα του Φεστιβάλ Κινηματογράφου στη δεκαετία του ’70.\n" +
                 "Αρχείο ΦΚΘ"));
-        this.db.addPhoto(new Photo("theoreiaems", 7, -1,"Τα θεωρεία της Εταιρείας Μακεδονικών Σπουδών με τους διαγωνιζόμενους και τους καλεσμένους του φεστιβάλ (δεκαετία ’60) \n" +
+        this.db.addPhoto(new Photo("theoreiaems", 7, -1, "Τα θεωρεία της Εταιρείας Μακεδονικών Σπουδών με τους διαγωνιζόμενους και τους καλεσμένους του φεστιβάλ (δεκαετία ’60) \n" +
                 "Αρχείο ΦΚΘ"));
         //line2
         //station 8
@@ -1182,7 +1102,7 @@ final class DbAdapter {
         this.db.addPhoto(new Photo("green8", 0, 0, ""));
 
         //TimelineStation 1
-        this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-\n"+"Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)", 40.6271087, 22.9497383));
+        this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-\n" + "Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)", 40.6271087, 22.9497383));
         //Milestones
         this.db.addMilestone(new Milestone(1, "1964", "Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
                 "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά για περίπου 3,5 δεκαετίες (5η Εβδομάς " +
@@ -1191,28 +1111,26 @@ final class DbAdapter {
                 " «κατεβαζει» ενα τανκ στην πλατεια του Λευκου Πυργου για διαφημιστικους σκοπους της ταινίας «Ξεχασμενοι ηρωες», σε δική" +
                 " του παραγωγή (7η Φεστιβάλ Ελληνικού Κινηματογράφου, 1966). \n" +
                 "Οι εκπληξεις συνεχιζονται και μεσα στην αιθουσα, οπου οι 1.500 θεατες βρισκουν στη θεση τους απο ενα πακετο " +
-                "τσιγαρα, δωρο του παραγωγου στο κοινο.", "paris_ems",  "Οι Γιώργος Τζαβέλλας και Τζαίημς Πάρις σε φεστιβαλική προβολή στην ΕΜΣ"));
+                "τσιγαρα, δωρο του παραγωγου στο κοινο.", "paris_ems", "Οι Γιώργος Τζαβέλλας και Τζαίημς Πάρις σε φεστιβαλική προβολή στην ΕΜΣ"));
         this.db.addMilestone(new Milestone(1, "1970", "Ο Β Εξώστης, το δυναμικό νεανικό κοινό του φεστιβάλ κάνει δυναμικά την εμφάνιση του " +
                 "για να διαδραματίσει σημαντικό ρόλο τα επόμενα χρόνια (11ο ΦΚΘ, 1970): \n" +
                 "\n" +
                 "Ο «Β΄εξώστης» παίρνει το όνομά του από την ομώνυμη κατηγορία θέσεων στην αίθουσα της Εταιρείας Μακεδονικών " +
                 "σπουδών, όπου συνήθως συγκεντρώνονται οι φοιτητές και η νεολαία λόγω του φθηνού εισιτηρίου.", "exostes",
                 "Άποψη της Εταιρείας Μακεδονικών Σπουδών, όπου διακρίνεται ο Β΄εξώστης."));
-        this.db.addMilestone(new Milestone(1,"1972", "Πραγματοποιείται για πρώτη φορά το 1ο Διεθνές Φεστιβάλ Κινηματογράφου Θεσσαλονίκης " +
+        this.db.addMilestone(new Milestone(1, "1972", "Πραγματοποιείται για πρώτη φορά το 1ο Διεθνές Φεστιβάλ Κινηματογράφου Θεσσαλονίκης " +
                 "στην Εταιρεία Μακεδονικών Σπουδών (13ο ΦΚΘ, 1972)\n" +
                 "\n" +
                 "( Το διεθνές φεστιβάλ διεξάγεται μία βδομάδα μετά το επίσημο διαγωνιστικό του ελληνικού προγράμματος, αφορά σε " +
                 "ταινίες μικρού μήκους και διοργανώνεται υπό την ευθύνη της ΔΕΘ και της Διεθνούς Ομοσπονδίας Παραγωγών Κινηματογράφου " +
                 "(FIAPF).", "diethnesfilmfestival",
                 "Άποψη της Εταιρείας Μακεδονικών Σπουδών, στην επέτειο των δέκα χρόνων του Διεθνούς Φεστιβάλ Κινηματογράφου."));
-        this.db.addMilestone(new Milestone(1,"1992","Το Φεστιβάλ γίνεται και επισήμως Διεθνές. Το επίσημο διαγωνιστικό φιλοξενεί " +
+        this.db.addMilestone(new Milestone(1, "1992", "Το Φεστιβάλ γίνεται και επισήμως Διεθνές. Το επίσημο διαγωνιστικό φιλοξενεί " +
                 "ταινίες πρωτοεμφανιζομενων δημιουργών από όλο τον κόσμο. Παράλληλα φιλοξενεί μέχρι και το 1997 το Φεστιβάλ " +
                 "Ελληνικού Κινηματογράφου.", "p1992", ""));
-        this.db.addMilestone(new Milestone(1,"1995","Το Φεστιβάλ φιλοξενείται για τελευταία φορά στους χώρους της ΕΜΣ. Το κτίριο θα" +
+        this.db.addMilestone(new Milestone(1, "1995", "Το Φεστιβάλ φιλοξενείται για τελευταία φορά στους χώρους της ΕΜΣ. Το κτίριο θα" +
                 " ανακαινιστεί ριζικά στο εσωτερικό του από τον Οργανισμό Πολιτιστικής Πρωτεύουσας Θεσσαλονίκη 1997, αφήνοντας πίσω του " +
                 "μια λαμπρή κινηματογραφική ιστορία για την πόλη.", "p1995", ""));
-
-
 
 
         //TimelineStation 2
@@ -1221,10 +1139,10 @@ final class DbAdapter {
 
         this.db.addMilestone(new Milestone(2, "1963",
                 "Το Σινέ Αλέξανδρος, βρίσκεται κάτω απο την Λέσχη Αξιωματικών Θεσσαλονίκης, γειτνίαζε με την ΕΜΣ, έδρα " +
-                "του Φεστιβάλ επί πολλά χρόνια, και αποτέλεσε χώρο αρκετών προβολών και δράσεων μεταξύ των οποίων προβολές " +
-                 "ταινιών μικρού μήκους."+ "\n"+
-                 "Εδώ βρίσκεται και ένα γλυπτό μνημείο του σκηνοθέτη Τάκη Κανελλόπουλου, ο οποίος " +
-                "συνέδεσε το όνομα του με το Φεστιβάλ Θεσσαλονίκης και το τότε στέκι των φεστιβαλιστών, το Ντορέ.", "cinealexandros02",
+                        "του Φεστιβάλ επί πολλά χρόνια, και αποτέλεσε χώρο αρκετών προβολών και δράσεων μεταξύ των οποίων προβολές " +
+                        "ταινιών μικρού μήκους." + "\n" +
+                        "Εδώ βρίσκεται και ένα γλυπτό μνημείο του σκηνοθέτη Τάκη Κανελλόπουλου, ο οποίος " +
+                        "συνέδεσε το όνομα του με το Φεστιβάλ Θεσσαλονίκης και το τότε στέκι των φεστιβαλιστών, το Ντορέ.", "cinealexandros02",
                 "Άποψη του κινηματογράφου \"Αλέξανδρος\", που φιλοξένησε προβολές του Φεστιβάλ."));
         this.db.addMilestone(new Milestone(2, "1990", "Το καφενείο «Ντορέ» απέναντι από το Λευκό Πύργο αποτέλεσε ιστορικό στέκι, όπου " +
                 "συγκεντρώνονται καλλιτέχνες και κοινό απο την δεκαετία του '60 εως και την διεθνοποίηση του Φεστιβάλ (δεκαετία '90)" +
@@ -1257,7 +1175,7 @@ final class DbAdapter {
 
 
         //TimelineStation 4
-        this.db.addTimelineStation(new TimelineStation("Ολύμπιον-\n"+"Πλατεία Αριστοτέλους", 40.6326916, 22.9416844));
+        this.db.addTimelineStation(new TimelineStation("Ολύμπιον-\n" + "Πλατεία Αριστοτέλους", 40.6326916, 22.9416844));
         //Milestones
         this.db.addMilestone(new Milestone(4, "1960", "H Διεθνής Έκθεση Θεσσαλονίκης διοργανώνει σειρά πολιτιστικών εκδηλώσεων για το σινεμά" +
                 " στη Θεσσαλονίκη με αφορμή τα 25 χρόνια λειτουργίας της (1η Εβδομάς Ελληνικού Κινηματογράφου, 1960) \n" +
@@ -1331,40 +1249,39 @@ final class DbAdapter {
                 ""));
     }
 
-    private void populateEnglishDB()
-    {
+    private void populateEnglishDB() {
         //add routes
-        this.db.addRoute(new Route("Cinema theatres of the city","red",1));
-        this.db.addRoute(new Route("Thessaloniki in Greek films","blue",1));
+        this.db.addRoute(new Route("Cinema theatres of the city", "red", 1));
+        this.db.addRoute(new Route("Thessaloniki in Greek films", "blue", 1));
         //this.db.addRoute(new Route("Thessaloniki International Film Festival","green",1));
 
         //add stations
         //Line 1
         this.db.addStation(new Station("Vardaris Square",
                 "The first film screening was held at  the“Turkey” caffé in 1897. Many cinemas have been developed around Vardaris " +
-                "square: Cinema “Splendind” (which was renamed “Ilion”), “Pantheon”, “Atticon” and “Olympion (at Monastiriou Street)" +
-                ", together with the porn cinemas of the square.",
-                1, 40.641142,  22.934721));
+                        "square: Cinema “Splendind” (which was renamed “Ilion”), “Pantheon”, “Atticon” and “Olympion (at Monastiriou Street)" +
+                        ", together with the porn cinemas of the square.",
+                1, 40.641142, 22.934721));
         this.db.addStation(new Station("Sea front (the port)",
                 "The sea front is one of the most filmed spots of the city centre." +
                         " The Cinema Museum is located inside the port, together with Thessaloniki Cinemateque, as well as with the" +
                         " four modern festival venues at the port’s warehouse.",
-                1, 40.635650,  22.935431));
+                1, 40.635650, 22.935431));
         this.db.addStation(new Station("Sea front (Leoforos Nikis Str.)",
                 "The first cinema in the Balkans, the cinema theatre “Olympia” (1903), is situated in Leoforos Nikis Str. The sea " +
                         "front appears to be an ideal place for cinemas, like “Pathé” cinema (1911), run by the namesake film company, " +
                         "and the boat cinema “Koursal”.",
-                1, 40.630440,  22.942912));
+                1, 40.630440, 22.942912));
         this.db.addStation(new Station("Aristotelous Square",
                 "During the 1950s, Aristotelous Square hosted 6 open air cinemas (“Rex”, “Ilissia”, “Ellinis”, “Aegean”, “Rio”" +
                         " and “Zefyros”). Today, the Olympion Theatre, located in the middle of Aristotelous Square, is the main " +
                         "venue of the Thessaloniki International Film Festival.",
-                1, 40.632804,  22.941331));
+                1, 40.632804, 22.941331));
         this.db.addStation(new Station("City centre (Aghias Sofias Str-Alexandrou Svolou Str.)",
                 "An area with many cinema theatres, such as “Dionysia” (in Aghias Sofias Str.), “Esperos” and “Rivoli” (in " +
                         "Alexandrou Svolou Str.), Makedonikon (in Filikis Eterias Str.). The Stavrakos Film School operated its " +
                         "subsidiary film school in Thessaloniki, which was located in the same area.",
-                1,  40.632511,  22.947489));
+                1, 40.632511, 22.947489));
         this.db.addStation(new Station("Centre 2 (Kamara – Navarinon)",
                 "Many cinema theatres at the city centre (Ilyssia, Navarinon, Elsi, Kleo, Rivoli, Thimeli, Fargani) have functioned " +
                         "both as architectural landmarks of Thessaloniki as well as venues of its everyday life.\n" +
@@ -1378,7 +1295,7 @@ final class DbAdapter {
                 "In 1905 the White Tower’s garden hosted an open air cinema. Opposite to it, there was the EMS building, the main " +
                         "venue of the Society of Macedonian Studies, as well as the cinema theatres “Pallas” (now operating as " +
                         "Thessaloniki State Symphony Orchestra’s concert hall) and “Alexandros”.",
-                1, 40.62638,  22.948306));
+                1, 40.62638, 22.948306));
 
         //Line 2
         this.db.addStation(new Station("The Barefoot Badallion (1955)",
@@ -1404,14 +1321,14 @@ final class DbAdapter {
                         "\n" +
                         "Info: During the Thessaloniki International Fair, a group of young people gets involved in funny love affairs.\n" +
                         "The film is shot in many areas of the city, such as the Thessaloniki International Fair and the White Tower.",
-                2,40.628192, 22.9561));
+                2, 40.628192, 22.9561));
         this.db.addStation(new Station("Parenthesis (1968)",
                 "Director: Takis Kanellopoulos\n" +
-                 "Cast:Alexandra Ladikou,Angelos Antonopoulos\n" +
-                 "Info: A train journey with a delayed stop. A strong love affair, a parenthesis in the lives of two people. " +
+                        "Cast:Alexandra Ladikou,Angelos Antonopoulos\n" +
+                        "Info: A train journey with a delayed stop. A strong love affair, a parenthesis in the lives of two people. " +
                         "The film won 4 prizes in Thessaloniki Film Festival. \n" +
-                 "It was shot in the sea front of Thessaloniki and the area of Aretsou (Nea Krini).",
-                2,40.6223568, 22.9512486));
+                        "It was shot in the sea front of Thessaloniki and the area of Aretsou (Nea Krini).",
+                2, 40.6223568, 22.9512486));
         this.db.addStation(new Station("The striker with number 9 (1987)",
                 "Director:Pantelis Voulgaris\n" +
                         "Cast:Stratos Tzortzoglou,Themis Bazaka\n" +
@@ -1426,60 +1343,62 @@ final class DbAdapter {
                         "Info: The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his " +
                         "seaside home forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as " +
                         "in the city’s sea front, Aristotelous Square and Tsimiski Street.",
-                2,40.6148604, 22.954036));
+                2, 40.6148604, 22.954036));
         this.db.addStation(new Station("Homeland (2010)",
                 "Director: Syllas Tzoumerkas\n" +
                         "Cast: Amalia Moutoussi, Thanos Samaras, Ioanna Tsiringhouli\n" +
                         "Info: A story about a family and a country falling apart, inspired by true events. A large part of the film" +
                         " is shot in central places of Thessaloniki (Leoforos Stratou Str, the sea front, Saint Demetrius Church).",
-                2,40.638799, 22.947769));
+                2, 40.638799, 22.947769));
         this.db.addStation(new Station("Super Demetrios (2011)",
                 "Director: Yorgos Papaioannou\n" +
                         "Cast:Dimitris Vainas,Paris Papadopoulos,Olga Sfetsa\n" +
                         "Info: In a surreal, parallel universe, Thessaloniki has its very own superhero: Super Demetrios.\n" +
                         "A film shot around the city of Thessaloniki, showcasing many of the city’s public buildings (the " +
                         "University, the City Hall, the White Tower, the Railway Station).",
-                2,40.6308363, 22.9543887));
+                2, 40.6308363, 22.9543887));
 
         //add movies
-        this.db.addMovie(new Movie(7, "The Barefoot Badallion",
+
+
+        this.db.addMovie(new Movie(8, "The Barefoot Badallion",
                 "Based on a true story of 160 orphans, who live in Thessaloniki under the German Occupation during the 1940s. " +
                         "The film wanders around the centre and the acropolis of Thessaloniki.",
                 "Maria Kosti,Nikos Fermas,Vassilis Fraghedakis",
                 "Greg Tallas", "1955"));
-        this.db.addMovie(new Movie(8, "The cutie",
+        this.db.addMovie(new Movie(9, "The cutie",
                 "Two brothers try to balance between the emotional relations and the conservative principles of a paternal family." +
                         " The film is totally shot in Thessaloniki (Panorama, Antheon area, city centre).",
                 "Dinos Iliopoulos,Zoe Laskari,Pandelis Zervos,Stefanos Stratigos",
                 "Yannis Dalianidis", "1961"));
-        this.db.addMovie(new Movie(9, "Some like it hot",
+        this.db.addMovie(new Movie(10, "Some like it hot",
                 "During the Thessaloniki International Fair, a group of young people gets involved in funny love affairs.\n" +
                         "The film is shot in many areas of the city, such as the Thessaloniki International Fair and the White Tower.",
                 "Rena Vlachopoulou,Dinos Iliopoulos,Martha Karagianni,Elena Nathanael,Kostas Voutsas",
                 "Yannis Dalianidis", "1964"));
-        this.db.addMovie(new Movie(10, "Parenthesis",
+        this.db.addMovie(new Movie(11, "Parenthesis",
                 "A train journey with a delayed stop. A strong love affair, a parenthesis in the lives of two people. The film won 4" +
                         " prizes in Thessaloniki Film Festival. \n" +
                         "It was shot in the sea front of Thessaloniki and the area of Aretsou (Nea Krini).",
                 "Alexandra Ladikou,Angelos Antonopoulos",
                 "Takis Kanellopoulos", "1968"));
-        this.db.addMovie(new Movie(11, "The striker with number 9",
+        this.db.addMovie(new Movie(12, "The striker with number 9",
                 "The journey of a talented football player  goes through defeats, injuries and background, which will make him " +
                         "understand that success comes at a price.\n" +
                         "Part of the film was shot in Thessaloniki (Aristotelous Square, Evosmos).",
-                "Stratos Tzortzoglou,Themis Bazaka","Pantelis Voulgaris", "1987"));
-        this.db.addMovie(new Movie(12, "Eternity and a day",
+                "Stratos Tzortzoglou,Themis Bazaka", "Pantelis Voulgaris", "1987"));
+        this.db.addMovie(new Movie(13, "Eternity and a day",
                 "The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his seaside home " +
                         "forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as in the " +
                         "city’s sea front, Aristotelous Square and Tsimiski Street.",
                 "Bruno Ganz,Fabrizio Bentivoglio,Isabelle Renauld",
                 "Theo Angelopoulos", "1998"));
-        this.db.addMovie(new Movie(13, "Homeland",
+        this.db.addMovie(new Movie(14, "Homeland",
                 "A story about a family and a country falling apart, inspired by true events. A large part of the film is shot in " +
                         "central places of Thessaloniki (Leoforos Stratou Str, the sea front, Saint Demetrius Church).",
                 "Amalia Moutoussi,Thanos Samaras,Ioanna Tsiringhouli",
                 "Syllas Tzoumerkas", "2010"));
-        this.db.addMovie(new Movie(14, "Super Demetrios",
+        this.db.addMovie(new Movie(15, "Super Demetrios",
                 "In a surreal, parallel universe, Thessaloniki has its very own superhero: Super Demetrios.\n" +
                         "A film shot around the city of Thessaloniki, showcasing many of the city’s public buildings (the University" +
                         ", the City Hall, the White Tower, the Railway Station).",
@@ -1504,7 +1423,7 @@ final class DbAdapter {
                 " The “2nd Balcony” is named after the homonymous seat category at the EMS hall, which is  the students’ favorite place because" +
                 " of cheap entrance fees..", "exostes",
                 "A view of the EMS hall and its “2nd Balcony”"));
-        this.db.addMilestone(new Milestone(1,"1972", "The 1st Thessaloniki International Film Festival is held at the EMS hall in 1972," +
+        this.db.addMilestone(new Milestone(1, "1972", "The 1st Thessaloniki International Film Festival is held at the EMS hall in 1972," +
                 " in the occasion of the 13th Greek Film Week in 1972.\n" +
                 "\n" +
                 "The festival’s international section concerns foreign short films and it is held a week after the official competition" +
@@ -1518,8 +1437,6 @@ final class DbAdapter {
         this.db.addMilestone(new Milestone(1, "1995", "Festival hosted for last time at the EMS hall . The building will be refurbished radically " +
                 "within it from Cultural Capital Organization Thessaloniki 1997 , leaving behind a bright " +
                 "cinematic history for the city . ", "p1995", ""));
-
-
 
 
         //TimelineStation 2
@@ -1560,7 +1477,7 @@ final class DbAdapter {
 
 
         //TimelineStation 4
-        this.db.addTimelineStation(new TimelineStation("Olympion-\n"+"Aristotelous Square", 40.6326916, 22.9416844));
+        this.db.addTimelineStation(new TimelineStation("Olympion-\n" + "Aristotelous Square", 40.6326916, 22.9416844));
         //Milestones
         this.db.addMilestone(new Milestone(4, "1960", "The Thessaloniki International Trade Fair organizes a series of" +
                 " film events in Thessaloniki, in the occasion of its 25th anniversary (1st Greek Film Week, 1960) " +
@@ -1635,46 +1552,46 @@ final class DbAdapter {
 
         //line 1
         // station 1
-        this.db.addPhoto(new Photo("pantheon", 1, -1,"“Pantheon” cinema theatre in Vardaris Square, some years before its " +
+        this.db.addPhoto(new Photo("pantheon", 1, -1, "“Pantheon” cinema theatre in Vardaris Square, some years before its " +
                 "demolition"));
-        this.db.addPhoto(new Photo("splendid", 1, -1,"“Splendid” cinema theatre in a vintage postcard"));
-        this.db.addPhoto(new Photo("pantheon_markiza", 1, -1,"“Pantheon” cinema Theatre in its glorious years"));
+        this.db.addPhoto(new Photo("splendid", 1, -1, "“Splendid” cinema theatre in a vintage postcard"));
+        this.db.addPhoto(new Photo("pantheon_markiza", 1, -1, "“Pantheon” cinema Theatre in its glorious years"));
         //station 2
-        this.db.addPhoto(new Photo("redmoterlimani", 2, -1,"The Red Moter of the 11th Thessaloniki Documentary Film Festival turns" +
+        this.db.addPhoto(new Photo("redmoterlimani", 2, -1, "The Red Moter of the 11th Thessaloniki Documentary Film Festival turns" +
                 " his camera towards the city’s port."));
-        this.db.addPhoto(new Photo("apothikia", 2, -1,"he entrance of Warehouse C venue at the city’s port."));
-        this.db.addPhoto(new Photo("cinemuseuminside", 2, -1,"nterior of the Cinema Museum of Thessaloniki in the city’s port."));
+        this.db.addPhoto(new Photo("apothikia", 2, -1, "he entrance of Warehouse C venue at the city’s port."));
+        this.db.addPhoto(new Photo("cinemuseuminside", 2, -1, "nterior of the Cinema Museum of Thessaloniki in the city’s port."));
         //station 3
-        this.db.addPhoto(new Photo("cinemaolympia", 3, -1,"The Olympia cinema theatre (1917), where schoolgirls of the French " +
+        this.db.addPhoto(new Photo("cinemaolympia", 3, -1, "The Olympia cinema theatre (1917), where schoolgirls of the French " +
                 "School were gathered before a screening."));
-        this.db.addPhoto(new Photo("olympia", 3, -1,"The Olympia cinema theatre at the Thessaloniki sea front, as shown in a " +
+        this.db.addPhoto(new Photo("olympia", 3, -1, "The Olympia cinema theatre at the Thessaloniki sea front, as shown in a " +
                 "postcard (beginning of the 20th century)"));
-        this.db.addPhoto(new Photo("pathe", 3, -1,"The “Pathe” cinema theatre in Leoforos Nikis Str, which was ordained by the" +
+        this.db.addPhoto(new Photo("pathe", 3, -1, "The “Pathe” cinema theatre in Leoforos Nikis Str, which was ordained by the" +
                 " Germans during the occupation years."));
-        this.db.addPhoto(new Photo("salonica_pathe_1918", 3, -1,"The “Pathe” cinema theatre in the sea front, as shown in postcard" +
+        this.db.addPhoto(new Photo("salonica_pathe_1918", 3, -1, "The “Pathe” cinema theatre in the sea front, as shown in postcard" +
                 " (beginning of the 20th century)"));
-        this.db.addPhoto(new Photo("olympiaview", 3, -1,"A view of “Olympia”’s entrance in the sea front."));
+        this.db.addPhoto(new Photo("olympiaview", 3, -1, "A view of “Olympia”’s entrance in the sea front."));
         //station 4
-        this.db.addPhoto(new Photo("hlysia", 4, -1,"The old cinema theatre “Ilissia” in Aristotelous, in the day of Thessaloniki’s" +
+        this.db.addPhoto(new Photo("hlysia", 4, -1, "The old cinema theatre “Ilissia” in Aristotelous, in the day of Thessaloniki’s" +
                 " Liberation (1940s)"));
-        this.db.addPhoto(new Photo("festivaltree02", 4, -1,"Film frames build a “cinema tree” in Aristotelous Square"));
-        this.db.addPhoto(new Photo("olympionnight", 4, -1,"A night view of “Olympion” cinema theatre, the main venue of the " +
+        this.db.addPhoto(new Photo("festivaltree02", 4, -1, "Film frames build a “cinema tree” in Aristotelous Square"));
+        this.db.addPhoto(new Photo("olympionnight", 4, -1, "A night view of “Olympion” cinema theatre, the main venue of the " +
                 "Thessaloniki International Film Festival."));
-        this.db.addPhoto(new Photo("olympioninside", 4, -1,"Interior of “Olympion” cinema theatre"));
+        this.db.addPhoto(new Photo("olympioninside", 4, -1, "Interior of “Olympion” cinema theatre"));
         //station 5
-        this.db.addPhoto(new Photo("dionyssia", 5, -1,"“Dionissia” cinema theatre, which was inaugurated in 1926 (on November 26th)."));
-        this.db.addPhoto(new Photo("makedonikon", 5, -1,"A night view of the “Makedonikon” cinema theatre."));
-        this.db.addPhoto(new Photo("esperos", 5, -1,"A view of “Esperos” cinema theatre, which was identified with the special " +
+        this.db.addPhoto(new Photo("dionyssia", 5, -1, "“Dionissia” cinema theatre, which was inaugurated in 1926 (on November 26th)."));
+        this.db.addPhoto(new Photo("makedonikon", 5, -1, "A night view of the “Makedonikon” cinema theatre."));
+        this.db.addPhoto(new Photo("esperos", 5, -1, "A view of “Esperos” cinema theatre, which was identified with the special " +
                 "screenings of the Thessaloniki International Film Festival."));
         //station 6
-        this.db.addPhoto(new Photo("nauarino", 6, -1,"Exterior view of Navarinon cinema theatre during the 39th Thessaloniki International Film Festival (1998)"));
-        this.db.addPhoto(new Photo("efimerida", 6, -1,"A film advertisement for a screening at Thymeli cinema theatre (Credits: Macedonia newspaper)"));
-        this.db.addPhoto(new Photo("exostis", 6, -1,"Front page for the first issue of “Exostis” free press"));
+        this.db.addPhoto(new Photo("nauarino", 6, -1, "Exterior view of Navarinon cinema theatre during the 39th Thessaloniki International Film Festival (1998)"));
+        this.db.addPhoto(new Photo("efimerida", 6, -1, "A film advertisement for a screening at Thymeli cinema theatre (Credits: Macedonia newspaper)"));
+        this.db.addPhoto(new Photo("exostis", 6, -1, "Front page for the first issue of “Exostis” free press"));
         //station 7
-        this.db.addPhoto(new Photo("pallaswhitetower", 7, -1,"The old cinema theatre “Pallas” near the White Tower, designed by E. Modiano, which hosted 860 viewers."));
-        this.db.addPhoto(new Photo("ems", 7, -1,"Crowds outside the Society for Macedonian Studies, which was the Thessaloniki" +
+        this.db.addPhoto(new Photo("pallaswhitetower", 7, -1, "The old cinema theatre “Pallas” near the White Tower, designed by E. Modiano, which hosted 860 viewers."));
+        this.db.addPhoto(new Photo("ems", 7, -1, "Crowds outside the Society for Macedonian Studies, which was the Thessaloniki" +
                 " Film Festival’s main venue during the 1970s."));
-        this.db.addPhoto(new Photo("theoreiaems", 7, -1,"The balconies in the Society for Macedonian Studies with the festival’s " +
+        this.db.addPhoto(new Photo("theoreiaems", 7, -1, "The balconies in the Society for Macedonian Studies with the festival’s " +
                 "contestants and guests (the 1960s)."));
 
         //line2
@@ -1769,10 +1686,8 @@ final class DbAdapter {
     /**
      * Initialize the ratings of every station to 0
      */
-    private void initializeRatings()
-    {
-        for(Station station : this.stations)
-        {
+    private void initializeRatings() {
+        for (Station station : this.stations) {
             db.addRating(station.getId());
         }
     }
@@ -1780,21 +1695,36 @@ final class DbAdapter {
     /**
      * Initialize the ratings of every timeline station to 0
      */
-    private void initializeTimelineRatings()
-    {
-        for(TimelineStation station : this.timelineStations)
-        {
+    private void initializeTimelineRatings() {
+        for (TimelineStation station : this.timelineStations) {
             db.addTimelineStationRating(station.getId());
         }
     }
 
     public Station getStationByID(int idStation) {
-        for(int i=0;i<this.stations.size();i++){
-            if(this.stations.get(i).getId()==idStation){
+        for (int i = 0; i < this.stations.size(); i++) {
+            if (this.stations.get(i).getId() == idStation) {
                 return this.stations.get(i);
             }
 
         }
-            return null;
+        return null;
     }
+
+    public ArrayList<MyPoint> getAllStationsbyRoute(int idRoute) {
+        ArrayList<MyPoint> sts = new ArrayList<MyPoint>();
+        if (idRoute == MapActivity.LINE3) {
+            ArrayList<TimelineStation> tm = getInstance().getTimelineStations();
+            for (int i = 0; i < tm.size(); i++) {
+                sts.add(tm.get(i).getMyPoint());
+            }
+        } else {
+            ArrayList<Station> tm = getInstance().getStationByRoute(idRoute);
+            for (int i = 0; i < tm.size(); i++) {
+                sts.add(tm.get(i).getMyPoint());
+            }
+        }
+        return sts;
+    }
+
 }

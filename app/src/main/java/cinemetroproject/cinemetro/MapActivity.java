@@ -1,6 +1,7 @@
 package cinemetroproject.cinemetro;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.location.Location;
 import android.location.LocationListener;
@@ -31,7 +32,6 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
     public static final int LINE3 = 3;
     public static final int LINE2 = 2;
     private static final int NOLINE = 0;
-    private static final int SELECTED_STATION =10 ;
+    private static final int SELECTED_STATION = 10;
     public static final float MARKER_LINE2 = (float) 240.0;
     public static final float MARKER_LINE1 = (float) 0.0;
     public static final float MARKER_LINE3 = (float) 120.0;
@@ -85,8 +85,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             c.locale = new Locale("el", "EL");
             getResources().updateConfiguration(c, getResources().getDisplayMetrics());
             DbAdapter.getInstance().changeLanguage(Language.GREEK);
-        }
-        else{
+        } else {
             Configuration c = new Configuration(getResources().getConfiguration());
             c.locale = new Locale("en", "EN");
             getResources().updateConfiguration(c, getResources().getDisplayMetrics());
@@ -113,7 +112,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
         this.showButtonsList();
 
 
-        back_bt=(Button)findViewById(R.id.backButton);
+        back_bt = (Button) findViewById(R.id.backButton);
         back_bt.setVisibility(Button.INVISIBLE);
         back_bt.setOnClickListener(new View.OnClickListener() {
                                        @Override
@@ -145,9 +144,8 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
     }
 
 
-
-    private void sortLine(int lineid){
-        if(lineid!=LINE2)return;
+    private void sortLine(int lineid) {
+        if (lineid != LINE2) return;
 
         Collections.sort(line, new Comparator<MyPoint>() {
             @Override
@@ -230,23 +228,23 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
     public void setColour(int k) {
         switch (k) {
             case LINE1:
-                colour = (float) 0.0;
+                colour = (float) MapActivity.MARKER_LINE1;
                 resourseColour = R.color.line1;
                 break;
             case LINE2:
-                colour = (float) 240.0;
+                colour = (float) MapActivity.MARKER_LINE2;
                 resourseColour = R.color.line2;
                 break;
             case LINE3:
-                colour = (float) 120.0;
+                colour = (float) MapActivity.MARKER_LINE3;
                 resourseColour = R.color.line3;
                 break;
             case NOLINE:
-                colour = (float) 300.0;
+                colour = (float) MapActivity.MARKER_LINE3;
                 resourseColour = R.color.my_blue;
                 break;
             case SELECTED_STATION:
-                colour= (float) 165.55;
+                colour = (float) 165.55;
                 break;
         }
     }
@@ -264,7 +262,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
                     MyPoint point = st.get(j).getMyPoint();
                     line.add(point);
                     setColour(rt.get(i).getId());
-                    if(idStation==point.getId()){
+                    if (idStation == point.getId()) {
                         setColour(SELECTED_STATION);
                     }
                     mΜap.addMarker(new MarkerOptions()
@@ -275,14 +273,14 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
                 }
             }
         }
-        if (nLine == LINE3|| nLine == 0) {
+        if (nLine == LINE3 || nLine == 0) {
 
             ArrayList<TimelineStation> ts = DbAdapter.getInstance().getTimelineStations();
             for (int i = 0; i < ts.size(); i++) {
                 MyPoint point = ts.get(i).getMyPoint();
                 line.add(point);
                 setColour(LINE3);
-                if(idStation==point.getId()){
+                if (idStation == point.getId()) {
                     setColour(SELECTED_STATION);
                 }
                 mΜap.addMarker(new MarkerOptions()
@@ -391,13 +389,23 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
                 itemView = getLayoutInflater().inflate(R.layout.maplistitem, parent, false);
             }
 
+            itemView.setTag(line.get(pos));
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    onStationClicked(v);
+
+                }
+            });
+
             TextView text1 = (TextView) itemView.findViewById(R.id.station);
             setColour(nLine);
 
             text1.setTextColor(getResources().getColor(resourseColour));
 
 
-            text1.setText(getResources().getString(R.string.station_text) + " "+(pos + 1));
+            text1.setText(getResources().getString(R.string.station_text) + " " + (pos + 1));
             TextView text2 = (TextView) itemView.findViewById(R.id.stationInfo);
             text2.setText(line.get(pos).getName());
             TextView text3 = (TextView) itemView.findViewById(R.id.distance);
@@ -405,6 +413,17 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
 
             return itemView;
         }
+    }
+
+    private void onStationClicked(View v) {
+        MyPoint p = (MyPoint) v.getTag();
+        if (nLine == NOLINE) return;
+
+        Intent intent = new Intent(MapActivity.this, TabedLinesActivity.routes.get(nLine - 1).getRouteClass());
+        intent.putExtra("button_id", p.getId());
+        MapActivity.this.startActivity(intent);
+
+
     }
 
     private class myArrayAdapterButton extends ArrayAdapter<MyButton> {
@@ -424,7 +443,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener {
             Button bt = (Button) itemView.findViewById(R.id.mapbutton);
             setColour(buttons.get(pos).getLine());
 
-           // bt.setTextColor(getResources().getColor(resourseColour));
+            // bt.setTextColor(getResources().getColor(resourseColour));
             bt.setBackgroundColor(getResources().getColor(resourseColour));
 
             bt.setText(buttons.get(pos).getStr());

@@ -4,12 +4,13 @@ import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -21,7 +22,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -33,6 +33,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by kiki__000 on 28-Aug-14.
@@ -58,10 +59,31 @@ public class ViewCinema extends ActionBarActivity {
     private LinearLayout general_layout;
     private ViewFlipper vf;
     private GoogleMap mMap;
+    private Station st;
 
     protected void onCreate(Bundle savedInstanceState) {
         //setTheme(android.R.style.Theme_Light_Panel);
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sPrefs = getSharedPreferences("myAppsPreferences", 0);
+        String bCheck = sPrefs.getString("lang", getResources().getString(R.string.language));
+
+        String lang = bCheck;
+        LanguageActivity.language = bCheck;
+
+        if (lang.equals("el")) {
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("el", "EL");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.GREEK);
+        } else {
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("en", "EN");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.ENGLISH);
+        }
+
+
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_ViewCinema));
@@ -69,13 +91,16 @@ public class ViewCinema extends ActionBarActivity {
         setContentView(R.layout.activity_view_cinema);
         vf = (ViewFlipper) findViewById(R.id.vf);
 
+
         Intent intent = getIntent();
         idCinema = intent.getIntExtra("button_id", 0);
+        st = DbAdapter.getInstance().getStationByID(idCinema);
+
         layout1 = (LinearLayout)findViewById(R.id.layout1);
         general_layout = (LinearLayout)findViewById(R.id.general_layout);
 
         textViewTitle =(TextView)findViewById(R.id.name);
-        textViewTitle.setText(DbAdapter.getInstance().getStations().get(idCinema).getName());
+        textViewTitle.setText(st.getName());
 
 
         /** Getting a reference to the ViewPager defined the layout file */
@@ -84,7 +109,7 @@ public class ViewCinema extends ActionBarActivity {
         /** Getting fragment manager */
         FragmentManager fm = getSupportFragmentManager();
 
-        countP = DbAdapter.getInstance().getPhotosByStation(idCinema+1).size();
+        countP = DbAdapter.getInstance().getPhotosByStation(st.getId()).size();
         /** Instantiating FragmentPagerAdapter */
         ImageAdapter pagerAdapter = new ImageAdapter(fm, countP/2);
         ImageFragment.id=idCinema;
@@ -94,7 +119,7 @@ public class ViewCinema extends ActionBarActivity {
         //   pager.setAdapter(pagerAdapter);
 
         description = (TextView)findViewById(R.id.description);
-        description.setText(DbAdapter.getInstance().getStations().get(idCinema).getDescription());
+        description.setText(st.getDescription());
 
         showInMap = (ImageButton)findViewById(R.id.showInMap);
         showInMap.setOnClickListener(showInMapButtonOnClickListener);
@@ -124,11 +149,11 @@ public class ViewCinema extends ActionBarActivity {
         pinterestButton.setVisibility(View.INVISIBLE);
         general_layout = (LinearLayout)findViewById(R.id.general_layout);
 
-        int r=DbAdapter.getInstance().getPhotosByStation(idCinema+1).size();
+        int r = DbAdapter.getInstance().getPhotosByStation(st.getId()).size();
         for (int i = 0; i < r; i++) {
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(idCinema+1).get(i).getName());
+                Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(st.getId()).get(i).getName());
                 int drawableId = field.getInt(null);
                 ImageView imageView = new ImageView(ViewCinema.this);
                 imageView.setImageResource(drawableId);
@@ -148,7 +173,7 @@ public class ViewCinema extends ActionBarActivity {
 
         this.setUpMap();
         if(mMap!=null){
-            MyPoint point= DbAdapter.getInstance().getStations().get(idCinema).getMyPoint();
+            MyPoint point = st.getMyPoint();
             mMap.addMarker(new MarkerOptions()
                     .position(point.getLng())
                     .title(point.getName())
@@ -236,7 +261,7 @@ public class ViewCinema extends ActionBarActivity {
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getStations().get(idCinema).getName();
+        String shareBody = "#CineMetro#" + st.getName();
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "CineMetro");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
@@ -247,7 +272,7 @@ public class ViewCinema extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            MapActivity.showInMap(MapActivity.LINE1, idCinema+1);
+            MapActivity.showInMap(MapActivity.LINE1, st.getId());
 
             Intent intent = new Intent(ViewCinema.this, MapActivity.class);
             ViewCinema.this.startActivity(intent);
@@ -272,7 +297,7 @@ public class ViewCinema extends ActionBarActivity {
                 alert.show();
             }
             //user has already rated for this station
-            else if (DbAdapter.getInstance().getUserRatingForStation(idCinema, DbAdapter.getInstance().getActiveUser().getUsername()) !=0){
+            else if (DbAdapter.getInstance().getUserRatingForStation(st.getId(), DbAdapter.getInstance().getActiveUser().getUsername()) != 0) {
                 dialog.setTitle(getResources().getString(R.string.title_activity_RateActivity));
                 dialog.setMessage(getResources().getString(R.string.already_rate));
                 dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
@@ -287,8 +312,8 @@ public class ViewCinema extends ActionBarActivity {
             //user can rate
             else {
                 Intent intent = new Intent(ViewCinema.this, RateActivity.class);
-                intent.putExtra("line", 1);
-                intent.putExtra("button_id", idCinema+1);
+                intent.putExtra("line", MapActivity.LINE1);
+                intent.putExtra("button_id", st.getId());
                 ViewCinema.this.startActivity(intent);
             }
         }};
@@ -304,7 +329,7 @@ public class ViewCinema extends ActionBarActivity {
             boolean found = false;
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + DbAdapter.getInstance().getStations().get(idCinema).getName());
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + st.getName());
             PackageManager pm = view.getContext().getPackageManager();
             List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
             for (final ResolveInfo app : activityList) {

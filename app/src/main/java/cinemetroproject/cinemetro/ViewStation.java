@@ -5,12 +5,13 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
@@ -32,11 +33,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by kiki__000 on 20-Jul-14.
@@ -69,11 +70,38 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
     private  LinearLayout general_layout;
     private ViewFlipper vf;
     private TextView info_cast;
+    private Station st;
+    private Movie mv;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sPrefs = getSharedPreferences("myAppsPreferences", 0);
+        String bCheck = sPrefs.getString("lang", getResources().getString(R.string.language));
+
+        String lang = bCheck;
+        LanguageActivity.language = bCheck;
+
+        if (lang.equals("el")) {
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("el", "EL");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.GREEK);
+        } else {
+            Configuration c = new Configuration(getResources().getConfiguration());
+            c.locale = new Locale("en", "EN");
+            getResources().updateConfiguration(c, getResources().getDisplayMetrics());
+            DbAdapter.getInstance().changeLanguage(Language.ENGLISH);
+        }
+
+
+
+
+
+
+
         setContentView(R.layout.activity_view_station);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -89,8 +117,11 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
         Intent intent = getIntent();
         idStation = intent.getIntExtra("button_id", 0);
 
+        st = DbAdapter.getInstance().getStationByID(idStation);
+        mv = DbAdapter.getInstance().getMovieByStation(st.getId());
+
         textViewTitle =(TextView)findViewById(R.id.titleYear);
-        textViewTitle.setText(DbAdapter.getInstance().getMovieByStation(idStation).getTitle() + " " + DbAdapter.getInstance().getMovieByStation(idStation).getYear());
+        textViewTitle.setText(mv.getTitle() + " " + mv.getYear());
         // textViewTitle.setBackgroundColor(getResources().getColor(R.color.line2));
 
         /** Getting a reference to the ViewPager defined the layout file */
@@ -117,10 +148,10 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
 
 */
-        for (int i = 0; i < DbAdapter.getInstance().getMainPhotosOfMovie(DbAdapter.getInstance().getMovieByStationId(idStation).getId()).size(); i++) {
+        for (int i = 0; i < DbAdapter.getInstance().getMainPhotosOfMovie(mv.getId()).size(); i++) {
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(DbAdapter.getInstance().getMainPhotosOfMovie(DbAdapter.getInstance().getMovieByStationId(idStation).getId()).get(i).getName());
+                Field field = res.getField(DbAdapter.getInstance().getMainPhotosOfMovie(mv.getId()).get(i).getName());
                 int drawableId = field.getInt(null);
                 ImageView imageView = new ImageView(ViewStation.this);
                 imageView.setImageResource(drawableId);
@@ -136,7 +167,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
         vf.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_out));
         vf.startFlipping();
 
-        actors = DbAdapter.getInstance().getMovieByStation(idStation).getActors().size()+1;
+        actors = mv.getActors().size() + 1;
         actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
 
         View director = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.actor, null);
@@ -146,11 +177,11 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
         try {
             Class res = R.drawable.class;
-            Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(DbAdapter.getInstance().getMovieByStationId(idStation).getId()).get(0).getName());
+            Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(mv.getId()).get(0).getName());
             int drawableId = field.getInt(null);
             imageDirector.setBackgroundResource(drawableId);
         } catch (Exception e) {}
-        String string1 = DbAdapter.getInstance().getMovieByStation(idStation).getDirector();
+        String string1 = mv.getDirector();
         String[] parts1 = string1.split(" ");
         nameDirector.setText(parts1[0] + "\n" + parts1[1]);
         nameDirector.setTextSize(12);
@@ -166,11 +197,11 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
             try {
                 Class res = R.drawable.class;
-                Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(DbAdapter.getInstance().getMovieByStationId(idStation).getId()).get(i).getName());
+                Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(mv.getId()).get(i).getName());
                 int drawableId = field.getInt(null);
                 imageActor.setBackgroundResource(drawableId);
             } catch (Exception e) {}
-            String string = DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i-1);
+            String string = mv.getActors().get(i - 1);
             Log.i("name",string);
             String[] parts = string.split(" ");
             nameActor.setText(parts[0] + "\n" + parts[1]);
@@ -182,7 +213,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
 
         textViewInfo = (TextView)findViewById(R.id.info);
-        textViewInfo.setText(DbAdapter.getInstance().getMovieByStation(idStation).getDescription());
+        textViewInfo.setText(mv.getDescription());
         layout1=(LinearLayout)findViewById(R.id.layout1);
 
         showInMap = (ImageButton)findViewById(R.id.showInMap);
@@ -217,10 +248,10 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
         info_cast=(TextView)findViewById(R.id.info_cast);
         StringBuilder sb = new StringBuilder();
         sb.append(Html.fromHtml("Σκηνοθέτης: "));
-        sb.append(" ").append(DbAdapter.getInstance().getMovieByStation(idStation).getDirector() + "\n");
+        sb.append(" ").append(mv.getDirector() + "\n");
         sb.append("\n"); sb.append("Παίζουν: ");
         for (int i=1; i<actors; i++) {
-            sb.append(" ").append(DbAdapter.getInstance().getMovieByStation(idStation).getActors().get(i-1));
+            sb.append(" ").append(mv.getActors().get(i - 1));
             sb.append(" ");
             sb.toString();
         }
@@ -228,7 +259,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
         this.setUpMap();
         if(mMap!=null){
-            MyPoint point= DbAdapter.getInstance().getStationByID(idStation+1).getMyPoint();
+            MyPoint point = st.getMyPoint();
             mMap.addMarker(new MarkerOptions()
                     .position(point.getLng())
                     .title(point.getName())
@@ -281,7 +312,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle();
+        String shareBody = "#CineMetro#" + mv.getTitle();
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "CineMetro");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
@@ -292,7 +323,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
         @Override
         public void onClick(View view) {
 
-            MapActivity.showInMap(MapActivity.LINE2, idStation+1);
+            MapActivity.showInMap(MapActivity.LINE2, idStation);
 
             Intent intent = new Intent(ViewStation.this, MapActivity.class);
             ViewStation.this.startActivity(intent);
@@ -335,8 +366,8 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
             //user can rate
             else {
                 Intent intent = new Intent(ViewStation.this, RateActivity.class);
-                intent.putExtra("line", 2);
-                intent.putExtra("button_id", idStation+1);
+                intent.putExtra("line", MapActivity.LINE2);
+                intent.putExtra("button_id", st.getId());
                 ViewStation.this.startActivity(intent);
             }
         }};
@@ -352,7 +383,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
             boolean found = false;
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + DbAdapter.getInstance().getMovieByStation(idStation).getTitle());
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "#CineMetro#" + mv.getTitle());
             PackageManager pm = view.getContext().getPackageManager();
             List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
             for (final ResolveInfo app : activityList) {

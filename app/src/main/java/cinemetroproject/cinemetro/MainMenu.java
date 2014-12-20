@@ -1,14 +1,9 @@
 package cinemetroproject.cinemetro;
 
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -20,12 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.parse.Parse;
-import android.widget.AdapterView.OnItemClickListener;
 
 import java.util.Locale;
 
@@ -196,7 +189,7 @@ public class MainMenu extends ActionBarActivity {
         @Override
         public void onClick(View view) {
 
-            Intent intent = new Intent(MainMenu.this, LinesActivity.class);
+            Intent intent = new Intent(MainMenu.this, TabedLinesActivity.class);
             MainMenu.this.startActivity(intent);
         }};
 

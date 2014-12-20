@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25sp"
-                    android:text="Stations Rated"
+                    android:text="@string/rated_stations"
                     android:id="@+id/stations_rated"
                     android:textColor="#ffe23543"
                     android:background="#fffff9f8"
