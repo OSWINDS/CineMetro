@@ -1,5 +1,12 @@
 package cinemetroproject.cinemetro;
 
+import android.util.Log;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.io.UnsupportedEncodingException;
+import java.util.Formatter;
+
 public class User {
 
     private int id;
@@ -20,7 +27,7 @@ public class User {
     public User( String name, String pass)
     {
         this.username = name;
-        this.password = pass;
+        this.password = this.encryptPassword(pass);
     }
 
     /***************************************************************
@@ -53,8 +60,8 @@ public class User {
 
     private void setPassword(String oldpass, String pass)
     {
-        if (oldpass.equals(this.password)) {
-            this.password = pass;
+        if (this.encryptPassword(oldpass).equals(this.password)) {
+            this.password = this.encryptPassword(pass);
         }
     }
 
@@ -69,6 +76,42 @@ public class User {
      */
     public boolean checkPassword(String pass)
     {
-        return pass.equals(this.password);
+        String hash = encryptPassword(pass);
+        return hash.equals(this.password);
     }
+
+    public String encryptPassword(String password)
+    //private static String encryptPassword(String password)
+    {
+        String sha1 = "";
+        try
+        {
+            MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+            crypt.reset();
+            crypt.update(password.getBytes("UTF-8"));
+            sha1 = byteToHex(crypt.digest());
+        }
+        catch(NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        catch(UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+        }
+        return sha1;
+    }
+
+    private static String byteToHex(final byte[] hash)
+    {
+        Formatter formatter = new Formatter();
+        for (byte b : hash)
+        {
+            formatter.format("%02x", b);
+        }
+        String result = formatter.toString();
+        formatter.close();
+        return result;
+    }
+
 }

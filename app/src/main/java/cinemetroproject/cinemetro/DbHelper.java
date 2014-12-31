@@ -17,10 +17,10 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 38;
+    private static final int DATABASE_VERSION = 41;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
-    //Language choise of the user
+    //Language choice of the user
     private Language language;
     //String used to determine which table will be used according to the language
     private String lang;
@@ -195,6 +195,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS timeline_station_user_rating");
         // Drop older timeline_station_rating table if exists
         db.execSQL("DROP TABLE IF EXISTS timeline_station_rating");
+
         db.execSQL("DROP TABLE IF EXISTS user");
 
 

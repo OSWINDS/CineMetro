@@ -1,5 +1,7 @@
 package cinemetroproject.cinemetro;
 
+import android.util.Log;
+
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;

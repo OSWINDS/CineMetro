@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -112,13 +113,13 @@ public class LogIn extends ActionBarActivity {
         //Check if user exits in database
         //Check if password match users passWord
         //if match, send Data to database
+
         boolean found=false;
         for(User u : users){
             if(user.equals(u.getUsername())){
                 found=true;
             }
         }
-
         if(!found){
             Toast.makeText(LogIn.this, R.string.user_not_exist, Toast.LENGTH_SHORT).show();
             readyToLogIn=false;
