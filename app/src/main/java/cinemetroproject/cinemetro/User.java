@@ -80,8 +80,7 @@ public class User {
         return hash.equals(this.password);
     }
 
-    public String encryptPassword(String password)
-    //private static String encryptPassword(String password)
+    private static String encryptPassword(String password)
     {
         String sha1 = "";
         try
