@@ -886,7 +886,7 @@ final class DbAdapter {
         //add movies
 
 
-        this.db.addMovie(new Movie(8, "Το ξυπόλητο τάγμα",
+        this.db.addMovie(new Movie(8, "Το ξυπόλητο τάγμα (1955)",
                 "Η αληθινή ιστορία επιβίωσης 160 παιδιών στην Θεσσαλονίκη της Κατοχής. \n" +
                         "\n" +
                         "Η ταινία έχει σαν χώρο δράσης την Θεσσαλονίκη μεταξύ των δεκαετιών 1940-50.\n" +
@@ -898,7 +898,7 @@ final class DbAdapter {
                         "Χρυσό Βραβείο στο Φεστιβάλ Κινηματογράφου του Εδιμβούργου (1955).",
                 "Κωστή Μαρία,Φερμας Νίκος,Φραγκεδάκης Βασίλης",
                 "Γκρεγκ Τάλλας", "1955"));
-        this.db.addMovie(new Movie(9, "Ο ατσίδας",
+        this.db.addMovie(new Movie(9, "Ο ατσίδας (1961)",
                 "Δύο αδέρφια προσπαθούν να ισορροπήσουν ανάμεσα στις αισθηματικές τους σχέσεις και την συντηρητικές αρχές της πατρικής οικίας τους. \n" +
                         "\n" +
                         "Εξ ολοκλήρου γυρισμένη στην Θεσσαλονίκη: Πανόραμα, περιοχή Ανθέων, Πλ. Αριστοτέλους\n" +
@@ -906,7 +906,7 @@ final class DbAdapter {
                         "Μεταφορά του θεατρικού έργου του Δ. Ψαθά “Εξοχικόν Κέντρον ο Έρως”",
                 "Ηλιόπουλος Ντίνος,Λάσκαρη Ζώη,Ζερβός Παντελής,Στρατηγός Στέφανος",
                 "Γιάννης Δαλιανίδης", "1961"));
-        this.db.addMovie(new Movie(10, "Κάτι να καίει",
+        this.db.addMovie(new Movie(10, "Κάτι να καίει (1964)",
                 "Ένα νεανικό μουσικό συγκρότημα, ένας προσωπάρχης που συνοδέυει την κόρη του αφεντικού του στη Θεσσαλονίκη, μια κληρονομιά που περιμένει έναν γάμο. Μια παρέα νέων ανθρώπων σε αστείες και ρομαντικές περιπέτειες. \n" +
                         "\n" +
                         "Η ταινία έχει γυρίσματα σε χώρους όπως ΔΕΘ, Λευκός Πύργος, κ.α.\n" +
@@ -916,7 +916,7 @@ final class DbAdapter {
                         "Πρώτη κινηματογραφική εμφάνιση για την 17χρόνη Έλενα Ναθαναήλ",
                 "Βλαχοπούλου Ρένα,Ηλιόπουλος Ντίνος,Καραγιάννη Μάρθα,Ναθαναήλ Έλενα,Βουτσάς Κώστας",
                 "Γιάννης Δαλιανίδης", "1964"));
-        this.db.addMovie(new Movie(11, "Παρένθεση",
+        this.db.addMovie(new Movie(11, "Παρένθεση (1968)",
                 "Ένα ταξίδι με τρένο, μια στάση με ολιγόωρη καθυστέρηση, ένας δυνατός έρωτας δύο ανθρώπων, μια παρένθεση. \n" +
                         "\n" +
                         "Βασισμένη στο θεατρικό έργο του Νοέλ Κάουαρντ “Ασάλευτη Ζωή”\n" +
@@ -926,7 +926,7 @@ final class DbAdapter {
                         "Η ταινία γυρίστηκε σε: Νέο Σιδηροδρομικό Σταθμό, Νέα Παραλία Θεσσαλονίκης και στην περιοχή Αρετσού (Ν. Κρήνη))",
                 "Λαδικού Αλεξάνδρα,Αντωνόπουλος Άγγελος",
                 "Τάκης Κανελλόπουλος", "1968"));
-        this.db.addMovie(new Movie(12, "Η Φανέλλα με το Νο9",
+        this.db.addMovie(new Movie(12, "Η Φανέλλα με το Νο9 (1987)",
                 "Η πορεία ενός ταλαντούχου ποδοσφαιριστή, ο οποίος μέσα από νίκες και ήττες, τραυματισμούς και παρασκήνιο, " +
                         "θα καταλάβει ότι η επιτυχία έχει το τίμημά της. \n" +
                         "\n" +
@@ -939,7 +939,7 @@ final class DbAdapter {
                         "Ο πρωταγωνιστής της ταινίας Στρ. Τζώρτζογλου την ίδια χρονιά θα συμμετέχει στα γυρίσματα της ταινίας του Θ. Αγγελόπουλου “Τοπίο στην Ομίχλη” που γίνονται στην Θεσσαλονίκη.",
                 "Τζώρτζογλου Στράτος,Μπαζάκα Θέμις",
                 "Παντελής Βούλγαρης", "1987"));
-        this.db.addMovie(new Movie(13, "Μια Αιωνιότητα και μια μέρα",
+        this.db.addMovie(new Movie(13, "Μια Αιωνιότητα και μια μέρα (1998)",
                 "Ένας μεσήλικας συγγραφέας, που ασχολείται με το έργο του Δ. Σολωμού, αναζητάει τις αναμνήσεις μιας ζωής σε μια περιπλάνηση μιας ημέρας. \n" +
                         "\n" +
                         "Γυρισμένη σε αρχοντικό της Βασ. Όλγας, στην Παλιά Παραλία, Πλ. Αριστοτέλους και σε χώρους της οδού Τσιμισκή. \n" +
@@ -949,14 +949,14 @@ final class DbAdapter {
                         "Χρυσός Φοίνικας στο Φεστιβάλ Καννών του 1998",
                 "Γκαντζ Μπρούνο,Ρενό Ιζαμπέλ,Μπενιβόλιο Φαμπρίτσιο",
                 "Θόδωρος Αγγελόπουλος", "1998"));
-        this.db.addMovie(new Movie(14, "Χώρα Προέλευσης", "Οικογενειακό δράμα ως ακτινογραφία της νεοελληνικής κοινωνικής πραγματικότητας. \n" +
+        this.db.addMovie(new Movie(14, "Χώρα Προέλευσης (2010)", "Οικογενειακό δράμα ως ακτινογραφία της νεοελληνικής κοινωνικής πραγματικότητας. \n" +
                 "\n" +
                 "Η ταινία πραγματοποιεί μεγάλο μέρος της δράσης της σε γνωστά σημεία της σημερινής Θεσσαλονίκης: Λεωφόρος Στρατού (ΕΡΤ3), Νέα Παραλία, Αγίος Δημήτριος. \n" +
                 "\n" +
                 "Συμμετοχή στην Εβδομάδα Κριτικής του Φεστιβάλ Βενετίας",
                 "Μουτούση Αμαλία,Σαμαράς Θάνος,Τσιριγκούλη Ιωάννα",
                 "Σύλλας Τζουμέρκας", "2010"));
-        this.db.addMovie(new Movie(15, "Σούπερ Δημήτριος", "Όταν ο Κάπτεν Φ.Ρομ, απαιτώντας να τον φωνάζουν με το πραγματικό του " +
+        this.db.addMovie(new Movie(15, "Σούπερ Δημήτριος (2011)", "Όταν ο Κάπτεν Φ.Ρομ, απαιτώντας να τον φωνάζουν με το πραγματικό του " +
                 "όνομα, μετατρέπει τον Λευκό Πύργο σε γιγάντιο φραπέ κι εξαφανίζει όλο το γύρο από τα σουβλατζίδικα της Θεσσαλονίκης, ο Σούπερ Δημήτριος αναλαμβάνει να σώσει τη συμπρωτεύουσα.\n" +
                 "\n" +
                 "Σάτιρα θεσσαλονικιώτικων και βορειοελλαδικών κλισέ με της Μεταπολίτευσης με πολύ χιούμορ. \n" +
@@ -1284,7 +1284,7 @@ final class DbAdapter {
                         "Alexandrou Svolou Str.), Makedonikon (in Filikis Eterias Str.). The Stavrakos Film School operated its " +
                         "subsidiary film school in Thessaloniki, which was located in the same area.",
                 1, 40.632511, 22.947489));
-        this.db.addStation(new Station("Centre 2 (Kamara – Navarinon)",
+        this.db.addStation(new Station("City centre 2 (Kamara-Navarinon)",
                 "Many cinema theatres at the city centre (Ilyssia, Navarinon, Elsi, Kleo, Rivoli, Thimeli, Fargani) have functioned " +
                         "both as architectural landmarks of Thessaloniki as well as venues of its everyday life.\n" +
                         "Cinema theatres, together with coffee shops and bars, have been celebrated haunts for both film lovers and " +
@@ -1363,44 +1363,44 @@ final class DbAdapter {
         //add movies
 
 
-        this.db.addMovie(new Movie(8, "The Barefoot Badallion",
+        this.db.addMovie(new Movie(8, "The Barefoot Badallion (1955)",
                 "Based on a true story of 160 orphans, who live in Thessaloniki under the German Occupation during the 1940s. " +
                         "The film wanders around the centre and the acropolis of Thessaloniki.",
                 "Maria Kosti,Nikos Fermas,Vassilis Fraghedakis",
                 "Greg Tallas", "1955"));
-        this.db.addMovie(new Movie(9, "The cutie",
+        this.db.addMovie(new Movie(9, "The cutie (1961)",
                 "Two brothers try to balance between the emotional relations and the conservative principles of a paternal family." +
                         " The film is totally shot in Thessaloniki (Panorama, Antheon area, city centre).",
                 "Dinos Iliopoulos,Zoe Laskari,Pandelis Zervos,Stefanos Stratigos",
                 "Yannis Dalianidis", "1961"));
-        this.db.addMovie(new Movie(10, "Some like it hot",
+        this.db.addMovie(new Movie(10, "Some like it hot (1964)",
                 "During the Thessaloniki International Fair, a group of young people gets involved in funny love affairs.\n" +
                         "The film is shot in many areas of the city, such as the Thessaloniki International Fair and the White Tower.",
                 "Rena Vlachopoulou,Dinos Iliopoulos,Martha Karagianni,Elena Nathanael,Kostas Voutsas",
                 "Yannis Dalianidis", "1964"));
-        this.db.addMovie(new Movie(11, "Parenthesis",
+        this.db.addMovie(new Movie(11, "Parenthesis (1968)",
                 "A train journey with a delayed stop. A strong love affair, a parenthesis in the lives of two people. The film won 4" +
                         " prizes in Thessaloniki Film Festival. \n" +
                         "It was shot in the sea front of Thessaloniki and the area of Aretsou (Nea Krini).",
                 "Alexandra Ladikou,Angelos Antonopoulos",
                 "Takis Kanellopoulos", "1968"));
-        this.db.addMovie(new Movie(12, "The striker with number 9",
+        this.db.addMovie(new Movie(12, "The striker with number 9 (1987)",
                 "The journey of a talented football player  goes through defeats, injuries and background, which will make him " +
                         "understand that success comes at a price.\n" +
                         "Part of the film was shot in Thessaloniki (Aristotelous Square, Evosmos).",
                 "Stratos Tzortzoglou,Themis Bazaka", "Pantelis Voulgaris", "1987"));
-        this.db.addMovie(new Movie(13, "Eternity and a day",
+        this.db.addMovie(new Movie(13, "Eternity and a day (1998)",
                 "The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his seaside home " +
                         "forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as in the " +
                         "city’s sea front, Aristotelous Square and Tsimiski Street.",
                 "Bruno Ganz,Fabrizio Bentivoglio,Isabelle Renauld",
                 "Theo Angelopoulos", "1998"));
-        this.db.addMovie(new Movie(14, "Homeland",
+        this.db.addMovie(new Movie(14, "Homeland (2010)",
                 "A story about a family and a country falling apart, inspired by true events. A large part of the film is shot in " +
                         "central places of Thessaloniki (Leoforos Stratou Str, the sea front, Saint Demetrius Church).",
                 "Amalia Moutoussi,Thanos Samaras,Ioanna Tsiringhouli",
                 "Syllas Tzoumerkas", "2010"));
-        this.db.addMovie(new Movie(15, "Super Demetrios",
+        this.db.addMovie(new Movie(15, "Super Demetrios (2011)",
                 "In a surreal, parallel universe, Thessaloniki has its very own superhero: Super Demetrios.\n" +
                         "A film shot around the city of Thessaloniki, showcasing many of the city’s public buildings (the University" +
                         ", the City Hall, the White Tower, the Railway Station).",
@@ -1462,8 +1462,8 @@ final class DbAdapter {
         //TimelineStation 3
         this.db.addTimelineStation(new TimelineStation("Alexandrou Svolou Str. – Navarinon Square ", 40.6330961, 22.9470789));
         //Milestones
-        this.db.addMilestone(new Milestone(3, "1987", "«Esperos” cinema theatre hosts the festival’s sidebar events. . \n" +
-                ".Among the popular screenings which were held at “Esperos”, there is a film music concert of Germaine Dula’s films" +
+        this.db.addMilestone(new Milestone(3, "1987", "«Esperos” cinema theatre hosts the festival’s sidebar events.\n" +
+                "Among the popular screenings which were held at “Esperos”, there is a film music concert of Germaine Dula’s films" +
                 ", with pianist-composer Sakis Papadimitriou and singer Georgia Silleou (28th Thessaloniki Film Festival, 1987).",
                 "esperos28filmfestival",
                 "“Esperos” cinema theatre at Alexandrou Svolou str."));
@@ -1499,11 +1499,11 @@ final class DbAdapter {
                 " – Images of the 21st century”, which gathers an average of 30.000 viewers every year in its screenings. ", "peopleolympion38filmfestival",
                 "People crowding outside the “Olympion” cinema theatre during the 38th Thessaloniki International Film Festival\n"));
         this.db.addMilestone(new Milestone(4, "2010", "From 2010 Festival changing line and influenced from the serious financial crisis of \n" +
-                "Greece turned to afresh open cinematic horizons . \n" +
-                "To these years the audience has the opportunity to discover alternative directors , like \n" +
-                "Alain Guiraudie , Bahman Ghobadi and Ole Christian Madsen but also to connect afresh \n" +
-                "with timeless favorite stars like Hanna Schygulla , and creators , like Aki Kaurismäki , \n" +
-                "Paolo Sorrentino , and Constantine Giannaris .", "p2014",
+                "Greece turned to afresh open cinematic horizons.\n" +
+                "To these years the audience has the opportunity to discover alternative directors, like\n" +
+                "Alain Guiraudie, Bahman Ghobadi and Ole Christian Madsen but also to connect afresh\n" +
+                "with timeless favorite stars like Hanna Schygulla, and creators, like Aki Kaurismäki,\n" +
+                "Paolo Sorrentino, and Constantine Giannaris.", "p2014",
                 ""));
         this.db.addMilestone(new Milestone(4, "2014", "From its re-opening in 1997 until today, the “Olympion” cinema theatre hosts the main corpus" +
                 " of film festival activities. It has been a popular venue, which was visited by acclaimed personalities of world cinema (Coppola, " +
@@ -1512,7 +1512,7 @@ final class DbAdapter {
 
 
         //TimelineStation 5
-        this.db.addTimelineStation(new TimelineStation("Port", 40.631721, 22.93505));
+        this.db.addTimelineStation(new TimelineStation("The port", 40.631721, 22.93505));
         //Milestones
 
 
@@ -1529,7 +1529,7 @@ final class DbAdapter {
                 "the first –and the last, up until now- Greek film, which has achieved this prominent award.",
                 "eternityandaday1",
                 "Scene from Theo Angelopoulos’ film “Eternity and a day”"));
-        this.db.addMilestone(new Milestone(5, "2001", "he four warehouses at the city’s port are renovated into cinema theatres and become a" +
+        this.db.addMilestone(new Milestone(5, "2001", "The four warehouses at the city’s port are renovated into cinema theatres and become a" +
                 " vital part of Thessaloniki Film Festival (42nd TIFF, 2001).\n" +
                 "hey are named after four prominent Greek filmmakers: “Tonia Marketaki” and “John Cassavetes” (Warehouse A’) and “Frida Liappa” " +
                 "and “Takis Kanellopoulos” (Warehouse D’). The “Takis Kanellopoulos” hall is later renamed as “Stavros Tornes” hall in order to avoid" +
@@ -1540,14 +1540,12 @@ final class DbAdapter {
                 "C, held at the city’s port (49th TIFF, 2008).", "stonekusturica",
                 "Oliver Stone and Emir Kusturica together on stage.\n" +
                         "(Motionteam, κωδικός: 445484)"));
-        this.db.addMilestone(new Milestone(5, "2013", "One of all favorites and innovative sections of Festival , the Balkan Survey , celebrating 20 \n" +
-                "years of creative presence . " +
-                "Between these two decades Thessaloniki with this parallel panorama of films shows all new " +
-                "trends and look of directors from the whole Balkan . " +
-                "At once it presented special retro-spectives to important creators , like Lucian Pintilie , " +
-                "Goran Paskaljevic , Nuri Bilge Ceylan , and Cristian Mungiu and new flows , like new " +
-                "Romanian cinema , that embraced from the international audience .", "p2013",
-                ""));
+        this.db.addMilestone(new Milestone(5, "2013", "One of the festival’s favorite and most innovative sections," +
+                " the Balkan Survey, celebrated 20 years of a creative presence. During these decades, Thessaloniki has " +
+                "been presenting to the public an interesting film panorama of Balkan filmmakers. It also organized special " +
+                "retrospectives to important film auteurs, like Lucian Pintilie, Goran Paskaljevic, Nuri Bilge Ceylan " +
+                "and Christian Mungium, as well as portraits of new film trends, like the “new Romanian cinema”, which were " +
+                "warmly welcomed by the viewers.", "p2013",""));
 
 
         //add photos
