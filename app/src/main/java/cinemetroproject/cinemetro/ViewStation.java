@@ -121,7 +121,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
         mv = DbAdapter.getInstance().getMovieByStation(st.getId());
 
         textViewTitle =(TextView)findViewById(R.id.titleYear);
-        textViewTitle.setText(mv.getTitle() + " " + mv.getYear());
+        textViewTitle.setText(mv.getTitle() + " ");
         // textViewTitle.setBackgroundColor(getResources().getColor(R.color.line2));
 
         /** Getting a reference to the ViewPager defined the layout file */
@@ -247,12 +247,14 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
         info_cast=(TextView)findViewById(R.id.info_cast);
         StringBuilder sb = new StringBuilder();
-        sb.append(Html.fromHtml("Σκηνοθέτης: "));
+        sb.append(Html.fromHtml(getString(R.string.director)));
         sb.append(" ").append(mv.getDirector() + "\n");
-        sb.append("\n"); sb.append("Παίζουν: ");
+        sb.append("\n"); sb.append(getString(R.string.cast));
         for (int i=1; i<actors; i++) {
             sb.append(" ").append(mv.getActors().get(i - 1));
-            sb.append(" ");
+            if (i != (actors -1)) {
+                sb.append(", ");
+            }
             sb.toString();
         }
         info_cast.setText(sb);

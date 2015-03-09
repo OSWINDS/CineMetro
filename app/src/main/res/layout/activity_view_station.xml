@@ -71,6 +71,7 @@
                 android:textSize="16dp"
                 android:typeface="sans"
                 android:textColor="@color/letters"
+                android:text="@string/cast"
                 android:id="@+id/info_cast" />
 
             <!-- images of cast -->
