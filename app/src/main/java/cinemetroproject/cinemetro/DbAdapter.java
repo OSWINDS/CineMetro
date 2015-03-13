@@ -589,12 +589,15 @@ final class DbAdapter {
                             if (user != null) {
                                 addUserFromParse(username, password);
                                 String stations = userList.get(0).getString("redLineStations");
+                                Log.i("redLineStations", stations);
                                 //addRatingsFromString(username, stations, 0);
 
                                 stations = userList.get(0).getString("blueLineStations");
+                                Log.i("blueLineStations", stations);
                                 //addRatingsFromString(username, stations, getStationByRoute(0).size());
 
                                 stations = userList.get(0).getString("greenLineStations");
+                                Log.i("greenLineStations", stations);
                                 //addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
                             } else {
                             }
