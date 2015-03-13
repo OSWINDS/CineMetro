@@ -76,7 +76,7 @@
     <string name="negative_button">Όχι</string>
     <string name="logout_message">Εάν αποσυνδεθείς χωρίς να ενημερώσεις τη βάση θα χάσεις όλους τους πόντους που έδωσες μετά την τελευταία σου σύνδεση. Ενημέρωση της βάσης δεδομένων πριν την έξοδο;</string>
     <string name="user_exists">Ο χρήστης υπάρχει ήδη.</string>
-    <string name="user_not_exist">Ο χρήστης δεν υπάρχει.</string>
+    <string name="user_not_exist">Ο χρήστης μπορεί να μην υπάρχει.Παρακαλώ προσπαθήστε ξανά.</string>
     <string name="password_length">Ο κωδικός πρέπει να περιέχει τουλάχιστον 5 χαρακτήρες.</string>
     <string name="password_wrong">Λάθος κωδικός.</string>
     <string name="password_not_match">Οι κωδικοί δεν είναι ίδιοι.</string>

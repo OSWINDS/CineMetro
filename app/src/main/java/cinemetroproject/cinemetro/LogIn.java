@@ -114,7 +114,7 @@ public class LogIn extends ActionBarActivity {
         //Check if password match users passWord
         //if match, send Data to database
 
-        boolean found=DbAdapter.getInstance().loginUser(user);
+        boolean found=DbAdapter.getInstance().loginUser(user,pass);
         if(!found){
             Toast.makeText(LogIn.this, R.string.user_not_exist, Toast.LENGTH_SHORT).show();
             readyToLogIn=false;

@@ -70,7 +70,7 @@
     <string name="negative_button">No</string>
     <string name="logout_message">If you sign out without updating the database you will lose all the points you gave after your last login. Update the database before quiting?</string>
     <string name="user_exists">User already exists.</string>
-    <string name="user_not_exist">User does not exist.</string>
+    <string name="user_not_exist">User may not exist.Please try again.</string>
     <string name="password_length">Password must be at least 5 characters.</string>
     <string name="password_wrong">Wrong password.</string>
     <string name="password_not_match">Passwords do not match.</string>
