@@ -30,6 +30,11 @@ public class User {
         this.password = this.encryptPassword(pass);
     }
 
+    public User (String username)
+    {
+        this.username = username;
+    }
+
     /***************************************************************
      * Get Functions
      ***************************************************************/

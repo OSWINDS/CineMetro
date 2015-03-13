@@ -593,13 +593,12 @@ final class DbAdapter {
                 }
             }
         });
-
     }
 
     private void addUserFromParse(String username, String password)
     {
         if (this.getUserByUsername(username) == null) {
-            User u = new User(username, password);
+            User u = new User(username);
             u.setPassword(password);
             this.addNewUser(u);
         }
