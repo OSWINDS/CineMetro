@@ -86,10 +86,7 @@ public class User {
      */
     public boolean checkPassword(String pass)
     {
-        Log.i("pass", ""+pass);
-        Log.i("password", ""+this.password);
         String hash = encryptPassword(pass);
-        Log.i("hash", ""+hash);
         return hash.equals(this.password);
     }
 

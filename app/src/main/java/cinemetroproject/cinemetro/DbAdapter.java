@@ -588,16 +588,22 @@ final class DbAdapter {
                         public void done(ParseUser user, ParseException e) {
                             if (user != null) {
                                 addUserFromParse(username, password);
-                                String stations = userList.get(0).getString("redLineStations");
-                                Log.i("redLineStations", stations);
+                                //String stations = userList.get(0).getString("redLineStations");
+                                ArrayList<Float> stations = new ArrayList<Float>();
+                                stations = user.getList("redLineStations");
+                                for (float f : stations)
+                                {
+                                    Log.i("f", ""+f);
+                                }
+                               // Log.i("redLineStations", stations);
                                 //addRatingsFromString(username, stations, 0);
 
-                                stations = userList.get(0).getString("blueLineStations");
-                                Log.i("blueLineStations", stations);
+                                //stations = userList.get(0).getString("blueLineStations");
+                               // Log.i("blueLineStations", stations);
                                 //addRatingsFromString(username, stations, getStationByRoute(0).size());
 
-                                stations = userList.get(0).getString("greenLineStations");
-                                Log.i("greenLineStations", stations);
+                                //stations = userList.get(0).getString("greenLineStations");
+                               // Log.i("greenLineStations", stations);
                                 //addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
                             } else {
                             }
