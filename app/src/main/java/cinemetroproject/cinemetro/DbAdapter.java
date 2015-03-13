@@ -7,8 +7,12 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 
 /**
@@ -571,25 +575,31 @@ final class DbAdapter {
     /**
      * Get the user ratings from parse for a specific user and for each one add them to the db
      */
-    private void getUserFromParse(final String username) {
+    private void getUserFromParse(final String username, final String password) {
 
         //query parse to get the user
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("username", username);
         query.setLimit(1);
         query.findInBackground(new FindCallback<ParseUser>() {
-            public void done(List<ParseUser> userList, ParseException e) {
+            public void done(final List<ParseUser> userList, ParseException e) {
                 if (userList.size() > 0) {
-                    Log.i("Parse pass",""+userList.get(0).getString("password"));
-                    addUserFromParse(username,userList.get(0).getString("password"));
-                    String stations = userList.get(0).getString("redLineStations");
-                    //addRatingsFromString(username, stations, 0);
+                    ParseUser.logInInBackground(username, encryptPassword(password) , new LogInCallback() {
+                        public void done(ParseUser user, ParseException e) {
+                            if (user != null) {
+                                addUserFromParse(username, password);
+                                String stations = userList.get(0).getString("redLineStations");
+                                //addRatingsFromString(username, stations, 0);
 
-                    stations = userList.get(0).getString("blueLineStations");
-                    //addRatingsFromString(username, stations, getStationByRoute(0).size());
+                                stations = userList.get(0).getString("blueLineStations");
+                                //addRatingsFromString(username, stations, getStationByRoute(0).size());
 
-                    stations = userList.get(0).getString("greenLineStations");
-                    //addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                                stations = userList.get(0).getString("greenLineStations");
+                                //addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                            } else {
+                            }
+                        }
+                    });
                 } else {
                 }
             }
@@ -599,8 +609,7 @@ final class DbAdapter {
     private void addUserFromParse(String username, String password)
     {
         if (this.getUserByUsername(username) == null) {
-            User u = new User(username);
-            u.setPassword(password);
+            User u = new User(username,password);
             this.addNewUser(u);
         }
     }
@@ -671,9 +680,11 @@ final class DbAdapter {
      * @param username
      * @return
      */
-    public boolean loginUser(String username)
+    public boolean loginUser(String username, String password)
     {
-        this.getUserFromParse(username);
+        this.getUserFromParse(username, password);
+        this.users.clear();
+        this.users = db.getAllUsers();
         if(this.getUserByUsername(username)!= null)
         {
             return true;
@@ -1754,4 +1765,36 @@ final class DbAdapter {
         return sts;
     }
 
+    private static String encryptPassword(String password)
+    {
+        String sha1 = "";
+        try
+        {
+            MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+            crypt.reset();
+            crypt.update(password.getBytes("UTF-8"));
+            sha1 = byteToHex(crypt.digest());
+        }
+        catch(NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        catch(UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+        }
+        return sha1;
+    }
+
+    private static String byteToHex(final byte[] hash)
+    {
+        Formatter formatter = new Formatter();
+        for (byte b : hash)
+        {
+            formatter.format("%02x", b);
+        }
+        String result = formatter.toString();
+        formatter.close();
+        return result;
+    }
 }
