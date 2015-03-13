@@ -519,6 +519,8 @@ final class DbAdapter {
      */
     public void updateUserToParse(User user) {
 
+        Log.i("Update","update to parse called");
+
         //initialize arrays for each line
         final ArrayList<Float> blueLineStations = new ArrayList<Float>();
         final ArrayList<Float> greenLineStations = new ArrayList<Float>();
@@ -582,6 +584,7 @@ final class DbAdapter {
     private void getUserFromParse(final String username, final String password) {
 
         //query parse to get the user
+        Log.i("Get user from parse","true");
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("username", username);
@@ -596,10 +599,8 @@ final class DbAdapter {
                                 JSONArray stations = new JSONArray();
                                 stations = user.getJSONArray("redLineStations");
                                 addRatingsFromArray(username, stations, 0);
-
                                 stations = user.getJSONArray("blueLineStations");
-                                addRatingsFromArray(username, stations, getStationByRoute(0).size());
-
+                                addRatingsFromArray(username, stations, getStationByRoute(1).size());
                                 stations = user.getJSONArray("greenLineStations");
                                 addTimelineRatingsFromArray(username, stations, 0);
                             } else {
@@ -630,6 +631,7 @@ final class DbAdapter {
      * @param previous_stations, the stations before this line, needed for the station_id param
      */
     private void addRatingsFromArray(String username, JSONArray stations, int previous_stations) {
+        Log.i("Ratings from array",""+previous_stations);
         int j = 1;
         for(int i=0; i<stations.length(); i++)
         {
@@ -644,6 +646,7 @@ final class DbAdapter {
                 if (getUserRatingForStation(station_id, username) == 0) {
                     this.addUserRating(station_id, username, rating);
                     this.addRating(station_id, rating);
+                    Log.i("rating",""+rating);
                 }
             }
             j++;
@@ -658,6 +661,7 @@ final class DbAdapter {
      * @param previous_stations, the stations before this line, needed for the station_id param
      */
     private void addTimelineRatingsFromArray(String username, JSONArray stations, int previous_stations) {
+        Log.i("timeline rating",""+previous_stations);
         int j = 1;
         for(int i=0; i<stations.length(); i++)
         {
@@ -672,6 +676,7 @@ final class DbAdapter {
                 if (getUserRatingForStation(station_id, username) == 0) {
                     this.addUserTimelineStationRating(station_id, username, rating);
                     this.addTimelineStationRating(station_id, rating);
+                    Log.i("rating",""+rating);
                 }
             }
             j++;
