@@ -115,7 +115,6 @@ public class LogIn extends ActionBarActivity {
         //if match, send Data to database
 
         boolean found=DbAdapter.getInstance().loginUser(user);
-        Log.i("Login.java","var found = " + found);
         if(!found){
             Toast.makeText(LogIn.this, R.string.user_not_exist, Toast.LENGTH_SHORT).show();
             readyToLogIn=false;

@@ -579,8 +579,8 @@ final class DbAdapter {
         query.setLimit(1);
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> userList, ParseException e) {
-                Log.i("userList from parse", "size = " userList.size());
                 if (userList.size() > 0) {
+                    Log.i("Parse pass",""+userList.get(0).getString("password"));
                     addUserFromParse(username,userList.get(0).getString("password"));
                     String stations = userList.get(0).getString("redLineStations");
                     //addRatingsFromString(username, stations, 0);
@@ -598,9 +598,7 @@ final class DbAdapter {
 
     private void addUserFromParse(String username, String password)
     {
-        Log.i("Entered Add user from parse","true");
         if (this.getUserByUsername(username) == null) {
-            Log.i("Add user from parse to db ","true");
             User u = new User(username);
             u.setPassword(password);
             this.addNewUser(u);
@@ -675,13 +673,11 @@ final class DbAdapter {
      */
     public boolean loginUser(String username)
     {
-        Log.i("loginUser dbAdapter", "var username =" + username);
         this.getUserFromParse(username);
         if(this.getUserByUsername(username)!= null)
         {
             return true;
         }
-        Log.i("loginUser dbAdapter", "var login = false" );
         return false;
     }
 
