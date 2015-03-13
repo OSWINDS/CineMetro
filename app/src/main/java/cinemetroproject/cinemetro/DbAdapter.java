@@ -519,6 +519,8 @@ final class DbAdapter {
      */
     public void updateUserToParse(User user) {
 
+        this.getUserFromParse(user.getUsername(), user.getPassword());
+
         //initialize arrays for each line
         final ArrayList<Float> blueLineStations = new ArrayList<Float>();
         final ArrayList<Float> greenLineStations = new ArrayList<Float>();
@@ -649,7 +651,7 @@ final class DbAdapter {
     }
 
     /**
-     * adds to the db the ratings of this user for the stations from string
+     * adds to the db the ratings of this user for the timeline stations from string
      *
      * @param username
      * @param stations
