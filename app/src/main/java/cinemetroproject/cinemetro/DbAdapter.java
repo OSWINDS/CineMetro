@@ -7,6 +7,9 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.security.MessageDigest;
@@ -585,15 +588,15 @@ final class DbAdapter {
             public void done(final List<ParseUser> userList, ParseException e) {
                 if (userList.size() > 0) {
                     ParseUser.logInInBackground(username, encryptPassword(password) , new LogInCallback() {
-                        public void done(ParseUser user, ParseException e) {
+                        public void done(ParseUser user, ParseException e) throws JSONException {
                             if (user != null) {
                                 addUserFromParse(username, password);
                                 //String stations = userList.get(0).getString("redLineStations");
-                                ArrayList<Float> stations = new ArrayList<Float>();
-                                stations = (ArrayList<Float>) user.getList("redLineStations");
-                                for (Float f : stations)
+                                JSONArray stations = new JSONArray();
+                                stations = user.getJSONArray("redLineStations");
+                                for(int i=0;i<stations.length();i++)
                                 {
-                                    Log.i("f", ""+f);
+                                    Log.i("redLineStations", stations.get(i).toString());
                                 }
                                // Log.i("redLineStations", stations);
                                 //addRatingsFromString(username, stations, 0);
