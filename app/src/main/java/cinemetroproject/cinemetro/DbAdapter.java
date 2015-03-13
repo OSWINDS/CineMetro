@@ -721,6 +721,10 @@ final class DbAdapter {
      */
     public boolean loginUser(String username, String password)
     {
+        if(this.getUserByUsername(username)!= null)
+        {
+            return true;
+        }
         this.getUserFromParse(username, password);
         this.users.clear();
         this.users = db.getAllUsers();
