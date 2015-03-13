@@ -600,7 +600,7 @@ final class DbAdapter {
                                 addRatingsFromArray(username, stations, getStationByRoute(0).size());
 
                                 stations = user.getJSONArray("greenLineStations");
-                                addRatingsFromArray(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                                addTimelineRatingsFromArray(username, stations, 0);
                             } else {
                             }
                         }
@@ -642,6 +642,33 @@ final class DbAdapter {
                 int station_id = previous_stations + j;
                 if (getUserRatingForStation(station_id, username) == 0) {
                     this.addUserRating(station_id, username, rating);
+                }
+            }
+            j++;
+        }
+    }
+
+    /**
+     * adds to the db the ratings of this user for the stations from string
+     *
+     * @param username
+     * @param stations
+     * @param previous_stations, the stations before this line, needed for the station_id param
+     */
+    private void addTimelineRatingsFromArray(String username, JSONArray stations, int previous_stations) {
+        int j = 1;
+        for(int i=0; i<stations.length(); i++)
+        {
+            float rating = 0;
+            try {
+                rating = Float.parseFloat(stations.get(i).toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (rating != 0) {
+                int station_id = previous_stations + j;
+                if (getUserRatingForStation(station_id, username) == 0) {
+                    this.addUserTimelineStationRating(station_id, username, rating);
                 }
             }
             j++;
