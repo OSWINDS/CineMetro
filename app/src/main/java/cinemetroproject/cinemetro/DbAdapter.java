@@ -632,7 +632,12 @@ final class DbAdapter {
         int j = 1;
         for(int i=0; i<stations.length(); i++)
         {
-            float rating = Float.parseFloat(stations.get(i).toString());
+            float rating = 0;
+            try {
+                rating = Float.parseFloat(stations.get(i).toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             if (rating != 0) {
                 int station_id = previous_stations + j;
                 if (getUserRatingForStation(station_id, username) == 0) {
