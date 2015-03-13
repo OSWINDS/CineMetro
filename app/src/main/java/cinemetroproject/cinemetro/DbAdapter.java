@@ -590,8 +590,8 @@ final class DbAdapter {
                                 addUserFromParse(username, password);
                                 //String stations = userList.get(0).getString("redLineStations");
                                 ArrayList<Float> stations = new ArrayList<Float>();
-                                stations = user.getList("redLineStations");
-                                for (float f : stations)
+                                stations = (ArrayList<Float>) user.getList("redLineStations");
+                                for (Float f : stations)
                                 {
                                     Log.i("f", ""+f);
                                 }
