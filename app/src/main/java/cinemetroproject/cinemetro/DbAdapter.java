@@ -3,6 +3,7 @@ package cinemetroproject.cinemetro;
 import android.util.Log;
 
 import com.parse.FindCallback;
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -587,32 +588,36 @@ final class DbAdapter {
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(final List<ParseUser> userList, ParseException e) {
                 if (userList.size() > 0) {
-                    ParseUser.logInInBackground(username, encryptPassword(password) , new LogInCallback() {
-                        public void done(ParseUser user, ParseException e) throws JSONException {
+                    ParseUser.logInInBackground(username, encryptPassword(password), new LogInCallback() {
+                        public void done(ParseUser user, ParseException e){
                             if (user != null) {
                                 addUserFromParse(username, password);
                                 //String stations = userList.get(0).getString("redLineStations");
                                 JSONArray stations = new JSONArray();
                                 stations = user.getJSONArray("redLineStations");
-                                for(int i=0;i<stations.length();i++)
-                                {
-                                    Log.i("redLineStations", stations.get(i).toString());
+                                for (int i = 0; i < stations.length(); i++) {
+                                    try {
+                                        Log.i("redLineStations", stations.get(i).toString());
+                                    } catch (JSONException e1) {
+                                        e1.printStackTrace();
+                                    }
                                 }
-                               // Log.i("redLineStations", stations);
+                                // Log.i("redLineStations", stations);
                                 //addRatingsFromString(username, stations, 0);
 
                                 //stations = userList.get(0).getString("blueLineStations");
-                               // Log.i("blueLineStations", stations);
+                                // Log.i("blueLineStations", stations);
                                 //addRatingsFromString(username, stations, getStationByRoute(0).size());
 
                                 //stations = userList.get(0).getString("greenLineStations");
-                               // Log.i("greenLineStations", stations);
+                                // Log.i("greenLineStations", stations);
                                 //addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
                             } else {
                             }
                         }
                     });
-                } else {
+                }
+                else {
                 }
             }
         });
