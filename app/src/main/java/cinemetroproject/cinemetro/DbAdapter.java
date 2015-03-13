@@ -582,13 +582,13 @@ final class DbAdapter {
                 if (userList.size() > 0) {
                     addUserFromParse(username,userList.get(0).getString("password"));
                     String stations = userList.get(0).getString("redLineStations");
-                    addRatingsFromString(username, stations, 0);
+                    //addRatingsFromString(username, stations, 0);
 
                     stations = userList.get(0).getString("blueLineStations");
-                    addRatingsFromString(username, stations, getStationByRoute(0).size());
+                    //addRatingsFromString(username, stations, getStationByRoute(0).size());
 
                     stations = userList.get(0).getString("greenLineStations");
-                    addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                    //addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
                 } else {
                 }
             }
