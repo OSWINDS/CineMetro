@@ -65,6 +65,11 @@ public class User {
         }
     }
 
+    public void setPassword(String pass)
+    {
+        this.password = pass;
+    }
+
     /***************************************************************
      * Other Functions
      ***************************************************************/

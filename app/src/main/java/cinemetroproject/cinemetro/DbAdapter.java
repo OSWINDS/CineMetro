@@ -571,16 +571,16 @@ final class DbAdapter {
     /**
      * Get the user ratings from parse for a specific user and for each one add them to the db
      */
-    private void getUserFromParse(final User user) {
-        final String username = user.getUsername();
+    private void getUserFromParse(final String username) {
 
         //query parse to get the user
         ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereEqualTo("username", user.getUsername());
+        query.whereEqualTo("username", username);
         query.setLimit(1);
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> userList, ParseException e) {
                 if (userList.size() > 0) {
+                    addUserFromParse(username,userList.get(0).getString("password"));
                     String stations = userList.get(0).getString("redLineStations");
                     addRatingsFromString(username, stations, 0);
 
@@ -594,6 +594,15 @@ final class DbAdapter {
             }
         });
 
+    }
+
+    private void addUserFromParse(String username, String password)
+    {
+        if (this.getUserByUsername(username) == null) {
+            User u = new User(username, password);
+            u.setPassword(password);
+            this.addNewUser(u);
+        }
     }
 
 
@@ -655,6 +664,21 @@ final class DbAdapter {
             sum += ratings[i];
         }
         return sum;
+    }
+
+    /**
+     * Returns true if the User u exists so it can continue with the login
+     * @param username
+     * @return
+     */
+    public boolean loginUser(String username)
+    {
+        this.getUserFromParse(username);
+        if(this.getUserByUsername(username)!= null)
+        {
+            return true;
+        }
+        return false;
     }
 
     /**
