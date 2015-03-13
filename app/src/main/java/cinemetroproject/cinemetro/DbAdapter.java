@@ -592,26 +592,15 @@ final class DbAdapter {
                         public void done(ParseUser user, ParseException e){
                             if (user != null) {
                                 addUserFromParse(username, password);
-                                //String stations = userList.get(0).getString("redLineStations");
                                 JSONArray stations = new JSONArray();
                                 stations = user.getJSONArray("redLineStations");
-                                for (int i = 0; i < stations.length(); i++) {
-                                    try {
-                                        Log.i("redLineStations", stations.get(i).toString());
-                                    } catch (JSONException e1) {
-                                        e1.printStackTrace();
-                                    }
-                                }
-                                // Log.i("redLineStations", stations);
-                                //addRatingsFromString(username, stations, 0);
+                                addRatingsFromArray(username, stations, 0);
 
-                                //stations = userList.get(0).getString("blueLineStations");
-                                // Log.i("blueLineStations", stations);
-                                //addRatingsFromString(username, stations, getStationByRoute(0).size());
+                                stations = user.getJSONArray("blueLineStations");
+                                addRatingsFromArray(username, stations, getStationByRoute(0).size());
 
-                                //stations = userList.get(0).getString("greenLineStations");
-                                // Log.i("greenLineStations", stations);
-                                //addRatingsFromString(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
+                                stations = user.getJSONArray("greenLineStations");
+                                addRatingsFromArray(username, stations, getStationByRoute(0).size() + getStationByRoute(1).size());
                             } else {
                             }
                         }
@@ -639,20 +628,18 @@ final class DbAdapter {
      * @param stations
      * @param previous_stations, the stations before this line, needed for the station_id param
      */
-    private void addRatingsFromString(String username, String stations, int previous_stations) {
-        stations = stations.replace("[", "");
-        stations = stations.replace("]", "");
-        String[] numbers = stations.split(",");
-        int i = 1;
-        for (String number : numbers) {
-            float rating = Float.parseFloat(number);
+    private void addRatingsFromArray(String username, JSONArray stations, int previous_stations) {
+        int j = 1;
+        for(int i=0; i<stations.length(); i++)
+        {
+            float rating = Float.parseFloat(stations.get(i).toString());
             if (rating != 0) {
-                int station_id = previous_stations + i;
+                int station_id = previous_stations + j;
                 if (getUserRatingForStation(station_id, username) == 0) {
                     this.addUserRating(station_id, username, rating);
                 }
             }
-            i++;
+            j++;
         }
     }
 
