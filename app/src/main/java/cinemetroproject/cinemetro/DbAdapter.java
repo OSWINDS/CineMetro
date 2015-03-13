@@ -671,7 +671,7 @@ final class DbAdapter {
                 int station_id = previous_stations + j;
                 if (getUserRatingForStation(station_id, username) == 0) {
                     this.addUserTimelineStationRating(station_id, username, rating);
-                    this.addRating(station_id, rating);
+                    this.addTimelineStationRating(station_id, rating);
                 }
             }
             j++;
