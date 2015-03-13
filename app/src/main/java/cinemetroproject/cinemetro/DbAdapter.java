@@ -519,8 +519,6 @@ final class DbAdapter {
      */
     public void updateUserToParse(User user) {
 
-        this.getUserFromParse(user.getUsername(), user.getPassword());
-
         //initialize arrays for each line
         final ArrayList<Float> blueLineStations = new ArrayList<Float>();
         final ArrayList<Float> greenLineStations = new ArrayList<Float>();
@@ -584,6 +582,7 @@ final class DbAdapter {
     private void getUserFromParse(final String username, final String password) {
 
         //query parse to get the user
+
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("username", username);
         query.setLimit(1);
@@ -644,6 +643,7 @@ final class DbAdapter {
                 int station_id = previous_stations + j;
                 if (getUserRatingForStation(station_id, username) == 0) {
                     this.addUserRating(station_id, username, rating);
+                    this.addRating(station_id, rating);
                 }
             }
             j++;
@@ -671,6 +671,7 @@ final class DbAdapter {
                 int station_id = previous_stations + j;
                 if (getUserRatingForStation(station_id, username) == 0) {
                     this.addUserTimelineStationRating(station_id, username, rating);
+                    this.addRating(station_id, rating);
                 }
             }
             j++;
