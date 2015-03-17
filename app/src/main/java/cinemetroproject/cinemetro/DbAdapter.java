@@ -774,8 +774,8 @@ final class DbAdapter {
                         "Στην ευρύτερη περιοχή της πλατείας χτίστηκαν αρκετά σινεμά όπως: Σπλέντιντ (μετέπειτα Ίλιον), Πάνθεον, " +
                         "Αττικόν και Ολύμπιον (στη σημερινή οδό Μοναστηρίου), καθώς αργότερα και τα πορνό σινεμά της πλατείας." +
                 "\n Η μνήμη των λαικών σινεμάδων του " +
-                        "Βαρδαρίου (“των αγιασμένων τόπων” όπως αναφέρει) διασώζεται περίτεχνα απο τις " +
-                        "αφηγήσεις στα πεζογραφήματα του συγγραφέα Γ. Ιώαννου αλλά και σε πίνακες του " +
+                        "Βαρδαρίου («των αγιασμένων τόπων» όπως αναφέρει) διασώζεται περίτεχνα απο τις " +
+                        "αφηγήσεις στα πεζογραφήματα του συγγραφέα Γ. Ιωάννου αλλά και σε πίνακες του " +
                         "ζωγράφου Λουκά Βενετούλια με θέμα το αστικό τοπίο της Πλατείας. \n",
                 1, 40.641142, 22.934721));
         this.db.addStation(new Station("Παραλία 1 (Λιμάνι)",
@@ -784,25 +784,25 @@ final class DbAdapter {
                         "Στο λιμάνι λειτουργεί σήμερα το Μουσείο Κινηματογράφου και η Ταινιοθήκη Θεσσαλονίκης, όπως και οι τέσσερις" +
                         " αίθουσες προβολών του φεστιβάλ.\n" +
                         "\n" +
-                        "Ταινίες που γυρίστηκαν εδώ (ενδεικτική αναφορά): <<Το Λιβάδι που δακρύζει>>, <<Ταξίδι στα Κύθηρα>>, <<Τοπίο στην Ομίχλη>>," +
-                        " <<Ο Κλοιός>>.",
+                        "Ταινίες που γυρίστηκαν εδώ (ενδεικτική αναφορά): «Το Λιβάδι που δακρύζει», «Ταξίδι στα Κύθηρα», «Τοπίο στην Ομίχλη»," +
+                        " «Ο Κλοιός».",
                 1, 40.635650, 22.935431));
         this.db.addStation(new Station("Παραλία 2 (Λεωφόρος Νίκης)",
                 "Στην Λεωφόρο Νίκης δημιουργείται η πρώτη κινηματογραφική αίθουσα στα Βαλκάνια, το Ολύμπια (1903). \n" +
                         "\n" +
                         "Εδώ λειτουργεί από το 1911 ο κινηματογράφος Πατέ με ταινίες της ομώνυμης γαλλικής εταιρείας παραγωγής.\n" +
                         "\n" +
-                        "Ελληνικές ταινίες που γυρίστηκαν στην Παραλία (ενδεικτική αναφορά): <<Μια Αιωνιότητα και μια μέρα>>, <<Ρ20>>, <<Όλα είναι δρόμος>>.",
+                        "Ελληνικές ταινίες που γυρίστηκαν στην Παραλία (ενδεικτική αναφορά): «Μια αιωνιότητα και μια μέρα», «Ρ20», «Όλα είναι δρόμος».",
                 1, 40.630440, 22.942912));
         this.db.addStation(new Station("Πλατεία Αριστοτέλους",
                 "Κατά τη δεκαετία του ’50 η πλατεία μετρούσε 6 θερινά σινεμά (Ρεξ, Ηλύσια, Ελληνίς, Αιγαίο, Ρίο και Ζέφυρος). \n" +
                         "\n" +
                         "Εδώ βρίσκεται και σήμερα η σημερινή έδρα του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης, το κινηματοθέατρο Ολύμπιον. \n" +
                         "\n" +
-                        "Μοναδικό στο είδος του επίσης το πλωτό θερινό σινεμά με την ονομασία Κουρσάλ (ή κατ΄άλλους Τζερουσαλέμ) που λειτούρησε " +
-                        "μεσοπολεμικά με βάση του την παλιά παραλία της πόλης.\n" +
+                        "Μοναδικό στο είδος του επίσης το πλωτό θερινό σινεμά με την ονομασία Κούρσαλ (ή κατ’ άλλους Τζερουσαλέμ) " +
+                        "που λειτούργησε μεσοπολεμικά με βάση του την παλιά παραλία της πόλης.\n" +
                         "\n" +
-                        "Ταινίες που γυρίστηκαν εδώ (ενδεικτική αναφορά): <<Μια Αιωνιότητα και μια Ημέρα>>, <<Φανέλα με το 9>>, <<Γεννέθλια Πόλη>>, <<Ατσίδας>>.",
+                        "Ταινίες που γυρίστηκαν εδώ (ενδεικτική αναφορά): «Μια αιωνιότητα και μια μέρα», «Η φανέλα με το 9», «Γενέθλια πόλη», «Ο ατσίδας».",
                 1, 40.632804, 22.941331));
         this.db.addStation(new Station("Κέντρο " + " (Αγίας Σοφίας-Αλ. Σβώλου)",
                 "Μια περιοχή με πολλούς κινηματογράφους: Διονύσια (Αγίας Σοφίας), Έσπερος και Ριβολί (Αλ.Σβώλου), Μακεδονικόν (Φιλ.Εταιρείας) . \n" +
@@ -842,9 +842,9 @@ final class DbAdapter {
                         "(TISFF).\n" +
                         "\n" +
                         "Η Νέα Παραλία, όπως και ο Λευκός Πύργος, αποτέλεσαν επίσης εξαιρετικό σκηνικό φόντο για αρκετές ταινίες του " +
-                        "παλιού αλλά και του νέου ελληνικού κινηματογράφου (ενδεικτική αναφορά): <<Ο Φάκελος Πολκ στον αέρα>>, <<Κάτι να καίει>>," +
-                        " <<Το βλέμμα του Οδυσσέα>>, <<Μια Αιωνιότητα και μια μέρα>>, <<Το Λιβάδι που δακρύζει>>, <<Γεννέθλια πόλη>>, <<Παρένθεση>>, " +
-                        "<<Χώμα και νερό>>.",
+                        "παλιού αλλά και του νέου ελληνικού κινηματογράφου (ενδεικτική αναφορά): «Ο φάκελος Πολκ στον αέρα», «Κάτι να καίει»," +
+                        " «Το βλέμμα του Οδυσσέα», «Μια αιωνιότητα και μια μέρα», «Το Λιβάδι που δακρύζει», «Γενέθλια πόλη», «Παρένθεση», " +
+                        "«Χώμα και νερό».",
                 1, 40.62638, 22.948306));
 
         //Line 2
@@ -876,7 +876,7 @@ final class DbAdapter {
                         "\n" +
                         "Ταινία εξ ολοκλήρου γυρισμένη στη Θεσσαλονίκη: Πανόραμα, περιοχή Ανθέων, πλατεία Αριστοτέλους.\n" +
                         "\n" +
-                        "Μεταφορά του θεατρικού έργου του Δ. Ψαθά “Εξοχικόν Κέντρον ο Έρως.",
+                        "Μεταφορά του θεατρικού έργου του Δ. Ψαθά Εξοχικόν Κέντρον ο Έρως.",
                 2, 40.632804, 22.941331));
         this.db.addStation(new Station("Κάτι να καίει (1964)",
                 "Σκηνοθεσία: Γιάννης Δαλιανίδης\n" +
@@ -902,13 +902,13 @@ final class DbAdapter {
                         "\n" +
                         "Ένα ταξίδι με τρένο, μια στάση με ολιγόωρη καθυστέρηση, ένας δυνατός έρωτας δύο ανθρώπων, μια παρένθεση. \n" +
                         "\n" +
-                        "Βασισμένη στο θεατρικό έργο του Νοέλ Κάουαρντ “Ασάλευτη Ζωή”.\n" +
+                        "Βασισμένη στο θεατρικό έργο του Νοέλ Κάουαρντ «Ασάλευτη Ζωή».\n" +
                         "\n" +
                         "Η ταινία κέρδισε τέσσερα βραβεία στο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης.\n" +
                         "\n" +
                         "Η ταινία γυρίστηκε στο νέο Σιδηροδρομικό Σταθμό, στη Νέα Παραλία Θεσσαλονίκης και στην περιοχή Αρετσού (Ν. Κρήνη).",
                 2, 40.6223568, 22.9512486));
-        this.db.addStation(new Station("Η Φανέλλα με το εννιά (1987)",
+        this.db.addStation(new Station("Η φανέλα με το 9 (1987)",
                 "Σκηνοθεσία: Παντελής Βούλγαρης\n" +
                         "\n" +
                         "Παίζουν: Στράτος Τζώρτζογλου, Θέμις Μπαζάκα\n" +
@@ -923,10 +923,10 @@ final class DbAdapter {
                         "\n" +
                         "2 βραβεία στο Φεστιβάλ Θεσσαλονίκης.\n" +
                         "\n" +
-                        "Ο πρωταγωνιστής της ταινίας Στράτος Τζώρτζογλου την ίδια χρονιά θα συμμετείχε στα γυρίσματα της ταινίας " +
-                        "του Θόδωρου Αγγελόπουλου “Τοπίο στην ομίχλη” που γίνονταν στη Θεσσαλονίκη.",
+                        "Ο πρωταγωνιστής της ταινίας Στράτος Τζώρτζογλου την ίδια χρονιά θα συμμετάσχει στα γυρίσματα της ταινίας του " +
+                        "Θόδωρου Αγγελόπουλου «Τοπίο στην ομίχλη», που γίνονται στη Θεσσαλονίκη.",
                 2, 40.632804, 22.941331));
-        this.db.addStation(new Station("Μια Αιωνιότητα και μια μέρα (1998)",
+        this.db.addStation(new Station("Μια αιωνιότητα και μια μέρα (1998)",
                 "Σκηνοθεσία: Θόδωρος Αγγελόπουλος\n" +
                         "\n" +
                         "Παίζουν: Μπρούνο Γκαντζ, Ιζαμπέλ Ρενό, Φαμπρίτσιο Μπενιβόλιο\n" +
@@ -937,7 +937,7 @@ final class DbAdapter {
                         "\n" +
                         "Γυρισμένη σε αρχοντικό της Βασιλίσσης Όλγας, στην παλιά Παραλία, στην πλατεία Αριστοτέλους και σε σημεία της οδού Τσιμισκή. \n" +
                         "\n" +
-                        "Ο Θόδωρος Αγγελόπουλος γύρισε στη Θεσσαλονίκη τέσσερις ταινίες (μέρος τους ή εξ ολοκλήρου). Η <<Αιωνιότητα και μια μέρα>> γυρίστηκε εξ ολοκλήρου στην πόλη.\n" +
+                        "Ο Θόδωρος Αγγελόπουλος γύρισε στη Θεσσαλονίκη τέσσερις ταινίες (μέρος τους ή εξ ολοκλήρου). Η ταινία «Μια αιωνιότητα και μια μέρα» γυρίστηκε εξ ολοκλήρου στην πόλη.\n" +
                         "\n" +
                         "Χρυσός Φοίνικας στο Φεστιβάλ των Καννών του 1998.",
                 2, 40.6148604, 22.954036));
@@ -965,7 +965,7 @@ final class DbAdapter {
                         "\n" +
                         "Σάτιρα θεσσαλονικιώτικων και βορειοελλαδικών κλισέ της μεταπολίτευσης με πολύ χιούμορ. \n" +
                         "\n" +
-                        "Τόποι γυρισμάτων: Θεολογική Σχολή ΑΠΘ, νέο Δημαρχειακό Μέγαρο, Λευκός Πύργος, ΟΣΕ, Τούμπα, Σεϊχ Σου. \n" +
+                        "Τόποι γυρισμάτων: Θεολογική Σχολή ΑΠΘ, νέο Δημαρχειακό Μέγαρο, Λευκός Πύργος, ΟΣΕ, Τούμπα, Σέιχ Σου.\n" +
                         "\n" +
                         "Βραβείο κοινού στο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης.",
                 2, 40.6308363, 22.9543887));
@@ -990,7 +990,7 @@ final class DbAdapter {
                         "\n" +
                         "Ταινία εξ ολοκλήρου γυρισμένη στη Θεσσαλονίκη: Πανόραμα, περιοχή Ανθέων, πλατεία Αριστοτέλους.\n" +
                         "\n" +
-                        "Μεταφορά του θεατρικού έργου του Δ. Ψαθά “Εξοχικόν Κέντρον ο Έρως”.",
+                        "Μεταφορά του θεατρικού έργου του Δ. Ψαθά «Εξοχικόν Κέντρον ο Έρως».",
                 "Ντίνος Ηλιόπουλος, Ζωή Λάσκαρη, Παντελής Ζερβός, Στέφανος Στρατηγός",
                 "Γιάννης Δαλιανίδης", "1961"));
         this.db.addMovie(new Movie(10, "Κάτι να καίει (1964)",
@@ -1006,14 +1006,14 @@ final class DbAdapter {
         this.db.addMovie(new Movie(11, "Παρένθεση (1968)",
                 "Ένα ταξίδι με τρένο, μια στάση με ολιγόωρη καθυστέρηση, ένας δυνατός έρωτας δύο ανθρώπων, μια παρένθεση. \n" +
                         "\n" +
-                        "Βασισμένη στο θεατρικό έργο του Νοέλ Κάουαρντ “Ασάλευτη Ζωή”.\n" +
+                        "Βασισμένη στο θεατρικό έργο του Νοέλ Κάουαρντ «Ασάλευτη Ζωή».\n" +
                         "\n" +
                         "Η ταινία κέρδισε τέσσερα βραβεία στο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης.\n" +
                         "\n" +
                         "Η ταινία γυρίστηκε στο νέο Σιδηροδρομικό Σταθμό, στη Νέα Παραλία Θεσσαλονίκης και στην περιοχή Αρετσού (Ν. Κρήνη).",
                 "Αλεξάνδρα Λαδικού, Άγγελος Αντωνόπουλος",
                 "Τάκης Κανελλόπουλος", "1968"));
-        this.db.addMovie(new Movie(12, "Η Φανέλλα με το εννιά (1987)",
+        this.db.addMovie(new Movie(12, "Η φανέλα με το 9 (1987)",
                 "Η πορεία ενός ταλαντούχου ποδοσφαιριστή, ο οποίος μέσα από νίκες και ήττες, τραυματισμούς και παρασκήνιο, " +
                         "θα καταλάβει ότι η επιτυχία έχει το τίμημά της. \n" +
                         "\n" +
@@ -1023,15 +1023,15 @@ final class DbAdapter {
                         "\n" +
                         "Η ταινία κέρδισε 2 βραβεία στο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης.\n" +
                         "\n" +
-                        "Ο πρωταγωνιστής της ταινίας Στράτος Τζώρτζογλου την ίδια χρονιά θα συμμετέχει στα γυρίσματα της ταινίας του Θόδωρου Αγγελόπουλου <<Τοπίο στην Ομίχλη>> που γίνονταν στη Θεσσαλονίκη.",
+                        "Ο πρωταγωνιστής της ταινίας Στράτος Τζώρτζογλου την ίδια χρονιά θα συμμετέχει στα γυρίσματα της ταινίας του Θόδωρου Αγγελόπουλου «Τοπίο στην Ομίχλη» που γίνονταν στη Θεσσαλονίκη.",
                 "Στράτος Τζώρτζογλου, Θέμις Μπαζάκα",
                 "Παντελής Βούλγαρης", "1987"));
-        this.db.addMovie(new Movie(13, "Μια Αιωνιότητα και μια μέρα (1998)",
+        this.db.addMovie(new Movie(13, "Μια αιωνιότητα και μια μέρα (1998)",
                 "Ένας μεσήλικας συγγραφέας, που ασχολείται με το έργο του Δ. Σολωμού, αναζητάει τις αναμνήσεις μιας ζωής σε μια περιπλάνηση μιας ημέρας. \n" +
                         "\n" +
                         "Γυρισμένη σε αρχοντικό της Βασιλίσσης Όλγας, στην παλιά Παραλία, στην πλατεία Αριστοτέλους και σε σημεία της οδού Τσιμισκή. \n" +
                         "\n" +
-                        "Ο Θόδωρος Αγγελόπουλος γύρισε στην Θεσσαλονίκη τέσσερις ταινίες (μέρος τους ή εξ ολοκλήρου).Η «Αιωνιότητα και μια μέρα» γυρίστηκε εξ ολοκλήρου στην πόλη. \n" +
+                        "Ο Θόδωρος Αγγελόπουλος γύρισε στην Θεσσαλονίκη τέσσερις ταινίες (μέρος τους ή εξ ολοκλήρου).Η ταινία «Μια αιωνιότητα και μια μέρα» γυρίστηκε εξ ολοκλήρου στην πόλη. \n" +
                         "\n" +
                         "Χρυσός Φοίνικας στο Φεστιβάλ των Καννών του 1998.",
                 "Μπρούνο Γκαντζ, Ιζαμπέλ Ρενό, Φαμπρίτσιο Μπενιβόλιο",
@@ -1194,12 +1194,9 @@ final class DbAdapter {
         this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-\n" + "Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)", 40.6271087, 22.9497383));
         //Milestones
         this.db.addMilestone(new Milestone(1, "1964", "5η Εβδομάς Ελληνικού Κινηματογράφου (1964): Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
-                "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά την επόμενη δεκαετία. 1964)", "theatesems", "Θεατές στην Εταιρεία Μακεδονικών Σπουδών"));
-        this.db.addMilestone(new Milestone(1, "1966", "7ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1966): Ο παραγωγός Τζεϊμς Πάρις, εμβληματική μορφή του Φεστιβάλ κατά την περίοδο 1966-1972," +
-                " «κατεβάζει» άνα τανκ στην πλατεία του Λευκού Πύργου για διαφημιστικούς σκοπούς της ταινίας «Ξεχασμένοι ήρωες», σε δική" +
-                " του παραγωγή. \n" +
-                "Οι εκπλήξεις συνεχίζονται και μέσα στην αίθουσα, 'οπου οι 1.500 θεατές βρίσκουν στη θέση τους από ένα πακέτο " +
-                "τσιγάρα, δώρο του παραγωγού στο κοινό.", "paris_ems", "Οι Γιώργος Τζαβέλλας και Τζαίημς Πάρις σε φεστιβαλική προβολή στην ΕΜΣ"));
+                "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά την επόμενη δεκαετία.)", "theatesems", "Θεατές στην Εταιρεία Μακεδονικών Σπουδών"));
+        this.db.addMilestone(new Milestone(1, "1966", "7ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1966): Ο παραγωγός Τζέιμς Πάρις «κατεβάζει» ένα τανκ στους δρόμους της Θεσσαλονίκης για διαφημιστικούς σκοπούς, προκειμένου να προωθήσει την ταινία «Ξεχασμένοι ήρωες», της οποίας είναι παραγωγός. Σύμφωνα με τα ρεπορτάζ, ο Πάρις παρατάσσει έξω από την είσοδο της ΕΜΣ μια διμοιρία στρατιωτών, με το αιτιολογικό ότι η ταινία του έχει πατριωτικό χαρακτήρα. Λίγο πριν από την έναρξη της ταινίας, ένα τανκ εισβάλλει στην πλατεία του Λευκού Πύργου, ακολουθούμενο από πολυτελές αυτοκίνητο, με επιβάτες τον παραγωγό και τους πρωταγωνιστές της ταινίας. Οι εκπλήξεις συνεχίζονται και μέσα στην αίθουσα, όπου οι 1.500 θεατές βρίσκουν στη θέση τους από ένα πακέτο τσιγάρα, δώρο του παραγωγού στο κοινό.",
+                "paris_ems", "Οι Γιώργος Τζαβέλλας και Τζαίημς Πάρις σε φεστιβαλική προβολή στην ΕΜΣ"));
         this.db.addMilestone(new Milestone(1, "1970", "11ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1970): Εμφανίζεται στο φεστιβάλ το δυναμικό νεανικό κοινό του " +
                 "–ο λεγόμενος «Β΄εξώστης», ο οποίος θα διαδραματίσει σημαντικό ρόλο στη διοργάνωση τα επόμενα χρόνια.  \n" +
                 "\n" +
@@ -1226,8 +1223,8 @@ final class DbAdapter {
         //Milestones
 
         this.db.addMilestone(new Milestone(2, "1963",
-                "Το Σινέ Αλέξανδρος, βρίσκεται κάτω απο την Λέσχη Αξιωματικών Θεσσαλονίκης, γειτνίαζε με την ΕΜΣ, έδρα " +
-                        "του Φεστιβάλ επί πολλά χρόνια, και αποτέλεσε χώρο αρκετών προβολών και δράσεων μεταξύ των οποίων προβολές " +
+                "Το Σινέ Αλέξανδρος βρίσκεται κάτω απο την Λέσχη Αξιωματικών Θεσσαλονίκης, γειτνίαζε με την ΕΜΣ, έδρα " +
+                        "του Φεστιβάλ επί πολλά χρόνια, και αποτέλεσε χώρο αρκετών προβολών και δράσεων, μεταξύ των οποίων προβολές " +
                         "ταινιών μικρού μήκους." + "\n" +
                         "Εδώ βρίσκεται και ένα γλυπτό μνημείο του σκηνοθέτη Τάκη Κανελλόπουλου, ο οποίος " +
                         "συνέδεσε το όνομα του με το Φεστιβάλ Θεσσαλονίκης και το τότε στέκι των φεστιβαλιστών, το Ντορέ.", "cinealexandros02",
@@ -1265,11 +1262,11 @@ final class DbAdapter {
         //TimelineStation 4
         this.db.addTimelineStation(new TimelineStation("Ολύμπιον-\n" + "Πλατεία Αριστοτέλους", 40.6326916, 22.9416844));
         //Milestones
-        this.db.addMilestone(new Milestone(4, "1960", "H Διεθνής Έκθεση Θεσσαλονίκης διοργανώνει σειρά πολιτιστικών εκδηλώσεων για το σινεμά" +
-                " στη Θεσσαλονίκη με αφορμή τα 25 χρόνια λειτουργίας της (1η Εβδομάς Ελληνικού Κινηματογράφου, 1960) \n" +
-                "Σε συνεργασία με την κινηματογραφική λέσχη της Μακεδονικής Καλλιτεχνικής Εταιρείας «Τέχνη».\n" +
-                "Η 1η Εβδομάς Ελληνικού Κινηματογράφου εγκαινιάζεται επίσημα στις 20 Σεπτεμβρίου 1960, στο κινηματοθέατρο Ολύμπιον, από " +
-                "τον υπουργό Βιομηχανίας Νικόλαο Μάρτη, που έχει την εποπτεία του θεσμού.", "protievdomas1960",
+        this.db.addMilestone(new Milestone(4, "1960", "1η Εβδομάς Ελληνικού Κινηματογράφου (1960):\n" +
+                "Η Διεθνής Έκθεση Θεσσαλονίκης διοργανώνει σειρά πολιτιστικών εκδηλώσεων για το σινεμά στη Θεσσαλονίκη, με αφορμή τα 25 χρόνια λειτουργίας" +
+                " της, σε συνεργασία με την κινηματογραφική λέσχη της Μακεδονικής Καλλιτεχνικής Εταιρείας «Τέχνη». \n" +
+                "Η 1η Εβδομάς Ελληνικού Κινηματογράφου εγκαινιάζεται επίσημα στις 20 Σεπτεμβρίου 1960, στο κινηματοθέατρο Ολύμπιον," +
+                " από τον υπουργό Βιομηχανίας Νικόλαο Μάρτη, που έχει την εποπτεία του θεσμού.", "protievdomas1960",
                 "Στιγμιότυπο από την τελετή λήξης της 1ης Εβδομάδας Ελληνικού Κινηματογράφου, με τον Πρόεδρο της ΔΕΘ Γιώργο " +
                         "Γεωργιάδη, που ανάβει το τσιγάρο της ηθοποιού Μάρως Κοντού. "));
         this.db.addMilestone(new Milestone(4, "1997", "H ιστορική κινηματογραφική αίθουσα θα ταυτιστεί με την ιστορία του Φεστιβάλ, " +
@@ -1280,8 +1277,8 @@ final class DbAdapter {
                 "Άποψη από το εσωτερικό του ανακαινισμένου κινηματογράφου Ολύμπιον.\n" +
                         "(Αρχείο ΦΚΘ)"));
         this.db.addMilestone(new Milestone(4, "2000", "Την άνοιξη του 2000 ο Δημήτρης Εϊπίδης καθιερώνει ένα νέο πρωτότυπο Φεστιβάλ, που " +
-                "έμελλε να αγαπηθεί εξίσου απο το κοινό της πόλης, το “Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης– Εικόνες του 21ου αιώνα”. " +
-                "Κάθε διοργάνωση συγκεντρώνει κατά μ.ο. 30 χιλ. θεατές στις προβολές της. ", "peopleolympion38filmfestival",
+                "έμελλε να αγαπηθεί εξίσου απο το κοινό της πόλης, το Φεστιβάλ Ντοκιμαντέρ Θεσσαλονίκης– Εικόνες του 21ου αιώνα. " +
+                "Κάθε διοργάνωση συγκεντρώνει κατά μέσο όρο 30 χιλιάδες θεατές στις προβολές της.", "peopleolympion38filmfestival",
                 "Πλήθος κόσμου έξω από το Ολύμπιον κατά τη διάρκεια του 38ου Φεστιβάλ Κινηματογράφου Θεσσαλονίκης.\n" +
                         "(Αρχείο ΦΚΘ)"));
         this.db.addMilestone(new Milestone(4, "2010", "Από το 2010 το Φεστιβάλ αλλάζει πορεία και επηρεασμένο και από τη σοβαρή " +
@@ -1301,11 +1298,11 @@ final class DbAdapter {
         //Milestones
 
 
-        this.db.addMilestone(new Milestone(5, "1994", "41ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (2000): Οι Αποθήκες στο Λιμάνι φιλοξενούν ενδιαφέρουσες εκθέσεις όπως \n" +
-                "η «Ζωγραφική στον κινηματογράφο: Γιγαντοαφίσες στην 7η Τέχνη», έκθεση κινηματογραφικής αφίσας της συλλογής Hellafi." +
-                " (35ο ΦΚΘ, 1994) αλλά και η έκθεση σκηνικών και κοστουμιών των Μικέ Καραπιπέρη – Γιώργου Ζιάκα – Γιώργου Πατσά από τα " +
-                "γυρίσματα των ταινιών του Θόδωρου Αγγελόπουλου. Η Αποθήκη Δ΄ φιλοξενεί έκθεση κινηματογραφικής αφίσας από ταινίες του " +
-                "μεγάλου δημιουργού.",
+        this.db.addMilestone(new Milestone(5, "1994", "41ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (2000):" +
+                "Οι Αποθήκες στο Λιμάνι φιλοξενούν ενδιαφέρουσες εκθέσεις, όπως η «Ζωγραφική στον κινηματογράφο: Γιγαντοαφίσες στην 7η Τέχνη»," +
+                " η έκθεση κινηματογραφικής αφίσας της συλλογής Hellafi,αλλά και η έκθεση σκηνικών και κοστουμιών των Μικέ Καραπιπέρη-Γιώργου " +
+                "Ζιάκα-Γιώργου Πάτσα από τα γυρίσματα των ταινιών του Θόδωρου Αγγελόπουλου. Η Αποθήκη Δ΄ φιλοξενεί έκθεση κινηματογραφικής αφίσας" +
+                " από ταινίες του μεγάλου δημιουργού.",
                 "apothikesinside",
                 "Άποψη του εσωτερικού της Αποθήκης Γ' κατά την διάρκεια μιας Συνέντευξης Τύπου\n" +
                         "(41o ΦΚΘ, Κωδ. Φωτο 01.017108)"));
@@ -1340,14 +1337,14 @@ final class DbAdapter {
     private void populateEnglishDB() {
         //add routes
         this.db.addRoute(new Route("Cinema theatres of the city", "red", 1));
-        this.db.addRoute(new Route("Thessaloniki in Greek films", "blue", 1));
+        this.db.addRoute(new Route("Thessaloniki in Greek cinema", "blue", 1));
         //this.db.addRoute(new Route("Thessaloniki International Film Festival","green",1));
 
         //add stations
         //Line 1
         this.db.addStation(new Station("Vardaris Square",
-                "The first film screening was held at  the“Turkey” caffé in 1897. Many cinemas have been developed around Vardaris " +
-                        "square: Cinema “Splendind” (which was renamed “Ilion”), “Pantheon”, “Atticon” and “Olympion (at Monastiriou Street)" +
+                "The first film screening was held at  the «Turkey» caffé in 1897. Many cinemas have been developed around Vardaris " +
+                        "square: Cinema «Splendind» (which was renamed «Ilion»), «Pantheon», «Atticon» and «Olympion» (at Monastiriou Street)" +
                         ", together with the porn cinemas of the square.",
                 1, 40.641142, 22.934721));
         this.db.addStation(new Station("Sea front (the port)",
@@ -1356,17 +1353,17 @@ final class DbAdapter {
                         " four modern festival venues at the port’s warehouse.",
                 1, 40.635650, 22.935431));
         this.db.addStation(new Station("Sea front (Leoforos Nikis Str.)",
-                "The first cinema in the Balkans, the cinema theatre “Olympia” (1903), is situated in Leoforos Nikis Str. The sea " +
-                        "front appears to be an ideal place for cinemas, like “Pathé” cinema (1911), run by the namesake film company, " +
-                        "and the boat cinema “Koursal”.",
+                "The first cinema in the Balkans, the cinema theatre «Olympia» (1903), is situated in Leoforos Nikis Str. The sea " +
+                        "front appears to be an ideal place for cinemas, like «Pathé» cinema (1911), run by the namesake film company, " +
+                        "and the boat cinema «Koursal».",
                 1, 40.630440, 22.942912));
         this.db.addStation(new Station("Aristotelous Square",
-                "During the 1950s, Aristotelous Square hosted 6 open air cinemas (“Rex”, “Ilissia”, “Ellinis”, “Aegean”, “Rio”" +
-                        " and “Zefyros”). Today, the Olympion Theatre, located in the middle of Aristotelous Square, is the main " +
+                "During the 1950s, Aristotelous Square hosted 6 open air cinemas («Rex», «Ilissia», «Ellinis», «Aegean», «Rio»" +
+                        " and «Zefyros»). Today, the Olympion Theatre, located in the middle of Aristotelous Square, is the main " +
                         "venue of the Thessaloniki International Film Festival.",
                 1, 40.632804, 22.941331));
         this.db.addStation(new Station("City centre (Aghias Sofias Str-Alexandrou Svolou Str.)",
-                "An area with many cinema theatres, such as “Dionysia” (in Aghias Sofias Str.), “Esperos” and “Rivoli” (in " +
+                "An area with many cinema theatres, such as «Dionysia» (in Aghias Sofias Str.), «Esperos» and «Rivoli» (in " +
                         "Alexandrou Svolou Str.), Makedonikon (in Filikis Eterias Str.). The Stavrakos Film School operated its " +
                         "subsidiary film school in Thessaloniki, which was located in the same area.",
                 1, 40.632511, 22.947489));
@@ -1381,8 +1378,8 @@ final class DbAdapter {
                 1, 40.6319738, 22.952104));
         this.db.addStation(new Station("The White Tower",
                 "In 1905 the White Tower’s garden hosted an open air cinema. Opposite to it, there was the EMS building, the main " +
-                        "venue of the Society of Macedonian Studies, as well as the cinema theatres “Pallas” (now operating as " +
-                        "Thessaloniki State Symphony Orchestra’s concert hall) and “Alexandros”.",
+                        "venue of the Society of Macedonian Studies, as well as the cinema theatres «Pallas» (now operating as " +
+                        "Thessaloniki State Symphony Orchestra’s concert hall) and «Alexandros».",
                 1, 40.62638, 22.948306));
 
         //Line 2
@@ -1501,16 +1498,16 @@ final class DbAdapter {
                 " than three decades (5th Greek Film Week, 1964)", "theatesems", "Viewers attend a festival screening at the EMS hall"));
         this.db.addMilestone(new Milestone(1, "1966", "Greek-American film producer James Paris, a famous festival figure during the years" +
                 " 1966-1972, hires a tank to march around the White Tower’s square in order to publicize his film " +
-                "“Forgotten Heores” (7th Greek Film Week, 1966). \n" +
+                "«Forgotten Heores» (7th Greek Film Week, 1966). \n" +
                 "The screening is full of surprises. More than 1.500 viewers that attend Paris’ film find a pack of cigarettes in" +
                 " their seat, a promo gift on behalf of the producer.", "paris_ems", "Yorgos Tzavellas and James Paris attend a festival screening at the EMS hall"));
-        this.db.addMilestone(new Milestone(1, "1970", "The “2nd Balcony” is a special place in EMS hall, which will be identified with the dynamic" +
+        this.db.addMilestone(new Milestone(1, "1970", "The «2nd Balcony» is a special place in EMS hall, which will be identified with the dynamic" +
                 " young public of the Thessaloniki Film Festival that playσ an important role in the forming of a local festival culture" +
                 " (11th Greek Film Week, 1970). \n" +
                 "\n" +
-                " The “2nd Balcony” is named after the homonymous seat category at the EMS hall, which is  the students’ favorite place because" +
+                " The «2nd Balcony» is named after the homonymous seat category at the EMS hall, which is  the students’ favorite place because" +
                 " of cheap entrance fees..", "exostes",
-                "A view of the EMS hall and its “2nd Balcony”"));
+                "A view of the EMS hall and its «2nd Balcony»"));
         this.db.addMilestone(new Milestone(1, "1972", "The 1st Thessaloniki International Film Festival is held at the EMS hall in 1972," +
                 " in the occasion of the 13th Greek Film Week in 1972.\n" +
                 "\n" +
@@ -1528,40 +1525,40 @@ final class DbAdapter {
 
 
         //TimelineStation 2
-        this.db.addTimelineStation(new TimelineStation("Caffé “Do-re” & “Alexandros”", 40.6269345, 22.9493905));
+        this.db.addTimelineStation(new TimelineStation("Caffé «Do-re» & «Alexandros»", 40.6269345, 22.9493905));
         //Milestones
 
         this.db.addMilestone(new Milestone(2, "1963",
-                "“Alexandros” cinema theatre is located just below the Thessaloniki Military Club and it is very close to the EMS hall," +
+                "«Alexandros» cinema theatre is located just below the Thessaloniki Military Club and it is very close to the EMS hall," +
                         " which serves as the festival’s seat and a place for short film screenings for many years.\n" + "\n" +
                         "Here is a sculptured marble in the honor of filmmaker Takis Kanellopoulos, whose name was particularly connected" +
-                        " to the Thessaloniki Film Festival and to the caffé “Do-re”, one of the festival’s most popular haunts", "cinealexandros02",
-                "A view of the “Alexandros” cinema theatre, which hosted festival screenings."));
-        this.db.addMilestone(new Milestone(2, "1990", "The caffé “Do-re”, opposite the White Tower, was a popular haunt, which was frequented by " +
+                        " to the Thessaloniki Film Festival and to the caffé «Do-re», one of the festival’s most popular haunts", "cinealexandros02",
+                "A view of the Alexandros cinema theatre, which hosted festival screenings."));
+        this.db.addMilestone(new Milestone(2, "1990", "The caffé «Do-re», opposite the White Tower, was a popular haunt, which was frequented by " +
                 "artists as well as festival viewers during the 60s and onwards, since the festival’s internationalization in the 1990s." +
                 "\n" +
-                "Debates between filmmakers and viewers at the caffé “Do-re” usually begin after the screenings" +
+                "Debates between filmmakers and viewers at the caffé «Do-re» usually begin after the screenings" +
                 " and carry on until dawn, adding to a festive atmosphere.", "jamesparis",
-                "Greek-American film producer James Paris chats with colleagues at the caffe “Do-re” after a festival screening."));
+                "Greek-American film producer James Paris chats with colleagues at the caffe «Do-re» after a festival screening."));
 
 
         //TimelineStation 3
         this.db.addTimelineStation(new TimelineStation("Alexandrou Svolou Str. – Navarinon Square ", 40.6330961, 22.9470789));
         //Milestones
-        this.db.addMilestone(new Milestone(3, "1987", "«Esperos” cinema theatre hosts the festival’s sidebar events.\n" +
-                "Among the popular screenings which were held at “Esperos”, there is a film music concert of Germaine Dula’s films" +
+        this.db.addMilestone(new Milestone(3, "1987", "«Esperos cinema theatre hosts the festival’s sidebar events.\n" +
+                "Among the popular screenings which were held at «Esperos», there is a film music concert of Germaine Dula’s films" +
                 ", with pianist-composer Sakis Papadimitriou and singer Georgia Silleou (28th Thessaloniki Film Festival, 1987).",
                 "esperos28filmfestival",
-                "“Esperos” cinema theatre at Alexandrou Svolou str."));
+                "«Esperos» cinema theatre at Alexandrou Svolou str."));
         this.db.addMilestone(new Milestone(3, "1994", "Japanese filmmaker Nagisa Osima is the dominant figure in the 35th edition of the Thessaloniki Film Festival," +
-                " which organizes a retrospective of his work in “Esperos” cinema theatre. \n" +
+                " which organizes a retrospective of his work in «Esperos» cinema theatre. \n" +
                 "Nagisa Osima visits Thessaloniki for a few days in order to prologue his films, which are screened in crowded halls. Osima meets with his friend Theo " +
                 "Angelopoulos and entertains himself at a concert with singer Dimitra Galani.", "",
                 ""));
-        this.db.addMilestone(new Milestone(3, "1996", "In 1996 the Thessaloniki Film Festival is held in “Anatolia” cinema theatre," +
+        this.db.addMilestone(new Milestone(3, "1996", "In 1996 the Thessaloniki Film Festival is held in «Anatolia» cinema theatre," +
                 " for the first –and last- time in its history.\n" +
-                "In front of “Anatolia” cinema theatre there is a special construction which marks the festival’s presence on the spot.", "anatolia",
-                "The “Anatolia” cinema theatre before its reconstruction in order to host the festival’s screenings."));
+                "In front of «Anatolia» cinema theatre there is a special construction which marks the festival’s presence on the spot.", "anatolia",
+                "The «Anatolia» cinema theatre before its reconstruction in order to host the festival’s screenings."));
 
 
         //TimelineStation 4
@@ -1569,21 +1566,21 @@ final class DbAdapter {
         //Milestones
         this.db.addMilestone(new Milestone(4, "1960", "The Thessaloniki International Trade Fair organizes a series of" +
                 " film events in Thessaloniki, in the occasion of its 25th anniversary (1st Greek Film Week, 1960) " +
-                "in collaboration with the Film Club of the Macedonian Society “Techne”.\n" +
+                "in collaboration with the Film Club of the Macedonian Society «Techne».\n" +
                 "The 1st Greek Film Week is officially inaugurated on September 20th, 1960, in the Olympion cinema theatre, by the" +
                 " Minister of Industry Nikolaos Martis, who supervises the event.", "protievdomas1960",
                 "A snapshot during the opening ceremony of the 1st Greek Film Week, with the president of the Thessaloniki International Trade Fair " +
                         "Yorgos Georgiadis, who lights a cigarette for actress Maro Kontou.\n "));
         this.db.addMilestone(new Milestone(4, "1997", "It is a traditional cinema theatre which will be identified with the festival’s history, that will change " +
-                "many seats to finally return to the refurbished “Olympion” venue in 1997.\n", "olympion02",
-                "The “Olympion” complex, located at the Aristotelous Square."));
+                "many seats to finally return to the refurbished «Olympion» venue in 1997.\n", "olympion02",
+                "The «Olympion» complex, located at the Aristotelous Square."));
         this.db.addMilestone(new Milestone(4, "1997", "Olympion cinema theatre was totally renovated in 1997, the year when Thessaloniki" +
                 " was the Cultural Capital of Europe.", "olympion38filmfestival",
-                "A view of the renovated “Olympion” cinema theatre."));
+                "A view of the renovated «Olympion» cinema theatre."));
         this.db.addMilestone(new Milestone(4, "2000", "In the spring of 2000, film festival curator Dimitris Eipidis establishes a new film event," +
                 " the Thessaloniki Documentary Festival" +
-                " – Images of the 21st century”, which gathers an average of 30.000 viewers every year in its screenings. ", "peopleolympion38filmfestival",
-                "People crowding outside the “Olympion” cinema theatre during the 38th Thessaloniki International Film Festival\n"));
+                " – «Images of the 21st century», which gathers an average of 30.000 viewers every year in its screenings. ", "peopleolympion38filmfestival",
+                "People crowding outside the «Olympion» cinema theatre during the 38th Thessaloniki International Film Festival\n"));
         this.db.addMilestone(new Milestone(4, "2010", "From 2010 Festival changing line and influenced from the serious financial crisis of \n" +
                 "Greece turned to afresh open cinematic horizons.\n" +
                 "To these years the audience has the opportunity to discover alternative directors, like\n" +
@@ -1591,10 +1588,10 @@ final class DbAdapter {
                 "with timeless favorite stars like Hanna Schygulla, and creators, like Aki Kaurismäki,\n" +
                 "Paolo Sorrentino, and Constantine Giannaris.", "p2014",
                 ""));
-        this.db.addMilestone(new Milestone(4, "2014", "From its re-opening in 1997 until today, the “Olympion” cinema theatre hosts the main corpus" +
+        this.db.addMilestone(new Milestone(4, "2014", "From its re-opening in 1997 until today, the «Olympion» cinema theatre hosts the main corpus" +
                 " of film festival activities. It has been a popular venue, which was visited by acclaimed personalities of world cinema (Coppola, " +
                 "Stone, Desplas, Kusturica, Kitano, Herzog etc).)", "olympion39filmfestival",
-                "Exterior view of the “Olympion” cinema theatre at the Aristotelous Square"));
+                "Exterior view of the «Olympion» cinema theatre at the Aristotelous Square"));
 
 
         //TimelineStation 5
@@ -1603,25 +1600,25 @@ final class DbAdapter {
 
 
         this.db.addMilestone(new Milestone(5, "1994", "Warehouses at the city’s port host interesting art exhibitions \n" +
-                "such as “Painting in film: Giant film posters”, a film poster exhibition of Hellafi collection (35th TIFF, 1994)," +
+                "such as «Painting in film: Giant film posters», a film poster exhibition of Hellafi collection (35th TIFF, 1994)," +
                 " as well as the settings and costumes exhibitions of Mikes Karapiperis-Giorgos Ziakas-Giorgos Patsas from Theo" +
                 " Angelopoulos’ film shootings. Warehouse D hosts a film poster exhibition, inspired by films of the famous Greek auteur.",
                 "apothikesinside",
-                "The “Hellafi” collection exhibition at the port \n" +
+                "The «Hellafi» collection exhibition at the port \n" +
                         "(41o ΦΚΘ, Κωδ. Φωτο 01.017108)"));
-        this.db.addMilestone(new Milestone(5, "1996", "Journalists visit the settings of Theo Angelopoulos’ film “Eternity and a day”, " +
+        this.db.addMilestone(new Milestone(5, "1996", "Journalists visit the settings of Theo Angelopoulos’ film «Eternity and a day», " +
                 "which was shot in Thessaloniki (37th TIFF, 1996) \n" +
-                "A few months later the film wins the “Palme d’ Or” at the Cannes Film Festival and thus becomes " +
+                "A few months later the film wins the «Palme d’ Or» at the Cannes Film Festival and thus becomes " +
                 "the first –and the last, up until now- Greek film, which has achieved this prominent award.",
                 "eternityandaday1",
-                "Scene from Theo Angelopoulos’ film “Eternity and a day”"));
+                "Scene from Theo Angelopoulos’ film «Eternity and a day»"));
         this.db.addMilestone(new Milestone(5, "2001", "The four warehouses at the city’s port are renovated into cinema theatres and become a" +
                 " vital part of Thessaloniki Film Festival (42nd TIFF, 2001).\n" +
-                "hey are named after four prominent Greek filmmakers: “Tonia Marketaki” and “John Cassavetes” (Warehouse A’) and “Frida Liappa” " +
-                "and “Takis Kanellopoulos” (Warehouse D’). The “Takis Kanellopoulos” hall is later renamed as “Stavros Tornes” hall in order to avoid" +
-                " confusion with “Kanellopoulos” hall, the main venue of the neighboring Cinema Museum.",
+                "hey are named after four prominent Greek filmmakers: «Tonia Marketaki» and «John Cassavetes» (Warehouse A’) and «Frida Liappa» " +
+                "and «Takis Kanellopoulos» (Warehouse D’). The «Takis Kanellopoulos» hall is later renamed as «Stavros Tornes» hall in order to avoid" +
+                " confusion with «Kanellopoulos» hall, the main venue of the neighboring Cinema Museum.",
                 "cineprovlita01",
-                "Exterior view of Warehouse A’, the halls of which are named “Tonia Marketaki” and “John Cassavetes” (40th TIFF)"));
+                "Exterior view of Warehouse A’, the halls of which are named «Tonia Marketaki» and «John Cassavetes» (40th TIFF)"));
         this.db.addMilestone(new Milestone(5, "2008", "Oliver Stone and Emir Kusturica join No Smoking Band’s concert at the Warehouse " +
                 "C, held at the city’s port (49th TIFF, 2008).", "stonekusturica",
                 "Oliver Stone and Emir Kusturica together on stage.\n" +
@@ -1630,7 +1627,7 @@ final class DbAdapter {
                 " the Balkan Survey, celebrated 20 years of a creative presence. During these decades, Thessaloniki has " +
                 "been presenting to the public an interesting film panorama of Balkan filmmakers. It also organized special " +
                 "retrospectives to important film auteurs, like Lucian Pintilie, Goran Paskaljevic, Nuri Bilge Ceylan " +
-                "and Christian Mungium, as well as portraits of new film trends, like the “new Romanian cinema”, which were " +
+                "and Christian Mungium, as well as portraits of new film trends, like the «new Romanian cinema», which were " +
                 "warmly welcomed by the viewers.", "p2013",""));
 
 
@@ -1638,10 +1635,10 @@ final class DbAdapter {
 
         //line 1
         // station 1
-        this.db.addPhoto(new Photo("pantheon", 1, -1, "“Pantheon” cinema theatre in Vardaris Square, some years before its " +
+        this.db.addPhoto(new Photo("pantheon", 1, -1, "«Pantheon» cinema theatre in Vardaris Square, some years before its " +
                 "demolition"));
-        this.db.addPhoto(new Photo("splendid", 1, -1, "“Splendid” cinema theatre in a vintage postcard"));
-        this.db.addPhoto(new Photo("pantheon_markiza", 1, -1, "“Pantheon” cinema Theatre in its glorious years"));
+        this.db.addPhoto(new Photo("splendid", 1, -1, "«Splendid» cinema theatre in a vintage postcard"));
+        this.db.addPhoto(new Photo("pantheon_markiza", 1, -1, "«Pantheon» cinema Theatre in its glorious years"));
         //station 2
         this.db.addPhoto(new Photo("redmoterlimani", 2, -1, "The Red Moter of the 11th Thessaloniki Documentary Film Festival turns" +
                 " his camera towards the city’s port."));
@@ -1652,29 +1649,29 @@ final class DbAdapter {
                 "School were gathered before a screening."));
         this.db.addPhoto(new Photo("olympia", 3, -1, "The Olympia cinema theatre at the Thessaloniki sea front, as shown in a " +
                 "postcard (beginning of the 20th century)"));
-        this.db.addPhoto(new Photo("pathe", 3, -1, "The “Pathe” cinema theatre in Leoforos Nikis Str, which was ordained by the" +
+        this.db.addPhoto(new Photo("pathe", 3, -1, "The «Pathe» cinema theatre in Leoforos Nikis Str, which was ordained by the" +
                 " Germans during the occupation years."));
-        this.db.addPhoto(new Photo("salonica_pathe_1918", 3, -1, "The “Pathe” cinema theatre in the sea front, as shown in postcard" +
+        this.db.addPhoto(new Photo("salonica_pathe_1918", 3, -1, "The «Pathe» cinema theatre in the sea front, as shown in postcard" +
                 " (beginning of the 20th century)"));
-        this.db.addPhoto(new Photo("olympiaview", 3, -1, "A view of “Olympia”’s entrance in the sea front."));
+        this.db.addPhoto(new Photo("olympiaview", 3, -1, "A view of «Olympia’s» entrance in the sea front."));
         //station 4
-        this.db.addPhoto(new Photo("hlysia", 4, -1, "The old cinema theatre “Ilissia” in Aristotelous, in the day of Thessaloniki’s" +
+        this.db.addPhoto(new Photo("hlysia", 4, -1, "The old cinema theatre «Ilissia» in Aristotelous, in the day of Thessaloniki’s" +
                 " Liberation (1940s)"));
-        this.db.addPhoto(new Photo("festivaltree02", 4, -1, "Film frames build a “cinema tree” in Aristotelous Square"));
-        this.db.addPhoto(new Photo("olympionnight", 4, -1, "A night view of “Olympion” cinema theatre, the main venue of the " +
+        this.db.addPhoto(new Photo("festivaltree02", 4, -1, "Film frames build a «cinema tree» in Aristotelous Square"));
+        this.db.addPhoto(new Photo("olympionnight", 4, -1, "A night view of «Olympion» cinema theatre, the main venue of the " +
                 "Thessaloniki International Film Festival."));
-        this.db.addPhoto(new Photo("olympioninside", 4, -1, "Interior of “Olympion” cinema theatre"));
+        this.db.addPhoto(new Photo("olympioninside", 4, -1, "Interior of «Olympion» cinema theatre"));
         //station 5
-        this.db.addPhoto(new Photo("dionyssia", 5, -1, "“Dionissia” cinema theatre, which was inaugurated in 1926 (on November 26th)."));
-        this.db.addPhoto(new Photo("makedonikon", 5, -1, "A night view of the “Makedonikon” cinema theatre."));
-        this.db.addPhoto(new Photo("esperos", 5, -1, "A view of “Esperos” cinema theatre, which was identified with the special " +
+        this.db.addPhoto(new Photo("dionyssia", 5, -1, "«Dionissia» cinema theatre, which was inaugurated in 1926 (on November 26th)."));
+        this.db.addPhoto(new Photo("makedonikon", 5, -1, "A night view of the «Makedonikon» cinema theatre."));
+        this.db.addPhoto(new Photo("esperos", 5, -1, "A view of «Esperos» cinema theatre, which was identified with the special " +
                 "screenings of the Thessaloniki International Film Festival."));
         //station 6
         this.db.addPhoto(new Photo("nauarino", 6, -1, "Exterior view of Navarinon cinema theatre during the 39th Thessaloniki International Film Festival (1998)"));
         this.db.addPhoto(new Photo("efimerida", 6, -1, "A film advertisement for a screening at Thymeli cinema theatre (Credits: Macedonia newspaper)"));
-        this.db.addPhoto(new Photo("exostis", 6, -1, "Front page for the first issue of “Exostis” free press"));
+        this.db.addPhoto(new Photo("exostis", 6, -1, "Front page for the first issue of «Exostis» free press"));
         //station 7
-        this.db.addPhoto(new Photo("pallaswhitetower", 7, -1, "The old cinema theatre “Pallas” near the White Tower, designed by E. Modiano, which hosted 860 viewers."));
+        this.db.addPhoto(new Photo("pallaswhitetower", 7, -1, "The old cinema theatre «Pallas» near the White Tower, designed by E. Modiano, which hosted 860 viewers."));
         this.db.addPhoto(new Photo("ems", 7, -1, "Crowds outside the Society for Macedonian Studies, which was the Thessaloniki" +
                 " Film Festival’s main venue during the 1970s."));
         this.db.addPhoto(new Photo("theoreiaems", 7, -1, "The balconies in the Society for Macedonian Studies with the festival’s " +
