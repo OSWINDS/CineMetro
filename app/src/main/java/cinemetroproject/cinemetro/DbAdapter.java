@@ -1193,17 +1193,17 @@ final class DbAdapter {
         //TimelineStation 1
         this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-\n" + "Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)", 40.6271087, 22.9497383));
         //Milestones
-        this.db.addMilestone(new Milestone(1, "1964", "5η Εβδομάς Ελληνικού Κινηματογράφου (1964): Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
+        this.db.addMilestone(new Milestone(1, "1964", "5η Εβδομάς Ελληνικού Κινηματογράφου (1964): \n Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
                 "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά την επόμενη δεκαετία.)", "theatesems", "Θεατές στην Εταιρεία Μακεδονικών Σπουδών"));
-        this.db.addMilestone(new Milestone(1, "1966", "7ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1966): Ο παραγωγός Τζέιμς Πάρις «κατεβάζει» ένα τανκ στους δρόμους της Θεσσαλονίκης για διαφημιστικούς σκοπούς, προκειμένου να προωθήσει την ταινία «Ξεχασμένοι ήρωες», της οποίας είναι παραγωγός. Σύμφωνα με τα ρεπορτάζ, ο Πάρις παρατάσσει έξω από την είσοδο της ΕΜΣ μια διμοιρία στρατιωτών, με το αιτιολογικό ότι η ταινία του έχει πατριωτικό χαρακτήρα. Λίγο πριν από την έναρξη της ταινίας, ένα τανκ εισβάλλει στην πλατεία του Λευκού Πύργου, ακολουθούμενο από πολυτελές αυτοκίνητο, με επιβάτες τον παραγωγό και τους πρωταγωνιστές της ταινίας. Οι εκπλήξεις συνεχίζονται και μέσα στην αίθουσα, όπου οι 1.500 θεατές βρίσκουν στη θέση τους από ένα πακέτο τσιγάρα, δώρο του παραγωγού στο κοινό.",
+        this.db.addMilestone(new Milestone(1, "1966", "7ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1966): \n Ο παραγωγός Τζέιμς Πάρις «κατεβάζει» ένα τανκ στους δρόμους της Θεσσαλονίκης για διαφημιστικούς σκοπούς, προκειμένου να προωθήσει την ταινία «Ξεχασμένοι ήρωες», της οποίας είναι παραγωγός. Σύμφωνα με τα ρεπορτάζ, ο Πάρις παρατάσσει έξω από την είσοδο της ΕΜΣ μια διμοιρία στρατιωτών, με το αιτιολογικό ότι η ταινία του έχει πατριωτικό χαρακτήρα. Λίγο πριν από την έναρξη της ταινίας, ένα τανκ εισβάλλει στην πλατεία του Λευκού Πύργου, ακολουθούμενο από πολυτελές αυτοκίνητο, με επιβάτες τον παραγωγό και τους πρωταγωνιστές της ταινίας. Οι εκπλήξεις συνεχίζονται και μέσα στην αίθουσα, όπου οι 1.500 θεατές βρίσκουν στη θέση τους από ένα πακέτο τσιγάρα, δώρο του παραγωγού στο κοινό.",
                 "paris_ems", "Οι Γιώργος Τζαβέλλας και Τζαίημς Πάρις σε φεστιβαλική προβολή στην ΕΜΣ"));
-        this.db.addMilestone(new Milestone(1, "1970", "11ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1970): Εμφανίζεται στο φεστιβάλ το δυναμικό νεανικό κοινό του " +
+        this.db.addMilestone(new Milestone(1, "1970", "11ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1970): \n Εμφανίζεται στο φεστιβάλ το δυναμικό νεανικό κοινό του " +
                 "–ο λεγόμενος «Β΄εξώστης», ο οποίος θα διαδραματίσει σημαντικό ρόλο στη διοργάνωση τα επόμενα χρόνια.  \n" +
                 "\n" +
                 "Ο «Β΄εξώστης» παίρνει το όνομά του από την ομώνυμη κατηγορία θέσεων στην αίθουσα της Εταιρείας Μακεδονικών " +
                 "Σπουδών, όπου συνήθως συγκεντρώνονται οι φοιτητές και η νεολαία λόγω του φθηνού εισιτηρίου.", "exostes",
                 "Άποψη της Εταιρείας Μακεδονικών Σπουδών, όπου διακρίνεται ο Β΄εξώστης."));
-        this.db.addMilestone(new Milestone(1, "1972", "13ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1972): Πραγματοποιείται για πρώτη φορά το 1ο Διεθνές Φεστιβάλ Κινηματογράφου Θεσσαλονίκης " +
+        this.db.addMilestone(new Milestone(1, "1972", "13ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1972): \n Πραγματοποιείται για πρώτη φορά το 1ο Διεθνές Φεστιβάλ Κινηματογράφου Θεσσαλονίκης " +
                 "στην Εταιρεία Μακεδονικών Σπουδών. \n" +
                 "\n" +
                 "( Το διεθνές φεστιβάλ διεξάγεται μία βδομάδα μετά το επίσημο διαγωνιστικό του ελληνικού προγράμματος, αφορά σε " +
@@ -1240,14 +1240,14 @@ final class DbAdapter {
         //TimelineStation 3
         this.db.addTimelineStation(new TimelineStation("Σβώλου – Πλ. Ναυαρίνο", 40.6330961, 22.9470789));
         //Milestones
-        this.db.addMilestone(new Milestone(3, "1987", "28ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1987): Ο κινηματογράφος Έσπερος φιλοξενεί τις παράλληλες εκδηλώσεις του φεστιβάλ. \n" +
+        this.db.addMilestone(new Milestone(3, "1987", "28ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1987): \n Ο κινηματογράφος Έσπερος φιλοξενεί τις παράλληλες εκδηλώσεις του φεστιβάλ. \n" +
                 "Ο Έσπερος θα λειτουργήσει ως αίθουσα προβολών για το φεστιβάλ ως το 1996. Στις ξεχωριστές προβολές " +
                 "συγκαταλέγεται αυτή των ταινιών της Germaine Dulac με ζωντανή μουσική, με τον Σάκη Παπαδημητρίου στο πιάνο και " +
                 "τη Γεωργία Συλλαίου στο τραγούδι. ", "esperos28filmfestival",
                 "Ο κινηματογράφος Έσπερος στην οδό Αλεξάνδρου Σβώλου.(Αρχείο ΦΚΘ)"));
-        this.db.addMilestone(new Milestone(3, "1994", "Κυρίαρχη μορφή του 35ου Φεστιβάλ Κινηματογράφου Θεσσαλονίκης αναδεικνύεται ο Ιάπωνας " +
+        this.db.addMilestone(new Milestone(3, "1994", "35ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1994): \n Κυρίαρχη μορφή του 35ου Φεστιβάλ Κινηματογράφου Θεσσαλονίκης αναδεικνύεται ο Ιάπωνας " +
                 "δημιουργός Ναγκίσα Όσιμα, το συνολικό έργο του οποίου προβάλλεται σε αναδρομικό αφιέρωμα στον κινηματογράφο «Έσπερος» " +
-                "(35ο ΦΚΘ, 1994): \n" +
+                "\n" +
                 "Ο ίδιος ο Όσιμα έρχεται για λίγες μέρες στη Θεσσαλονίκη, προλογίζει ταινίες του σε κατάμεστες αίθουσες, συναντιέται" +
                 " με το φίλο του Θόδωρο Αγγελόπουλο και διασκεδάζει στο κέντρο που τραγουδά η Δήμητρα Γαλάνη. ", "",
                 ""));
@@ -1298,7 +1298,7 @@ final class DbAdapter {
         //Milestones
 
 
-        this.db.addMilestone(new Milestone(5, "1994", "41ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (2000):" +
+        this.db.addMilestone(new Milestone(5, "1994", "41ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (2000): \n" +
                 "Οι Αποθήκες στο Λιμάνι φιλοξενούν ενδιαφέρουσες εκθέσεις, όπως η «Ζωγραφική στον κινηματογράφο: Γιγαντοαφίσες στην 7η Τέχνη»," +
                 " η έκθεση κινηματογραφικής αφίσας της συλλογής Hellafi,αλλά και η έκθεση σκηνικών και κοστουμιών των Μικέ Καραπιπέρη-Γιώργου " +
                 "Ζιάκα-Γιώργου Πάτσα από τα γυρίσματα των ταινιών του Θόδωρου Αγγελόπουλου. Η Αποθήκη Δ΄ φιλοξενεί έκθεση κινηματογραφικής αφίσας" +
@@ -1306,14 +1306,14 @@ final class DbAdapter {
                 "apothikesinside",
                 "Άποψη του εσωτερικού της Αποθήκης Γ' κατά την διάρκεια μιας Συνέντευξης Τύπου\n" +
                         "(41o ΦΚΘ, Κωδ. Φωτο 01.017108)"));
-        this.db.addMilestone(new Milestone(5, "1996", "37ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1996): Δημοσιογράφοι επισκέπτονται τα σκηνικά της ταινίας «Μια αιωνιότητα και μια μέρα» του " +
+        this.db.addMilestone(new Milestone(5, "1996", "37ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1996): \n Δημοσιογράφοι επισκέπτονται τα σκηνικά της ταινίας «Μια αιωνιότητα και μια μέρα» του " +
                 "Θόδωρου Αγγελόπουλου, η οποία γυρίστηκε στη Θεσσαλονίκη. \n" +
                 "Λίγους μήνες αργότερα η ταινία θα κερδίσει το «Χρυσό Φοίνικα» στο Φεστιβάλ Κινηματογράφου των Καννών και έτσι" +
                 " θα γίνει η πρώτη –και η μοναδική μέχρι σήμερα- ελληνική ταινία που έχει κατακτήσει τη συγκεκριμένη διάκριση.",
                 "eternityandaday1",
                 "Σκηνή από την πολυβραβευμένη ταινία «Μια αιωνιότητα και μια μέρα» του Θ. Αγγελόπουλου\n" +
                         "(Αρχείο ΦΚΘ, Κωδικός 01.001704)"));
-        this.db.addMilestone(new Milestone(5, "2001", "42ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (2001): Οι τέσσερις αίθουσες προβολών στο λιμάνι αποκτούν κινηματογραφικά ονόματα και " +
+        this.db.addMilestone(new Milestone(5, "2001", "42ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (2001): \n Οι τέσσερις αίθουσες προβολών στο λιμάνι αποκτούν κινηματογραφικά ονόματα και " +
                 "γίνονται τμήμα του Φεστιβάλ Κινηματογράφου.\n" +
                 "Βαφτίζονται «Τώνια Μαρκετάκη» και «Τζον Κασσαβέτης» (Αποθήκη Α΄) και «Φρίντα Λιάππα» και «Τάκης " +
                 "Κανέλλοπουλος» (Αποθήκη Δ’). Η τελευταία μετονομάζεται την επόμενη χρονιά σε αίθουσα «Σταύρος Τορνές», προκειμένου" +
@@ -1321,7 +1321,7 @@ final class DbAdapter {
                 "cineprovlita01",
                 "Εξωτερική άποψη της Αποθήκης A, οι αίθουσες της οποίας μετονομάστηκε σε «Τώνια Μαρκετάκη» και «Τζον Κασσαβέτης».\n" +
                         "(40ο ΦΚΘ, Αρ. Καταγραφής 01.002826)"));
-        this.db.addMilestone(new Milestone(5, "2008", "49ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (2008): Oliver Stone και Emir Kusturica ενώνουν τις δυνάμεις τους στη συναυλία των " +
+        this.db.addMilestone(new Milestone(5, "2008", "49ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (2008): \n Oliver Stone και Emir Kusturica ενώνουν τις δυνάμεις τους στη συναυλία των " +
                 "No Smoking Band στην Αποθήκη Γ΄ στο Λιμάνι. ", "stonekusturica",
                 "O Oliver Stone και ο Emir Kusturica μαζί στη σκηνή.\n" +
                         "(Motionteam, κωδικός: 445484)"));
@@ -1493,20 +1493,20 @@ final class DbAdapter {
         //TimelineStation 1
         this.db.addTimelineStation(new TimelineStation("White Tower – Society of Macedonian Studies Hall (EMS)", 40.6271087, 22.9497383));
         //Milestones
-        this.db.addMilestone(new Milestone(1, "1964", " The film festival’s headquarters move from the Olympion" +
+        this.db.addMilestone(new Milestone(1, "1964", "5th Greek Film Week (1964): \n The film festival’s headquarters move from the Olympion" +
                 " theatre to the EMS hall, a place, which will be closely linked to the festival’s history for more" +
-                " than three decades (5th Greek Film Week, 1964)", "theatesems", "Viewers attend a festival screening at the EMS hall"));
-        this.db.addMilestone(new Milestone(1, "1966", "Greek-American film producer James Paris, a famous festival figure during the years" +
+                " than three decades. ", "theatesems", "Viewers attend a festival screening at the EMS hall"));
+        this.db.addMilestone(new Milestone(1, "1966", "7th Greek Film Week (1966): \n Greek-American film producer James Paris, a famous festival figure during the years" +
                 " 1966-1972, hires a tank to march around the White Tower’s square in order to publicize his film " +
-                "«Forgotten Heores» (7th Greek Film Week, 1966). \n" +
+                "«Forgotten Heroes» . \n" +
                 "The screening is full of surprises. More than 1.500 viewers that attend Paris’ film find a pack of cigarettes in" +
                 " their seat, a promo gift on behalf of the producer.", "paris_ems", "Yorgos Tzavellas and James Paris attend a festival screening at the EMS hall"));
-        this.db.addMilestone(new Milestone(1, "1970", "The «2nd Balcony» is a special place in EMS hall, which will be identified with the dynamic" +
+        this.db.addMilestone(new Milestone(1, "1970", "11th Greek Film Week (1970): \n The «2nd Balcony» is a special place in EMS hall, which will be identified with the dynamic" +
                 " young public of the Thessaloniki Film Festival that playσ an important role in the forming of a local festival culture" +
-                " (11th Greek Film Week, 1970). \n" +
+                " . \n" +
                 "\n" +
                 " The «2nd Balcony» is named after the homonymous seat category at the EMS hall, which is  the students’ favorite place because" +
-                " of cheap entrance fees..", "exostes",
+                " of cheap entrance fees.", "exostes",
                 "A view of the EMS hall and its «2nd Balcony»"));
         this.db.addMilestone(new Milestone(1, "1972", "The 1st Thessaloniki International Film Festival is held at the EMS hall in 1972," +
                 " in the occasion of the 13th Greek Film Week in 1972.\n" +
@@ -1516,9 +1516,9 @@ final class DbAdapter {
                 " International Fair Trade and the International Federation of Film Producers Associations (FIAPF). "
                 , "diethnesfilmfestival",
                 " A view of the EMS hall, during the 10th anniversary of the Thessaloniki International Film Festival for Short Films. "));
-        this.db.addMilestone(new Milestone(1, "1992", "Film Festival becomes officially International . Official competition hosts movies from new " +
-                "and emerging creators from all over the world . \n" +
-                "In parallel hosts until 1997 the Greek Film Festival .", "p1992", ""));
+        this.db.addMilestone(new Milestone(1, "1992", "Film Festival becomes International . Official competition hosts movies from new " +
+                "and emerging filmmakers from all over the world . \n" +
+                "In parallel it hosts the Greek Film Festival Competition (until 1997).", "p1992", ""));
         this.db.addMilestone(new Milestone(1, "1995", "Festival hosted for last time at the EMS hall . The building will be refurbished radically " +
                 "within it from Cultural Capital Organization Thessaloniki 1997 , leaving behind a bright " +
                 "cinematic history for the city . ", "p1995", ""));
@@ -1532,7 +1532,7 @@ final class DbAdapter {
                 "«Alexandros» cinema theatre is located just below the Thessaloniki Military Club and it is very close to the EMS hall," +
                         " which serves as the festival’s seat and a place for short film screenings for many years.\n" + "\n" +
                         "Here is a sculptured marble in the honor of filmmaker Takis Kanellopoulos, whose name was particularly connected" +
-                        " to the Thessaloniki Film Festival and to the caffé «Do-re», one of the festival’s most popular haunts", "cinealexandros02",
+                        " to the Thessaloniki Film Festival and to the caffé «Do-re», one of the festival’s most popular haunts.", "cinealexandros02",
                 "A view of the Alexandros cinema theatre, which hosted festival screenings."));
         this.db.addMilestone(new Milestone(2, "1990", "The caffé «Do-re», opposite the White Tower, was a popular haunt, which was frequented by " +
                 "artists as well as festival viewers during the 60s and onwards, since the festival’s internationalization in the 1990s." +
@@ -1545,9 +1545,9 @@ final class DbAdapter {
         //TimelineStation 3
         this.db.addTimelineStation(new TimelineStation("Alexandrou Svolou Str. – Navarinon Square ", 40.6330961, 22.9470789));
         //Milestones
-        this.db.addMilestone(new Milestone(3, "1987", "«Esperos cinema theatre hosts the festival’s sidebar events.\n" +
+        this.db.addMilestone(new Milestone(3, "1987", "28th Thessaloniki Film Festival (1987): \n «Esperos cinema theatre hosts the festival’s sidebar events.\n" +
                 "Among the popular screenings which were held at «Esperos», there is a film music concert of Germaine Dula’s films" +
-                ", with pianist-composer Sakis Papadimitriou and singer Georgia Silleou (28th Thessaloniki Film Festival, 1987).",
+                ", with pianist-composer Sakis Papadimitriou and singer Georgia Silleou .",
                 "esperos28filmfestival",
                 "«Esperos» cinema theatre at Alexandrou Svolou str."));
         this.db.addMilestone(new Milestone(3, "1994", "Japanese filmmaker Nagisa Osima is the dominant figure in the 35th edition of the Thessaloniki Film Festival," +
@@ -1564,8 +1564,8 @@ final class DbAdapter {
         //TimelineStation 4
         this.db.addTimelineStation(new TimelineStation("Olympion-\n" + "Aristotelous Square", 40.6326916, 22.9416844));
         //Milestones
-        this.db.addMilestone(new Milestone(4, "1960", "The Thessaloniki International Trade Fair organizes a series of" +
-                " film events in Thessaloniki, in the occasion of its 25th anniversary (1st Greek Film Week, 1960) " +
+        this.db.addMilestone(new Milestone(4, "1960", "1st Greek Film Week (1960): \n The Thessaloniki International Trade Fair organizes a series of" +
+                " film events in Thessaloniki, in the occasion of its 25th anniversary  " +
                 "in collaboration with the Film Club of the Macedonian Society «Techne».\n" +
                 "The 1st Greek Film Week is officially inaugurated on September 20th, 1960, in the Olympion cinema theatre, by the" +
                 " Minister of Industry Nikolaos Martis, who supervises the event.", "protievdomas1960",
@@ -1599,28 +1599,28 @@ final class DbAdapter {
         //Milestones
 
 
-        this.db.addMilestone(new Milestone(5, "1994", "Warehouses at the city’s port host interesting art exhibitions \n" +
-                "such as «Painting in film: Giant film posters», a film poster exhibition of Hellafi collection (35th TIFF, 1994)," +
+        this.db.addMilestone(new Milestone(5, "1994", "35th TIFF (1994): \n Warehouses at the city’s port host interesting art exhibitions \n" +
+                "such as «Painting in film: Giant film posters», a film poster exhibition of Hellafi collection ," +
                 " as well as the settings and costumes exhibitions of Mikes Karapiperis-Giorgos Ziakas-Giorgos Patsas from Theo" +
                 " Angelopoulos’ film shootings. Warehouse D hosts a film poster exhibition, inspired by films of the famous Greek auteur.",
                 "apothikesinside",
                 "The «Hellafi» collection exhibition at the port \n" +
                         "(41o ΦΚΘ, Κωδ. Φωτο 01.017108)"));
-        this.db.addMilestone(new Milestone(5, "1996", "Journalists visit the settings of Theo Angelopoulos’ film «Eternity and a day», " +
-                "which was shot in Thessaloniki (37th TIFF, 1996) \n" +
+        this.db.addMilestone(new Milestone(5, "1996", "37th TIFF (1996): \n Journalists visit the settings of Theo Angelopoulos’ film «Eternity and a day», " +
+                "which was shot in Thessaloniki.  \n" +
                 "A few months later the film wins the «Palme d’ Or» at the Cannes Film Festival and thus becomes " +
                 "the first –and the last, up until now- Greek film, which has achieved this prominent award.",
                 "eternityandaday1",
                 "Scene from Theo Angelopoulos’ film «Eternity and a day»"));
-        this.db.addMilestone(new Milestone(5, "2001", "The four warehouses at the city’s port are renovated into cinema theatres and become a" +
-                " vital part of Thessaloniki Film Festival (42nd TIFF, 2001).\n" +
+        this.db.addMilestone(new Milestone(5, "2001", "42nd TIFF (2001): \n The four warehouses at the city’s port are renovated into cinema theatres and become a" +
+                " vital part of Thessaloniki Film Festival .\n" +
                 "hey are named after four prominent Greek filmmakers: «Tonia Marketaki» and «John Cassavetes» (Warehouse A’) and «Frida Liappa» " +
                 "and «Takis Kanellopoulos» (Warehouse D’). The «Takis Kanellopoulos» hall is later renamed as «Stavros Tornes» hall in order to avoid" +
                 " confusion with «Kanellopoulos» hall, the main venue of the neighboring Cinema Museum.",
                 "cineprovlita01",
                 "Exterior view of Warehouse A’, the halls of which are named «Tonia Marketaki» and «John Cassavetes» (40th TIFF)"));
-        this.db.addMilestone(new Milestone(5, "2008", "Oliver Stone and Emir Kusturica join No Smoking Band’s concert at the Warehouse " +
-                "C, held at the city’s port (49th TIFF, 2008).", "stonekusturica",
+        this.db.addMilestone(new Milestone(5, "2008", "49th TIFF (2008): \n Oliver Stone and Emir Kusturica join No Smoking Band’s concert at the Warehouse " +
+                "C, held at the city’s port .", "stonekusturica",
                 "Oliver Stone and Emir Kusturica together on stage.\n" +
                         "(Motionteam, κωδικός: 445484)"));
         this.db.addMilestone(new Milestone(5, "2013", "One of the festival’s favorite and most innovative sections," +
