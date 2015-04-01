@@ -773,7 +773,7 @@ final class DbAdapter {
                         "\n" +
                         "Στην ευρύτερη περιοχή της πλατείας χτίστηκαν αρκετά σινεμά όπως: Σπλέντιντ (μετέπειτα Ίλιον), Πάνθεον, " +
                         "Αττικόν και Ολύμπιον (στη σημερινή οδό Μοναστηρίου), καθώς αργότερα και τα πορνό σινεμά της πλατείας." +
-                "\n Η μνήμη των λαικών σινεμάδων του " +
+                "\n Η μνήμη των λαϊκών σινεμάδων του " +
                         "Βαρδαρίου («των αγιασμένων τόπων» όπως αναφέρει) διασώζεται περίτεχνα απο τις " +
                         "αφηγήσεις στα πεζογραφήματα του συγγραφέα Γ. Ιωάννου αλλά και σε πίνακες του " +
                         "ζωγράφου Λουκά Βενετούλια με θέμα το αστικό τοπίο της Πλατείας. \n",
@@ -799,7 +799,7 @@ final class DbAdapter {
                         "\n" +
                         "Εδώ βρίσκεται και σήμερα η σημερινή έδρα του Φεστιβάλ Κινηματογράφου Θεσσαλονίκης, το κινηματοθέατρο Ολύμπιον. \n" +
                         "\n" +
-                        "Μοναδικό στο είδος του επίσης το πλωτό θερινό σινεμά με την ονομασία Κούρσαλ (ή κατ’ άλλους Τζερουσαλέμ) " +
+                        "Μοναδικό στο είδος του επίσης το πλωτό θερινό σινεμά με την ονομασία Κουρσάλ (ή κατ’ άλλους Τζερουσαλέμ) " +
                         "που λειτούργησε μεσοπολεμικά με βάση του την παλιά παραλία της πόλης.\n" +
                         "\n" +
                         "Ταινίες που γυρίστηκαν εδώ (ενδεικτική αναφορά): «Μια αιωνιότητα και μια μέρα», «Η φανέλα με το 9», «Γενέθλια πόλη», «Ο ατσίδας».",
@@ -1194,7 +1194,7 @@ final class DbAdapter {
         this.db.addTimelineStation(new TimelineStation("Λευκός Πύργος-\n" + "Εταιρεία Μακεδονικών Σπουδών (ΕΜΣ)", 40.6271087, 22.9497383));
         //Milestones
         this.db.addMilestone(new Milestone(1, "1964", "5η Εβδομάς Ελληνικού Κινηματογράφου (1964): \n Η έδρα του φεστιβάλ μεταφέρεται από τον κινηματογράφο «Ολύμπιον» στην Εταιρεία " +
-                "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά την επόμενη δεκαετία.)", "theatesems", "Θεατές στην Εταιρεία Μακεδονικών Σπουδών"));
+                "Μακεδονικών Σπουδών, χώρο με τον οποίο το φεστιβάλ θα συνδεθεί ιστορικά την επόμενη δεκαετία.", "theatesems", "Θεατές στην Εταιρεία Μακεδονικών Σπουδών"));
         this.db.addMilestone(new Milestone(1, "1966", "7ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1966): \n Ο παραγωγός Τζέιμς Πάρις «κατεβάζει» ένα τανκ στους δρόμους της Θεσσαλονίκης για διαφημιστικούς σκοπούς, προκειμένου να προωθήσει την ταινία «Ξεχασμένοι ήρωες», της οποίας είναι παραγωγός. Σύμφωνα με τα ρεπορτάζ, ο Πάρις παρατάσσει έξω από την είσοδο της ΕΜΣ μια διμοιρία στρατιωτών, με το αιτιολογικό ότι η ταινία του έχει πατριωτικό χαρακτήρα. Λίγο πριν από την έναρξη της ταινίας, ένα τανκ εισβάλλει στην πλατεία του Λευκού Πύργου, ακολουθούμενο από πολυτελές αυτοκίνητο, με επιβάτες τον παραγωγό και τους πρωταγωνιστές της ταινίας. Οι εκπλήξεις συνεχίζονται και μέσα στην αίθουσα, όπου οι 1.500 θεατές βρίσκουν στη θέση τους από ένα πακέτο τσιγάρα, δώρο του παραγωγού στο κοινό.",
                 "paris_ems", "Οι Γιώργος Τζαβέλλας και Τζαίημς Πάρις σε φεστιβαλική προβολή στην ΕΜΣ"));
         this.db.addMilestone(new Milestone(1, "1970", "11ο Φεστιβάλ Κινηματογράφου Θεσσαλονίκης (1970): \n Εμφανίζεται στο φεστιβάλ το δυναμικό νεανικό κοινό του " +
@@ -1502,7 +1502,7 @@ final class DbAdapter {
                 "The screening is full of surprises. More than 1.500 viewers that attend Paris’ film find a pack of cigarettes in" +
                 " their seat, a promo gift on behalf of the producer.", "paris_ems", "Yorgos Tzavellas and James Paris attend a festival screening at the EMS hall"));
         this.db.addMilestone(new Milestone(1, "1970", "11th Greek Film Week (1970): \n The «2nd Balcony» is a special place in EMS hall, which will be identified with the dynamic" +
-                " young public of the Thessaloniki Film Festival that playσ an important role in the forming of a local festival culture" +
+                " young public of the Thessaloniki Film Festival that plays an important role in the forming of a local festival culture" +
                 " . \n" +
                 "\n" +
                 " The «2nd Balcony» is named after the homonymous seat category at the EMS hall, which is  the students’ favorite place because" +
@@ -1516,9 +1516,14 @@ final class DbAdapter {
                 " International Fair Trade and the International Federation of Film Producers Associations (FIAPF). "
                 , "diethnesfilmfestival",
                 " A view of the EMS hall, during the 10th anniversary of the Thessaloniki International Film Festival for Short Films. "));
-        this.db.addMilestone(new Milestone(1, "1992", "Film Festival becomes International . Official competition hosts movies from new " +
-                "and emerging filmmakers from all over the world . \n" +
-                "In parallel it hosts the Greek Film Festival Competition (until 1997).", "p1992", ""));
+        this.db.addMilestone(new Milestone(1, "1992", "The Thessaloniki Film Festival becomes international.
+            Official competition hosts movies from new and emerging filmmakers from all over the world.
+            In parallel it hosts the Greek Film Festival Competition (until 1997).", "p1992", ""));
+
+/*The Thessaloniki Film Festival becomes international (να διαγραφεί η λέξη officially πριν το international). Official competition hosts movies from new and emerging filmmakers from all over the world.
+In parallel it hosts the Greek Film Festival Competition (until 1997).*/
+
+
         this.db.addMilestone(new Milestone(1, "1995", "Festival hosted for last time at the EMS hall . The building will be refurbished radically " +
                 "within it from Cultural Capital Organization Thessaloniki 1997 , leaving behind a bright " +
                 "cinematic history for the city . ", "p1995", ""));
@@ -1545,7 +1550,7 @@ final class DbAdapter {
         //TimelineStation 3
         this.db.addTimelineStation(new TimelineStation("Alexandrou Svolou Str. – Navarinon Square ", 40.6330961, 22.9470789));
         //Milestones
-        this.db.addMilestone(new Milestone(3, "1987", "28th Thessaloniki Film Festival (1987): \n «Esperos cinema theatre hosts the festival’s sidebar events.\n" +
+        this.db.addMilestone(new Milestone(3, "1987", "28th Thessaloniki Film Festival (1987): \n «Esperos» cinema theatre hosts the festival’s sidebar events.\n" +
                 "Among the popular screenings which were held at «Esperos», there is a film music concert of Germaine Dula’s films" +
                 ", with pianist-composer Sakis Papadimitriou and singer Georgia Silleou .",
                 "esperos28filmfestival",
@@ -1581,13 +1586,7 @@ final class DbAdapter {
                 " the Thessaloniki Documentary Festival" +
                 " – «Images of the 21st century», which gathers an average of 30.000 viewers every year in its screenings. ", "peopleolympion38filmfestival",
                 "People crowding outside the «Olympion» cinema theatre during the 38th Thessaloniki International Film Festival\n"));
-        this.db.addMilestone(new Milestone(4, "2010", "From 2010 Festival changing line and influenced from the serious financial crisis of \n" +
-                "Greece turned to afresh open cinematic horizons.\n" +
-                "To these years the audience has the opportunity to discover alternative directors, like\n" +
-                "Alain Guiraudie, Bahman Ghobadi and Ole Christian Madsen but also to connect afresh\n" +
-                "with timeless favorite stars like Hanna Schygulla, and creators, like Aki Kaurismäki,\n" +
-                "Paolo Sorrentino, and Constantine Giannaris.", "p2014",
-                ""));
+        this.db.addMilestone(new Milestone(4, "2010", "From 2010 the Thessaloniki International Film Festival is confronted with the unprecedented financial crisis in Greece, which forces it to change direction towards a more independent cinema. Constantly evolving, the festival discovers the alternative films of directors such as Alain Guiraudie, Bahman Ghobadi and Ole Christian Madsen, it meets with great film stars of European cinema like Hanna Schygulla and with independent filmmakers like Aki Kaurismäki, Paolo Sorrentino and Constantine Giannaris.", "p2014",""));
         this.db.addMilestone(new Milestone(4, "2014", "From its re-opening in 1997 until today, the «Olympion» cinema theatre hosts the main corpus" +
                 " of film festival activities. It has been a popular venue, which was visited by acclaimed personalities of world cinema (Coppola, " +
                 "Stone, Desplas, Kusturica, Kitano, Herzog etc).)", "olympion39filmfestival",
