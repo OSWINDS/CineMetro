@@ -1516,9 +1516,9 @@ final class DbAdapter {
                 " International Fair Trade and the International Federation of Film Producers Associations (FIAPF). "
                 , "diethnesfilmfestival",
                 " A view of the EMS hall, during the 10th anniversary of the Thessaloniki International Film Festival for Short Films. "));
-        this.db.addMilestone(new Milestone(1, "1992", "The Thessaloniki Film Festival becomes international.
-            Official competition hosts movies from new and emerging filmmakers from all over the world.
-            In parallel it hosts the Greek Film Festival Competition (until 1997).", "p1992", ""));
+        this.db.addMilestone(new Milestone(1, "1992", "The Thessaloniki Film Festival becomes international."+
+            "Official competition hosts movies from new and emerging filmmakers from all over the world."+
+            "In parallel it hosts the Greek Film Festival Competition (until 1997).", "p1992", ""));
 
 /*The Thessaloniki Film Festival becomes international (να διαγραφεί η λέξη officially πριν το international). Official competition hosts movies from new and emerging filmmakers from all over the world.
 In parallel it hosts the Greek Film Festival Competition (until 1997).*/
