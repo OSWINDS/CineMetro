@@ -5,14 +5,14 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=50:DE:98:2D:25:51:E3:A9:DD:AA:5F:38:44:27:F9:7A:1A:01:53:22%3Bcinemetroproject.cinemetro
+https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=94:09:19:32:2C:65:B9:1C:82:EB:C4:69:9C:AA:FD:6C:90:92:10:F1%3Bcinemetroproject.cinemetro
 
     You can also add your credentials to an existing key, using this line:
-    50:DE:98:2D:25:51:E3:A9:DD:AA:5F:38:44:27:F9:7A:1A:01:53:22;cinemetroproject.cinemetro
+    94:09:19:32:2C:65:B9:1C:82:EB:C4:69:9C:AA:FD:6C:90:92:10:F1;cinemetroproject.cinemetro
 
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
     --></string>
 
-    <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyBqx0nQ6X-je7flPta05Q36i_2X2IJo_Xo</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyARZ-3TFgyUGRrr-v_vOMyQhWPXRCbFTek</string>
 </resources>
