@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
@@ -38,6 +39,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Locale;
+
+import cinemetroproject.cinemetro.util.PictureUtils;
 
 /**
  * Created by kiki__000 on 20-Jul-14.
@@ -153,8 +156,9 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
                 Class res = R.drawable.class;
                 Field field = res.getField(DbAdapter.getInstance().getMainPhotosOfMovie(mv.getId()).get(i).getName());
                 int drawableId = field.getInt(null);
+                BitmapDrawable scaledDrawable = PictureUtils.getScaledDrawable(this, drawableId);
                 ImageView imageView = new ImageView(ViewStation.this);
-                imageView.setImageResource(drawableId);
+                imageView.setImageBitmap(scaledDrawable.getBitmap());
                 vf.addView(imageView);
 
             } catch (Exception e) {}
@@ -171,7 +175,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
         actorsScrollView = (LinearLayout)findViewById(R.id.actorsHsw);
 
         View director = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.actor, null);
-        Button imageDirector = (Button) director.findViewById(R.id.actorImage);
+        ImageView imageDirector = (ImageView) director.findViewById(R.id.actorImage);
         Button nameDirector = (Button) director.findViewById(R.id.actorName);
         nameDirector.setBackgroundColor(Color.WHITE);
 
@@ -179,7 +183,8 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
             Class res = R.drawable.class;
             Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(mv.getId()).get(0).getName());
             int drawableId = field.getInt(null);
-            imageDirector.setBackgroundResource(drawableId);
+            BitmapDrawable scaledDrawable = PictureUtils.getScaledDrawable(ViewStation.this, drawableId);
+            imageDirector.setImageBitmap(scaledDrawable.getBitmap());
         } catch (Exception e) {}
         String string1 = mv.getDirector();
         String[] parts1 = string1.split(" ");
@@ -191,7 +196,7 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
 
         for (int i=1; i<actors; i++) {
             View actor = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.actor, null);
-            Button imageActor = (Button) actor.findViewById(R.id.actorImage);
+           ImageView imageActor = (ImageView) actor.findViewById(R.id.actorImage);
             Button nameActor = (Button) actor.findViewById(R.id.actorName);
             nameActor.setBackgroundColor(Color.WHITE);
 
@@ -199,7 +204,8 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
                 Class res = R.drawable.class;
                 Field field = res.getField(DbAdapter.getInstance().getActorPhotosOfMovie(mv.getId()).get(i).getName());
                 int drawableId = field.getInt(null);
-                imageActor.setBackgroundResource(drawableId);
+                BitmapDrawable scaledDrawable = PictureUtils.getScaledDrawable(ViewStation.this, drawableId);
+                imageActor.setImageBitmap(scaledDrawable.getBitmap());
             } catch (Exception e) {}
             String string = mv.getActors().get(i - 1);
             Log.i("name",string);
@@ -427,10 +433,10 @@ public class ViewStation extends ActionBarActivity implements View.OnClickListen
             share.setVisibility(View.INVISIBLE);
             goAheadButton.setVisibility(View.INVISIBLE);
             showInMap.setVisibility(View.INVISIBLE);
-            facebookButton.setVisibility(View.VISIBLE);
+           // facebookButton.setVisibility(View.VISIBLE);
             twitterButton.setVisibility(View.VISIBLE);
-            instagramButton.setVisibility(View.VISIBLE);
-            pinterestButton.setVisibility(View.VISIBLE);
+           // instagramButton.setVisibility(View.VISIBLE);
+           // pinterestButton.setVisibility(View.VISIBLE);
             general_layout.setOnClickListener(layoutOnClickListener);
 
         }

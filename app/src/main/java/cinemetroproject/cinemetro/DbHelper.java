@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 54;
+    private static final int DATABASE_VERSION = 55;
     // Database Name
     private static final String DATABASE_NAME = "CineMetroDB";
     //Language choice of the user

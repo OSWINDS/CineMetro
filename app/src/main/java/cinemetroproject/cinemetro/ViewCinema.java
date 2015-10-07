@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
@@ -34,6 +35,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Locale;
+
+import cinemetroproject.cinemetro.util.PictureUtils;
 
 /**
  * Created by kiki__000 on 28-Aug-14.
@@ -155,8 +158,9 @@ public class ViewCinema extends ActionBarActivity {
                 Class res = R.drawable.class;
                 Field field = res.getField(DbAdapter.getInstance().getPhotosByStation(st.getId()).get(i).getName());
                 int drawableId = field.getInt(null);
+                BitmapDrawable scaledDrawable = PictureUtils.getScaledDrawable(this, drawableId);
                 ImageView imageView = new ImageView(ViewCinema.this);
-                imageView.setImageResource(drawableId);
+                imageView.setImageBitmap(scaledDrawable.getBitmap());
                 vf.addView(imageView);
 
             } catch (Exception e) {}
@@ -204,10 +208,10 @@ public class ViewCinema extends ActionBarActivity {
             share.setVisibility(View.INVISIBLE);
             goAheadButton.setVisibility(View.INVISIBLE);
             showInMap.setVisibility(View.INVISIBLE);
-            facebookButton.setVisibility(View.VISIBLE);
+           // facebookButton.setVisibility(View.VISIBLE);
             twitterButton.setVisibility(View.VISIBLE);
-            instagramButton.setVisibility(View.VISIBLE);
-            pinterestButton.setVisibility(View.VISIBLE);
+           // instagramButton.setVisibility(View.VISIBLE);
+           // pinterestButton.setVisibility(View.VISIBLE);
             general_layout.setOnClickListener(layoutOnClickListener);
     }
     };

@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -36,6 +37,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import cinemetroproject.cinemetro.util.PictureUtils;
 
 /**
  * Created by vivi dimitris on 22/9/2014.
@@ -160,7 +163,8 @@ public class Timeline extends ActionBarActivity {
                         Class res = R.drawable.class;
                         Field field = res.getField(mls.get(selectedId).getPhotoName());
                         int drawableId = field.getInt(null);
-                        image.setBackgroundResource(drawableId);
+                        BitmapDrawable scaledDrawable = PictureUtils.getScaledDrawable(Timeline.this, drawableId);
+                        image.setImageBitmap(scaledDrawable.getBitmap());
 
                     } catch (Exception e) {}
 
@@ -242,10 +246,10 @@ public class Timeline extends ActionBarActivity {
             share.setVisibility(View.INVISIBLE);
             goAheadButton.setVisibility(View.INVISIBLE);
             showInMap.setVisibility(View.INVISIBLE);
-            facebookButton.setVisibility(View.VISIBLE);
+            //facebookButton.setVisibility(View.VISIBLE);
             twitterButton.setVisibility(View.VISIBLE);
-            instagramButton.setVisibility(View.VISIBLE);
-            pinterestButton.setVisibility(View.VISIBLE);
+           // instagramButton.setVisibility(View.VISIBLE);
+           // pinterestButton.setVisibility(View.VISIBLE);
             general_layout.setOnClickListener(layoutOnClickListener);
 
         }

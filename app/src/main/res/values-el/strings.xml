@@ -107,6 +107,7 @@
     <string name="Linew_menu_button">Διαδρομές</string>
     <string name="title_activity_tabed_lines">Γραμμές</string>
     <string name="rated_stations">Βαθμολογία Στάσεων</string>
+    <string name="viewholder">viewHolder</string>
 
 
 </resources>

@@ -102,5 +102,6 @@
     <string name="Linew_menu_button">Lines</string>
     <string name="title_activity_tabed_lines">Lines</string>
     <string name="rated_stations">Stations Rated</string>
+    <string name="viewholder">viewHolder</string>
 
 </resources>

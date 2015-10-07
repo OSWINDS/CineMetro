@@ -24,6 +24,8 @@
         android:smallScreens="true" />
 
     <application
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
         android:allowBackup="true"
         android:configChanges="locale|layoutDirection|orientation"
         android:icon="@drawable/ic_launcher"

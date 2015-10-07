@@ -1423,7 +1423,7 @@ final class DbAdapter {
                 2, 40.632804, 22.941331));
         this.db.addStation(new Station("Eternity and a day (1998)",
                 "Director: Theo Angelopoulos\n" +
-                        "Cast:Bruno Ganz,Fabrizio Bentivoglio,Isabelle Renauld\n" +
+                        "Cast:Bruno Ganz,Isabelle Renauld,Fabrizio Bentivoglio\n" +
                         "\n" +
                         "Info: The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his " +
                         "seaside home forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as " +
@@ -1476,7 +1476,7 @@ final class DbAdapter {
                 "The film traces the final days of Alexandre, a celebrated Greek writer as he prepares to leave his seaside home " +
                         "forever. It is shot in Thessaloniki, in a villa located in Vassilisis Olgas Avenue, as well as in the " +
                         "city’s sea front, Aristotelous Square and Tsimiski Street.",
-                "Bruno Ganz,Fabrizio Bentivoglio,Isabelle Renauld",
+                "Bruno Ganz,Isabelle Renauld,Fabrizio Bentivoglio",
                 "Theo Angelopoulos", "1998"));
         this.db.addMovie(new Movie(14, "Homeland (2010)",
                 "A story about a family and a country falling apart, inspired by true events. A large part of the film is shot in " +
