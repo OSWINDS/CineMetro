@@ -1,18 +1,21 @@
 <resources>
-        <string name="google_maps_key_instructions" templateMergeStrategy="replace"><!--
-
-
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=94:09:19:32:2C:65:B9:1C:82:EB:C4:69:9C:AA:FD:6C:90:92:10:F1%3Bcinemetroproject.cinemetro
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=C5:C2:04:C7:D0:6B:C0:22:FB:C3:81:94:05:49:6B:3D:23:7C:44:57%3Bcinemetroproject.cinemetro
 
     You can also add your credentials to an existing key, using this line:
-    94:09:19:32:2C:65:B9:1C:82:EB:C4:69:9C:AA:FD:6C:90:92:10:F1;cinemetroproject.cinemetro
+    C5:C2:04:C7:D0:6B:C0:22:FB:C3:81:94:05:49:6B:3D:23:7C:44:57;cinemetroproject.cinemetro
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
 
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
-    --></string>
-
-    <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyARZ-3TFgyUGRrr-v_vOMyQhWPXRCbFTek</string>
+    -->
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
+        AIzaSyD4gurB476JbyFr0GzpX9BiR6d9iCBlNIo
+    </string>
 </resources>
